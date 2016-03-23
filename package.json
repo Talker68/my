@@ -1,0 +1,19 @@
+{
+  "name": "app-name",
+  "devDependencies": {
+    "async": "^2.0.0-rc.1",
+    "connect": "^3.4.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-consolidate": "^0.2.0",
+    "gulp-iconfont": "^6.0.0",
+    "gulp-iconfont-css": "^2.1.0",
+    "gulp-less": "^3.0.3",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-uglify": "^1.4.2",
+    "serve-static": "^1.10.0",
+    "tiny-lr": "^0.2.1"
+  }
+}

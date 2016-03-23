@@ -1,0 +1,30 @@
+<div class="l-title">
+    Детали заявки
+    <i class="fa fa-times modal-close" ng-click="cancel()"></i>
+</div>
+<div class="tab-head" ng-init="tabPane = 1">
+    <div class="tab-head_item" ng-class="{ 'tab-head_item__active' : tabPane == 1  }" ng-click="tabPane = 1">
+        Основные данные
+    </div>
+    <div class="tab-head_item" ng-class="{ 'tab-head_item__active' : tabPane == 2  }" ng-click="tabPane = 2">
+        Номенклатура
+    </div>
+    <div class="tab-head_item" ng-class="{ 'tab-head_item__active' : tabPane == 3  }" ng-click="tabPane = 3">
+        Заявка в ГП
+    </div>
+</div>
+<div class="tab-cont">
+    <div class="tab-pane" ng-show="tabPane == 1">
+        <fieldset class="form-fieldset">
+            <legend class="form-fieldset_legend">
+                Контент основных данных
+            </legend>
+        </fieldset>
+    </div>
+    <div class="tab-pane" ng-show="tabPane == 2">
+        Контент номенклатура
+    </div>
+    <div class="tab-pane" ng-show="tabPane == 3">
+        Контент заявка в ГП
+    </div>
+</div>

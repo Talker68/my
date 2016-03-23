@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+    <meta charset="UTF-8">
+    <title>TLS</title>
+
+    <!-- start Styles -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    <!-- end Styles -->
+
+    <!-- start Scripts -->
+    <script src="../js/vendor.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- end Scripts -->
+</head>
+<body ng-controller='appCtr' class="login-page">
+
+    <div class="login-page_banner">
+        <img src="img/truck.png">
+    </div>
+    <div class="container-fluid login-page_cnt">
+        <div class="col-xs-3">
+        </div>
+        <div class="col-xs-5">
+            <!-- start Form Autorization -->
+            <form action="javascript:void(0)" class="login-form" name="loginForm"  onsubmit="location.href = 'logist.html'">
+                <div class="login-form_logo">
+                    <img src="img/logo.png" alt="" width="195" height="43"/>
+                </div>
+                <label class="login-form_row">
+                    <span class="login-form_title">Логин</span>
+                    <input type="text" name="login" value="" minlength="4" ng-model="loginName" class="login-form_field form-field" required>
+                </label>
+                <label class="login-form_row">
+                    <span class="login-form_title">Пароль</span>
+                    <input type="password" name="login" value="" minlength="4" ng-model="loginPass" class="login-form_field form-field" required>
+                </label>
+                <a href="javascript:void(0)" class="login-form_link e-link" uib-tooltip='Временно не работает'>Забыли пароль?</a>
+                <label class="login-form_row">
+                    <button type="submit" class="btn btn-primary login-form_submit">Вход</button>
+                </label>
+            </form>
+            <!-- end Form Autorization -->
+        </div>
+        <div class="col-xs-4">
+        </div>
+    </div>
+
+</body>
+</html>
