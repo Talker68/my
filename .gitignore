@@ -1,4 +1,4 @@
-.idea/*
+/.idea
 /node_modules
 /bower_components/angular-animate/.bower.json
 /bower_components/angular-animate/README.md
