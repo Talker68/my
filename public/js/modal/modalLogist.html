@@ -28,73 +28,73 @@
                     <legend class="form-fieldset_legend">
                         Информация о грузе и транспорте
                     </legend>
-                    <div class="form-fieldset_row">
-                        <div class="form-fieldset_cell">
+                    <div class="form-fieldset_row row">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Тип маршрута</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Транзит">
+                                <input type="text" disabled value="Транзит" class="form-control">
                             </label>
                         </div>
-                        <div class="form-fieldset_cell">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Тип транспорта</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Авто">
+                                <input type="text" disabled value="Авто" class="form-control">
                             </label>
                         </div>
-                        <div class="form-fieldset_cell">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Тип кузова</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Тент">
+                                <input type="text" disabled value="Тент" class="form-control">
                             </label>
                         </div>
                     </div>
-                    <div class="form-fieldset_row">
-                        <div class="form-fieldset_cell">
+                    <div class="form-fieldset_row row">
+                        <div class="form-fieldset_cell col-xs-8">
                             <span>Тип груза</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Транзит">
+                                <input type="text" disabled value="Транзит" class="form-control">
                             </label>
                         </div>
-                        <div class="form-fieldset_cell">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Грузоподъемность</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Авто">
+                                <input type="text" disabled value="Авто" class="form-control">
                             </label>
                         </div>
                     </div>
-                    <div class="form-fieldset_row">
-                        <div class="form-fieldset_cell">
+                    <div class="form-fieldset_row row">
+                        <div class="form-fieldset_cell col-xs-8">
                             <span>Способ загрузки</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Транзит">
+                                <input type="text" disabled value="Транзит" class="form-control">
                             </label>
                         </div>
-                        <div class="form-fieldset_cell">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Объём</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Авто">
+                                <input type="text" disabled value="Авто" class="form-control">
                             </label>
                         </div>
                     </div>
                     <div class="form-fieldset_hr">
                     </div>
-                    <div class="form-fieldset_row">
-                        <div class="form-fieldset_cell">
+                    <div class="form-fieldset_row row">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Доп.оборудование</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Транзит">
+                                <input type="text" disabled value="Транзит" class="form-control">
                             </label>
                         </div>
-                        <div class="form-fieldset_cell">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Высота(м)</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Авто">
+                                <input type="text" disabled value="Авто" class="form-control">
                             </label>
                         </div>
-                        <div class="form-fieldset_cell">
+                        <div class="form-fieldset_cell col-xs-4">
                             <span>Стяжные ремни</span>
                             <label class="form-fieldset_field">
-                                <input type="text" disabled value="Тент">
+                                <input type="text" disabled value="Тент" class="form-control">
                             </label>
                         </div>
                     </div>
@@ -130,45 +130,49 @@
                     <legend class="form-fieldset_legend">
                         Информация по тарифу
                     </legend>
-                    <div class="rate-info form-fieldset_row">
-                        <div class="rate-info_item">
-                            <div>
-                                Базовый тариф:
+                    <div class="rate-info">
+                        <div class="row">
+                            <div class="rate-info_item col-xs-4">
+                                <div>
+                                    Базовый тариф:
+                                </div>
+                                <div class="rate-info_val">
+                                    2000р.
+                                </div>
                             </div>
-                            <div class="rate-info_val">
-                                2000р.
+                            <div class="rate-info_item rate-info_item__plus col-xs-4">
+                                <div>
+                                    Доп.оплата без НДС:
+                                </div>
+                                <div class="rate-info_val">
+                                    400р.
+                                </div>
                             </div>
-                        </div>
-                        <div class="rate-info_item rate-info_item__plus">
-                            <div>
-                                Доп.оплата без НДС:
-                            </div>
-                            <div class="rate-info_val">
-                                400р.
-                            </div>
-                        </div>
-                        <div class="rate-info_item rate-info_item__total">
-                            <div>
-                                Тариф маршрута:
-                            </div>
-                            <div class="rate-info_val">
-                                2400р
-                            </div>
-                        </div>
-                        <div class="rate-info_item">
-                            <div>
-                                Транзит
-                            </div>
-                            <div class="rate-info_val">
-                                2 Дня
+                            <div class="rate-info_item rate-info_item__total col-xs-4">
+                                <div>
+                                    Тариф маршрута:
+                                </div>
+                                <div class="rate-info_val">
+                                    <b>2400р</b>
+                                </div>
                             </div>
                         </div>
-                        <div class="rate-info_item">
-                            <div>
-                                Зона доставки
+                        <div class="row">
+                            <div class="rate-info_item col-xs-4">
+                                <div>
+                                    Транзит
+                                </div>
+                                <div class="rate-info_val">
+                                    2 Дня
+                                </div>
                             </div>
-                            <div class="rate-info_val">
-                                №6
+                            <div class="rate-info_item col-xs-4">
+                                <div>
+                                    Зона доставки
+                                </div>
+                                <div class="rate-info_val">
+                                    №6
+                                </div>
                             </div>
                         </div>
                     </div>
