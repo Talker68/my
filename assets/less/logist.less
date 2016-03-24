@@ -95,12 +95,21 @@
   vertical-align: middle;
   padding: 14px 2%;
   position: relative;
-  &:after{
+  &:not(:last-child):after{
     content: '';
     position: absolute;
     top:0; right: 0;
     width: 1px; height: 100%;
     background: #ced8d8;
+  }
+  &__nowrap{
+    padding: 14px 0;
+    .requests-list_address{
+      width: 30%;
+      &:first-child{
+        padding-left: 0;
+      }
+    }
   }
 }
 .requests-list_post{
@@ -148,6 +157,42 @@
   }
 }
 
+// details
+.details-request{
+
+}
+.details-request_additionally{
+  margin-bottom: 20px;
+  a{
+    margin: 0 12px;
+  }
+}
+.rate-info{
+
+}
+.rate-info_item{
+  margin-bottom: 20px;
+}
+.rate-info_val{
+  font-size: 22px;
+  color: @green-color;
+}
+.rate-info_item__plus{
+  position: relative;
+  &:before{
+    content: '+';
+    position: absolute;
+    top:20px; left:-30px;
+  }
+}
+.rate-info_item__total{
+  position: relative;
+  &:before{
+    content: '=';
+    position: absolute;
+    top:20px; left:-30px;
+  }
+}
 
 
 
