@@ -1,0 +1,303 @@
+/node_modules
+/bower_components/angular-animate/.bower.json
+/bower_components/angular-animate/README.md
+/bower_components/angular-animate/angular-animate.js
+/bower_components/angular-animate/angular-animate.min.js
+/bower_components/angular-animate/angular-animate.min.js.map
+/bower_components/angular-animate/bower.json
+/bower_components/angular-animate/index.js
+/bower_components/angular-animate/package.json
+/bower_components/angular-bootstrap/.bower.json
+/bower_components/angular-bootstrap/.gitignore
+/bower_components/angular-bootstrap/.npmignore
+/bower_components/angular-bootstrap/README.md
+/bower_components/angular-bootstrap/bower.json
+/bower_components/angular-bootstrap/index.js
+/bower_components/angular-bootstrap/package.json
+/bower_components/angular-bootstrap/ui-bootstrap-csp.css
+/bower_components/angular-bootstrap/ui-bootstrap-tpls.js
+/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js
+/bower_components/angular-bootstrap/ui-bootstrap.js
+/bower_components/angular-bootstrap/ui-bootstrap.min.js
+/bower_components/bootstrap/.bower.json
+/bower_components/bootstrap/Gruntfile.js
+/bower_components/bootstrap/LICENSE
+/bower_components/bootstrap/README.md
+/bower_components/bootstrap/bower.json
+/bower_components/bootstrap/dist/css/bootstrap-theme.css
+/bower_components/bootstrap/dist/css/bootstrap-theme.css.map
+/bower_components/bootstrap/dist/css/bootstrap-theme.min.css
+/bower_components/bootstrap/dist/css/bootstrap.css
+/bower_components/bootstrap/dist/css/bootstrap.css.map
+/bower_components/bootstrap/dist/css/bootstrap.min.css
+/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot
+/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg
+/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
+/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
+/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+/bower_components/bootstrap/dist/js/bootstrap.js
+/bower_components/bootstrap/dist/js/bootstrap.min.js
+/bower_components/bootstrap/dist/js/npm.js
+/bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot
+/bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg
+/bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf
+/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff
+/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2
+/bower_components/bootstrap/grunt/.jshintrc
+/bower_components/bootstrap/grunt/bs-commonjs-generator.js
+/bower_components/bootstrap/grunt/bs-glyphicons-data-generator.js
+/bower_components/bootstrap/grunt/bs-lessdoc-parser.js
+/bower_components/bootstrap/grunt/bs-raw-files-generator.js
+/bower_components/bootstrap/grunt/configBridge.json
+/bower_components/bootstrap/grunt/sauce_browsers.yml
+/bower_components/bootstrap/js/.jscsrc
+/bower_components/bootstrap/js/.jshintrc
+/bower_components/bootstrap/js/affix.js
+/bower_components/bootstrap/js/alert.js
+/bower_components/bootstrap/js/button.js
+/bower_components/bootstrap/js/carousel.js
+/bower_components/bootstrap/js/collapse.js
+/bower_components/bootstrap/js/dropdown.js
+/bower_components/bootstrap/js/modal.js
+/bower_components/bootstrap/js/popover.js
+/bower_components/bootstrap/js/scrollspy.js
+/bower_components/bootstrap/js/tab.js
+/bower_components/bootstrap/js/tooltip.js
+/bower_components/bootstrap/js/transition.js
+/bower_components/bootstrap/less/.csscomb.json
+/bower_components/bootstrap/less/.csslintrc
+/bower_components/bootstrap/less/alerts.less
+/bower_components/bootstrap/less/badges.less
+/bower_components/bootstrap/less/bootstrap.less
+/bower_components/bootstrap/less/breadcrumbs.less
+/bower_components/bootstrap/less/button-groups.less
+/bower_components/bootstrap/less/buttons.less
+/bower_components/bootstrap/less/carousel.less
+/bower_components/bootstrap/less/close.less
+/bower_components/bootstrap/less/code.less
+/bower_components/bootstrap/less/component-animations.less
+/bower_components/bootstrap/less/dropdowns.less
+/bower_components/bootstrap/less/forms.less
+/bower_components/bootstrap/less/glyphicons.less
+/bower_components/bootstrap/less/grid.less
+/bower_components/bootstrap/less/input-groups.less
+/bower_components/bootstrap/less/jumbotron.less
+/bower_components/bootstrap/less/labels.less
+/bower_components/bootstrap/less/list-group.less
+/bower_components/bootstrap/less/media.less
+/bower_components/bootstrap/less/mixins.less
+/bower_components/bootstrap/less/mixins/alerts.less
+/bower_components/bootstrap/less/mixins/background-variant.less
+/bower_components/bootstrap/less/mixins/border-radius.less
+/bower_components/bootstrap/less/mixins/buttons.less
+/bower_components/bootstrap/less/mixins/center-block.less
+/bower_components/bootstrap/less/mixins/clearfix.less
+/bower_components/bootstrap/less/mixins/forms.less
+/bower_components/bootstrap/less/mixins/gradients.less
+/bower_components/bootstrap/less/mixins/grid-framework.less
+/bower_components/bootstrap/less/mixins/grid.less
+/bower_components/bootstrap/less/mixins/hide-text.less
+/bower_components/bootstrap/less/mixins/image.less
+/bower_components/bootstrap/less/mixins/labels.less
+/bower_components/bootstrap/less/mixins/list-group.less
+/bower_components/bootstrap/less/mixins/nav-divider.less
+/bower_components/bootstrap/less/mixins/nav-vertical-align.less
+/bower_components/bootstrap/less/mixins/opacity.less
+/bower_components/bootstrap/less/mixins/pagination.less
+/bower_components/bootstrap/less/mixins/panels.less
+/bower_components/bootstrap/less/mixins/progress-bar.less
+/bower_components/bootstrap/less/mixins/reset-filter.less
+/bower_components/bootstrap/less/mixins/reset-text.less
+/bower_components/bootstrap/less/mixins/resize.less
+/bower_components/bootstrap/less/mixins/responsive-visibility.less
+/bower_components/bootstrap/less/mixins/size.less
+/bower_components/bootstrap/less/mixins/tab-focus.less
+/bower_components/bootstrap/less/mixins/table-row.less
+/bower_components/bootstrap/less/mixins/text-emphasis.less
+/bower_components/bootstrap/less/mixins/text-overflow.less
+/bower_components/bootstrap/less/mixins/vendor-prefixes.less
+/bower_components/bootstrap/less/modals.less
+/bower_components/bootstrap/less/navbar.less
+/bower_components/bootstrap/less/navs.less
+/bower_components/bootstrap/less/normalize.less
+/bower_components/bootstrap/less/pager.less
+/bower_components/bootstrap/less/pagination.less
+/bower_components/bootstrap/less/panels.less
+/bower_components/bootstrap/less/popovers.less
+/bower_components/bootstrap/less/print.less
+/bower_components/bootstrap/less/progress-bars.less
+/bower_components/bootstrap/less/responsive-embed.less
+/bower_components/bootstrap/less/responsive-utilities.less
+/bower_components/bootstrap/less/scaffolding.less
+/bower_components/bootstrap/less/tables.less
+/bower_components/bootstrap/less/theme.less
+/bower_components/bootstrap/less/thumbnails.less
+/bower_components/bootstrap/less/tooltip.less
+/bower_components/bootstrap/less/type.less
+/bower_components/bootstrap/less/utilities.less
+/bower_components/bootstrap/less/variables.less
+/bower_components/bootstrap/less/wells.less
+/bower_components/bootstrap/package.js
+/bower_components/bootstrap/package.json
+/bower_components/jquery/.bower.json
+/bower_components/jquery/MIT-LICENSE.txt
+/bower_components/jquery/bower.json
+/bower_components/jquery/dist/jquery.js
+/bower_components/jquery/dist/jquery.min.js
+/bower_components/jquery/dist/jquery.min.map
+/bower_components/jquery/src/ajax.js
+/bower_components/jquery/src/ajax/jsonp.js
+/bower_components/jquery/src/ajax/load.js
+/bower_components/jquery/src/ajax/parseJSON.js
+/bower_components/jquery/src/ajax/parseXML.js
+/bower_components/jquery/src/ajax/script.js
+/bower_components/jquery/src/ajax/var/nonce.js
+/bower_components/jquery/src/ajax/var/rquery.js
+/bower_components/jquery/src/ajax/xhr.js
+/bower_components/jquery/src/attributes.js
+/bower_components/jquery/src/attributes/attr.js
+/bower_components/jquery/src/attributes/classes.js
+/bower_components/jquery/src/attributes/prop.js
+/bower_components/jquery/src/attributes/support.js
+/bower_components/jquery/src/attributes/val.js
+/bower_components/jquery/src/callbacks.js
+/bower_components/jquery/src/core.js
+/bower_components/jquery/src/core/access.js
+/bower_components/jquery/src/core/init.js
+/bower_components/jquery/src/core/parseHTML.js
+/bower_components/jquery/src/core/ready.js
+/bower_components/jquery/src/core/var/rsingleTag.js
+/bower_components/jquery/src/css.js
+/bower_components/jquery/src/css/addGetHookIf.js
+/bower_components/jquery/src/css/curCSS.js
+/bower_components/jquery/src/css/defaultDisplay.js
+/bower_components/jquery/src/css/hiddenVisibleSelectors.js
+/bower_components/jquery/src/css/support.js
+/bower_components/jquery/src/css/swap.js
+/bower_components/jquery/src/css/var/cssExpand.js
+/bower_components/jquery/src/css/var/getStyles.js
+/bower_components/jquery/src/css/var/isHidden.js
+/bower_components/jquery/src/css/var/rmargin.js
+/bower_components/jquery/src/css/var/rnumnonpx.js
+/bower_components/jquery/src/data.js
+/bower_components/jquery/src/data/Data.js
+/bower_components/jquery/src/data/accepts.js
+/bower_components/jquery/src/data/var/data_priv.js
+/bower_components/jquery/src/data/var/data_user.js
+/bower_components/jquery/src/deferred.js
+/bower_components/jquery/src/deprecated.js
+/bower_components/jquery/src/dimensions.js
+/bower_components/jquery/src/effects.js
+/bower_components/jquery/src/effects/Tween.js
+/bower_components/jquery/src/effects/animatedSelector.js
+/bower_components/jquery/src/event.js
+/bower_components/jquery/src/event/ajax.js
+/bower_components/jquery/src/event/alias.js
+/bower_components/jquery/src/event/support.js
+/bower_components/jquery/src/exports/amd.js
+/bower_components/jquery/src/exports/global.js
+/bower_components/jquery/src/intro.js
+/bower_components/jquery/src/jquery.js
+/bower_components/jquery/src/manipulation.js
+/bower_components/jquery/src/manipulation/_evalUrl.js
+/bower_components/jquery/src/manipulation/support.js
+/bower_components/jquery/src/manipulation/var/rcheckableType.js
+/bower_components/jquery/src/offset.js
+/bower_components/jquery/src/outro.js
+/bower_components/jquery/src/queue.js
+/bower_components/jquery/src/queue/delay.js
+/bower_components/jquery/src/selector-native.js
+/bower_components/jquery/src/selector-sizzle.js
+/bower_components/jquery/src/selector.js
+/bower_components/jquery/src/serialize.js
+/bower_components/jquery/src/sizzle/dist/sizzle.js
+/bower_components/jquery/src/sizzle/dist/sizzle.min.js
+/bower_components/jquery/src/sizzle/dist/sizzle.min.map
+/bower_components/jquery/src/traversing.js
+/bower_components/jquery/src/traversing/findFilter.js
+/bower_components/jquery/src/traversing/var/rneedsContext.js
+/bower_components/jquery/src/var/arr.js
+/bower_components/jquery/src/var/class2type.js
+/bower_components/jquery/src/var/concat.js
+/bower_components/jquery/src/var/hasOwn.js
+/bower_components/jquery/src/var/indexOf.js
+/bower_components/jquery/src/var/pnum.js
+/bower_components/jquery/src/var/push.js
+/bower_components/jquery/src/var/rnotwhite.js
+/bower_components/jquery/src/var/slice.js
+/bower_components/jquery/src/var/strundefined.js
+/bower_components/jquery/src/var/support.js
+/bower_components/jquery/src/var/toString.js
+/bower_components/jquery/src/wrap.js
+/.idea/.name
+/.idea/encodings.xml
+/.idea/jsLibraryMappings.xml
+/.idea/libraries/tls_node_modules.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/tls.iml
+/.idea/vcs.xml
+/.idea/watcherTasks.xml
+/.idea/workspace.xml
+/PSD/Auction/1_1_Sozdanie_auksiona_Spisok.jpg
+/PSD/Auction/1_1_Sozdanie_auksiona_Spisok.psd
+/PSD/Auction/1_2_Sozdanie_auksiona_pop_up_1.jpg
+/PSD/Auction/1_2_Sozdanie_auksiona_pop_up_1.psd
+/PSD/Auction/1_3_Sozdanie_auksiona_Spisok.jpg
+/PSD/Auction/1_3_Sozdanie_auksiona_Spisok.psd
+/PSD/Auction/2_Sozdanie_auksiona.jpg
+/PSD/Auction/2_Sozdanie_auksiona.psd
+/PSD/Auction/3_Sozdanie_auksiona2.jpg
+/PSD/Auction/3_Sozdanie_auksiona2.psd
+/PSD/Auction/4_Sozdanie_auksiona_pop_up_2.jpg
+/PSD/Auction/4_Sozdanie_auksiona_pop_up_2.psd
+/PSD/Auction/5_Sozdanie_auksiona_pack_gotov_k_otpravke.jpg
+/PSD/Auction/5_Sozdanie_auksiona_pack_gotov_k_otpravke.psd
+/PSD/Auction/6_1_Sozdanie_auksiona_GP_razvernutaya_osnovnie_dannie.jpg
+/PSD/Auction/6_1_Sozdanie_auksiona_GP_razvernutaya_osnovnie_dannie.psd
+/PSD/Auction/6_2_Sozdanie_auksiona_GP_razvernutaya_Marshrutnie_tochki.jpg
+/PSD/Auction/6_2_Sozdanie_auksiona_GP_razvernutaya_Marshrutnie_tochki.psd
+/PSD/Auction/6_3_Sozdanie_auksiona_GP_razvernutaya_Marshrutnie_tochki_razvernutaya.jpg
+/PSD/Auction/6_3_Sozdanie_auksiona_GP_razvernutaya_Marshrutnie_tochki_razvernutaya.psd
+/PSD/Auction/7_1_GP_razvernutaya_v_pake_detali_auksiona.jpg
+/PSD/Auction/7_1_GP_razvernutaya_v_pake_detali_auksiona.psd
+/PSD/Auction/7_2_GP_razvernutaya_v_pake_osnovnie_dannie.jpg
+/PSD/Auction/7_2_GP_razvernutaya_v_pake_osnovnie_dannie.psd
+/PSD/Auction/7_3_GP_razvernutaya_v_pake_Marshrutnie_tochki.jpg
+/PSD/Auction/7_3_GP_razvernutaya_v_pake_Marshrutnie_tochki.psd
+/PSD/Auction/7_4_GP_razvernutaya_v_pake_Marshrutnie_tochki_razvernutaya.jpg
+/PSD/Auction/7_4_GP_razvernutaya_v_pake_Marshrutnie_tochki_razvernutaya.psd
+/PSD/Avtorization/Avtorization 2Ne1.jpg
+/PSD/Avtorization/Avtorization 2Ne1.psd
+/PSD/Avtorization/Avtorization 2New2.psd
+/PSD/Logist/Буфер Заявок/1_Buffer Zayavok.jpg
+/PSD/Logist/Буфер Заявок/1_Buffer Zayavok.psd
+/PSD/Logist/Буфер Заявок/2_Buffer Zayavok_filtr_primer.psd
+/PSD/Logist/Буфер Заявок/3_Buffer Zayavok_Razvernutaya_zayavka_Osnovnie_dannie.psd
+/PSD/Logist/Буфер Заявок/4_Buffer Zayavok_Razvernutaya_zayavka_Numenklatura.psd
+/PSD/Logist/Буфер Заявок/5_Buffer Zayavok_Razvernutaya_zayavka_history.psd
+/PSD/Logist/Сформированные ГП/1_Sformirovannie GP.jpg
+/PSD/Logist/Сформированные ГП/1_Sformirovannie GP.psd
+/PSD/Logist/Сформированные ГП/2_1_GP_detali_osnovnie_danie.psd
+/PSD/Logist/Сформированные ГП/2_1_GP_detali_osnovnie_danie2.psd
+/PSD/Logist/Сформированные ГП/2_2_GP_detali_Marshrutnie_tochki.psd
+/PSD/Logist/Сформированные ГП/2_3_GP_detali_Marshrutnie_tochki_razvernutaya.psd
+/PSD/Logist/Сформированные ГП/2_4_GP_detali_history.psd
+/PSD/Logist/Сформированные ГП/3_2_Podbor_TK2.psd
+/PSD/Logist/Сформированные ГП/3_3_Podbor_TK2_2.psd
+/PSD/TK/В исполнении/1_GP_v_ispolnenii.psd
+/PSD/TK/В исполнении/2_Zayavki v ispolnenii_Razvernutaya_osnovnie_dannie.psd
+/PSD/TK/В исполнении/3_1_а_Formirovanie GP_GP_gipersilka.psd
+/PSD/TK/В исполнении/3_Zayavki v ispolnenii_Razvernutaya_Transport.psd
+/PSD/TK/В исполнении/4_1_Zayavki v ispolnenii_Razvernutaya_marshrutnie_tochki.psd
+/PSD/TK/В исполнении/4_1_a_Formirovanie GP_Marshrut_tochki_Zayavka_gipersilka.psd
+/PSD/TK/В исполнении/4_2_Zayavki v ispolnenii_Razvernutaya_marshrutnie_tochki_razvernutaya.psd
+/PSD/TK/В исполнении/5_1_Zayavki v ispolnenii_Razvernutaya_documentoborot1.psd
+/PSD/TK/В исполнении/5_2_Zayavki v ispolnenii_Razvernutaya_documentoborot2.psd
+/PSD/TK/В исполнении/5_3_Zayavki v ispolnenii_Razvernutaya_documentoborot2_2.psd
+/PSD/TK/В исполнении/5_4_Zayavki v ispolnenii_Razvernutaya_documentoborot3.psd
+/PSD/TK/Прямые ГП/1_1_Pryamie_Zayavki.psd
+/PSD/TK/Прямые ГП/1_2_Pryamie_Zayavki_Podtverdit.psd
+/PSD/TK/Прямые ГП/2_Pryamie_Zayavki_razvernutaya_osnovnie_dannie.psd
+/PSD/TK/Прямые ГП/3_Pryamie_Zayavki_razvernutaya_marshrutnie_tochki.psd
+/PSD/TK/Прямые ГП/4_Pryamie_Zayavki_razvernutaya_marshrutnie_tochki_razvernutaya.psd
