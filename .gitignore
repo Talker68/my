@@ -1,3 +1,4 @@
+.idea/*
 /node_modules
 /bower_components/angular-animate/.bower.json
 /bower_components/angular-animate/README.md
@@ -229,16 +230,6 @@
 /bower_components/jquery/src/var/support.js
 /bower_components/jquery/src/var/toString.js
 /bower_components/jquery/src/wrap.js
-/.idea/.name
-/.idea/encodings.xml
-/.idea/jsLibraryMappings.xml
-/.idea/libraries/tls_node_modules.xml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/tls.iml
-/.idea/vcs.xml
-/.idea/watcherTasks.xml
-/.idea/workspace.xml
 /PSD/Auction/1_1_Sozdanie_auksiona_Spisok.jpg
 /PSD/Auction/1_1_Sozdanie_auksiona_Spisok.psd
 /PSD/Auction/1_2_Sozdanie_auksiona_pop_up_1.jpg
