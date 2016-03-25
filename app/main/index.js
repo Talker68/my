@@ -7,6 +7,8 @@ import uirouter from 'angular-ui-router';
 import config from './config';
 import states from './states/states';
 
+
+/* ---- [  Главный модуль ] ---- */
 const app = angular.module('app', [uirouter])
   .config(config)
   .config(states);
