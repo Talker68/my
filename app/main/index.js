@@ -16,6 +16,8 @@ import orderPreviewComponent from './components/orderPreview';
 import orderComponent from './components/order';
 
 
+import './var.less';
+
 const app = angular.module('app', [uirouter])
   .config(config)
   .config(states)
