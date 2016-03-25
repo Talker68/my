@@ -57,6 +57,10 @@ module.exports = {
         path : "/orders",
         target : 'http://pc1436/ERPPPK_Pivovarov/hs/Logistics/Order/List'
       },
+      {
+        path : "/formed_orders",
+        target : 'http://localhost:3002'
+      },
 
     ],
     historyApiFallback : true // Для singePage

@@ -4,9 +4,10 @@ import controller from './controller';
 import template from './template.html';
 
 export default {
-  parent : 'index',
-  url : 'formed',
-  template : template,
   controller : controller,
-  controllerAs : 'formedStateCtrl'
+  controllerAs : 'orderListCtrl',
+  template : template,
+  bindings : {
+    'list' : '<',
+  }
 }
