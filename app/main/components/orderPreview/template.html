@@ -26,16 +26,7 @@
 
     <div class="col-xs-2">
       <!--Тип кузова-->
-      <div>{{orderPreviewCtrl.order.truck.body}}</div>
-
-      <!--Грузоподъемность-->
-      <div>{{orderPreviewCtrl.order.truck.capacity}}</div>
-
-      <!--Объем-->
-      <div>{{orderPreviewCtrl.order.truck.volume}}</div>
-
-      <!--Тип загрузки-->
-      <div>{{orderPreviewCtrl.order.truck.download_type}}</div>
+      <div>{{orderPreviewCtrl.order.truck.type}}</div>
 
       <!--Номер машины-->
       <div ng-if="orderPreviewCtrl.inWork">{{orderPreviewCtrl.order.truck.car_number}}</div>
