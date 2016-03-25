@@ -1,11 +1,192 @@
+<div class="wrapper">
+    <div class="sidebar">
+        <div class="sideber-user">
+            <div class="sideber-user_avatar">
+                <img src="/img/user-avatar.png" alt="" width="58" height="58">
+            </div>
+            <div class="sideber-user_name">
+                Logist
+            </div>
+            <div class="sideber-user_id">
+                ID 007
+            </div>
+            <a href="javascript:void(0)" class="e-link">выход</a>
+        </div>
+        <ul class="sideber-nav">
+            <li class="sideber-nav_item sideber-nav_item__active">
+                <i class="fa fa-clone"></i>  Буфер заявок
+            </li>
+        </ul>
+    </div>
+    <div class="middle">
+        <div class="requests">
+            <div class="l-title">
+                Буфер заявок
+            </div>
+
+
+            <!-- start Filter -->
+            <div class="requests-filter">
+                <label class="requests-filter_item">
+                    <select>
+                        <option>по дате создания(сначала новые)</option>
+                        <option>по городу отправления</option>
+                        <option>по городу прибытия</option>
+                        <option>по номеру заявки(возрастание)</option>
+                        <option>по номеру заявки(убывание)</option>
+                    </select>
+                </label>
+                <label class="requests-filter_item" ng-init="dateRange = 'за всё время'">
+                    <select ng-model="dateRange">
+                        <option>интервал</option>
+                        <option>за всё время</option>
+                    </select>
+                </label>
+                <label class="requests-filter_item" ng-show="dateRange == 'интервал'">
+                    <i class="fa fa-calendar"></i>
+                    <input type="date">
+                    <i class="fa fa-calendar"></i>
+                    <input type="date">
+                </label>
+                <div class="requests-filter_search">
+                    <label class="requests-filter_item">
+                        <input type="text" class="requests-filter_search-field" placeholder="поиск по ключевым словам">
+                        <i class="fa fa-search requests-filter_search-icon"></i>
+                    </label>
+                </div>
+            </div>
+            <!-- end Filter -->
+
+            <!-- Start Request List-->
+            <ul class="requests-list">
+                <li class="requests-list_row"  ng-click="modal('large-modal')">
+                    <div class="requests-list_cell">
+                        <div class="green">
+                            <b>ГП №A252</b>
+                        </div>
+                        <div>
+                            ООО “Химкор”
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div class="requests-list_address">
+                            <div>
+                                ул. Западная, 5, Аксай,  Ростовская обл., Россия, 346720
+                            </div>
+                            <div class="green">
+                                12.05.04 <b>14:00</b>
+                            </div>
+                        </div>
+                        <div class="requests-list_address">
+                            <div>
+                                пр. Строителей, 39, Энгельс,  Саратовская обл., Россия, 413116
+                            </div>
+                            <div class="green">
+                                12.05.04 <b>18:00</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div class="requests-list_data-table">
+                            <div class="requests-list_data-table-row">
+                                <span class="requests-list_data-table-cell">Тип кузова</span> <b class="requests-list_data-table-cell">Тент</b>
+                            </div>
+                            <div class="requests-list_data-table-row">
+                                <span class="requests-list_data-table-cell">Грузоподъёмность</span> <b class="requests-list_data-table-cell">20т</b>
+                            </div>
+                            <div class="requests-list_data-table-row">
+                                <span class="requests-list_data-table-cell">Объём кузова</span> <b class="requests-list_data-table-cell">323кг</b>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="/img/icons/Car_1_ico.svg" width="60">
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div class="requests-list_data-table">
+                            <div class="requests-list_data-table-row">
+                                <span class="requests-list_data-table-cell">Вес груза</span> <b class="requests-list_data-table-cell">20т</b>
+                            </div>
+                            <div class="requests-list_data-table-row">
+                                <span class="requests-list_data-table-cell">Тип груза</span> <b class="requests-list_data-table-cell">323кг</b>
+                            </div>
+                        </div>
+                        <div class="requests-list_dl">
+                            способ загрузки
+                            <b>задняя верхняя</b>
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div class="requests-list_dl">
+                            Логист
+                            <b>Иванов Иван</b>
+                        </div>
+                        <div class="requests-list_dl">
+                            Менеджер
+                            <b>Иванов Иван</b>
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div class="requests-list_rate">
+                            Тариф
+                            <b>71999р.</b>
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <button class="btn-primary requests-list_send">Подобрать ТК</button>
+                    </div>
+                </li>
+
+                <!--<li class="requests-list_row" ng-repeat="item in listGP" ng-click="modal('large-modal')">
+                    <div class="requests-list_cell">
+                        <div class="green">
+                            № <b>{{item.id}}</b>
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div>
+                            {{item.store}}
+                        </div>
+                        <div class="green">
+                            {{item.datestart}}
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div class="green">
+                            {{item.datestart}}
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                        <div>
+                            {{item.status}}
+                        </div>
+                    </div>
+                    <div class="requests-list_cell">
+                    </div>
+                </li>-->
+
+            </ul>
+            <!-- end Request List-->
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--
 <div class="row">
   <div class="col-sm-3">
     <ul>
-      <li ui-sref-active="active"><a ui-sref="formed">Сформированные</a></li>
-      <li ui-sref-active="active"><a ui-sref="inwork">ГП в исполнении</a></li>
+      <li ui-sref-active="active">
+        <a ui-sref="formed">Сформированные</a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="inwork">ГП в исполнении</a>
+      </li>
     </ul>
   </div>
   <div class="col-sm-9" ui-view>
 
   </div>
-</div>
+</div>-->
