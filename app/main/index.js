@@ -15,8 +15,7 @@ import orderListComponent from './components/ordersList';
 import orderPreviewComponent from './components/orderPreview';
 import orderComponent from './components/order';
 
-
-import './var.less';
+import './main.less';
 
 const app = angular.module('app', [uirouter])
   .config(config)
