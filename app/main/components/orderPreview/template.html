@@ -1,98 +1,79 @@
-<div class="order">
-  <div class="row">
 
-    <div class="col-xs-1">
-      <!--Номер документа-->
-      <div>{{orderPreviewCtrl.order.id}}</div>
+	<!--<div class="order">
+		<div class="row">
 
-      <!--Название комании-->
-      <div>{{orderPreviewCtrl.order.company}}</div>
-    </div>
+			<div class="col-xs-1">
+				&lt;!&ndash;Номер документа&ndash;&gt;
+				<div>{{orderPreviewCtrl.order.id}}</div>
 
-    <div class="col-xs-2">
-      <!--Откуда-->
-      <div class="col-xs-6">
-        <div>{{orderPreviewCtrl.order.route.from.address}}</div>
-        <div>{{orderPreviewCtrl.order.route.from.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
+				&lt;!&ndash;Название комании&ndash;&gt;
+				<div>{{orderPreviewCtrl.order.company}}</div>
+			</div>
 
-      </div>
+			<div class="col-xs-2">
+				&lt;!&ndash;Откуда&ndash;&gt;
+				<div class="col-xs-6">
+					<div>{{orderPreviewCtrl.order.route.from.address}}</div>
+					<div>{{orderPreviewCtrl.order.route.from.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
 
-      <!--Куда-->
-      <div class="col-xs-6">
-        <div>{{orderPreviewCtrl.order.route.to.address}}</div>
-        <div>{{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
-      </div>
-    </div>
+				</div>
 
-    <div class="col-xs-2">
-      <!--Тип кузова-->
-      <div>{{orderPreviewCtrl.order.truck.type}}</div>
+				&lt;!&ndash;Куда&ndash;&gt;
+				<div class="col-xs-6">
+					<div>{{orderPreviewCtrl.order.route.to.address}}</div>
+					<div>{{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
+				</div>
+			</div>
 
-      <!--Номер машины-->
-      <div ng-if="orderPreviewCtrl.inWork">{{orderPreviewCtrl.order.truck.car_number}}</div>
-    </div>
+			<div class="col-xs-2">
+				&lt;!&ndash;Тип кузова&ndash;&gt;
+				<div>{{orderPreviewCtrl.order.truck.type}}</div>
 
-    <div class="col-xs-2">
-      <!--Вес груза-->
-      <div>{{orderPreviewCtrl.order.cargo.weight}}</div>
+				&lt;!&ndash;Номер машины&ndash;&gt;
+				<div ng-if="orderPreviewCtrl.inWork">
+					{{orderPreviewCtrl.order.truck.car_number}}
+				</div>
+			</div>
 
-      <!--Тип груза-->
-      <div><span ng-repeat="cargo_type in orderPreviewCtrl.order.cargo.type track by $index">{{cargo_type}}</span></div>
-    </div>
+			<div class="col-xs-2">
+				&lt;!&ndash;Вес груза&ndash;&gt;
+				<div>
+					{{orderPreviewCtrl.order.cargo.weight}}
+				</div>
+				&lt;!&ndash;Тип груза&ndash;&gt;
+				<div>
+			  <span ng-repeat="cargo_type in orderPreviewCtrl.order.cargo.type track by $index">
+				  {{cargo_type}}
+			  </span>
+				</div>
+			</div>
 
-    <div class="col-xs-1">
-      <!--Логист-->
-      <div>{{orderPreviewCtrl.order.logist}}</div>
-    </div>
+			<div class="col-xs-1">
+				&lt;!&ndash;Логист&ndash;&gt;
+				<div>{{orderPreviewCtrl.order.logist}}</div>
+			</div>
 
-    <div class="col-xs-2">
-      <!--Тариф-->
-      <div>{{orderPreviewCtrl.order.tariff}}</div>
-    </div>
+			<div class="col-xs-2">
+				&lt;!&ndash;Тариф&ndash;&gt;
+				<div>{{orderPreviewCtrl.order.tariff}}</div>
+			</div>
 
-    <div class="col-xs-2">
-      <!--Транспортная компания-->
-
-      <!--Когда у заказа статус сформирован-->
-      <div ng-if="orderPreviewCtrl.isFormed">
-        <div ng-if="orderPreviewCtrl.order.tc">
-          Отправлена напрямую в {{orderPreviewCtrl.order.tc.company_name}}
-        </div>
-
-        <div ng-if="!orderPreviewCtrl.order.tc">
-          <div><button ng-click="">Подобрать ТК</button></div>
-        </div>
-      </div>
-
-      <!--Когда у заказа статус "в исполнении"-->
-      <div ng-if="orderPreviewCtrl.inWork">
-        <!--Название компании-->
-        <div>{{orderPreviewCtrl.order.tc.company_name}}</div>
-        <!--Водитель-->
-        <div>{{orderPreviewCtrl.order.tc.driver}}</div>
-        <!--Права-->
-        <div>{{orderPreviewCtrl.order.tc.driver_license}}</div>
-      </div>
+			<div class="col-xs-2">
+				&lt;!&ndash;Транспортная компания&ndash;&gt;
 
 
-    </div>
+			</div>
 
-  </div>
-  <a ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">Подробно</a>
-</div>
+		</div>
+		<a ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">Подробно</a>
+	</div>-->
 
 
 
 
-<!--
-<div class="requests">
-    <div class="l-title">
-        Буфер заявок
-    </div>
 
-
-    &lt;!&ndash; start Filter &ndash;&gt;
-    <div class="requests-filter">
+<!-- start Filter -->
+    <!--<div class="requests-filter">
         <label class="requests-filter_item">
             <select>
                 <option>по дате создания(сначала новые)</option>
@@ -120,118 +101,110 @@
                 <i class="fa fa-search requests-filter_search-icon"></i>
             </label>
         </div>
-    </div>
-    &lt;!&ndash; end Filter &ndash;&gt;
+    </div>-->
+    <!-- end Filter -->
 
-    &lt;!&ndash; Start Request List&ndash;&gt;
-    <ul class="requests-list">
-        <li class="requests-list_row"  ng-click="modal('large-modal')">
-            <div class="requests-list_cell">
-                <div class="green">
-                    <b>ГП №A252</b>
-                </div>
-                <div>
-                    ООО “Химкор”
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div class="requests-list_address">
-                    <div>
-                        ул. Западная, 5, Аксай,  Ростовская обл., Россия, 346720
-                    </div>
-                    <div class="green">
-                        12.05.04 <b>14:00</b>
-                    </div>
-                </div>
-                <div class="requests-list_address">
-                    <div>
-                        пр. Строителей, 39, Энгельс,  Саратовская обл., Россия, 413116
-                    </div>
-                    <div class="green">
-                        12.05.04 <b>18:00</b>
-                    </div>
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div class="requests-list_data-table">
-                    <div class="requests-list_data-table-row">
-                        <span class="requests-list_data-table-cell">Тип кузова</span> <b class="requests-list_data-table-cell">Тент</b>
-                    </div>
-                    <div class="requests-list_data-table-row">
-                        <span class="requests-list_data-table-cell">Грузоподъёмность</span> <b class="requests-list_data-table-cell">20т</b>
-                    </div>
-                    <div class="requests-list_data-table-row">
-                        <span class="requests-list_data-table-cell">Объём кузова</span> <b class="requests-list_data-table-cell">323кг</b>
-                    </div>
-                </div>
-                <div>
-                    <img src="/img/icons/Car_1_ico.svg" width="60">
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div class="requests-list_data-table">
-                    <div class="requests-list_data-table-row">
-                        <span class="requests-list_data-table-cell">Вес груза</span> <b class="requests-list_data-table-cell">20т</b>
-                    </div>
-                    <div class="requests-list_data-table-row">
-                        <span class="requests-list_data-table-cell">Тип груза</span> <b class="requests-list_data-table-cell">323кг</b>
-                    </div>
-                </div>
-                <div class="requests-list_dl">
-                    способ загрузки
-                    <b>задняя верхняя</b>
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div class="requests-list_dl">
-                    Логист
-                    <b>Иванов Иван</b>
-                </div>
-                <div class="requests-list_dl">
-                    Менеджер
-                    <b>Иванов Иван</b>
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div class="requests-list_rate">
-                    Тариф
-                    <b>71999р.</b>
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <button class="btn-primary requests-list_send">Подобрать ТК</button>
-            </div>
-        </li>
+    <!-- Start Request List-->
+	<li class="requests-list_row">
+		<div class="requests-list_cell">
+			<div class="green">
+				<b>{{orderPreviewCtrl.order.id}}</b>
+			</div>
+			<div>
+				{{orderPreviewCtrl.order.company}}
+			</div>
+		</div>
+		<div class="requests-list_cell">
+			<div class="requests-list_address">
+				<div>
+					{{orderPreviewCtrl.order.route.from.address}}
+				</div>
+				<div class="green">
+					{{orderPreviewCtrl.order.route.from.datetitme | date : "dd.MM.yyyy"}}
+					<b>
+						{{orderPreviewCtrl.order.route.from.datetitme | date : "HH:mm"}}
+					</b>
+				</div>
+			</div>
+			<div class="requests-list_address">
+				<div>
+					{{orderPreviewCtrl.order.route.to.address}}
+				</div>
+				<div class="green">
+					{{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy"}}
+					<b>
+						{{orderPreviewCtrl.order.route.to.datetitme | date : "HH:mm"}}
+					</b>
+				</div>
+			</div>
+		</div>
+		<div class="requests-list_cell">
+			<div class="requests-list_data-table">
+				<div class="requests-list_data-table-row">
+					<span class="requests-list_data-table-cell">
+						Тип груза
+					</span>
+					<b class="requests-list_data-table-cell">
+						<span ng-repeat="cargo_type in orderPreviewCtrl.order.cargo.type track by $index">
+							{{cargo_type}}{{$last ? '' : ', '}}
+						</span>
+					</b>
+				</div>
+				<div class="requests-list_data-table-row">
+					<span class="requests-list_data-table-cell">
+						Вес груза
+					</span>
+					<b class="requests-list_data-table-cell">
+						{{orderPreviewCtrl.order.cargo.weight}}
+					</b>
+				</div>
+			</div>
+			<div>
+			  <img src="/img/icons/Car_1_ico.svg" width="60">
+			</div>
+		</div>
+		<div class="requests-list_cell" ng-if="orderPreviewCtrl.order.logist">
+			<div class="requests-list_dl">
+				Логист
+				<b>{{orderPreviewCtrl.order.logist}}</b>
+			</div>
+		</div>
+		<div class="requests-list_cell">
+			<div class="requests-list_rate">
+				Тариф
+				<b>{{orderPreviewCtrl.order.tariff}}р.</b>
+			</div>
+		</div>
+		<div class="requests-list_cell">
+			<!--Когда у заказа статус сформирован-->
+			<div ng-if="orderPreviewCtrl.isFormed">
+				<div ng-if="orderPreviewCtrl.order.tc">
+					Отправлена напрямую в {{orderPreviewCtrl.order.tc.company_name}}
+				</div>
 
-        &lt;!&ndash;<li class="requests-list_row" ng-repeat="item in listGP" ng-click="modal('large-modal')">
-            <div class="requests-list_cell">
-                <div class="green">
-                    № <b>{{item.id}}</b>
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div>
-                    {{item.store}}
-                </div>
-                <div class="green">
-                    {{item.datestart}}
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div class="green">
-                    {{item.datestart}}
-                </div>
-            </div>
-            <div class="requests-list_cell">
-                <div>
-                    {{item.status}}
-                </div>
-            </div>
-            <div class="requests-list_cell">
-            </div>
-        </li>&ndash;&gt;
+				<div ng-if="!orderPreviewCtrl.order.tc">
+					<div>
+						<button ng-click="" class="btn-primary requests-list_send">Подобрать ТК</button>
+					</div>
+				</div>
+			</div>
 
-    </ul>
-    &lt;!&ndash; end Request List&ndash;&gt;
+			<!--Когда у заказа статус "в исполнении"-->
+			<div ng-if="orderPreviewCtrl.inWork">
+				<!--Название компании-->
+				<div>
+					{{orderPreviewCtrl.order.tc.company_name}}
+				</div>
+				<!--Водитель-->
+				<div>
+					{{orderPreviewCtrl.order.tc.driver}}
+				</div>
+				<!--Права-->
+				<div>
+					{{orderPreviewCtrl.order.tc.driver_license}}
+				</div>
+			</div>
+	  	</div>
+	</li>
+    <!-- end Request List-->
 
-</div>-->
