@@ -63,6 +63,10 @@ module.exports = {
         path : "/formed_orders",
         target : 'http://localhost:3002'
       },
+      {
+        path : "/inwork_orders",
+        target : 'http://localhost:3003'
+      },
 
     ],
     historyApiFallback : true // Для singePage

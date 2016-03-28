@@ -1,5 +1,9 @@
 "use strict";
 
-export default function () {
-  
+export default function (OrdersService) {
+  OrdersService.getInWorkOrders().then(
+    (response) => {
+      this.orders = response.data;
+    }
+  )
 }

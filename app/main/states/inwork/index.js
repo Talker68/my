@@ -5,7 +5,8 @@ import template from './template.html';
 
 export default {
   parent : 'index',
-  url : 'formed',
+  url : 'inwork',
   template : template,
-  controller : controller
+  controller : controller,
+  controllerAs : 'inworkStateController'
 }
