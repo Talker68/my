@@ -254,12 +254,20 @@
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   line-height: 50px;
   position: relative;
+  a{
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
   &:first-child{
     border-color: transparent;
   }
+  &:not(.sideber-nav_item__active) a:hover{
+    transform: translateX(5px);
+  }
 }
 .sideber-nav_item__active{
-  color: @green-color;
   &:before {
     content: '';
     display: block;
@@ -269,6 +277,11 @@
     border: 6px solid transparent;
     border-right: 6px solid #EEE;
     margin-top: -6px;
+  }
+  a{
+    color: @green-color;
+    text-decoration: none;
+    transform: translateX(5px);
   }
 }
 .sideber-nav_item .fa{
@@ -283,5 +296,11 @@
 }
 
 
+@media (min-width: 768px){
+
+}
+@media (min-width: 1200px){
+
+}
 
 

@@ -129,6 +129,16 @@
 			  <img src="/img/icons/Car_1_ico.svg" width="60">
 			</div>
 		</div>
+		<div class="requests-list_cell">
+			<div class="requests-list_dl">
+				Тип кузова
+				<b>{{orderPreviewCtrl.order.truck.type}}</b>
+			</div>
+			<div class="requests-list_dl" ng-if="orderPreviewCtrl.inWork">
+				Номер машины
+				<b>{{orderPreviewCtrl.order.truck.car_number}}</b>
+			</div>
+		</div>
 		<div class="requests-list_cell" ng-if="orderPreviewCtrl.order.logist">
 			<div class="requests-list_dl">
 				Логист
