@@ -69,6 +69,7 @@
   list-style: none;
 }
 .requests-list_row{
+  color: #000;
   background: #fff;
   margin-bottom: 14px;
   padding: 8px 0;
@@ -79,6 +80,7 @@
   transition: border .2s ease;
   cursor: pointer;
   display: flex;
+  text-decoration: none;
   &:before{
     content: '';
     display: inline-block;
@@ -87,6 +89,12 @@
   }
   &:hover{
     border:1px solid @green-color;
+    color: #000;
+    text-decoration: none;
+  }
+  &:active, &:focus{
+    color: #000;
+    text-decoration: none;
   }
 }
 .requests-list_cell{

@@ -60,12 +60,10 @@
 
 			<div class="col-xs-2">
 				&lt;!&ndash;Транспортная компания&ndash;&gt;
-
-
 			</div>
 
 		</div>
-		<a ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">Подробно</a>
+		<a >Подробно</a>
 	</div>-->
 
 
@@ -73,7 +71,7 @@
 
 
     <!-- Start Request List-->
-	<li class="requests-list_row">
+	<a class="requests-list_row" ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">
 		<div class="requests-list_cell">
 			<div class="green">
 				<b>{{orderPreviewCtrl.order.id}}</b>
@@ -173,6 +171,6 @@
 				</div>
 			</div>
 	  	</div>
-	</li>
+	</a>
     <!-- end Request List-->
 
