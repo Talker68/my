@@ -1,8 +1,41 @@
 <h1>Сформированные ГП</h1>
 
+<!-- start Filter -->
+<div class="requests-filter">
+	<label class="requests-filter_item">
+		<select>
+			<option>по дате создания(сначала новые)</option>
+			<option>по городу отправления</option>
+			<option>по городу прибытия</option>
+			<option>по номеру заявки(возрастание)</option>
+			<option>по номеру заявки(убывание)</option>
+		</select>
+	</label>
+	<label class="requests-filter_item" ng-init="dateRange = 'за всё время'">
+		<select ng-model="dateRange">
+			<option>интервал</option>
+			<option>за всё время</option>
+		</select>
+	</label>
+	<label class="requests-filter_item" ng-show="dateRange == 'интервал'">
+		<i class="fa fa-calendar"></i>
+		<input type="date">
+		<i class="fa fa-calendar"></i>
+		<input type="date">
+	</label>
+	<div class="requests-filter_search">
+		<label class="requests-filter_item">
+			<input type="text" class="requests-filter_search-field" placeholder="поиск по ключевым словам">
+			<i class="fa fa-search requests-filter_search-icon"></i>
+		</label>
+	</div>
+</div>
+<!-- end Filter -->
+
 
 <div class="requests">
 	<ul class="requests-list">
-		<orders-list list="formedStateCtrl.orders"></orders-list>
+		<orders-list list="formedStateCtrl.orders">
+		</orders-list>
 	</ul>
 </div>
