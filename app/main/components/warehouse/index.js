@@ -3,9 +3,10 @@
 import template from './template.html';
 
 export default {
-  controllerAs : 'orderListCtrl',
+  controllerAs : 'warehouseCtrl',
   template : template,
   bindings : {
-    'list' : '<',
+    'warehouse' : "<"
   }
 }
+

@@ -3,6 +3,7 @@
 import 'angular';
 import 'bootstrap/dist/css/bootstrap.css';
 import uirouter from 'angular-ui-router';
+import uibootstrap from 'angular-ui-bootstrap';
 
 import config from './config';
 import states from './states/states';
@@ -14,10 +15,12 @@ import OrdersService from './services/orders';
 import orderListComponent from './components/ordersList';
 import orderPreviewComponent from './components/orderPreview';
 import orderComponent from './components/order';
+import warehouseComponent from './components/warehouse';
+import routePointsComponent from './components/routePoints';
 
 import './main.less';
 
-const app = angular.module('app', [uirouter])
+const app = angular.module('app', [uirouter, uibootstrap])
   .config(config)
   .config(states)
 
@@ -26,5 +29,7 @@ const app = angular.module('app', [uirouter])
   .component('ordersList', orderListComponent)
   .component('orderPreview', orderPreviewComponent)
   .component('order', orderComponent)
+  .component('warehouse', warehouseComponent)
+  .component('routePoints', routePointsComponent)
 
 export default app;
