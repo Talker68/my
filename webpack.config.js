@@ -54,23 +54,7 @@ module.exports = {
     port : '3001',
     contentBase : path.resolve(__dirname , "build"),
     //перенапрвляем запросы
-    proxy : [
-      {
-        path : "/orders*",
-        //target : 'http://pc1436/ERPPPK_Pivovarov/hs/Logistics/Order/List'
-        target : 'http://localhost:3004'
-      },
-      {
-        path : "/formed_orders",
-        target : 'http://localhost:3002'
-      },
-      {
-        path : "/inwork_orders",
-        target : 'http://localhost:3003'
-      },
-
-
-    ],
+    proxy : require('./proxy_dev'),
     historyApiFallback : true // Для singePage
 
   }

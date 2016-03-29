@@ -111,7 +111,7 @@
 				<b>{{orderPreviewCtrl.order.id}}</b>
 			</div>
 			<div>
-				{{orderPreviewCtrl.order.company}}
+				<span ng-repeat="company in orderPreviewCtrl.order.company track by $index">{{company}}</span>
 			</div>
 		</div>
 		<div class="requests-list_cell">

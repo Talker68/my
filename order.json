@@ -1,0 +1,195 @@
+{
+  "orders": [
+    {
+      "guidid": "5460ee69-ef59-11e5-80f2-74d435aadd9e",
+      "id2": "ГП № 1",
+      "status": 2,
+      "datetitme": "2016-08-09T19:31:42.000Z",
+      "transportation_cost": 70000,
+      "additional_charges": 4000,
+      "vehicle": {
+        "vehicle_type": "Газель удлиненная",
+        "vehicle_type_full": "Погрузка верхняя, длина - 4,2м, ширина - 2 м, высота - 2,2 м, возможность перевозки груза высотой 2,7 м",
+        "model": "Man",
+        "plate_number": "1234grg",
+        "semitrailer": "Shmitz",
+        "semitrailer_plate_number": "33кпкп44"
+      },
+      "cargo": {
+        "weight": 20,
+        "type": [
+          "Корсис",
+          "Корсис"
+        ]
+      },
+      "forwarder": {
+        "title": "Название транспортной компании",
+        "request_origin": "Прямая заявка",
+        "driver": {
+          "full_name": "Иванов Иван Иваныч",
+          "phone": "12323344545",
+          "driver_license": "233efeffe"
+        }
+      },
+      "comment": "Коментарий логиста",
+      "route": {
+        "duration": "2 дня",
+        "type": "Транзит",
+        "zone": "Зона 6",
+        "warehouse": {
+          "address": "ул. Гоголя, 183, Динская, Краснодарский край, Россия, 353204",
+          "datetitme": "2016-08-09T19:31:42.000Z",
+          "organization": "КТЗ",
+          "contact_person": "Иванов Иван Иванович",
+          "items": [
+            {
+              "id": "0000034",
+              "title": "Труба 1",
+              "quantity": 3,
+              "weight": 10
+            },
+            {
+              "id": "0000035",
+              "title": "Труба 2",
+              "quantity": 3,
+              "weight": 10
+            },
+            {
+              "id": "0000036",
+              "title": "Труба 3",
+              "quantity": 3,
+              "weight": 10
+            }
+          ],
+          "comment": "Коментарий"
+        },
+        "route_points": [
+          {
+            "address": "ул. Гоголя, 183, Динская, Краснодарский край, Россия, 353204",
+            "datetitme": "2016-08-09T19:31:42.000Z",
+            "customer": "ООО Фирма",
+            "contact_person": "Иванов Иван Иванович",
+            "items": [
+              {
+                "id": "0000034",
+                "title": "Труба 1",
+                "quantity": 3,
+                "weight": 10
+              },
+              {
+                "id": "0000035",
+                "title": "Труба 2",
+                "quantity": 3,
+                "weight": 10
+              },
+              {
+                "id": "0000036",
+                "title": "Труба 3",
+                "quantity": 3,
+                "weight": 10
+              }
+            ],
+            "comment": "Коментарий",
+            "mark": "Отметка о возврате накладных"
+          }
+        ]
+      }
+    },
+    {
+      "id": "11111-eee-ttt-fff-55555555",
+      "id2": "ГП № 1",
+      "status": 2,
+      "datetitme": "2016-08-09T19:31:42.000Z",
+      "transportation_cost": 70000,
+      "additional_charges": 4000,
+      "vehicle": {
+        "vehicle _type": "Газель удлиненная",
+        "vehicle _type_full": "Погрузка верхняя, длина - 4,2м, ширина - 2 м, высота - 2,2 м, возможность перевозки груза высотой 2,7 м",
+        "model": "Man",
+        "plate_number": "1234grg",
+        "semitrailer": "Shmitz",
+        "semitrailer_plate_number": "33кпкп44"
+      },
+      "cargo": {
+        "weight": 20,
+        "type": [
+          "Корсис",
+          "Корсис"
+        ]
+      },
+      "forwarder": {
+        "title": "Название транспортной компании",
+        "request_origin": "Прямая заявка",
+        "driver": {
+          "full_name": "Иванов Иван Иваныч",
+          "phone": "12323344545",
+          "driver_license": "233efeffe"
+        }
+      },
+      "comment": "Коментарий логиста",
+      "route": {
+        "duration": "2 дня",
+        "type": "Транзит",
+        "zone": "Зона 6",
+        "warehouse": {
+          "address": "ул. Гоголя, 183, Динская, Краснодарский край, Россия, 353204",
+          "datetitme": "2016-08-09T19:31:42.000Z",
+          "organization": "КТЗ",
+          "contact_person": "Иванов Иван Иванович",
+          "items": [
+            {
+              "id": "0000034",
+              "title": "Труба 1",
+              "quantity": 3,
+              "weight": 10
+            },
+            {
+              "id": "0000035",
+              "title": "Труба 2",
+              "quantity": 3,
+              "weight": 10
+            },
+            {
+              "id": "0000036",
+              "title": "Труба 3",
+              "quantity": 3,
+              "weight": 10
+            }
+          ],
+          "comment": "Коментарий",
+          "mark": "Отметка о возврате накладных"
+        },
+        "route_points": [
+          {
+            "address": "ул. Гоголя, 183, Динская, Краснодарский край, Россия, 353204",
+            "datetitme": "2016-08-09T19:31:42.000Z",
+            "customer": "ООО Фирма",
+            "contact_person": "Иванов Иван Иванович",
+            "items": [
+              {
+                "id": "0000034",
+                "title": "Труба 1",
+                "quantity": 3,
+                "weight": 10
+              },
+              {
+                "id": "0000035",
+                "title": "Труба 2",
+                "quantity": 3,
+                "weight": 10
+              },
+              {
+                "id": "0000036",
+                "title": "Труба 3",
+                "quantity": 3,
+                "weight": 10
+              }
+            ],
+            "comment": "Коментарий",
+            "mark": "Отметка о возврате накладных"
+          }
+        ]
+      }
+    }
+  ]
+}
