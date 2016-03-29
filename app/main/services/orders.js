@@ -8,4 +8,8 @@ export default function($http){
   this.getInWorkOrders = function () {
     return $http.get('/inwork_orders');
   }
+
+  this.getOrder = function (guid) {
+    return $http.get(`/orders/${guid}`);
+  }
 }

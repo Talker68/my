@@ -56,8 +56,9 @@ module.exports = {
     //перенапрвляем запросы
     proxy : [
       {
-        path : "/orders",
-        target : 'http://pc1436/ERPPPK_Pivovarov/hs/Logistics/Order/List'
+        path : "/orders*",
+        //target : 'http://pc1436/ERPPPK_Pivovarov/hs/Logistics/Order/List'
+        target : 'http://localhost:3004'
       },
       {
         path : "/formed_orders",
@@ -67,6 +68,7 @@ module.exports = {
         path : "/inwork_orders",
         target : 'http://localhost:3003'
       },
+
 
     ],
     historyApiFallback : true // Для singePage
