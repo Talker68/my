@@ -1,122 +1,122 @@
 
-	<!--<div class="order">
-		<div class="row">
+<!--<div class="order">
+  <div class="row">
 
-			<div class="col-xs-1">
-				&lt;!&ndash;Номер документа&ndash;&gt;
-				<div>{{orderPreviewCtrl.order.id}}</div>
+    <div class="col-xs-1">
+      &lt;!&ndash;Номер документа&ndash;&gt;
+      <div>{{orderPreviewCtrl.order.id}}</div>
 
-				&lt;!&ndash;Название комании&ndash;&gt;
-				<div>{{orderPreviewCtrl.order.company}}</div>
-			</div>
+      &lt;!&ndash;Название комании&ndash;&gt;
+      <div>{{orderPreviewCtrl.order.company}}</div>
+    </div>
 
-			<div class="col-xs-2">
-				&lt;!&ndash;Откуда&ndash;&gt;
-				<div class="col-xs-6">
-					<div>{{orderPreviewCtrl.order.route.from.address}}</div>
-					<div>{{orderPreviewCtrl.order.route.from.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
+    <div class="col-xs-2">
+      &lt;!&ndash;Откуда&ndash;&gt;
+      <div class="col-xs-6">
+        <div>{{orderPreviewCtrl.order.route.from.address}}</div>
+        <div>{{orderPreviewCtrl.order.route.from.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
 
-				</div>
+      </div>
 
-				&lt;!&ndash;Куда&ndash;&gt;
-				<div class="col-xs-6">
-					<div>{{orderPreviewCtrl.order.route.to.address}}</div>
-					<div>{{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
-				</div>
-			</div>
+      &lt;!&ndash;Куда&ndash;&gt;
+      <div class="col-xs-6">
+        <div>{{orderPreviewCtrl.order.route.to.address}}</div>
+        <div>{{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm"}}</div>
+      </div>
+    </div>
 
-			<div class="col-xs-2">
-				&lt;!&ndash;Тип кузова&ndash;&gt;
-				<div>{{orderPreviewCtrl.order.truck.type}}</div>
+    <div class="col-xs-2">
+      &lt;!&ndash;Тип кузова&ndash;&gt;
+      <div>{{orderPreviewCtrl.order.truck.type}}</div>
 
-				&lt;!&ndash;Номер машины&ndash;&gt;
-				<div ng-if="orderPreviewCtrl.inWork">
-					{{orderPreviewCtrl.order.truck.car_number}}
-				</div>
-			</div>
+      &lt;!&ndash;Номер машины&ndash;&gt;
+      <div ng-if="orderPreviewCtrl.inWork">
+        {{orderPreviewCtrl.order.truck.car_number}}
+      </div>
+    </div>
 
-			<div class="col-xs-2">
-				&lt;!&ndash;Вес груза&ndash;&gt;
-				<div>
-					{{orderPreviewCtrl.order.cargo.weight}}
-				</div>
-				&lt;!&ndash;Тип груза&ndash;&gt;
-				<div>
-			  <span ng-repeat="cargo_type in orderPreviewCtrl.order.cargo.type track by $index">
-				  {{cargo_type}}
-			  </span>
-				</div>
-			</div>
+    <div class="col-xs-2">
+      &lt;!&ndash;Вес груза&ndash;&gt;
+      <div>
+        {{orderPreviewCtrl.order.cargo.weight}}
+      </div>
+      &lt;!&ndash;Тип груза&ndash;&gt;
+      <div>
+      <span ng-repeat="cargo_type in orderPreviewCtrl.order.cargo.type track by $index">
+        {{cargo_type}}
+      </span>
+      </div>
+    </div>
 
-			<div class="col-xs-1">
-				&lt;!&ndash;Логист&ndash;&gt;
-				<div>{{orderPreviewCtrl.order.logist}}</div>
-			</div>
+    <div class="col-xs-1">
+      &lt;!&ndash;Логист&ndash;&gt;
+      <div>{{orderPreviewCtrl.order.logist}}</div>
+    </div>
 
-			<div class="col-xs-2">
-				&lt;!&ndash;Тариф&ndash;&gt;
-				<div>{{orderPreviewCtrl.order.tariff}}</div>
-			</div>
+    <div class="col-xs-2">
+      &lt;!&ndash;Тариф&ndash;&gt;
+      <div>{{orderPreviewCtrl.order.tariff}}</div>
+    </div>
 
-			<div class="col-xs-2">
-				&lt;!&ndash;Транспортная компания&ndash;&gt;
-			</div>
+    <div class="col-xs-2">
+      &lt;!&ndash;Транспортная компания&ndash;&gt;
+    </div>
 
-		</div>
-		<a >Подробно</a>
-	</div>-->
-
-
+  </div>
+  <a >Подробно</a>
+</div>-->
 
 
 
-    <!-- Start Request List-->
-	<a class="requests-list_row" ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">
-		<div class="requests-list_cell">
-			<div class="green">
-				<b>{{orderPreviewCtrl.order.id}}</b>
-			</div>
-			<div>
-				<span ng-repeat="company in orderPreviewCtrl.order.company track by $index">{{company}}</span>
-			</div>
-		</div>
-		<div class="requests-list_cell">
-			<div class="requests-list_address">
-				<div>
-					{{orderPreviewCtrl.order.route.from.address}}
-				</div>
-				<div class="green">
-					{{orderPreviewCtrl.order.route.from.datetitme | date : "dd.MM.yyyy"}}
-					<b>
-						{{orderPreviewCtrl.order.route.from.datetitme | date : "HH:mm"}}
-					</b>
-				</div>
-			</div>
-			<div class="requests-list_address">
-				<div>
-					{{orderPreviewCtrl.order.route.to.address}}
-				</div>
-				<div class="green">
-					{{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy"}}
-					<b>
-						{{orderPreviewCtrl.order.route.to.datetitme | date : "HH:mm"}}
-					</b>
-				</div>
-			</div>
-		</div>
-		<div class="requests-list_cell">
-			<div class="requests-list_data-table">
-				<div class="requests-list_data-table-row">
+
+
+<!-- Start Request List-->
+<a class="requests-list_row" ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">
+  <div class="requests-list_cell">
+    <div class="green">
+      <b>{{orderPreviewCtrl.order.id}}</b>
+    </div>
+    <div>
+      <span ng-repeat="customer in orderPreviewCtrl.order.customers track by $index">{{customer}}</span>
+    </div>
+  </div>
+  <div class="requests-list_cell">
+    <div class="requests-list_address">
+      <div>
+        {{orderPreviewCtrl.order.route.warehouse.address}}
+      </div>
+      <div class="green">
+        {{orderPreviewCtrl.order.route.warehouse.datetitme | date : "dd.MM.yyyy"}}
+        <b>
+          {{orderPreviewCtrl.order.route.warehouse.datetitme | date : "HH:mm"}}
+        </b>
+      </div>
+    </div>
+    <div class="requests-list_address">
+      <div>
+        {{orderPreviewCtrl.order.route.to.address}}
+      </div>
+      <div class="green">
+        {{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy"}}
+        <b>
+          {{orderPreviewCtrl.order.route.to.datetitme | date : "HH:mm"}}
+        </b>
+      </div>
+    </div>
+  </div>
+  <div class="requests-list_cell">
+    <div class="requests-list_data-table">
+      <div class="requests-list_data-table-row">
 					<span class="requests-list_data-table-cell">
 						Тип груза
 					</span>
-					<b class="requests-list_data-table-cell">
+        <b class="requests-list_data-table-cell">
 						<span ng-repeat="cargo_type in orderPreviewCtrl.order.cargo.type track by $index">
 							{{cargo_type}}{{$last ? '' : ', '}}
 						</span>
-					</b>
-				</div>
-				<div class="requests-list_data-table-row">
+        </b>
+      </div>
+      <div class="requests-list_data-table-row">
 					<span class="requests-list_data-table-cell">
 						Вес груза
 					</span>
@@ -158,29 +158,57 @@
 					Отправлена напрямую в {{orderPreviewCtrl.order.tc.company_name}}
 				</div>
 
-				<div ng-if="!orderPreviewCtrl.order.tc">
-					<div>
-						<button ng-click="" class="btn-primary requests-list_send">Подобрать ТК</button>
-					</div>
-				</div>
-			</div>
+  <div class="requests-list_cell">
+    <div>{{orderPreviewCtrl.order.vehicle.vehicle_type}}</div>
 
-			<!--Когда у заказа статус "в исполнении"-->
-			<div ng-if="orderPreviewCtrl.inWork">
-				<!--Название компании-->
-				<div>
-					{{orderPreviewCtrl.order.tc.company_name}}
-				</div>
-				<!--Водитель-->
-				<div>
-					{{orderPreviewCtrl.order.tc.driver}}
-				</div>
-				<!--Права-->
-				<div>
-					{{orderPreviewCtrl.order.tc.driver_license}}
-				</div>
-			</div>
-	  	</div>
-	</a>
-    <!-- end Request List-->
+    <div ng-if="orderPreviewCtrl.order.status == 2">
+      {{orderPreviewCtrl.order.vehicle.plate_number}}
+    </div>
+  </div>
+
+  <div class="requests-list_cell" ng-if="orderPreviewCtrl.order.logist">
+    <div class="requests-list_dl">
+      Логист
+      <b>{{orderPreviewCtrl.order.logist}}</b>
+    </div>
+  </div>
+  <div class="requests-list_cell">
+    <div class="requests-list_rate">
+      Тариф
+      <b>{{orderPreviewCtrl.order.transportation_cost}}р.</b>
+    </div>
+  </div>
+  <div class="requests-list_cell">
+    <!--Когда у заказа статус сформирован-->
+    <div ng-if="orderPreviewCtrl.order.status === 1">
+      <div ng-if="orderPreviewCtrl.order.forwarder.title">
+        Отправлена напрямую в {{orderPreviewCtrl.order.forwarder.title}}
+      </div>
+
+      <div ng-if="!orderPreviewCtrl.order.forwarder.title">
+        <div>
+          <button ng-click="orderPreviewCtrl.setForwarder()" class="btn-primary requests-list_send">Подобрать ТК</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Когда у заказа статус "в исполнении"-->
+    <div ng-if="orderPreviewCtrl.order.status === 2">
+      <!--Название компании-->
+      <div>
+        {{orderPreviewCtrl.order.forwarder.title}}
+      </div>
+      <!--Водитель-->
+      <div>
+        {{orderPreviewCtrl.order.forwarder.driver.full_name}}
+      </div>
+      <!--Права-->
+      <div>
+        {{orderPreviewCtrl.order.forwarder.driver.driver_license}}
+      </div>
+    </div>
+  </div>
+</a>
+<!-- end Request List-->
 
