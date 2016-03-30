@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="512px" height="512px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 512 512"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:none}
+    .fil0 {fill:black;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_27823616">
+   <polygon class="fil0" points="492,331 492,249 456,204 391,204 391,305 391,312 385,312 29,312 7,325 0,314 24,300 25,299 27,299 378,299 378,198 378,191 385,191 459,191 462,191 464,194 503,242 505,244 505,246 505,331 "/>
+   <polygon class="fil0" points="392,339 183,339 183,327 392,327 "/>
+   <polygon class="fil0" points="512,339 471,339 471,327 512,327 "/>
+   <polygon class="fil0" points="479,268 405,268 405,256 479,256 "/>
+   <path class="fil0" d="M69 362c4,0 8,-2 11,-4 3,-3 4,-6 4,-11 0,-4 -2,-8 -4,-11 -3,-3 -6,-4 -11,-4 -4,0 -8,2 -11,4 -3,3 -4,6 -4,11 0,4 2,8 4,11 3,3 6,4 11,4zm20 5c-5,5 -12,8 -20,8 -8,0 -15,-3 -20,-8 -5,-5 -8,-12 -8,-20 0,-8 3,-15 8,-20 5,-5 12,-8 20,-8 8,0 15,3 20,8 5,5 8,12 8,20 0,8 -3,15 -8,20z"/>
+   <path class="fil0" d="M130 362c4,0 8,-2 11,-4 3,-3 4,-6 4,-11 0,-4 -2,-8 -4,-11 -3,-3 -6,-4 -11,-4 -4,0 -8,2 -11,4 -3,3 -4,6 -4,11 0,4 2,8 4,11 3,3 6,4 11,4zm20 5c-5,5 -12,8 -20,8 -8,0 -15,-3 -20,-8 -5,-5 -8,-12 -8,-20 0,-8 3,-15 8,-20 5,-5 12,-8 20,-8 8,0 15,3 20,8 5,5 8,12 8,20 0,8 -3,15 -8,20z"/>
+   <path class="fil0" d="M433 361c4,0 8,-2 11,-4 3,-3 4,-6 4,-11 0,-4 -2,-8 -4,-11 -3,-3 -6,-4 -11,-4 -4,0 -8,2 -11,4 -3,3 -4,6 -4,11 0,4 2,8 4,11 3,3 6,4 11,4zm20 5c-5,5 -12,8 -20,8 -8,0 -15,-3 -20,-8 -5,-5 -8,-12 -8,-20 0,-8 3,-15 8,-20 5,-5 12,-8 20,-8 8,0 15,3 20,8 5,5 8,12 8,20 0,8 -3,15 -8,20z"/>
+   <path class="fil0" d="M356 287l-340 0 -6 0 0 -6 0 -137 0 -6 6 0 340 0 6 0 0 6 0 137 0 6 -6 0zm-333 -13l327 0 0 -124 -327 0 0 124z"/>
+  </g>
+  <rect class="fil1" width="512" height="512"/>
+ </g>
+</svg>
