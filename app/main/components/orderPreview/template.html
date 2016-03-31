@@ -71,7 +71,7 @@
 
 
 <!-- Start Request List-->
-<a class="requests-list_row" ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">
+<a ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})" class="requests-list_row-cnt">
 	<div class="requests-list_cell">
 		<div class="green">
 			<b>{{orderPreviewCtrl.order.id}}</b>
@@ -126,7 +126,7 @@
 			</div>
 		</div>
 		<div>
-			<img src="/img/icons/Car_1_ico.svg" width="60">
+			<img src="../../img/icons/car_5_ico.svg" width="60">
 		</div>
 	</div>
 	<div class="requests-list_cell">
@@ -160,7 +160,7 @@
 
 			<div ng-if="!orderPreviewCtrl.order.tc">
 				<div>
-					<button ng-click="" class="btn-primary requests-list_send">Подобрать ТК</button>
+					<button class="btn-primary requests-list_send">Подобрать ТК</button>
 				</div>
 			</div>
 		</div>
