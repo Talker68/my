@@ -1,18 +1,22 @@
 "use strict";
 
-export default function(){
+import modalTemplate from './setForwardersModal/template.html';
+import modalController from './setForwardersModal/controller';
 
-  switch (this.order.status) {
-    case 1 : {
-      this.isFormed = true;
-      break;
-    }
-    case 2 : {
-      this.inWork = true;
-      break;
-    }
+export default function($uibModal, $scope){
+
+  this.openForwarderSelectModal = function(){
+
+    let modalInstance = $uibModal.open({
+      animation: true,
+      template: modalTemplate,
+      controller : modalController,
+      controllerAs: 'ForwarderSelectModalCtrl',
+      scope : $scope
+    });
   }
-
+  
+  
 }
 
 
