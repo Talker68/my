@@ -7,14 +7,14 @@ export default function($scope, $uibModalInstance, ForwardersService, OrdersServ
     (response) => {
       this.forwardersList = response.data;
     }
-  )
+  );
 
 
   this.selectFrowarder = function(forwarderGuid, orderAcceptTime){
     let orderGuid = orderPreviewCtrl.order.guid;
     OrdersService.setForwarder(orderGuid, forwarderGuid, orderAcceptTime);
     $uibModalInstance.close();
-  }
+  };
 
 
 }
