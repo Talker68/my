@@ -2,8 +2,8 @@
 
 module.exports = [
   {
-    path : "/order*",
-    target : 'http://pc1436/ERPPPK_Pivovarov/hs/logistics'
+    path : "/logistics/order*",
+    target : 'http://pc1436/ERPPPK_Pivovarov/hs'
 
   },
 

@@ -7,16 +7,15 @@
     "test": "node_modules/.bin/karma start",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot",
     "dev_orders": "json-server db.json --port 3002"
-
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/router": "^0.2.0",
     "angular": "^1.5.0",
     "angular-animate": "^1.5.1",
     "angular-cookies": "^1.5.0",
     "angular-ui-bootstrap": "^1.2.5",
-    "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.6"
   },
   "devDependencies": {

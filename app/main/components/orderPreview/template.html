@@ -71,7 +71,7 @@
 
 
 <!-- Start Request List-->
-<a class="requests-list_row" ui-sref="orderDetail({orderGuid : orderPreviewCtrl.order.guid})">
+<a class="requests-list_row" ng-link="['OrderDetail', {guid : orderPreviewCtrl.order.guid}]">-->
   <div class="requests-list_cell">
     <div class="green">
       <b>{{orderPreviewCtrl.order.id}}</b>

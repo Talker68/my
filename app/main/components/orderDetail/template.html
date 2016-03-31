@@ -5,18 +5,18 @@
       <div>
         <h2>Информация о грузе и транспорте</h2>
         <!--Тип маршрута-->
-        <div>Тип маршрута {{orderCtrl.order.route.type}}</div>
+        <div>Тип маршрута {{orderDetailCtrl.order.route.type}}</div>
 
         <!--Тип кузова-->
-        <div>Тип кузова {{orderCtrl.order.vehicle.vehicle_type}}</div>
+        <div>Тип кузова {{orderDetailCtrl.order.vehicle.vehicle_type}}</div>
 
         <!--Тип груза-->
         <div>Тип груза
-          <span ng-repeat="cargoType in orderCtrl.order.cargo.type track by $index">{{cargoType}}</span>
+          <span ng-repeat="cargoType in orderDetailCtrl.order.cargo.type track by $index">{{cargoType}}</span>
         </div>
 
         <!--Тип кузова(полное)-->
-        <div>Тип кузова(полное) {{orderCtrl.order.vehicle.vehicle_type_full}}</div>
+        <div>Тип кузова(полное) {{orderDetailCtrl.order.vehicle.vehicle_type_full}}</div>
       </div>
 
       <div>
@@ -25,35 +25,35 @@
         <!--Откуда-->
         <div>
           <h3>Начальная точка</h3>
-          {{orderCtrl.order.route.warehouse.address}}
+          {{orderDetailCtrl.order.route.warehouse.address}}
 
           <h3>Конечная точка</h3>
-          {{orderCtrl.order.route.route_points[orderCtrl.order.route.route_points.length-1].address}}
+          {{orderDetailCtrl.order.route.route_points[orderDetailCtrl.order.route.route_points.length-1].address}}
         </div>
       </div>
 
       <div>
         <h2>Информация по тарифу</h2>
         <!--Базовый тариф-->
-        <div>{{orderCtrl.order.transportation_cost}}</div>
+        <div>{{orderDetailCtrl.order.transportation_cost}}</div>
 
         <!--Доп опплата -->
-        <div>{{orderCtrl.order.additional_charges}}</div>
+        <div>{{orderDetailCtrl.order.additional_charges}}</div>
 
         <!--Тариф маршурта -->
-        <div>{{orderCtrl.order.transportation_cost + orderCtrl.order.additional_charges}}</div>
+        <div>{{orderDetailCtrl.order.transportation_cost + orderDetailCtrl.order.additional_charges}}</div>
 
         <!--Время маршурта-->
-        <div>{{orderCtrl.order.route.duration}}</div>
+        <div>{{orderDetailCtrl.order.route.duration}}</div>
 
         <!--Зона-->
-        <div>{{orderCtrl.order.route.zone}}</div>
+        <div>{{orderDetailCtrl.order.route.zone}}</div>
       </div>
 
       <div>
         <h2>Конмментарий логиста</h2>
         <div>
-          {{orderCtrl.order.comment}}
+          {{orderDetailCtrl.order.comment}}
         </div>
       </div>
 
@@ -61,35 +61,35 @@
 
     <uib-tab index="1" heading="Маршрутные точки">
       <!--Cклад-->
-      <warehouse warehouse="orderCtrl.order.route.warehouse"></warehouse>
+      <warehouse warehouse="orderDetailCtrl.order.route.warehouse"></warehouse>
 
       <!--Маршуртные точки-->
-      <route-points points="orderCtrl.order.route.route_points"></route-points>
+      <route-points points="orderDetailCtrl.order.route.route_points"></route-points>
 
     </uib-tab>
-    <uib-tab index="2" heading="Транспорт" ng-if="orderCtrl.order.status === 2 && orderCtrl.order.forwarder">
+    <uib-tab index="2" heading="Транспорт" ng-if="orderDetailCtrl.order.status === 2 && orderDetailCtrl.order.forwarder">
       <div>
         <h2>Транспортная компания</h2>
         <!--Название-->
-        <div>{{orderCtrl.order.forwarder.title}}</div>
+        <div>{{orderDetailCtrl.order.forwarder.title}}</div>
 
         <!--Cпособ подбора-->
-        <div>{{orderCtrl.order.forwarder.request_origin}}</div>
+        <div>{{orderDetailCtrl.order.forwarder.request_origin}}</div>
       </div>
 
       <div>
         <h2>Транспортная информация</h2>
         <!--Марка тягача-->
-        <div>{{orderCtrl.order.vehicle.model}}</div>
+        <div>{{orderDetailCtrl.order.vehicle.model}}</div>
 
         <!--номер тягача-->
-        <div>{{orderCtrl.order.vehicle.plate_number}}</div>
+        <div>{{orderDetailCtrl.order.vehicle.plate_number}}</div>
 
         <!--Марка полуприцепа-->
-        <div>{{orderCtrl.order.vehicle.semitrailer}}</div>
+        <div>{{orderDetailCtrl.order.vehicle.semitrailer}}</div>
 
         <!--номер полуприцепа-->
-        <div>{{orderCtrl.order.vehicle.semitrailer_plate_number}}</div>
+        <div>{{orderDetailCtrl.order.vehicle.semitrailer_plate_number}}</div>
       </div>
 
 
@@ -97,13 +97,13 @@
         <h2>Информация о водителе</h2>
 
         <!--Имя-->
-        <div>{{orderCtrl.order.forwarder.driver.full_name}}</div>
+        <div>{{orderDetailCtrl.order.forwarder.driver.full_name}}</div>
 
         <!--телефон-->
-        <div>{{orderCtrl.order.forwarder.driver.phone}}</div>
+        <div>{{orderDetailCtrl.order.forwarder.driver.phone}}</div>
 
         <!--номер прав-->
-        <div>{{orderCtrl.order.forwarder.driver.driver_license}}</div>
+        <div>{{orderDetailCtrl.order.forwarder.driver.driver_license}}</div>
       </div>
     </uib-tab>
     <uib-tab index="3" heading="История">

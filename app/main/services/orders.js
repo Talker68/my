@@ -1,15 +1,12 @@
 "use strict";
 
 export default function($http){
-  this.getFormedOrders = function () {
-    return $http.get('/order?status=1');
+  this.getOrdersByStatus = function (status) {
+    return $http.get(`/logistics/order?status=${status}`);
   }
+  
 
-  this.getInWorkOrders = function () {
-    return $http.get('/order?status=2');
-  }
-
-  this.getOrder = function (guid) {
-    return $http.get(`/order/${guid}`);
+  this.getOrderByGuid = function (guid) {
+    return $http.get(`/logistics/order/${guid}`);
   }
 }
