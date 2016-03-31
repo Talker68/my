@@ -2,7 +2,7 @@
     <div class="sidebar">
         <div class="sideber-user">
             <div class="sideber-user_avatar">
-                <img src="/img/user-avatar.png" alt="" width="58" height="58">
+                <img src="./../../img/user-avatar.png" alt="" width="58" height="58">
             </div>
             <div class="sideber-user_name">
                 Logist
@@ -14,12 +14,16 @@
         </div>
         <ul class="sideber-nav">
             <li ui-sref-active="sideber-nav_item__active" class="sideber-nav_item">
-                <i class="fa fa-clone"></i>
-                <a ui-sref="formed">Сформированные</a>
+                <a ui-sref="formed">
+                    <i class="fa fa-clone"></i>
+                    <span>Сформированные</span>
+                </a>
             </li>
             <li ui-sref-active="sideber-nav_item__active" class="sideber-nav_item">
-                <i class="fa fa-clone"></i>
-                <a ui-sref="inwork">ГП в исполнении</a>
+                <a ui-sref="inwork">
+                    <i class="fa fa-clone"></i>
+                    <span>ГП в исполнении</span>
+                </a>
             </li>
         </ul>
     </div>
