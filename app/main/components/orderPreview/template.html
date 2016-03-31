@@ -71,8 +71,7 @@
 
 
 <!-- Start Request List-->
-<<<<<<< HEAD
-<a class="requests-list_row" ng-link="['OrderDetail', {guid : orderPreviewCtrl.order.guid}]">-->
+<a class="requests-list_row" ng-link="['OrderDetail', {guid : orderPreviewCtrl.order.guid}]">
   <div class="requests-list_cell">
     <div class="green">
       <b>{{orderPreviewCtrl.order.id}}</b>
@@ -133,11 +132,11 @@
 	<div class="requests-list_cell">
 		<div class="requests-list_dl">
 			Тип кузова
-			<b>{{orderPreviewCtrl.order.truck.type}}</b>
+			<b>{{orderPreviewCtrl.order.vehicle.vehicle_type}}</b>
 		</div>
-		<div class="requests-list_dl" ng-if="orderPreviewCtrl.inWork">
+		<div class="requests-list_dl" ng-if="orderPreviewCtrl.order.status === 2">
 			Номер машины
-			<b>{{orderPreviewCtrl.order.truck.car_number}}</b>
+			<b>{{orderPreviewCtrl.order.vehicle.plate_number}}</b>
 		</div>
 	</div>
 	<div class="requests-list_cell" ng-if="orderPreviewCtrl.order.logist">
@@ -149,39 +148,39 @@
 	<div class="requests-list_cell">
 		<div class="requests-list_rate">
 			Тариф
-			<b>{{orderPreviewCtrl.order.tariff}}р.</b>
+			<b>{{orderPreviewCtrl.order.transportation_cost}}р.</b>
 		</div>
 	</div>
 	<div class="requests-list_cell">
 		<!--Когда у заказа статус сформирован-->
-		<div ng-if="orderPreviewCtrl.isFormed">
-			<div ng-if="orderPreviewCtrl.order.tc">
-				Отправлена напрямую в {{orderPreviewCtrl.order.tc.company_name}}
-			</div>
-
-			<div ng-if="!orderPreviewCtrl.order.tc">
-				<div>
-					<button class="btn-primary requests-list_send">Подобрать ТК</button>
-				</div>
+		<div ng-if="orderPreviewCtrl.order.status === 1">
+			<div ng-if="orderPreviewCtrl.order.forwarder.title">
+				Отправлена напрямую в {{orderPreviewCtrl.order.forwarder.title}}
 			</div>
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->
-		<div ng-if="orderPreviewCtrl.inWork">
+		<div ng-if="orderPreviewCtrl.order.status === 2">
 			<!--Название компании-->
 			<div>
-				{{orderPreviewCtrl.order.tc.company_name}}
+				{{orderPreviewCtrl.order.forwarder.title}}
 			</div>
 			<!--Водитель-->
 			<div>
-				{{orderPreviewCtrl.order.tc.driver}}
+				{{orderPreviewCtrl.order.forwarder.driver.full_name}}
 			</div>
 			<!--Права-->
 			<div>
-				{{orderPreviewCtrl.order.tc.driver_license}}
+				{{orderPreviewCtrl.order.forwarder.driver.driver_license}}
 			</div>
 		</div>
 	</div>
 </a>
+
+<div ng-if="orderPreviewCtrl.order.status === 1 && !orderPreviewCtrl.order.forwarder.title">
+	<div>
+		<button class="btn-primary requests-list_send">Подобрать ТК</button>
+	</div>
+</div>
 <!-- end Request List-->
 
