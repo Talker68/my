@@ -22,6 +22,9 @@
 						<div class="form-fieldset_row row">
 							<!--Тип маршрута-->
 							<div class="form-fieldset_cell col-xs-4">
+								<div class="form-fieldset_icon-cnt">
+									<img src="../../img/icons/Tip_Marshruta_Tranzit.svg" width="60">
+								</div>
 								<span>Тип маршрута</span>
 								<label class="form-fieldset_field">
 									<input type="text" disabled value="{{orderDetailCtrl.order.route.type}}" class="form-control">
@@ -29,6 +32,9 @@
 							</div>
 							<!-- Тип кузова -->
 							<div class="form-fieldset_cell col-xs-4">
+								<div class="form-fieldset_icon-cnt">
+									<img src="../../img/icons/Transport_tipe_Auto_ico.svg" width="80">
+								</div>
 								<span>Тип кузова</span>
 								<label class="form-fieldset_field">
 									<input type="text" disabled value="{{orderDetailCtrl.order.vehicle.vehicle_type}}" class="form-control">
@@ -36,6 +42,9 @@
 							</div>
 							<!-- Тип груза -->
 							<div class="form-fieldset_cell col-xs-4">
+								<div class="form-fieldset_icon-cnt">
+									<img src="../../img/icons/car_9_ico.svg" width="76">
+								</div>
 								<span>Тип груза</span>
 								<label class="form-fieldset_field">
 									<span ng-repeat="cargoType in orderDetailCtrl.order.cargo.type track by $index">{{cargoType}}</span>

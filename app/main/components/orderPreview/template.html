@@ -1,4 +1,6 @@
 <!-- Start Request List-->
+
+
 <a class="requests-list_row-cnt" ng-link="['OrderDetail', {guid : orderPreviewCtrl.order.guid}]">
   <div class="requests-list_cell">
     <div class="green">
@@ -102,13 +104,15 @@
 				{{orderPreviewCtrl.order.forwarder.driver.driver_license}}
 			</div>
 		</div>
+
+		<!-- Подобрать ТК -->
+		<div ng-if="orderPreviewCtrl.order.status === 1 && !orderPreviewCtrl.order.forwarder.title">
+			<div>
+				<button class="btn-primary requests-list_send" ng-click="pickupTk()">Подобрать ТК</button>
+			</div>
+		</div>
 	</div>
 </a>
 
-<div ng-if="orderPreviewCtrl.order.status === 1 && !orderPreviewCtrl.order.forwarder.title">
-	<div>
-		<button class="btn-primary requests-list_send">Подобрать ТК</button>
-	</div>
-</div>
 <!-- end Request List-->
 

@@ -13,6 +13,10 @@ export default function(){
     }
   }
 
+
+  this.pickupTk = function(){
+    alert('it work')
+  };
 }
 
 
