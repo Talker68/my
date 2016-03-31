@@ -107,7 +107,7 @@
 
 <div ng-if="orderPreviewCtrl.order.status === 1 && !orderPreviewCtrl.order.forwarder.title">
 	<div>
-		<button class="btn-primary requests-list_send">Подобрать ТК</button>
+		<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.openForwarderSelectModal()">Подобрать ТК</button>
 	</div>
 </div>
 <!-- end Request List-->
