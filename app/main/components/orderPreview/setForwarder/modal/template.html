@@ -1,6 +1,9 @@
 <h1>Подбор транспортной компании</h1>
 
 <form name="forwarderSelectForm" novalidate>
+  <div class="error">
+    {{ForwarderSelectModalCtrl.error}}
+  </div>
 
   <div>
     Время на принятие заявки : <input type="number" ng-model="orderAcceptTime" required>
@@ -19,7 +22,7 @@
       <td>{{forwarder.title}}</td>
       <td>
         <button
-        ng-click="forwarderSelectForm.$valid && ForwarderSelectModalCtrl.selectFrowarder(forwarder.guid, orderAcceptTime)">
+        ng-click="forwarderSelectForm.$valid && ForwarderSelectModalCtrl.selectForwarder(forwarder.guid, orderAcceptTime)">
         Выбрать</button></td>
     </tr>
     </tbody>
