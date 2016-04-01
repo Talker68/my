@@ -108,9 +108,9 @@
   }
 }
 .requests-list_cell{
-  font-size: 14px;
+  font-size: 12px;
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: top;
   padding: 14px 2%;
   position: relative;
   border-top:1px solid #fff;
@@ -154,6 +154,7 @@
   display: table;
   min-width: 140px;
   margin-bottom: 10px;
+  line-height: 12px;
 }
 .requests-list_data-table-row{
   display: table-row;
@@ -173,16 +174,17 @@
   }
 }
 .btn-primary.requests-list_send{
-  padding: 12px 0;
+  font-size:12px;
+  padding: 10px 0;
   white-space: nowrap;
-  width: 200px;
+  width: 110px;
   border-radius: 4px;
 }
 .requests-list_rate{
   font-family: @font-extrabold;
   color: @green-color;
   b{
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 
@@ -235,5 +237,26 @@
     content: '=';
     position: absolute;
     top:20px; left:-30px;
+  }
+}
+
+
+// Media
+@media (min-width: 1600px){
+  .requests-list_cell{
+    font-size: 14px;
+  }
+  .btn-primary.requests-list_send{
+    padding: 12px 0;
+    width: 200px;
+  }
+  .requests-list_rate b{
+    font-size: 24px;
+  }
+  .requests-list_data-table{
+    line-height: 16px;
+  }
+  .btn-primary.requests-list_send{
+    font-size: 16px;
   }
 }

@@ -6,7 +6,7 @@ import modalController from './setForwardersModal/controller';
 export default function($uibModal, $scope){
 
   this.openForwarderSelectModal = function(){
-    event.stopPropagation()
+    event.stopPropagation();
     event.preventDefault();
     let modalInstance = $uibModal.open({
       animation: true,

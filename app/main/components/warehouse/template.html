@@ -16,22 +16,23 @@
   <div class="items" ng-show="showItems">
     <table class="table">
       <thead>
-      <tr>
-        <th>№</th>
-        <th>Наименование</th>
-        <th>Кол-во</th>
-        <th>Вес(кг)</th>
-      </tr>
+        <tr>
+          <th>№</th>
+          <th>Наименование</th>
+          <th>Кол-во</th>
+          <th>Вес(кг)</th>
+        </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="row in warehouseCtrl.warehouse.items track by $index">
-        <td>{{row.id}}</td>
-        <td>{{row.title}}</td>
-        <td>{{row.quantity}}</td>
-        <td>{{row.weight}}</td>
-      </tr>
+        <tr ng-repeat="row in warehouseCtrl.warehouse.items track by $index">
+          <td>{{row.id}}</td>
+          <td>{{row.title}}</td>
+          <td>{{row.quantity}}</td>
+          <td>{{row.weight}}</td>
+        </tr>
       </tbody>
     </table>
   </div>
+  
 </article>
 
