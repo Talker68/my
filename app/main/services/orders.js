@@ -1,6 +1,6 @@
 "use strict";
 
-export default function($http){
+export default function($http, $q){
   this.getOrdersByStatus = function (status) {
     return $http.get(`/logistics/order?status=${status}`);
   }
@@ -10,7 +10,8 @@ export default function($http){
   }
 
   this.setForwarder = function (orderGuid, frowarderGuid, orderAcceptTime) {
-    console.log(arguments);
-    // /return $http.patch(`/logistics/order/${guid}`, {forwarderGuid : frowarderGuid, orderAcceptTime : orderAcceptTime})
+    //return $q.resolve('OK');
+    //return $q.reject('Errror')
+    return $http.patch(`/logistics/order/${orderGuid}`, {forwarderGuid : frowarderGuid, orderAcceptTime : orderAcceptTime})
   }
 }

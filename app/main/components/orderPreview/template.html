@@ -87,6 +87,15 @@
 			<div ng-if="orderPreviewCtrl.order.forwarder.title">
 				Отправлена напрямую в {{orderPreviewCtrl.order.forwarder.title}}
 			</div>
+
+      <!-- Подобрать ТК -->
+      <div ng-if="!orderPreviewCtrl.order.forwarder.title">
+        <div>
+          <set-forwarder set-forwarder="orderPreviewCtrl.setFrowarder(forwarderGuid, orderAcceptTime)"></set-forwarder>
+          <!--<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.openForwarderSelectModal()">Подобрать ТК</button>-->
+        </div>
+      </div>
+
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->
@@ -105,12 +114,7 @@
 			</div>
 		</div>
 
-		<!-- Подобрать ТК -->
-		<div ng-if="orderPreviewCtrl.order.status === 1 && !orderPreviewCtrl.order.forwarder.title">
-			<div>
-				<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.openForwarderSelectModal()">Подобрать ТК</button>
-			</div>
-		</div>
+
 	</div>
 </a>
 

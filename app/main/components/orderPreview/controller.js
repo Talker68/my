@@ -1,27 +1,16 @@
 "use strict";
 
-import modalTemplate from './setForwardersModal/template.html';
-import modalController from './setForwardersModal/controller';
-
-export default function($uibModal, $scope){
-
-  this.openForwarderSelectModal = function(){
-    event.stopPropagation()
-    event.preventDefault();
-    let modalInstance = $uibModal.open({
-      animation: true,
-      template: modalTemplate,
-      controller : modalController,
-      controllerAs: 'ForwarderSelectModalCtrl',
-      scope : $scope
-    });
-  }
-  
-  
+export default function(OrdersService){
+  this.setFrowarder = function(forwarderGuid, orderAcceptTime){
+    let orderGuid = this.order.guid;
+    
+    return OrdersService.setForwarder(orderGuid, forwarderGuid, orderAcceptTime).then(
+      (response) => {
+        this.order.forwarder  = response.data.forwarder;
+      }
+    )
+  };
 }
-
-
-
 
 
 // Планируется = 0
