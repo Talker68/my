@@ -1,12 +1,15 @@
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
+<div class="container">
+  <form name="authCtrl.authForm" novalidate ng-submit="authCtrl.authForm.$valid && authCtrl.auth()">
+    <div class="form-group">
+      <label for="login">Email address</label>
+      <input type="text" class="form-control" id="login" placeholder="login" ng-model="authCtrl.login" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" ng-model="authCtrl.pass" required>
+    </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+
+</div>
