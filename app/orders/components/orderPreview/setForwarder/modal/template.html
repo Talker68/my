@@ -1,31 +1,34 @@
-<h1>Подбор транспортной компании</h1>
+<div class="l-title">Подбор транспортной компании</div>
 
 <form name="forwarderSelectForm" novalidate>
+
   <div class="error">
     {{ForwarderSelectModalCtrl.error}}
   </div>
 
   <div>
-    Время на принятие заявки : <input type="number" ng-model="orderAcceptTime" required>
+    Время на принятие заявки : <input type="time" ng-model="orderAcceptTime" required>
   </div>
   <table class="table">
     <thead>
-    <tr>
-      <th>
-        Транспортная компания
-      </th>
-      <th></th>
-    </tr>
+      <tr>
+        <th>
+          Транспортная компания
+        </th>
+        <th>
+        </th>
+      </tr>
     </thead>
     <tbody>
     <tr ng-repeat="forwarder in ForwarderSelectModalCtrl.forwardersList">
-      <td>{{forwarder.title}}</td>
-      <td>
-        <button
-        ng-click="forwarderSelectForm.$valid && ForwarderSelectModalCtrl.selectForwarder(forwarder.guid, orderAcceptTime)">
-        Выбрать</button></td>
+    <td>
+    {{forwarder.title}}
+    </td>
+    <td>
+    <button ng-click="forwarderSelectForm.$valid && ForwarderSelectModalCtrl.selectForwarder(forwarder.guid, orderAcceptTime)">Выбрать</button></td>
     </tr>
     </tbody>
   </table>
+
 </form>
 
