@@ -19,14 +19,14 @@
         </th>
       </tr>
     </thead>
-    <tbody>
-    <tr ng-repeat="forwarder in ForwarderSelectModalCtrl.forwardersList">
-    <td>
-    {{forwarder.title}}
-    </td>
-    <td>
-    <button ng-click="forwarderSelectForm.$valid && ForwarderSelectModalCtrl.selectForwarder(forwarder.guid, orderAcceptTime)">Выбрать</button></td>
-    </tr>
+      <tbody>
+      <tr ng-repeat="forwarder in ForwarderSelectModalCtrl.forwardersList">
+        <td>
+          {{forwarder.title}}
+        </td>
+        <td>
+          <button ng-click="forwarderSelectForm.$valid && ForwarderSelectModalCtrl.selectForwarder(forwarder.guid, orderAcceptTime)">Выбрать</button></td>
+        </tr>
     </tbody>
   </table>
 
