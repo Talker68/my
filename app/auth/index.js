@@ -9,7 +9,7 @@ export default angular.module('auth', [])
 
   .component('auth', authComponent)
 
-  .service('authRejector', function($rootRouter) {
+  .service('authRejector', function($q, $rootRouter) {
     this.responseError = (rejection) => {
 
       if (rejection.status === 401) {
@@ -17,7 +17,7 @@ export default angular.module('auth', [])
         $rootRouter.navigate(['Auth']);
       }
 
-      return rejection;
+      return $q.reject(rejection);
     };
   })
 
