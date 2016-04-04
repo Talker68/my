@@ -10,8 +10,6 @@ export default function($http, $q){
   }
 
   this.setForwarder = function (orderGuid, frowarderGuid, orderAcceptTime) {
-    //return $q.resolve('OK');
-    //return $q.reject('Errror')
     return $http.patch(`/logistics/order/${orderGuid}`, {forwarderGuid : frowarderGuid, orderAcceptTime : orderAcceptTime})
   }
 }

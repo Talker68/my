@@ -6,54 +6,36 @@ import uibootstrap from 'angular-ui-bootstrap';
 import '@angular/router/angular1/angular_1_router';
 import angularAnimate from 'angular-animate';
 
+import authModule from '../auth';
+import OrdersModule from '../orders';
+import ForwardersModule from '../forwarders';
+
 
 import config from './config';
 
-//services
-import OrdersService from './services/orders';
-import ForwardersService from './services/forwarders';
 
 //components
 import appComponent from './components/app';
-import authComponent from './components/auth';
+
 
 import navigationComponent from './components/navigation';
 
-import ordersComponent from './components/orders';
-import orderListComponent from './components/ordersList';
 
-import orderPreviewComponent from './components/orderPreview';
-import setForwarderComponent from './components/orderPreview/setForwarder'
-
-import orderDetailComponent from './components/orderDetail';
-import warehouseComponent from './components/warehouse';
-import routePointsComponent from './components/routePoints';
 
 //styles
 import './main.less';
 
-const app = angular.module('app', [uibootstrap, 'ngComponentRouter', angularAnimate])
+const app = angular.module('app', [authModule, OrdersModule, ForwardersModule, uibootstrap, 'ngComponentRouter', angularAnimate])
   .value('$routerRootComponent', 'app')
 
   .config(config)
 
-  .service('OrdersService', OrdersService)
-  .service('ForwardersService', ForwardersService)
-
 
   .component('app', appComponent)
-  .component('auth', authComponent)
+
 
   .component('navigation', navigationComponent)
 
-  .component('orders', ordersComponent)
-  .component('ordersList', orderListComponent)
 
-  .component('orderPreview', orderPreviewComponent)
-  .component('setForwarder', setForwarderComponent)
-  
-  .component('orderDetail', orderDetailComponent)
-  .component('warehouse', warehouseComponent)
-  .component('routePoints', routePointsComponent)
 
 export default app;
