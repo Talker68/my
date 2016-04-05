@@ -7,7 +7,7 @@ import ordersComponent from './components/orders';
 import orderListComponent from './components/ordersList';
 
 import orderPreviewComponent from './components/orderPreview';
-import setForwarderComponent from './components/orderPreview/setForwarder'
+import setForwarderFormComponent from './components/setForwarderForm'
 
 import orderDetailComponent from './components/orderDetail';
 import warehouseComponent from './components/warehouse';
@@ -20,7 +20,7 @@ export default angular.module('orders', [])
   .component('ordersList', orderListComponent)
 
   .component('orderPreview', orderPreviewComponent)
-  .component('setForwarder', setForwarderComponent)
+  .component('setForwarderForm', setForwarderFormComponent)
 
   .component('orderDetail', orderDetailComponent)
   .component('warehouse', warehouseComponent)

@@ -1,15 +1,23 @@
 "use strict";
 
-export default function(OrdersService){
+export default function(OrdersService, $rootRouter){
+  /*
   this.setFrowarder = function(forwarderGuid, orderAcceptTime){
     let orderGuid = this.order.guid;
-    
+
     return OrdersService.setForwarder(orderGuid, forwarderGuid, orderAcceptTime).then(
       (response) => {
         this.order.forwarder  = response.data.forwarder;
       }
     )
-  };
+  };*/
+
+
+  this.setForwarder = function () {
+    event.preventDefault();
+    event.stopPropagation();
+    $rootRouter.navigate(['Orders','SetForwarderForm', {guid : this.order.guid}]);
+  }
 }
 
 

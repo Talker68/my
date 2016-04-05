@@ -1,19 +1,24 @@
 "use strict";
 
-export default function($http, Base64Service, $rootScope){
+export default function(Base64Service, $rootScope, AuthService, $http){
+  this.$routerOnActivate = function(next, previous) {
+    if($rootScope.globals.currentUser && $rootScope.globals.currentUser.authData){
+      this.$router.navigate(['Orders']);
+    }
+  };
+
 
   this.auth = function(){
-
     let authData = Base64Service.encode(`${this.login}:${this.pass}`);
-
-    $http.defaults.headers.common.Authorization = 'Basic ' + authData;
-    $http.get('/logistics/order').then(
+    
+    $http.get('/logistics/auth', {headers : {Authorization : 'Basic ' + authData}}).then(
       (response) => {
-        $rootScope.curentUser = 'user';
+        console.log(response.data);
+        AuthService.SetCredentials(response.data, authData);
         this.$router.navigate(['Orders'])
       },
       (error) => {
-        console.log('gg');
+        console.log('error');
       }
     )
   }
