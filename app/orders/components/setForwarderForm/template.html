@@ -1,0 +1,31 @@
+<h1>Подбор ТК для {{setForwarderFormCtrl.order.id}}</h1>
+
+
+<form name="forwarderSelectForm" novalidate>
+  <div class="error">
+    {{ForwarderSelectModalCtrl.error}}
+  </div>
+
+  <div>
+    Время на принятие заявки : <input type="number" ng-model="orderAcceptTime" required>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>
+        Транспортная компания
+      </th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="forwarder in setForwarderFormCtrl.forwardersList">
+      <td>{{forwarder.title}}</td>
+      <td>
+        <button
+          ng-click="forwarderSelectForm.$valid && setForwarderFormCtrl.setFrowarder(forwarder.guid, orderAcceptTime)">
+          Выбрать</button></td>
+    </tr>
+    </tbody>
+  </table>
+</form>

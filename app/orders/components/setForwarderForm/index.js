@@ -1,13 +1,13 @@
 "use strict";
 
 import controller from './controller';
-import template from './template.html';
+import template from  './template.html';
 
 export default {
   controller : controller,
-  controllerAs : 'orderPreviewCtrl',
+  controllerAs : 'setForwarderFormCtrl',
   template : template,
   bindings : {
-    order : '<'
+    $router: '<'
   }
 }

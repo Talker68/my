@@ -89,8 +89,9 @@
       <!-- Подобрать ТК -->
       <div ng-if="!orderPreviewCtrl.order.forwarder.title">
         <div>
-          <set-forwarder set-forwarder="orderPreviewCtrl.setFrowarder(forwarderGuid, orderAcceptTime)"></set-forwarder>
+          <!--<set-forwarder set-forwarder="orderPreviewCtrl.setFrowarder(forwarderGuid, orderAcceptTime)"></set-forwarder>-->
           <!--<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.openForwarderSelectModal()">Подобрать ТК</button>-->
+					<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.setForwarder()">Подобрать ТК</button>
         </div>
       </div>
 
