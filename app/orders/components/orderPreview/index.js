@@ -1,12 +1,21 @@
 "use strict";
 
 import controller from './controller';
-import template from './template.html';
+
+import templateLogist from './templateLogist.html';
+import templateForwarder from './templateForwarder.html';
 
 export default {
   controller : controller,
   controllerAs : 'orderPreviewCtrl',
-  template : template,
+  template : function($element , $attrs, $rootScope){
+    console.log($rootScope);
+    if($rootScope.globals.currentUser.user.type === 'logist'){
+      return templateLogist;
+    } else if($rootScope.globals.currentUser.user.type === 'forwarder'){
+      return templateForwarder;
+    }
+  },
   bindings : {
     order : '<'
   }
