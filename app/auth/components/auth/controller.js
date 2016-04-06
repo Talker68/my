@@ -17,7 +17,8 @@ export default function(Base64Service, $rootScope, AuthService, $http){
         this.$router.navigate(['Orders'])
       },
       (error) => {
-        console.log('error');
+        this.error = "Ошибка авторизации"
+        this.authForm.$setPristine();
       }
     )
   }
