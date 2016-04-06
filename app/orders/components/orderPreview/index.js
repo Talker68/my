@@ -9,7 +9,6 @@ export default {
   controller : controller,
   controllerAs : 'orderPreviewCtrl',
   template : function($element , $attrs, $rootScope){
-    console.log($rootScope);
     if($rootScope.globals.currentUser.user.type === 'logist'){
       return templateLogist;
     } else if($rootScope.globals.currentUser.user.type === 'forwarder'){
