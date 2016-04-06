@@ -2,7 +2,7 @@
 
 export default function (OrdersService, ForwardersService) {
   let orderGuid;
-
+  
   //получаем guid заказа из параметра и сам заказ
   this.$routerOnActivate = function(next, previous) {
     orderGuid = next.params.guid;
