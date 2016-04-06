@@ -10,6 +10,11 @@ b{
   font-family: @font-extrabold;
 }
 
+.size-block{
+  display: block;
+  height: 100%;
+}
+
 // colors
 @green-color: #27AC6B;
 .green{ color : #27AC6B; }
@@ -45,7 +50,8 @@ b{
   background: @green-color;
   color: #fff;
   border: none; outline: none;
-  padding: 0;
+  padding: 6px 18px;
+  border-radius: 4px;
   &:hover, &:focus, &active{
     background: ( @green-color * .9 );
     border:none; outline: none;

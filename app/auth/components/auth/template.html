@@ -1,17 +1,50 @@
-<div class="container">
-  <form name="authCtrl.authForm" novalidate ng-submit="authCtrl.authForm.$valid && authCtrl.auth()">
-    <div class="form-group">
-      <label for="login">Email address</label>
-      <input type="text" name="login" class="form-control" id="login" placeholder="login" ng-model="authCtrl.login" required>
+<!--
+<form name="authCtrl.authForm" novalidate ng-submit="authCtrl.authForm.$valid && authCtrl.auth()">
+  <div class="form-group">
+    <label for="login">Email address</label>
+    <input type="text" name="login" class="form-control" id="login" placeholder="login" ng-model="authCtrl.login" required>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name='password' class="form-control" id="password" placeholder="Password" ng-model="authCtrl.pass" required>
+  </div>
+  <div ng-show="authCtrl.authForm.$pristine">{{authCtrl.error}}</div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+-->
+
+
+
+<div class="login-page_cnt">
+  <div class="login-page_banner">
+    <img src="./../../img/truck.png">
+  </div>
+  <div class="container-fluid login-page_cnt">
+    <div class="col-xs-3">
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" name='password' class="form-control" id="password" placeholder="Password" ng-model="authCtrl.pass" required>
+    <div class="col-xs-5">
+      <!-- start Form Autorization -->
+      <form action="javascript:void(0)" class="login-form"  name="authCtrl.authForm" novalidate ng-submit="authCtrl.authForm.$valid && authCtrl.auth()">
+        <div class="login-form_logo">
+          <img src="./../../img/logo.png" alt="" width="195" height="43"/>
+        </div>
+        <label class="login-form_row">
+          <span class="login-form_title">Логин</span>
+          <input type="text" name="login" class="login-form_field form-field" id="login" placeholder="login" ng-model="authCtrl.login" required>
+        </label>
+        <label class="login-form_row">
+          <span class="login-form_title">Пароль</span>
+          <input type="password" name='password' class="login-form_field form-field" id="password" placeholder="Password" ng-model="authCtrl.pass" required>
+        </label>
+        <a href="javascript:void(0)" class="login-form_link e-link" uib-tooltip='Временно не работает'>Забыли пароль?</a>
+        <div ng-show="authCtrl.authForm.$pristine">{{authCtrl.error}}</div>
+        <label class="login-form_row">
+          <button type="submit" class="btn btn-primary login-form_submit">Вход</button>
+        </label>
+      </form>
+      <!-- end Form Autorization -->
     </div>
-
-    <div ng-show="authCtrl.authForm.$pristine">{{authCtrl.error}}</div>
-
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-
+    <div class="col-xs-4">
+    </div>
+  </div>
 </div>

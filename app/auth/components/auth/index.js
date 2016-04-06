@@ -7,5 +7,5 @@ export default {
   template : template,
   controller : controller,
   controllerAs: 'authCtrl',
-  bindings: { $router: '<' },
+  bindings: { $router: '<' }
 }
