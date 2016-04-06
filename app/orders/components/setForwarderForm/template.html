@@ -6,28 +6,34 @@
       {{ForwarderSelectModalCtrl.error}}
     </div>
 
-    <label>
-      <b>Время на принятие заявки :</b>
-      <input type="time" ng-model="orderAcceptTime" required>
-    </label>
+    <div class="select-time">
+      <label for="orderAcceptTime">Время на принятие заявки:</label>
+      <div>
+        <input type="time" ng-model="orderAcceptTime" id="orderAcceptTime" required>
+      </div>
+    </div>
 
-    <table class="table">
+    <table class="table table_leaky">
       <thead>
-      <tr>
-        <th>
-          Транспортная компания
-        </th>
-        <th></th>
-      </tr>
+        <tr>
+          <th>
+            Транспортная компания
+          </th>
+          <th>
+          </th>
+        </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="forwarder in setForwarderFormCtrl.forwardersList">
-        <td>{{forwarder.title}}</td>
-        <td>
-          <button
-            ng-click="forwarderSelectForm.$valid && setForwarderFormCtrl.setFrowarder(forwarder.guid, orderAcceptTime)">
-            Выбрать</button></td>
-      </tr>
+        <tr ng-repeat="forwarder in setForwarderFormCtrl.forwardersList">
+          <td>
+            {{forwarder.title}}
+          </td>
+          <td class="text-right">
+            <button ng-click="forwarderSelectForm.$valid && setForwarderFormCtrl.setFrowarder(forwarder.guid, orderAcceptTime)" class="btn-primary">
+              Отправить
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </form>
