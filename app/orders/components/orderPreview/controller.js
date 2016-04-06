@@ -13,10 +13,18 @@ export default function(OrdersService, $rootRouter){
   };*/
 
 
-  this.setForwarder = function () {
+  this.goToSetForwarderRoute = function () {
     event.preventDefault();
     event.stopPropagation();
     $rootRouter.navigate(['Orders','SetForwarderForm', {guid : this.order.guid}]);
+  }
+
+
+  this.refuseOrder = function(){
+    OrdersService.clearForwarder(this.order.guid).then(
+      (response) => {console.log(response)},
+      (error) => {console.log(error)}
+    )
   }
 }
 

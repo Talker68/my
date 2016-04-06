@@ -13,7 +13,6 @@ export default function(Base64Service, $rootScope, AuthService, $http){
     
     $http.get('/logistics/auth', {headers : {Authorization : 'Basic ' + authData}}).then(
       (response) => {
-        console.log(response.data);
         AuthService.SetCredentials(response.data, authData);
         this.$router.navigate(['Orders'])
       },

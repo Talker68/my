@@ -12,4 +12,8 @@ export default function($http, $q){
   this.setForwarder = function (orderGuid, frowarderGuid, orderAcceptTime) {
     return $http.patch(`/logistics/order/${orderGuid}`, {forwarderGuid : frowarderGuid, orderAcceptTime : orderAcceptTime})
   }
+
+  this.clearForwarder = function (orderGuid) {
+    return $http.patch(`/logistics/order/${orderGuid}`, {forwarderGuid : '', orderAcceptTime : ''})
+  }
 }

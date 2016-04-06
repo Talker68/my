@@ -2,5 +2,6 @@
 
 export default [
   {path: '/enter', name: 'Auth', component: 'auth', useAsDefault: true},
-  {path: '/orders/...', name: 'Orders', component: 'orders'}
+  {path: '/orders/...', name: 'Orders', component: 'orders'},
+  {path: '/company/...', name: 'Сompany', component: 'company'}
 ]
