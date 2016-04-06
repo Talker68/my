@@ -20,8 +20,17 @@ export default function(OrdersService, $rootRouter){
   }
 
 
+  this.confirmOrder = function(){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   this.refuseOrder = function(){
-    OrdersService.clearForwarder(this.order.guid).then(
+    event.preventDefault();
+    event.stopPropagation();
+
+    
+    OrdersService.patchOrder(this.order.guid, {forwarderGuid : '', orderAcceptTime : ''}).then(
       (response) => {console.log(response)},
       (error) => {console.log(error)}
     )

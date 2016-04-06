@@ -9,8 +9,8 @@ export default function($http, $q){
     return $http.get(`/logistics/order/${guid}`);
   }
 
-  this.setForwarder = function (orderGuid, frowarderGuid, orderAcceptTime) {
-    return $http.patch(`/logistics/order/${orderGuid}`, {forwarderGuid : frowarderGuid, orderAcceptTime : orderAcceptTime})
+  this.patchOrder = function (orderGuid, requestData) {
+    return $http.patch(`/logistics/order/${orderGuid}`, requestData)
   }
 
   this.clearForwarder = function (orderGuid) {

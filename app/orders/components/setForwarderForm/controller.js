@@ -22,7 +22,7 @@ export default function (OrdersService, ForwardersService) {
 
   //установка транспортной компании для заявки
   this.setFrowarder = function(forwarderGuid, orderAcceptTime){
-    return OrdersService.setForwarder(orderGuid, forwarderGuid, orderAcceptTime).then(
+    return OrdersService.patchOrder(orderGuid, {forwarderGuid : forwarderGuid, orderAcceptTime : orderAcceptTime}).then(
       (response) => {
         this.$router.navigate(['OrdersList']);
       }
