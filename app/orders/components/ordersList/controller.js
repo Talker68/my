@@ -1,6 +1,6 @@
 "use strict";
 
-export default function (OrdersService) {
+export default function (OrdersService, ApiService) {
   this.$routerOnActivate = function(next, previous) {
     if(!next.params.status){
       this.$router.navigate(['OrdersList', {status : 1}]);
@@ -13,4 +13,9 @@ export default function (OrdersService) {
       }
     )
   };
+
+  this.removeOrderFromList = function(orderGuid){
+    let orderIndex = ApiService.getIndexById(this.list, {fieldName : 'guid', value: orderGuid});
+    this.list.splice(orderIndex,1);
+  }
 }

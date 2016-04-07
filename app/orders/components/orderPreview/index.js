@@ -16,6 +16,7 @@ export default {
     }
   },
   bindings : {
-    order : '<'
+    order : '<',
+    removeOrder : '&'
   }
 }
