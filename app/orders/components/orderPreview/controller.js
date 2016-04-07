@@ -31,7 +31,9 @@ export default function(OrdersService, $rootRouter){
 
     
     OrdersService.patchOrder(this.order.guid, {forwarderGuid : '', orderAcceptTime : ''}).then(
-      (response) => {console.log(response)},
+      (response) => {
+        this.removeOrder({orderGuid : this.order.guid})
+      },
       (error) => {console.log(error)}
     )
   }
