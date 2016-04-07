@@ -12,11 +12,11 @@
       </h2>
       <div class="select-time_item">
         <label for="orderAcceptTimeHours">Часов</label>
-        <input type="number" ng-model="orderAcceptTime.hours" id="orderAcceptTimeHours" name="orderAcceptTimeHours" min="0" required>
+        <input type="text" ng-model="orderAcceptTime.hours" id="orderAcceptTimeHours" name="orderAcceptTimeHours" min="0" maxlength="2" ng-init="orderAcceptTime.hours = 1" required>
       </div>
       <div class="select-time_item">
         <label for="orderAcceptTimeMinutes">Минут</label>
-        <input type="number" ng-model="orderAcceptTime.minutes" id="orderAcceptTimeMinutes" name="orderAcceptTimeMinutes" min="0" max="59">
+        <input type="text" ng-model="orderAcceptTime.minutes" id="orderAcceptTimeMinutes" name="orderAcceptTimeMinutes" min="0" max="59" ng-init="orderAcceptTime.minutes = 30" ng-blur="setForwarderFormCtrl.digOnly( orderAcceptTime.minutes )">
       </div>
     </div>
 

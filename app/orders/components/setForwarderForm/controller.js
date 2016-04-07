@@ -28,5 +28,15 @@ export default function (OrdersService, ForwardersService) {
       }
     )
   };
-  
+
+
+  this.digOnly = function( value ){
+    var s = value.replace(/[^0-9]/g, '');
+    if( s > 59 ){ s = 59 };
+    if( s < 0 ){ s = 0 };
+    this.orderAcceptTime.minutes = s;
+    console.log( s );
+  };
+
+
 }
