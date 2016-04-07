@@ -47,7 +47,7 @@
 								</div>
 								<span>Тип груза</span>
 								<label class="form-fieldset_field">
-									<span ng-repeat="cargoType in orderDetailCtrl.order.cargo.type track by $index">{{cargoType}}</span>
+									<span ng-repeat="cargoType in orderDetailCtrl.order.cargo.type track by $index">{{cargoType}}{{$last ? '' : ', '}}</span>
 								</label>
 							</div>
 						</div>
