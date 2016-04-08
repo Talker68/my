@@ -1,45 +1,55 @@
 
-<div id="logist-menu" ng-if="navCtrl.userType === 'logist'">
+<div id="logist-menu" >
   <ul class="sideber-nav">
-    <li class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 1}]">
-        <i class="fa fa-clone"></i>
-        <span>Сформированные</span>
+    <div ng-if="navCtrl.userType === 'logist'">
+      <li class="sideber-nav_item">
+        <a ng-link="['Orders','OrdersList', {status : 1}]">
+          <i class="fa fa-clone"></i>
+          <span>Сформированные</span>
 
-      </a>
-    </li>
-    <li  class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 2}]">
-        <i class="fa fa-clone"></i>
-        <span>ГП в исполнении</span>
-      </a>
-    </li>
+        </a>
+      </li>
+      <li  class="sideber-nav_item">
+        <a ng-link="['Orders','OrdersList', {status : 2}]">
+          <i class="fa fa-clone"></i>
+          <span>ГП в исполнении</span>
+        </a>
+      </li>
+    </div>
+
+    <div id="forwarder-menu" ng-if="navCtrl.userType === 'forwarder'">
+      <li class="sideber-nav_item">
+        <a ng-link="['Orders','OrdersList', {status : 1}]">
+          <i class="fa fa-clone"></i>
+          <span>Прямые ГП</span>
+        </a>
+      </li>
+      <li  class="sideber-nav_item">
+        <a ng-link="['Orders','OrdersList', {status : 2}]">
+          <i class="fa fa-clone"></i>
+          <span>ГП в исполнении</span>
+        </a>
+      </li>
+      <li class="sideber-nav_item">
+        <a ng-link="['Сompany', 'CompanySettings']">
+          <i class="fa fa-clone"></i>
+          <span>Настройки компании</span></a>
+      </li>
+      <li class="sideber-nav_item">
+        <a ng-link="['Сompany', 'CompanyVehicle']">
+          <i class="fa fa-clone"></i>
+          <span>Автомобили</span></a>
+      </li>
+      <li class="sideber-nav_item">
+        <a ng-link="['Сompany', 'CompanyDrivers']">
+          <i class="fa fa-clone"></i>
+          <span>Водители</span>
+        </a>
+      </li>
+    </div>
+
   </ul>
 </div>
 
-<div id="forwarder-menu" ng-if="navCtrl.userType === 'forwarder'">
-  <ul class="sideber-nav">
-    <li class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 1}]">
-        <i class="fa fa-clone"></i>
-        <span>Прямые ГП</span>
-
-      </a>
-    </li>
-    <li  class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 2}]">
-        <i class="fa fa-clone"></i>
-        <span>ГП в исполнении</span>
-      </a>
-    </li>
-  </ul>
-
-
-  <ul class="sideber-nav" >
-    <li class="sideber-nav_item"><a ng-link="['Сompany', 'CompanySettings']"><i class="fa fa-clone"></i><span>Настройки компании</span></a></li>
-    <li class="sideber-nav_item"><a ng-link="['Сompany', 'CompanyVehicle']"><i class="fa fa-clone"></i><span>Автомобили</span></a></li>
-    <li class="sideber-nav_item"><a ng-link="['Сompany', 'CompanyDrivers']"><i class="fa fa-clone"></i><span>Водители</span></a></li>
-  </ul>
-</div>
 
 
