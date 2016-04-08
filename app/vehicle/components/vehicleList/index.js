@@ -6,5 +6,5 @@ import template from './template.html';
 export default {
   controller: controller,
   controllerAs : 'companyVehicleCtrl',
-  template : template
+  template : template,
 }

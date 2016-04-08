@@ -1,0 +1,18 @@
+<h1>Авто</h1>
+
+<div ng-if="!singleVehicleCtrl.isEdit">
+  Форма редактирования
+</div>
+
+<div ng-if="singleVehicleCtrl.isEdit">
+  <div class="vehicle">
+    <div>
+      <h3></h3>
+      <div></div>
+    </div>
+  </div>
+
+  <pre>
+    {{singleVehicleCtrl.vehicle | json}}
+  </pre>
+</div>
