@@ -5,6 +5,6 @@ import template from './template.html';
 
 export default {
   controller : controller,
-  controllerAs : 'companySettingsCtrl',
+  controllerAs: 'singleVehicleCtrl',
   template : template
 }

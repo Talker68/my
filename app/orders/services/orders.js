@@ -13,4 +13,6 @@ export default function($http, $q){
     return $http.patch(`/logistics/order/${orderGuid}`, requestData)
   }
 
+
+
 }

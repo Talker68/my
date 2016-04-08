@@ -12,7 +12,7 @@ export default function(OrdersService, $rootRouter){
     )
   };*/
 
-
+  //Обратботка перехода к выбору ТК логистом для заявки
   this.goToSetForwarderRoute = function () {
     event.preventDefault();
     event.stopPropagation();
@@ -25,11 +25,12 @@ export default function(OrdersService, $rootRouter){
     event.stopPropagation();
   }
 
+
+  //Обработка отказа ТК от заявки
   this.refuseOrder = function(){
     event.preventDefault();
     event.stopPropagation();
 
-    
     OrdersService.patchOrder(this.order.guid, {forwarderGuid : '', orderAcceptTime : ''}).then(
       (response) => {
         this.removeOrder({orderGuid : this.order.guid})
