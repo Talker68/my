@@ -14,7 +14,8 @@ export default function($http, $rootScope, $cookies){
     //сохранение в куку
     $cookies.putObject('globals', $rootScope.globals);
 
-  }
+  };
+  
   
   this.logout = function () {
     $rootScope.globals = {};

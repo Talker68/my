@@ -7,6 +7,56 @@
     <!-- start Tab -->
     <uib-tab index="0" heading="Основные данные">
 
+
+
+      <div class="row">
+        <fieldset class="form-fieldset">
+          <legend class="form-fieldset_legend">
+            Информация о грузе и транспорте
+          </legend>
+          <div class="form-fieldset_row row">
+            <!--Тип маршрута-->
+            <div class="form-fieldset_cell col-xs-3">
+              <div class="form-fieldset_icon-cnt">
+              </div>
+              <span>Тип маршрута</span>
+              <label class="form-fieldset_field">
+                <input type="text" disabled value="{{orderDetailCtrl.order.route.type}}" class="form-control">
+              </label>
+            </div>
+            <!-- Тип кузова -->
+            <div class="form-fieldset_cell col-xs-6">
+              <div class="form-fieldset_icon-cnt">
+              </div>
+              <span>Тип кузова</span>
+              <label class="form-fieldset_field">
+                <input type="text" disabled value="{{orderDetailCtrl.order.vehicle.vehicle_type}}" class="form-control">
+              </label>
+            </div>
+            <!-- Тип груза -->
+            <div class="form-fieldset_cell col-xs-3">
+              <div class="form-fieldset_icon-cnt">
+              </div>
+              <span>Тип груза</span>
+              <label class="form-fieldset_field">
+                <span ng-repeat="cargoType in orderDetailCtrl.order.cargo.type track by $index">{{cargoType}}{{$last ? '' : ', '}}</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-fieldset_hr ng-hide">
+          </div>
+          <div class="form-fieldset_row row">
+            <!--Тип кузова(полное)-->
+            <div class="form-fieldset_cell col-xs-12">
+              <span>Тип кузова(полное) </span>
+              <label class="form-fieldset_field">
+                <span>{{orderDetailCtrl.order.vehicle.vehicle_type_full}}</span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
       <!--Название компании-->
       <div>
         {{companySettingsCtrl.company.title}}
