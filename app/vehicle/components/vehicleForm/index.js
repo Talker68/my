@@ -9,6 +9,9 @@ export default {
   template : template,
   bindings : {
     vehicle : '<',
-    loadingTypes : '<'
+    loadingTypes : '<',
+    addVehicle : '&',
+    removeVehicle : '&',
+    updateVehicle : '&'
   }
 }
