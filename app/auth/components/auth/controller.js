@@ -8,6 +8,7 @@ export default function(Base64Service, $rootScope, AuthService, $http){
   };
 
 
+
   this.auth = function(){
     let authData = Base64Service.encode(`${this.login}:${this.pass}`);
     

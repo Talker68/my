@@ -5,10 +5,6 @@ import template from './template.html';
 
 export default {
   controller : controller,
-  controllerAs : 'vehicleFormCtrl',
-  template : template,
-  bindings : {
-    vehicle : '<',
-    loadingTypes : '<'
-  }
+  controllerAs : 'companySettingsCtrl',
+  template : template
 }

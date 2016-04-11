@@ -1,0 +1,93 @@
+<aticle class="company-settings">
+
+  <h1>Настройки компании</h1>
+
+
+  <uib-tabset active="activeJustified">
+    <!-- start Tab -->
+    <uib-tab index="0" heading="Основные данные">
+
+      <!--Название компании-->
+      <div>
+        {{companySettingsCtrl.company.title}}
+      </div>
+
+      <!--Полное Название компании-->
+      <div>
+        {{companySettingsCtrl.company.titlefull_title}}
+      </div>
+
+      <!--Физичиеский адрес-->
+      <div>
+        {{companySettingsCtrl.company.address}}
+      </div>
+
+      <!--Юридическйи  адрес-->
+      <div>
+        {{companySettingsCtrl.company.legal_address}}
+      </div>
+
+      <!--Сайт-->
+      <div>
+        {{companySettingsCtrl.company.website}}
+      </div>
+    </uib-tab>
+
+    <uib-tab index="1" heading="Банковские реквизиты">
+      <!--Название банка-->
+      <div>
+        {{companySettingsCtrl.company.requisites.bank}}
+      </div>
+
+      <!--ОГРН-->
+      <div>
+        {{companySettingsCtrl.company.requisites.OGRN}}
+      </div>
+
+      <!--ИНН-->
+      <div>
+        {{companySettingsCtrl.company.requisites.INN}}
+      </div>
+
+      <!--КПП-->
+      <div>
+        {{companySettingsCtrl.company.requisites.KPP}}
+      </div>
+
+      <!--Название ОКВЭД-->
+      <div>
+        {{companySettingsCtrl.company.requisites.OKVED}}
+      </div>
+
+      <!--Название ОКОНХ-->
+      <div>
+        {{companySettingsCtrl.company.requisites.OKONH}}
+      </div>
+
+      <!--ОКПО-->
+      <div>
+        {{companySettingsCtrl.company.requisites.OKPO}}
+      </div>
+
+      <!--Р/с-->
+      <div>
+        {{companySettingsCtrl.company.requisites.PS}}
+      </div>
+
+      <!--К/С-->
+      <div>
+        {{companySettingsCtrl.company.requisites.KS}}
+      </div>
+
+      <!--БИК-->
+      <div>
+        {{companySettingsCtrl.company.requisites.BIK}}
+      </div>
+
+    </uib-tab>
+  </uib-tabset>
+</aticle>
+
+
+
+

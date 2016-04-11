@@ -1,6 +1,8 @@
 "use strict";
 
 export default function (OrdersService, ApiService) {
+
+
   this.$routerOnActivate = function(next, previous) {
     if(!next.params.status){
       this.$router.navigate(['OrdersList', {status : 1}]);

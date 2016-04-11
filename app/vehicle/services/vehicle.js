@@ -1,6 +1,6 @@
 "use strict";
 
-export default function($http, $q){
+export default function($http, $q, $timeout){
   this.getVehicleList = function () {
     return $http.get('/logistics/vehicle')
   }
@@ -9,6 +9,9 @@ export default function($http, $q){
     return $http.get(`/logistics/vehicle/${guid}`)
   }
 
+  this.updateVehicle = function(vehicle){
+    return $http.put(`/logistics/vehicle/${vehicle.guid}`, vehicle)
+  }
 
   //Получение типов отгрузки
   this.getLoadingTypes = function(){
@@ -18,6 +21,7 @@ export default function($http, $q){
         for(let type of response.data){
           loadingTypes[type.guid] = type.title;
         }
+
         return $q.resolve(loadingTypes);
       },
       (error) => {
@@ -25,4 +29,6 @@ export default function($http, $q){
       }
     )
   }
+
+
 }

@@ -15,7 +15,7 @@
   </thead>
   <tbody>
   <tr ng-repeat="vehicle in companyVehicleCtrl.vehicleList track by vehicle.guid">
-    <td>{{vehicle.plate_number}}</td>
+    <td><a ng-link="['VehicleDetail', {guid : vehicle.guid}]">{{vehicle.plate_number}}</a></td>
     <td>{{vehicle.model}}</td>
     <td>{{vehicle.capacity}}</td>
     <td>{{vehicle.volume}}</td>

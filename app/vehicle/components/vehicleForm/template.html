@@ -1,1 +1,47 @@
-Форма
+<form name="vehicleFormCtrl.vehicleForm" ng-submit="vehicleFormCtrl.submit()" novalidate>
+  <div class="form-group">
+    <label for="model">Модель</label>
+    <input type="text" class="form-control" id="model" placeholder="Модель" name="model" ng-model="vehicleFormCtrl.vehicle.model" required>
+  </div>
+
+  <div class="form-group">
+    <label for="plate_number">Номер</label>
+    <input type="text" class="form-control" id="plate_number" placeholder="Номер" name="plate_number" ng-model="vehicleFormCtrl.vehicle.plate_number" required>
+  </div>
+
+  <div class="form-group">
+    <label for="capacity">Грузоподъемность</label>
+    <input type="number" class="form-control" id="capacity" placeholder="Грузоподъемность" name="capacity" ng-model="vehicleFormCtrl.vehicle.capacity" required>
+  </div>
+
+
+  <div class="form-group">
+    <label for="volume">Объем</label>
+    <input type="number" class="form-control" id="volume" placeholder="Объем" name="volume" ng-model="vehicleFormCtrl.vehicle.volume" required>
+  </div>
+
+  <div class="form-group">
+    <label for="year">Год выпуска</label>
+    <input type="number" class="form-control" id="year" placeholder="Год выпуска" name="year" ng-model="vehicleFormCtrl.vehicle.year" required>
+  </div>
+
+  <div class="form-group">
+    <label for="loading_type">Тип отгрузки</label>
+    <select name="loading_type" id="loading_type" ng-model="vehicleFormCtrl.vehicle.loading_type" class="form-control">
+      <option ng-repeat="(key, value) in vehicleFormCtrl.loadingTypes" value="{{key}}">{{value}}</option>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="semitrailer">Полуприцеп (модель)</label>
+    <input type="text" class="form-control" id="semitrailer" placeholder="Полуприцеп" name="semitrailer" ng-model="vehicleFormCtrl.vehicle.semitrailer" >
+  </div>
+
+  <div class="form-group">
+    <label for="semitrailer_plate_number">Полуприцеп (номер)</label>
+    <input type="text" class="form-control" id="semitrailer_plate_number" placeholder="Полуприцеп (номер)" name="semitrailer_plate_number" ng-model="vehicleFormCtrl.vehicle.semitrailer_plate_number" >
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
