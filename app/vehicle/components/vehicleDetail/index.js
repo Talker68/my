@@ -10,8 +10,4 @@ export default {
   template : template,
   bindings: { $router: '<' },
   $canActivate: canActivate
-
-
-
-
 }

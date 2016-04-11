@@ -47,7 +47,9 @@
 <div ng-if="vehicleDetailCtrl.isEdit">
   <vehicle-form
     vehicle="vehicleDetailCtrl.vehicle"
-    loading-types = "vehicleDetailCtrl.loadingTypes">
+    loading-types = "vehicleDetailCtrl.loadingTypes"
+    add-vehicle = "vehicleDetailCtrl.addVehicle(vehicle)"
+    update-vehicle = "vehicleDetailCtrl.updateVehicle(vehicle)">
   </vehicle-form>
 </div>
 

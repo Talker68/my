@@ -13,6 +13,14 @@ export default function($http, $q, $timeout){
     return $http.put(`/logistics/vehicle/${vehicle.guid}`, vehicle)
   }
 
+  this.addVehicle = function (vehicle) {
+    return $http.post('/logistics/vehicle', vehicle);
+  }
+
+  this.removeVehicle = function (vehicleGuid) {
+    return $http.delete(`/logistics/vehicle/${vehicleGuid}`);
+  }
+
   //Получение типов отгрузки
   this.getLoadingTypes = function(){
     return $http.get('/logistics/loading_type').then(
