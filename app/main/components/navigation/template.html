@@ -1,10 +1,11 @@
-<!-- Логист -->
+
 <div id="logist-menu" ng-if="navCtrl.userType === 'logist'">
   <ul class="sideber-nav">
     <li class="sideber-nav_item">
       <a ng-link="['Orders','OrdersList', {status : 1}]">
         <i class="fa fa-clone"></i>
         <span>Сформированные</span>
+
       </a>
     </li>
     <li  class="sideber-nav_item">
@@ -16,7 +17,6 @@
   </ul>
 </div>
 
-<!-- Транспортная компания -->
 <div id="forwarder-menu" ng-if="navCtrl.userType === 'forwarder'">
   <ul class="sideber-nav">
     <li class="sideber-nav_item">
@@ -36,24 +36,9 @@
 
 
   <ul class="sideber-nav" >
-    <li class="sideber-nav_item">
-      <a ng-link="['Сompany']">
-        <i class="fa fa-clone"></i>
-        <span>Настройки компании</span>
-      </a>
-    </li>
-    <li class="sideber-nav_item">
-      <a ng-link="['Vehicle', 'VehicleList']">
-        <i class="fa fa-clone"></i>
-        <span>Автомобили</span>
-      </a>
-    </li>
-    <li class="sideber-nav_item">
-      <a ng-link="['Сompany', 'CompanyDrivers']">
-        <i class="fa fa-clone"></i>
-        <span>Водители</span>
-      </a>
-    </li>
+    <li class="sideber-nav_item"><a ng-link="['Сompany', 'CompanySettings']"><i class="fa fa-clone"></i><span>Настройки компании</span></a></li>
+    <li class="sideber-nav_item"><a ng-link="['Vehicle', 'VehicleList']"><i class="fa fa-clone"></i><span>Автомобили</span></a></li>
+    <!--<li class="sideber-nav_item"><a ng-link="['Сompany', 'CompanyDrivers']"><i class="fa fa-clone"></i><span>Водители</span></a></li>-->
   </ul>
 </div>
 

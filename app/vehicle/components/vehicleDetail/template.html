@@ -1,18 +1,54 @@
 <h1>Авто</h1>
 
-<div ng-if="!singleVehicleCtrl.isEdit">
-  Форма редактирования
-</div>
-
-<div ng-if="singleVehicleCtrl.isEdit">
+<div ng-if="!vehicleDetailCtrl.isEdit">
   <div class="vehicle">
     <div>
-      <h3></h3>
-      <div></div>
+      <h3>Модель</h3>
+      <div>{{vehicleDetailCtrl.vehicle.model}}</div>
+    </div>
+
+    <div>
+      <h3>Номер</h3>
+      <div>{{vehicleDetailCtrl.vehicle.plate_number}}</div>
+    </div>
+
+    <div>
+      <h3>Грузоподъемность</h3>
+      <div>{{vehicleDetailCtrl.vehicle.capacity}}</div>
+    </div>
+
+    <div>
+      <h3>Объем</h3>
+      <div>{{vehicleDetailCtrl.vehicle.volume}}</div>
+    </div>
+
+    <div>
+      <h3>Год выпуска</h3>
+      <div>{{vehicleDetailCtrl.vehicle.year}}</div>
+    </div>
+
+    <div>
+      <h3>Тип отгрузки</h3>
+      <div>{{vehicleDetailCtrl.loadingTypes[vehicleDetailCtrl.vehicle.loading_type]}}</div>
+    </div>
+
+    <div>
+      <h3>Полуприцеп</h3>
+      <div>{{vehicleDetailCtrl.vehicle.semitrailer}}</div>
+    </div>
+
+    <div>
+      <h3>Номер полуприцепа</h3>
+      <div>{{vehicleDetailCtrl.vehicle.semitrailer_plate_number}}</div>
     </div>
   </div>
-
-  <pre>
-    {{singleVehicleCtrl.vehicle | json}}
-  </pre>
 </div>
+
+<div ng-if="vehicleDetailCtrl.isEdit">
+  <vehicle-form
+    vehicle="vehicleDetailCtrl.vehicle"
+    loading-types = "vehicleDetailCtrl.loadingTypes">
+  </vehicle-form>
+</div>
+
+

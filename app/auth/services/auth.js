@@ -15,7 +15,7 @@ export default function($http, $rootScope, $cookies){
     $cookies.putObject('globals', $rootScope.globals);
 
   };
-  
+
   
   this.logout = function () {
     $rootScope.globals = {};

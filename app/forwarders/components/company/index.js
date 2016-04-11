@@ -1,10 +1,9 @@
 "use strict";
 
-import controller from './controller';
-import template from './template.html';
+import template from './template.html'
+import routeConfig from './routeConfig';
 
 export default {
-  controller : controller,
-  controllerAs : 'companySettingsCtrl',
-  template : template
+  template : template,
+  $routeConfig : routeConfig
 }

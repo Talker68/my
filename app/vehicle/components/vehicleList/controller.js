@@ -8,4 +8,5 @@ export default function(VehicleService){
   //получаем варианты отгрузки
   VehicleService.getLoadingTypes().then((response) => {this.loadingTypes = response});
 
+
 }
