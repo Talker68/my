@@ -10,6 +10,7 @@ import authModule from '../auth';
 import OrdersModule from '../orders';
 import ForwardersModule from '../forwarders';
 import VehicleModule from '../vehicle';
+import DriversModule from '../drivers';
 
 
 import config from './config';
@@ -26,7 +27,17 @@ import navigationComponent from './components/navigation';
 import './main.less';
 
 const app = angular.module('app',
-  [authModule, OrdersModule, ForwardersModule, VehicleModule, uibootstrap, 'ngComponentRouter', angularAnimate])
+  [
+    authModule,
+    OrdersModule,
+    ForwardersModule,
+    VehicleModule,
+    DriversModule,
+
+    uibootstrap,
+    'ngComponentRouter',
+    angularAnimate
+  ])
 
   .value('$routerRootComponent', 'app')
 

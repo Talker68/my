@@ -1,0 +1,44 @@
+<style>
+  #driver-form.ng-submitted .form-control.ng-invalid, #driver-form .form-control.ng-touched.ng-invalid{
+    border-color: red;
+  }
+</style>
+
+<div>
+  {{driverFormCtrl.error}}
+</div>
+
+<form id='driver-form' name="driverFormCtrl.driverForm" ng-submit="driverFormCtrl.driverForm.$valid && driverFormCtrl.submit()" novalidate>
+  <div class="form-group">
+    <label for="driver">ФИО</label>
+    <input type="text" class="form-control" id="driver" placeholder="ФИО" name="driver" ng-model="driverFormCtrl.driver.driver" required>
+  </div>
+
+  <div class="form-group">
+    <label for="driver_phone">Номер телефона</label>
+    <input type="text" class="form-control" id="driver_phone" placeholder="Номер телефона" name="driver_phone" ng-model="driverFormCtrl.driver.driver_phone" required>
+  </div>
+
+  <div class="form-group">
+    <label for="license_series">Права серия</label>
+    <input type="text" class="form-control" id="license_series" placeholder="Права серия" name="license_series" ng-model="driverFormCtrl.driver.license_series" required>
+  </div>
+
+  <div class="form-group">
+    <label for="license_series">Права номер</label>
+    <input type="text" class="form-control" id="license_number" placeholder="Права номер" name="license_number" ng-model="driverFormCtrl.driver.license_number" required>
+  </div>
+
+  <div class="form-group">
+    <label for="license_issue">Права выданы</label>
+    <input type="date" class="form-control" id="license_issue" placeholder="Права выданы" name="license_issue" ng-model="driverFormCtrl.driver.license_issue" required>
+  </div>
+
+  <div class="form-group">
+    <label for="license_valid">Права действительны до</label>
+    <input type="date" class="form-control" id="license_valid" placeholder="Права действительны до" name="license_valid" ng-model="driverFormCtrl.driver.license_valid" required>
+  </div>
+
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
