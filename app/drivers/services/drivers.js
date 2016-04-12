@@ -17,8 +17,8 @@ export default function($http, $q){
     return $http.post('/logistics/driver', driver);
   }
 
-  this.removeDriver = function (driverGuid) {
-    return $http.delete(`/logistics/driver/${driverGuid}`);
+  this.removeDriver = function (driver) {
+    return $http.delete(`/logistics/driver/${driver.guid}`);
   }
   
 
