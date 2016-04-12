@@ -2,6 +2,12 @@
 
 
 <div ng-if="!driverDetailCtrl.isEdit">
+
+  <div>
+    <button ng-click="driverDetailCtrl.edit()">Изменить</button>
+    <button ng-click="driverDetailCtrl.removeDriver()">Удалить</button>
+  </div>
+
   <div class="driver">
     <div>
       <h3>ФИО</h3>
@@ -41,7 +47,8 @@
   <driver-form
     driver="driverDetailCtrl.driver"
     add-driver = "driverDetailCtrl.addDriver(driver)"
-    update-driver = "driverDetailCtrl.updateDriver(driver)">
+    update-driver = "driverDetailCtrl.updateDriver(driver)"
+    cancel-edit = "driverDetailCtrl.cancelEdit()">
   </driver-form>
 </div>
 

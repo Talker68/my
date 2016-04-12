@@ -10,6 +10,7 @@ export default {
   bindings : {
     driver : '<',
     addDriver : '&',
-    updateDriver : '&'
+    updateDriver : '&',
+    cancelEdit : '&'
   }
 }

@@ -9,9 +9,11 @@ export default function () {
   this.submit = function(){
 
     if(this.driver.guid){
-      this.updateDriver({driver : this.driver})
+      this.updateDriver({driver : this.driver}).catch((error) => {
+        this.error = error.message;
+      })
     } else {
-      this.addVehicle({driver : this.driver}).catch((error) => {
+      this.addDriver({driver : this.driver}).catch((error) => {
         this.error = error.message;
       })
     }
@@ -21,6 +23,3 @@ export default function () {
 }
 
 
-  // .catch((error) => {
-  //   this.error = error.message;
-  // })
