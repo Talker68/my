@@ -9,48 +9,60 @@
 </div>
 
 <form id='vehicle-form' name="vehicleFormCtrl.vehicleForm" ng-submit="vehicleFormCtrl.vehicleForm.$valid && vehicleFormCtrl.submit()" novalidate>
-  <div class="form-group">
-    <label for="model">Модель</label>
-    <input type="text" class="form-control" id="model" placeholder="Модель" name="model" ng-model="vehicleFormCtrl.vehicle.model" required>
+  <div class="row">
+    <div class="col-xs-4">
+      <!-- Модель -->
+      <div class="form-group">
+        <label for="model">Модель</label>
+        <input type="text" class="form-control" id="model" placeholder="Модель" name="model" ng-model="vehicleFormCtrl.vehicle.model" required>
+      </div>
+      <!-- Номер  -->
+      <div class="form-group">
+        <label for="plate_number">Номер</label>
+        <input type="text" class="form-control" id="plate_number" placeholder="Номер" name="plate_number" ng-model="vehicleFormCtrl.vehicle.plate_number" required>
+      </div>
+      <!-- Грузоподъемность -->
+      <div class="form-group">
+        <label for="capacity">Грузоподъемность</label>
+        <input type="number" class="form-control" id="capacity" placeholder="Грузоподъемность" name="capacity" ng-model="vehicleFormCtrl.vehicle.capacity" >
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <!-- Объем -->
+      <div class="form-group">
+        <label for="volume">Объем</label>
+        <input type="number" class="form-control" id="volume" placeholder="Объем" name="volume" ng-model="vehicleFormCtrl.vehicle.volume" >
+      </div>
+      <!-- Год выпуска -->
+      <div class="form-group">
+        <label for="year">Год выпуска</label>
+        <input type="number" class="form-control" id="year" placeholder="Год выпуска" name="year" ng-model="vehicleFormCtrl.vehicle.year" >
+      </div>
+      <!-- Тип отгрузки -->
+      <div class="form-group">
+        <label for="loading_type">Тип отгрузки</label>
+        <select name="loading_type" id="loading_type" ng-model="vehicleFormCtrl.vehicle.loading_type" class="form-control" placeholder="Тип отгрузки" required>
+          <option value="">-- Тип отгрузки --</option>
+          <option ng-repeat="(key, value) in vehicleFormCtrl.loadingTypes" value="{{key}}">{{value}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <!-- Полуприцеп (модель) -->
+      <div class="form-group">
+        <label for="semitrailer">Полуприцеп (модель)</label>
+        <input type="text" class="form-control" id="semitrailer" placeholder="Полуприцеп" name="semitrailer" ng-model="vehicleFormCtrl.vehicle.semitrailer" >
+      </div>
+      <!-- Полуприцеп (модель) -->
+      <div class="form-group">
+        <label for="semitrailer_plate_number">Полуприцеп (номер)</label>
+        <input type="text" class="form-control" id="semitrailer_plate_number" placeholder="Полуприцеп (номер)" name="semitrailer_plate_number" ng-model="vehicleFormCtrl.vehicle.semitrailer_plate_number" >
+      </div>
+    </div>
+
   </div>
 
-  <div class="form-group">
-    <label for="plate_number">Номер</label>
-    <input type="text" class="form-control" id="plate_number" placeholder="Номер" name="plate_number" ng-model="vehicleFormCtrl.vehicle.plate_number" required>
-  </div>
 
-  <div class="form-group">
-    <label for="capacity">Грузоподъемность</label>
-    <input type="number" class="form-control" id="capacity" placeholder="Грузоподъемность" name="capacity" ng-model="vehicleFormCtrl.vehicle.capacity" >
-  </div>
+  <button type="submit" class="btn-primary requests-list_send">Сохранить</button>
 
-  <div class="form-group">
-    <label for="volume">Объем</label>
-    <input type="number" class="form-control" id="volume" placeholder="Объем" name="volume" ng-model="vehicleFormCtrl.vehicle.volume" >
-  </div>
-
-  <div class="form-group">
-    <label for="year">Год выпуска</label>
-    <input type="number" class="form-control" id="year" placeholder="Год выпуска" name="year" ng-model="vehicleFormCtrl.vehicle.year" >
-  </div>
-
-  <div class="form-group">
-    <label for="loading_type">Тип отгрузки</label>
-    <select name="loading_type" id="loading_type" ng-model="vehicleFormCtrl.vehicle.loading_type" class="form-control" placeholder="Тип отгрузки" required>
-      <option value="">-- Тип отгрузки --</option>
-      <option ng-repeat="(key, value) in vehicleFormCtrl.loadingTypes" value="{{key}}">{{value}}</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="semitrailer">Полуприцеп (модель)</label>
-    <input type="text" class="form-control" id="semitrailer" placeholder="Полуприцеп" name="semitrailer" ng-model="vehicleFormCtrl.vehicle.semitrailer" >
-  </div>
-
-  <div class="form-group">
-    <label for="semitrailer_plate_number">Полуприцеп (номер)</label>
-    <input type="text" class="form-control" id="semitrailer_plate_number" placeholder="Полуприцеп (номер)" name="semitrailer_plate_number" ng-model="vehicleFormCtrl.vehicle.semitrailer_plate_number" >
-  </div>
-
-  <button type="submit" class="btn btn-default">Submit</button>
 </form>

@@ -52,10 +52,13 @@ b{
   border: none; outline: none;
   padding: 6px 18px;
   border-radius: 4px;
+  display: inline-block;
+  text-align: center;
   &:hover, &:focus, &active{
     background: ( @green-color * .9 );
     border:none; outline: none;
     box-shadow: none;
+    text-decoration: none;
   }
 }
 .btn-primary.active.focus, .btn-primary.active:focus,
@@ -67,19 +70,32 @@ b{
   background: ( @green-color * .9 );
   border:none; outline: none;
   box-shadow: none;
+  text-decoration: none;
+}
+.btn-danger{
+  font-size: 16px;
+  color: #fff;
+  border: none; outline: none;
+  padding: 6px 18px;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 // ---- [  Form  ] ----
 .form-field{
   font-family: @font-light;
   font-size: 18px;
-  color:#868C88;
+  color: #868C88;
 }
 .form-fieldset{
   padding: 10px 30px;
   border: 1px solid #c2d0e8;
   margin-bottom: 36px;
   border-radius: 5px;
+  &__no-title{
+    padding-top: 30px;
+  }
 }
 .form-fieldset_legend{
   font-size:16px;
@@ -93,10 +109,7 @@ b{
   margin-bottom: 20px;
 }
 .form-fieldset_cell{
-  display: inline-block;
-  &:first-child{
-    margin-left: 0;
-  }
+  margin-bottom: 20px;
 }
 .form-fieldset_field{
   display: block;

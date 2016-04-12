@@ -1,7 +1,7 @@
 "use strict";
 
 export default function($http, $rootScope, $cookies){
-  this.SetCredentials = function (user ,authData){
+  this.SetCredentials = function (user, authData){
     //установка заголовка
     $http.defaults.headers.common.Authorization = `Basic ${authData}`;
     //установка текущего пользователя
@@ -14,7 +14,8 @@ export default function($http, $rootScope, $cookies){
     //сохранение в куку
     $cookies.putObject('globals', $rootScope.globals);
 
-  }
+  };
+
   
   this.logout = function () {
     $rootScope.globals = {};

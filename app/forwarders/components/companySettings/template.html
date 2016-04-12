@@ -1,88 +1,144 @@
 <aticle class="company-settings">
 
-  <h1>Настройки компании</h1>
+  <div class="l-title">Настройки компании</div>
 
 
   <uib-tabset active="activeJustified">
     <!-- start Tab -->
     <uib-tab index="0" heading="Основные данные">
-
-      <!--Название компании-->
-      <div>
-        {{companySettingsCtrl.company.title}}
-      </div>
-
-      <!--Полное Название компании-->
-      <div>
-        {{companySettingsCtrl.company.titlefull_title}}
-      </div>
-
-      <!--Физичиеский адрес-->
-      <div>
-        {{companySettingsCtrl.company.address}}
-      </div>
-
-      <!--Юридическйи  адрес-->
-      <div>
-        {{companySettingsCtrl.company.legal_address}}
-      </div>
-
-      <!--Сайт-->
-      <div>
-        {{companySettingsCtrl.company.website}}
-      </div>
+      <fieldset class="form-fieldset">
+        <legend class="form-fieldset_legend">
+          Информация о ТК
+        </legend>
+        <div class="form-fieldset_row row">
+          <div class="col-xs-3">
+            <!-- Название компании -->
+            <div class="form-fieldset_cell">
+              <span>Название компании</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.title}}</span>
+              </label>
+            </div>
+            <!-- Полное Название компании -->
+            <div class="form-fieldset_cell">
+              <span>Полное Название компании</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.titlefull_title}}</span>
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <!-- Физичиеский адрес -->
+            <div class="form-fieldset_cell">
+              <span>Физичиеский адрес</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.address}}</span>
+              </label>
+            </div>
+            <!-- Юридическйи  адрес -->
+            <div class="form-fieldset_cell">
+              <span>Юридическйи  адрес</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.legal_address}}</span>
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <!-- Сайт -->
+            <div class="form-fieldset_cell">
+              <span>Сайт</span>
+              <label class="form-fieldset_field">
+                <a ng-href="http://{{companySettingsCtrl.company.website}}" target="_blank">{{companySettingsCtrl.company.website}}</a>
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
     </uib-tab>
 
     <uib-tab index="1" heading="Банковские реквизиты">
-      <!--Название банка-->
-      <div>
-        {{companySettingsCtrl.company.requisites.bank}}
-      </div>
-
-      <!--ОГРН-->
-      <div>
-        {{companySettingsCtrl.company.requisites.OGRN}}
-      </div>
-
-      <!--ИНН-->
-      <div>
-        {{companySettingsCtrl.company.requisites.INN}}
-      </div>
-
-      <!--КПП-->
-      <div>
-        {{companySettingsCtrl.company.requisites.KPP}}
-      </div>
-
-      <!--Название ОКВЭД-->
-      <div>
-        {{companySettingsCtrl.company.requisites.OKVED}}
-      </div>
-
-      <!--Название ОКОНХ-->
-      <div>
-        {{companySettingsCtrl.company.requisites.OKONH}}
-      </div>
-
-      <!--ОКПО-->
-      <div>
-        {{companySettingsCtrl.company.requisites.OKPO}}
-      </div>
-
-      <!--Р/с-->
-      <div>
-        {{companySettingsCtrl.company.requisites.PS}}
-      </div>
-
-      <!--К/С-->
-      <div>
-        {{companySettingsCtrl.company.requisites.KS}}
-      </div>
-
-      <!--БИК-->
-      <div>
-        {{companySettingsCtrl.company.requisites.BIK}}
-      </div>
+      <fieldset class="form-fieldset form-fieldset__no-title">
+        <div class="form-fieldset_row row">
+          <div class="col-xs-12">
+            <!-- Название банка -->
+            <div class="form-fieldset_cell">
+              <span>Название банка</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.bank}}</span>
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <!-- ОГРН -->
+            <div class="form-fieldset_cell">
+              <span>ОГРН</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.OGRN}}</span>
+              </label>
+            </div>
+            <!-- ИНН -->
+            <div class="form-fieldset_cell">
+              <span>ИНН</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.INN}}</span>
+              </label>
+            </div>
+            <!-- КПП -->
+            <div class="form-fieldset_cell">
+              <span>КПП</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.KPP}}</span>
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <!-- ОКВЭД -->
+            <div class="form-fieldset_cell">
+              <span>ОКВЭД</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.OKVED}}</span>
+              </label>
+            </div>
+            <!-- ОКОНХ -->
+            <div class="form-fieldset_cell">
+              <span>ОКОНХ</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.OKONH}}</span>
+              </label>
+            </div>
+            <!-- ОКПО -->
+            <div class="form-fieldset_cell">
+              <span>Название ОКВЭД</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.OKPO}}</span>
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <!-- Р/с -->
+            <div class="form-fieldset_cell">
+              <span>Р/С</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.PS}}</span>
+              </label>
+            </div>
+            <!-- К/С -->
+            <div class="form-fieldset_cell">
+              <span>К/С</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.KS}}</span>
+              </label>
+            </div>
+            <!-- БИК -->
+            <div class="form-fieldset_cell">
+              <span>БИК</span>
+              <label class="form-fieldset_field">
+                <span>{{companySettingsCtrl.company.requisites.BIK}}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
 
     </uib-tab>
   </uib-tabset>
