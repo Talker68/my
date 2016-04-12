@@ -17,8 +17,8 @@ export default function($http, $q, $timeout){
     return $http.post('/logistics/vehicle', vehicle);
   }
 
-  this.removeVehicle = function (vehicleGuid) {
-    return $http.delete(`/logistics/vehicle/${vehicleGuid}`);
+  this.removeVehicle = function (vehicle) {
+    return $http.delete(`/logistics/vehicle/${vehicle.guid}`);
   }
 
   //Получение типов отгрузки

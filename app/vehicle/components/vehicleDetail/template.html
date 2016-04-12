@@ -1,8 +1,17 @@
 
 <div class="l-title">Авто</div>
 
+
+
 <div class="b-wrap">
+
   <div ng-if="!vehicleDetailCtrl.isEdit">
+
+    <div>
+      <button ng-click="vehicleDetailCtrl.edit()">Изменить</button>
+      <button ng-click="vehicleDetailCtrl.removeVehicle()">Удалить</button>
+    </div>
+
     <div class="vehicle form-field row">
       <div class="col-xs-4">
         <!-- Модель -->
@@ -71,10 +80,12 @@
 
   <div ng-if="vehicleDetailCtrl.isEdit">
     <vehicle-form
-      vehicle="vehicleDetailCtrl.vehicle"
+      vehicle="vehicleDetailCtrl.vehicleToEdit"
       loading-types = "vehicleDetailCtrl.loadingTypes"
       add-vehicle = "vehicleDetailCtrl.addVehicle(vehicle)"
-      update-vehicle = "vehicleDetailCtrl.updateVehicle(vehicle)">
+      update-vehicle = "vehicleDetailCtrl.updateVehicle(vehicle)"
+      cancel-edit = "vehicleDetailCtrl.cancelEdit()"
+    >
     </vehicle-form>
   </div>
 

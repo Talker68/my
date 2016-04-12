@@ -1,7 +1,8 @@
 "use strict";
 
 export default function (VehicleService) {
-
+  
+  
   this.submit = function(){
 
     if(this.vehicle.guid){

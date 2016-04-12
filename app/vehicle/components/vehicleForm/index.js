@@ -11,7 +11,7 @@ export default {
     vehicle : '<',
     loadingTypes : '<',
     addVehicle : '&',
-    removeVehicle : '&',
-    updateVehicle : '&'
+    updateVehicle : '&',
+    cancelEdit : '&',
   }
 }
