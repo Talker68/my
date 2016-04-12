@@ -38,7 +38,7 @@ export default function (VehicleService, $q) {
   this.updateVehicle = function (vehicle) {
     return VehicleService.updateVehicle(vehicle).then(
       (response) => {
-        this.vehicle = vehicle;
+        this.vehicle = response.data;
         this.isEdit = false;
       },
       (error) => {return $q.reject(error)}
