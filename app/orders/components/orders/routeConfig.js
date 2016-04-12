@@ -3,5 +3,5 @@
 export default [
   {path: '/', name: 'OrdersList', component: 'ordersList', useAsDefault: true},
   {path: '/:guid', name: 'OrderDetail', component : 'orderDetail'},
-  {path: '/setForwarder', name: 'SetForwarderForm', component: 'setForwarderForm'}
+  {path: '/operations/...', name: 'OrdersOperations', component: 'ordersOperations'}
 ]

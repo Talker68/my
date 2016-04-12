@@ -1,6 +1,6 @@
 "use strict";
 
-export default function (OrdersService, ForwardersService) {
+export default function (OrdersService, ForwardersService, $rootRouter) {
   let orderGuid;
 
   //получаем guid заказа из параметра и сам заказ
@@ -24,7 +24,7 @@ export default function (OrdersService, ForwardersService) {
   this.setFrowarder = function(forwarderGuid, orderAcceptTime){
     return OrdersService.patchOrder(orderGuid, {forwarderGuid : forwarderGuid, orderAcceptTime : orderAcceptTime}).then(
       (response) => {
-        this.$router.navigate(['OrdersList']);
+        $rootRouter.navigate(['Orders', 'OrdersList']);
       }
     )
   };

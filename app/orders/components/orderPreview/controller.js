@@ -16,13 +16,14 @@ export default function(OrdersService, $rootRouter){
   this.goToSetForwarderRoute = function () {
     event.preventDefault();
     event.stopPropagation();
-    $rootRouter.navigate(['Orders','SetForwarderForm', {guid : this.order.guid}]);
+    $rootRouter.navigate(['Orders', 'OrdersOperations', 'SetForwarder', {guid : this.order.guid}]);
   }
 
 
   this.confirmOrder = function(){
     event.preventDefault();
     event.stopPropagation();
+    $rootRouter.navigate(['Orders', 'OrdersOperations', 'ConfirmOrder', {guid : this.order.guid}]);
   }
 
 
