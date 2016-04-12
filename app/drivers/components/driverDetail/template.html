@@ -1,55 +1,72 @@
-<h1>Водитель</h1>
 
+<div class="l-title">Водитель</div>
 
 <div ng-if="!driverDetailCtrl.isEdit">
-
-  <div>
-    <button ng-click="driverDetailCtrl.edit()">Изменить</button>
-    <button ng-click="driverDetailCtrl.removeDriver()">Удалить</button>
+  <div class="b-wrap">
+    <div class="form-field row">
+      <div class="col-xs-6">
+        <!-- ФИО -->
+        <div class="form-fieldset_cell">
+          <span>ФИО</span>
+          <label class="form-fieldset_field">
+            <span>{{driverDetailCtrl.driver.driver}}</span>
+          </label>
+        </div>
+        <!-- Телефон -->
+        <div class="form-fieldset_cell">
+          <span>Телефон</span>
+          <label class="form-fieldset_field">
+            <span>{{driverDetailCtrl.driver.driver_phone}}</span>
+          </label>
+        </div>
+        <!-- Права серия -->
+        <div class="form-fieldset_cell">
+          <span>Права серия</span>
+          <label class="form-fieldset_field">
+            <span>{{driverDetailCtrl.driver.license_series}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <!-- Права номер -->
+        <div class="form-fieldset_cell">
+          <span>Права номер</span>
+          <label class="form-fieldset_field">
+            <span>{{driverDetailCtrl.driver.license_number}}</span>
+          </label>
+        </div>
+        <!-- Права выданы -->
+        <div class="form-fieldset_cell">
+          <span>Права выданы</span>
+          <label class="form-fieldset_field">
+            <span>{{driverDetailCtrl.driver.license_issue | date : "dd.MM.yyyy"}}</span>
+          </label>
+        </div>
+        <!-- Права действительны до -->
+        <div class="form-fieldset_cell">
+          <span>Права действительны до</span>
+          <label class="form-fieldset_field">
+            <span>{{driverDetailCtrl.driver.license_valid | date : "dd.MM.yyyy"}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="driver">
-    <div>
-      <h3>ФИО</h3>
-      <div>{{driverDetailCtrl.driver.driver}}</div>
-    </div>
-
-    <div>
-      <h3>Телефон</h3>
-      <div>{{driverDetailCtrl.driver.driver_phone}}</div>
-    </div>
-
-    <div>
-      <h3>Права серия</h3>
-      <div>{{driverDetailCtrl.driver.license_series}}</div>
-    </div>
-
-    <div>
-      <h3>Права номер</h3>
-      <div>{{driverDetailCtrl.driver.license_number}}</div>
-    </div>
-
-    <div>
-      <h3>Права выданы</h3>
-      <div>{{driverDetailCtrl.driver.license_issue | date : "dd.MM.yyyy"}}</div>
-    </div>
-
-    <div>
-      <h3>Права действительны до</h3>
-      <div>{{driverDetailCtrl.driver.license_valid | date : "dd.MM.yyyy"}}</div>
-    </div>
-
-
+  <div>
+    <button ng-click="driverDetailCtrl.edit()" class="btn-primary requests-list_send">Изменить</button>
+    <button ng-click="driverDetailCtrl.removeDriver()" class="btn-danger requests-list_send">Удалить</button>
   </div>
 </div>
 
 <div ng-if="driverDetailCtrl.isEdit">
-  <driver-form
-    driver="driverDetailCtrl.driver"
-    add-driver = "driverDetailCtrl.addDriver(driver)"
-    update-driver = "driverDetailCtrl.updateDriver(driver)"
-    cancel-edit = "driverDetailCtrl.cancelEdit()">
-  </driver-form>
+  <div class="b-wrap">
+    <driver-form
+      driver="driverDetailCtrl.driver"
+      add-driver = "driverDetailCtrl.addDriver(driver)"
+      update-driver = "driverDetailCtrl.updateDriver(driver)"
+      cancel-edit = "driverDetailCtrl.cancelEdit()">
+    </driver-form>
+  </div>
 </div>
 
 

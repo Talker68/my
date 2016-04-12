@@ -2,90 +2,90 @@
 <div class="l-title">Авто</div>
 
 
-  <div ng-if="!vehicleDetailCtrl.isEdit">
-    <div class="b-wrap">
-      <div class="vehicle form-field row">
-        <div class="col-xs-4">
-          <!-- Модель -->
-          <div class="form-fieldset_cell">
-            <span>Модель</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.vehicle.model}}</span>
-            </label>
-          </div>
-          <!-- Номер -->
-          <div class="form-fieldset_cell">
-            <span>Номер</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.vehicle.plate_number}}</span>
-            </label>
-          </div>
-          <!-- Грузоподъемность -->
-          <div class="form-fieldset_cell">
-            <span>Грузоподъемность</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.vehicle.capacity}}</span>
-            </label>
-          </div>
+<div ng-if="!vehicleDetailCtrl.isEdit">
+  <div class="b-wrap">
+    <div class="form-field row">
+      <div class="col-xs-4">
+        <!-- Модель -->
+        <div class="form-fieldset_cell">
+          <span>Модель</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.vehicle.model}}</span>
+          </label>
         </div>
-        <div class="col-xs-4">
-          <!-- Объем -->
-          <div class="form-fieldset_cell">
-            <span>Объем</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.vehicle.volume}}</span>
-            </label>
-          </div>
-          <!-- Год выпуска -->
-          <div class="form-fieldset_cell">
-            <span>Год выпуска</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.vehicle.year}}</span>
-            </label>
-          </div>
-          <!-- Тип отгрузки -->
-          <div class="form-fieldset_cell">
-            <span>Тип отгрузки</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.loadingTypes[vehicleDetailCtrl.vehicle.loading_type]}}</span>
-            </label>
-          </div>
+        <!-- Номер -->
+        <div class="form-fieldset_cell">
+          <span>Номер</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.vehicle.plate_number}}</span>
+          </label>
         </div>
-        <div class="col-xs-4">
-          <!-- Полуприцеп -->
-          <div class="form-fieldset_cell">
-            <span>Полуприцеп</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.vehicle.semitrailer}}</span>
-            </label>
-          </div>
-          <!-- Номер полуприцепа -->
-          <div class="form-fieldset_cell">
-            <span>Номер полуприцепа</span>
-            <label class="form-fieldset_field">
-              <span>{{vehicleDetailCtrl.vehicle.semitrailer_plate_number}}</span>
-            </label>
-          </div>
+        <!-- Грузоподъемность -->
+        <div class="form-fieldset_cell">
+          <span>Грузоподъемность</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.vehicle.capacity}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <!-- Объем -->
+        <div class="form-fieldset_cell">
+          <span>Объем</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.vehicle.volume}}</span>
+          </label>
+        </div>
+        <!-- Год выпуска -->
+        <div class="form-fieldset_cell">
+          <span>Год выпуска</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.vehicle.year}}</span>
+          </label>
+        </div>
+        <!-- Тип отгрузки -->
+        <div class="form-fieldset_cell">
+          <span>Тип отгрузки</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.loadingTypes[vehicleDetailCtrl.vehicle.loading_type]}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <!-- Полуприцеп -->
+        <div class="form-fieldset_cell">
+          <span>Полуприцеп</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.vehicle.semitrailer}}</span>
+          </label>
+        </div>
+        <!-- Номер полуприцепа -->
+        <div class="form-fieldset_cell">
+          <span>Номер полуприцепа</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleDetailCtrl.vehicle.semitrailer_plate_number}}</span>
+          </label>
         </div>
       </div>
     </div>
-    <div>
-      <button ng-click="vehicleDetailCtrl.edit()" class="btn-primary requests-list_send">Изменить</button>
-      <button ng-click="vehicleDetailCtrl.removeVehicle()" class="btn-danger requests-list_send">Удалить</button>
-    </div>
   </div>
+  <div>
+    <button ng-click="vehicleDetailCtrl.edit()" class="btn-primary requests-list_send">Изменить</button>
+    <button ng-click="vehicleDetailCtrl.removeVehicle()" class="btn-danger requests-list_send">Удалить</button>
+  </div>
+</div>
 
-  <div ng-if="vehicleDetailCtrl.isEdit">
-    <div class="b-wrap">
-      <vehicle-form
-        vehicle="vehicleDetailCtrl.vehicleToEdit"
-        loading-types = "vehicleDetailCtrl.loadingTypes"
-        add-vehicle = "vehicleDetailCtrl.addVehicle(vehicle)"
-        update-vehicle = "vehicleDetailCtrl.updateVehicle(vehicle)"
-        cancel-edit = "vehicleDetailCtrl.cancelEdit()"
-      >
-      </vehicle-form>
-    </div>
+<div ng-if="vehicleDetailCtrl.isEdit">
+  <div class="b-wrap">
+    <vehicle-form
+      vehicle="vehicleDetailCtrl.vehicleToEdit"
+      loading-types = "vehicleDetailCtrl.loadingTypes"
+      add-vehicle = "vehicleDetailCtrl.addVehicle(vehicle)"
+      update-vehicle = "vehicleDetailCtrl.updateVehicle(vehicle)"
+      cancel-edit = "vehicleDetailCtrl.cancelEdit()"
+    >
+    </vehicle-form>
   </div>
+</div>
 
 
