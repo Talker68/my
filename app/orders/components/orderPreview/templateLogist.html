@@ -89,9 +89,7 @@
       <!-- Подобрать ТК -->
       <div ng-if="!orderPreviewCtrl.order.forwarder.title">
         <div>
-          <!--<set-forwarder set-forwarder="orderPreviewCtrl.setFrowarder(forwarderGuid, orderAcceptTime)"></set-forwarder>-->
-          <!--<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.openForwarderSelectModal()">Подобрать ТК</button>-->
-					<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.goToSetForwarderRoute()">Подобрать ТК</button>
+          <a ng-link="['/OrdersOperations', 'SetForwarder', {guid : orderPreviewCtrl.order.guid}]">Подобрать ТК</a>
         </div>
       </div>
 
