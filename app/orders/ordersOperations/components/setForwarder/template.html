@@ -1,4 +1,4 @@
-<div class="l-title">Подбор ТК для {{setForwarderFormCtrl.order.id}}</div>
+<div class="l-title">Подбор ТК для {{setForwarderCtrl.order.id}}</div>
 
 <div class="b-wrap">
   <form name="forwarderSelectForm" novalidate>
@@ -16,7 +16,7 @@
       </div>
       <div class="select-time_item">
         <label for="orderAcceptTimeMinutes">Минут</label>
-        <input type="text" ng-model="orderAcceptTime.minutes" id="orderAcceptTimeMinutes" name="orderAcceptTimeMinutes" min="0" max="59" ng-init="orderAcceptTime.minutes = 30" ng-blur="setForwarderFormCtrl.digOnly( orderAcceptTime.minutes )">
+        <input type="text" ng-model="orderAcceptTime.minutes" id="orderAcceptTimeMinutes" name="orderAcceptTimeMinutes" min="0" max="59" ng-init="orderAcceptTime.minutes = 30" ng-blur="setForwarderCtrl.digOnly( orderAcceptTime.minutes )">
       </div>
     </div>
 
@@ -31,12 +31,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="forwarder in setForwarderFormCtrl.forwardersList">
+        <tr ng-repeat="forwarder in setForwarderCtrl.forwardersList">
           <td>
             {{forwarder.title}}
           </td>
           <td class="text-right">
-            <button ng-click="forwarderSelectForm.$valid && setForwarderFormCtrl.setFrowarder(forwarder.guid, orderAcceptTime)" class="btn-primary">
+            <button ng-click="forwarderSelectForm.$valid && setForwarderCtrl.setFrowarder(forwarder.guid, orderAcceptTime)" class="btn-primary">
               Отправить
             </button>
           </td>

@@ -1,13 +1,13 @@
 "use strict";
 
-import template from './template.html';
 import controller from './controller';
+import template from  './template.html';
 
 export default {
   controller : controller,
   controllerAs : 'setForwarderCtrl',
   template : template,
   bindings : {
-    setForwarder : '&'
+    $router: '<'
   }
 }

@@ -38,7 +38,7 @@ export default function (DriversService, $q) {
   this.updateDriver = function (driver) {
     return DriversService.updateDriver(driver).then(
       (response) => {
-        this.driver = driver;
+        this.driver = response.data;
         this.isEdit = false;
       },
       (error) => {return $q.reject(error)}
