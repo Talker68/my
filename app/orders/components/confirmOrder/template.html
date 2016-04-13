@@ -1,100 +1,40 @@
+<style>
+  #confirmOrderForm.ng-submitted .form-control.ng-invalid, #confirmOrderForm .form-control.ng-touched.ng-invalid{
+    border-color: red;
+  }
+</style>
+
 <div class="l-title">Подтверждение заявки</div>
 
 
+<form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
 
-<form name="confirmOrderCtrl.confirmOrderForm">
-
-  <div id="driver_select">
-    <h2>Выбор водителя</h2>
-
-    <div class="form-group">
-      <div class="radio">
-        <label>
-          <input type="radio" ng-model="confirmOrderCtrl.driverFromList" ng-value=true>
-          Выбрать из списка
-        </label>
-      </div>
-
-      <div class="radio">
-        <label>
-          <input type="radio" ng-model="confirmOrderCtrl.driverFromList" ng-value=false>
-          Ввести вручную
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group" ng-if="confirmOrderCtrl.driverFromList">
-      <select
-        name="driver" id="driver" class="form-control" required
-        ng-model="confirmOrderCtrl.driver"
-        ng-options="driver.driver for driver in confirmOrderCtrl.drivers">
-        <option value="">-- Водитель --</option>
-      </select>
-    </div>
-
-    <div class="form-group" ng-if="!confirmOrderCtrl.driverFromList">
-      <div class="form-group">
-        <label for="driver">ФИО</label>
-        <input type="text" class="form-control" id="driver" placeholder="ФИО" name="driver" ng-model="confirmOrderCtrl.driver.driver" required>
-      </div>
-
-      <div class="form-group">
-        <label for="driver_phone">Номер телефона</label>
-        <input type="text" class="form-control" id="driver_phone" placeholder="Номер телефона" name="driver_phone" ng-model="confirmOrderCtrl.driver.driver_phone" required>
-      </div>
-
-      <div class="form-group">
-        <label for="license_series">Права серия</label>
-        <input type="text" class="form-control" id="license_series" placeholder="Права серия" name="license_series" ng-model="confirmOrderCtrl.driver.license_series" required>
-      </div>
-
-      <div class="form-group">
-        <label for="license_series">Права номер</label>
-        <input type="text" class="form-control" id="license_number" placeholder="Права номер" name="license_number" ng-model="confirmOrderCtrl.driver.license_number" required>
-      </div>
-
-      <div class="form-group">
-        <label for="license_issue">Права выданы</label>
-        <input type="date" class="form-control" id="license_issue" placeholder="Права выданы" name="license_issue" ng-model="confirmOrderCtrl.driver.license_issue" required>
-      </div>
-
-      <div class="form-group">
-        <label for="license_valid">Права действительны до</label>
-        <input type="date" class="form-control" id="license_valid" placeholder="Права действительны до" name="license_valid" ng-model="confirmOrderCtrl.driver.license_valid" required>
-      </div>
-    </div>
+  <div class="form-group">
+    <label for="driver">Водитель</label>
+    <select
+      name="driver" id="driver" class="form-control" required
+      ng-model="confirmOrderCtrl.driver"
+      ng-options="driver.driver for driver in confirmOrderCtrl.driversList">
+      <option value="">-- Водитель --</option>
+    </select>
   </div>
 
 
-  <div id="vehicle_select">
-    <h2>Выбор машины</h2>
 
-    <div class="form-group">
-      <div class="radio">
-        <label>
-          <input type="radio" ng-model="confirmOrderCtrl.vehicleFromList" ng-value=true>
-          Выбрать из списка
-        </label>
-      </div>
-
-      <div class="radio">
-        <label>
-          <input type="radio" ng-model="confirmOrderCtrl.vehicleFromList" ng-value=false>
-          Ввести вручную
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group" ng-if="confirmOrderCtrl.vehicleFromList">
-      <select
-        name="vehicle" id="vehicle" class="form-control" required
-        ng-model="confirmOrderCtrl.vehicle"
-        ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in confirmOrderCtrl.vehicle">
-        <option value="">-- Машина --</option>
-      </select>
-    </div>
-
+  <div class="form-group">
+    <label for="vehicle">Машина</label>
+    <select
+      name="vehicle" id="vehicle" class="form-control" required
+      ng-model="confirmOrderCtrl.vehicle"
+      ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in confirmOrderCtrl.vehicleList">
+      <option value="">-- Машина --</option>
+    </select>
   </div>
 
+
+  <div>
+    <button type="submit">Подтвердить</button>
+    <button type="submit">Отмена</button>
+  </div>
 </form>
 
