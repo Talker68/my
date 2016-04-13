@@ -2,17 +2,9 @@
 <div class="l-title">Авто</div>
 
 
-
-<div class="b-wrap">
-
-  <div ng-if="!vehicleDetailCtrl.isEdit">
-
-    <div>
-      <button ng-click="vehicleDetailCtrl.edit()">Изменить</button>
-      <button ng-click="vehicleDetailCtrl.removeVehicle()">Удалить</button>
-    </div>
-
-    <div class="vehicle form-field row">
+<div ng-if="!vehicleDetailCtrl.isEdit">
+  <div class="b-wrap">
+    <div class="form-field row">
       <div class="col-xs-4">
         <!-- Модель -->
         <div class="form-fieldset_cell">
@@ -77,8 +69,14 @@
       </div>
     </div>
   </div>
+  <div>
+    <button ng-click="vehicleDetailCtrl.edit()" class="btn-primary requests-list_send">Изменить</button>
+    <button ng-click="vehicleDetailCtrl.removeVehicle()" class="btn-danger requests-list_send">Удалить</button>
+  </div>
+</div>
 
-  <div ng-if="vehicleDetailCtrl.isEdit">
+<div ng-if="vehicleDetailCtrl.isEdit">
+  <div class="b-wrap">
     <vehicle-form
       vehicle="vehicleDetailCtrl.vehicleToEdit"
       loading-types = "vehicleDetailCtrl.loadingTypes"
@@ -88,6 +86,6 @@
     >
     </vehicle-form>
   </div>
-
 </div>
+
 

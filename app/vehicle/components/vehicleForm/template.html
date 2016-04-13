@@ -59,11 +59,10 @@
         <input type="text" class="form-control" id="semitrailer_plate_number" placeholder="Полуприцеп (номер)" name="semitrailer_plate_number" ng-model="vehicleFormCtrl.vehicle.semitrailer_plate_number" >
       </div>
     </div>
-
   </div>
 
 
   <button type="submit" class="btn-primary requests-list_send">Сохранить</button>
-  <button ng-click="vehicleFormCtrl.cancelEdit()">Отмена</button>
+  <button ng-click="vehicleFormCtrl.cancelEdit()" class="btn-danger requests-list_send">Отмена</button>
 
 </form>
