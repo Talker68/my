@@ -1,7 +1,7 @@
 <div class="l-title">Автомобили</div>
 
 <div class="requests-list">
-  <div class="requests-list_row requests-list_row__no-link">
+  <div class="requests-list_row">
     <div class="requests-list_row-cnt requests-list_row-cnt__head">
       <div class="requests-list_cell">Номер</div>
       <div class="requests-list_cell">Марка</div>
@@ -10,9 +10,9 @@
       <div class="requests-list_cell">Год выпуска</div>
       <div class="requests-list_cell">Тип отгрузки</div>
     </div>
-    <div ng-repeat="vehicle in companyVehicleCtrl.vehicleList track by vehicle.guid" class="requests-list_row-cnt">
+    <a ng-link="['VehicleDetail', {guid : vehicle.guid}]" ng-repeat="vehicle in companyVehicleCtrl.vehicleList track by vehicle.guid" class="requests-list_row-cnt">
       <div class="requests-list_cell">
-        <a ng-link="['VehicleDetail', {guid : vehicle.guid}]" class="e-link">{{vehicle.plate_number}}</a>
+        <span>{{vehicle.plate_number}}</span>
       </div>
       <div class="requests-list_cell">
         {{vehicle.model}}
@@ -29,7 +29,7 @@
       <div class="requests-list_cell">
         {{companyVehicleCtrl.loadingTypes[vehicle.loading_type]}}
       </div>
-    </div>
+    </a>
   </div>
 </div>
 
