@@ -37,7 +37,7 @@
 								</div>
 								<span>Тип кузова</span>
 								<label class="form-fieldset_field">
-									<input type="text" disabled value="{{orderDetailCtrl.order.vehicle.vehicle_type}}" class="form-control">
+									<input type="text" disabled value="{{orderDetailCtrl.order.forwarder.vehicle.vehicle_type}}" class="form-control">
 								</label>
 							</div>
 							<!-- Тип груза -->
@@ -58,7 +58,7 @@
 							<div class="form-fieldset_cell col-xs-12">
 								<span>Тип кузова(полное) </span>
 								<label class="form-fieldset_field">
-									<span>{{orderDetailCtrl.order.vehicle.vehicle_type_full}}</span>
+									<span>{{orderDetailCtrl.order.forwarder.vehicle.vehicle_type_full}}</span>
 								</label>
 							</div>
 						</div>
@@ -184,16 +184,16 @@
 			<div>
 				<h2>Транспортная информация</h2>
 				<!--Марка тягача-->
-				<div>{{orderDetailCtrl.order.vehicle.model}}</div>
+				<div>{{orderDetailCtrl.order.forwarder.vehicle.model}}</div>
 
 				<!--номер тягача-->
-				<div>{{orderDetailCtrl.order.vehicle.plate_number}}</div>
+				<div>{{orderDetailCtrl.order.forwarder.vehicle.plate_number}}</div>
 
 				<!--Марка полуприцепа-->
-				<div>{{orderDetailCtrl.order.vehicle.semitrailer}}</div>
+				<div>{{orderDetailCtrl.order.forwarder.vehicle.semitrailer}}</div>
 
 				<!--номер полуприцепа-->
-				<div>{{orderDetailCtrl.order.vehicle.semitrailer_plate_number}}</div>
+				<div>{{orderDetailCtrl.order.forwarder.vehicle.semitrailer_plate_number}}</div>
 			</div>
 			<div>
 				<h2>Информация о водителе</h2>
