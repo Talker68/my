@@ -85,14 +85,12 @@
 			<div ng-if="orderPreviewCtrl.order.forwarder.title">
 				Отправлена напрямую в {{orderPreviewCtrl.order.forwarder.title}}
 			</div>
-
-      <!-- Подобрать ТК -->
-      <div ng-if="!orderPreviewCtrl.order.forwarder.title">
-        <div>
-          <a ng-link="['/OrdersOperations', 'SetForwarder', {guid : orderPreviewCtrl.order.guid}]">Подобрать ТК</a>
-        </div>
-      </div>
-
+			<!-- Подобрать ТК -->
+			<div ng-if="!orderPreviewCtrl.order.forwarder.title">
+				<div>
+					<a ng-link="['/OrdersOperations', 'SetForwarder', {guid : orderPreviewCtrl.order.guid}]">Подобрать ТК</a>
+				</div>
+			</div>
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->

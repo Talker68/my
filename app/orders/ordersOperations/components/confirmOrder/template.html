@@ -6,8 +6,8 @@
 
 <div class="l-title">Подтверждение заявки</div>
 
-
-<form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
+<div class="b-wrap">
+  <form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
 
   <div class="form-group">
     <div class="row">
@@ -22,7 +22,7 @@
       </div>
 
       <div class="col-xs-3">
-        <a ng-link="['/Drivers', 'DriverDetail', {guid : 'new'}]">Добавить водителя</a>
+        <a ng-link="['/Drivers', 'DriverDetail', {guid : 'new'}]" class="btn-primary">Добавить водителя</a>
       </div>
 
     </div>
@@ -57,4 +57,5 @@
 
   </div>
 </form>
+</div>
 

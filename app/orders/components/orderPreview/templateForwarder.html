@@ -56,10 +56,8 @@
 	<div class="requests-list_cell">
 		<!--Когда у заказа статус сформирован-->
 		<div ng-if="orderPreviewCtrl.order.status === 1">
-      <a ng-link="['/OrdersOperations', 'ConfirmOrder', {guid : orderPreviewCtrl.order.guid}]">Подтвердить</a>
-      <a ng-click="orderPreviewCtrl.refuseOrder()">Отказаться</a>
-      <!--<button class="btn-primary requests-list_send" ng-click="orderPreviewCtrl.confirmOrder()">Подтвердить</button>-->
-		  <!--<button class="btn-danger requests-list_send" ng-click="orderPreviewCtrl.refuseOrder()">Отказаться</button>-->
+		  <a ng-link="['/OrdersOperations', 'ConfirmOrder', {guid : orderPreviewCtrl.order.guid}]" class="btn-primary requests-list_send">Подтвердить</a>
+		  <a ng-click="orderPreviewCtrl.refuseOrder()" class="btn-danger requests-list_send">Отказаться</a>
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->
