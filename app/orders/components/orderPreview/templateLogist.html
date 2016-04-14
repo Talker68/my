@@ -88,7 +88,7 @@
 			<!-- Подобрать ТК -->
 			<div ng-if="!orderPreviewCtrl.order.forwarder.title">
 				<div>
-					<a ng-link="['/OrdersOperations', 'SetForwarder', {guid : orderPreviewCtrl.order.guid}]">Подобрать ТК</a>
+					<button class="btn-primary requests-list_send" ng-link="['/OrdersOperations', 'SetForwarder', {guid : orderPreviewCtrl.order.guid}]">Подобрать ТК</button>
 				</div>
 			</div>
 		</div>
