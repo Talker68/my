@@ -6,56 +6,49 @@
 
 <div class="l-title">Подтверждение заявки</div>
 
-<div class="b-wrap">
-  <form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col-xs-9">
-        <label for="driver">Водитель</label>
-        <select
-          name="driver" id="driver" class="form-control" required
-          ng-model="confirmOrderCtrl.driver"
-          ng-options="driver.driver for driver in confirmOrderCtrl.driversList">
-          <option value="">-- Водитель --</option>
-        </select>
-      </div>
-
-      <div class="col-xs-3">
-        <a ng-link="['/Drivers', 'DriverDetail', {guid : 'new'}]" class="btn-primary">Добавить водителя</a>
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col-xs-9">
-        <label for="vehicle">Машина</label>
-        <select
-          name="vehicle" id="vehicle" class="form-control" required
-          ng-model="confirmOrderCtrl.vehicle"
-          ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in confirmOrderCtrl.vehicleList">
-          <option value="">-- Машина --</option>
-        </select>
-      </div>
-
-      <div class="col-xs-3">
-        <a ng-link="['/Vehicle', 'VehicleDetail', {guid : 'new'}]">Добавить машину</a>
+<form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
+  <div class="b-wrap">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="driver">Водитель</label>
+        </div>
+        <div class="col-xs-9">
+          <select
+            name="driver" id="driver" class="form-control" required
+            ng-model="confirmOrderCtrl.driver"
+            ng-options="driver.driver for driver in confirmOrderCtrl.driversList">
+            <option value="">-- Водитель --</option>
+          </select>
+        </div>
+        <div class="col-xs-3">
+          <button ng-link="['/Drivers', 'DriverDetail', {guid : 'new'}]" class="btn-primary requests-list_send">Добавить водителя</button>
+        </div>
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="vehicle">Машина</label>
+        </div>
+        <div class="col-xs-9">
+          <select
+            name="vehicle" id="vehicle" class="form-control" required
+            ng-model="confirmOrderCtrl.vehicle"
+            ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in confirmOrderCtrl.vehicleList">
+            <option value="">-- Машина --</option>
+          </select>
+        </div>
+        <div class="col-xs-3">
+          <button ng-link="['/Vehicle', 'VehicleDetail', {guid : 'new'}]" class="btn-primary requests-list_send">Добавить машину</button>
+        </div>
+      </div>
+    </div>
   </div>
-
 
   <div>
-    <button type="submit">Подтвердить</button>
-    <a ng-link="['/Orders', 'OrdersList', {status : 1}]">Отмена</a>
-
+    <button type="submit" class="btn-primary requests-list_send">Подтвердить</button>
+    <button class="btn-danger requests-list_send" ng-link="['/Orders', 'OrdersList', {status : 1}]">Отмена</button>
   </div>
 </form>
-</div>
-
