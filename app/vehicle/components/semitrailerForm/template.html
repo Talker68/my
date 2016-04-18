@@ -1,0 +1,24 @@
+<style>
+  #semitrailerForm.ng-submitted .form-control.ng-invalid,
+  #semitrailerForm .form-control.ng-touched.ng-invalid {
+    border-color: red;
+  }
+</style>
+
+<div class="form-group">
+  <div class="bg-danger">{{semitrailerFormCtrl.error}}</div>
+</div>
+
+<form class="form-inline" id='semitrailerForm' name="semitrailerFormCtrl.semitrailerForm" novalidate ng-submit="semitrailerFormCtrl.semitrailerForm.$valid && semitrailerFormCtrl.submit()">
+  <div class="form-group">
+    <label for="model">Model</label>
+    <input type="text" class="form-control" id="model" name="model" ng-model="semitrailerFormCtrl.semitrailer.model" placeholder="Модель" required>
+  </div>
+  <div class="form-group">
+    <label for="plate_number">Номер</label>
+    <input type="text" class="form-control" id="plate_number" name="plate_number" ng-model="semitrailerFormCtrl.semitrailer.plate_number" placeholder="Номер" required>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+  <button ng-if="semitrailerFormCtrl.semitrailer.guid" ng-click="semitrailerFormCtrl.cancel()" class="btn btn-default">Отмена</button>
+</form>

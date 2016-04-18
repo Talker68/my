@@ -1,0 +1,17 @@
+<div class="row" ng-if="!semitrailerDetailCtrl.isEdit">
+  <div class="col-sm-5">
+    {{semitrailerDetailCtrl.semitrailer.model}}
+  </div>
+  <div class="col-sm-5">
+    {{semitrailerDetailCtrl.semitrailer.plate_number}}
+  </div>
+  <div class="col-sm-1"><a ng-click="semitrailerDetailCtrl.edit()">Edit</a></div>
+</div>
+
+
+<semitrailer-from
+  ng-if="semitrailerDetailCtrl.isEdit"
+  semitrailer="semitrailerDetailCtrl.copyToEdit"
+  cancel = "semitrailerDetailCtrl.cancelEdit()"
+  update = "semitrailerDetailCtrl.updateSemitrailer(semitrailer)"
+> </semitrailer-from>

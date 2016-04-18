@@ -13,6 +13,14 @@ export default function($http, $q){
     return $http.patch(`/logistics/order/${orderGuid}`, requestData)
   }
 
+  this.logistSetsForwarder = function (orderGuid, requestData) {
+    requestData.operation = 'settingForwarder';
+    return $http.post(`/logistics/order/${orderGuid}`, requestData)
+  }
+
+  this.forwarderRefuseOrder = function (orderGuid) {
+    return $http.post(`/logistics/order/${orderGuid}`, {operation : 'refuseForwader'})
+  }
 
 
 }

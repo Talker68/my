@@ -22,21 +22,12 @@ export default function (OrdersService, ForwardersService, $rootRouter) {
 
   //установка транспортной компании для заявки
   this.setFrowarder = function(forwarderGuid, orderAcceptTime){
-    return OrdersService.patchOrder(orderGuid, {forwarderGuid : forwarderGuid, orderAcceptTime : orderAcceptTime}).then(
+    return OrdersService.logistSetsForwarder(orderGuid, {forwarderGuid : forwarderGuid, orderAcceptTime : orderAcceptTime}).then(
       (response) => {
         $rootRouter.navigate(['Orders', 'OrdersList']);
       }
     )
   };
 
-
-  this.digOnly = function( value ){
-    var s = value.replace(/[^0-9]/g, '');
-    if( s > 59 ){ s = 59 };
-    if( s < 0 ){ s = 0 };
-    this.orderAcceptTime.minutes = s;
-    console.log( s );
-  };
-
-
+  
 }

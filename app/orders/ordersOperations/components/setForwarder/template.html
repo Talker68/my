@@ -1,7 +1,13 @@
+<style>
+  #forwarderSelectForm.ng-submitted .form-control.ng-invalid, #forwarderSelectForm .form-control.ng-touched.ng-invalid{
+    border-color: red;
+  }
+</style>
+
 <div class="l-title">Подбор ТК для {{setForwarderCtrl.order.id}}</div>
 
 <div class="b-wrap">
-  <form name="forwarderSelectForm" novalidate>
+  <form name="setForwarderCtrl.forwarderSelectForm" id="forwarderSelectForm" novalidate>
     <div class="error">
       {{ForwarderSelectModalCtrl.error}}
     </div>
@@ -11,13 +17,10 @@
         Время на принятие заявки:
       </h2>
       <div class="select-time_item">
-        <label for="orderAcceptTimeHours">Часов</label>
-        <input type="text" ng-model="orderAcceptTime.hours" id="orderAcceptTimeHours" name="orderAcceptTimeHours" min="0" maxlength="2" ng-init="orderAcceptTime.hours = 1" required>
+        <label for="orderAcceptTime">Ответить до</label>
+        <input type="datetime-local" ng-model="orderAcceptTime" id="orderAcceptTime" name="orderAcceptTime" class="form-control" required>
       </div>
-      <div class="select-time_item">
-        <label for="orderAcceptTimeMinutes">Минут</label>
-        <input type="text" ng-model="orderAcceptTime.minutes" id="orderAcceptTimeMinutes" name="orderAcceptTimeMinutes" min="0" max="59" ng-init="orderAcceptTime.minutes = 30" ng-blur="setForwarderCtrl.digOnly( orderAcceptTime.minutes )">
-      </div>
+
     </div>
 
     <table class="table table_leaky">
@@ -36,7 +39,7 @@
             {{forwarder.title}}
           </td>
           <td class="text-right">
-            <button ng-click="forwarderSelectForm.$valid && setForwarderCtrl.setFrowarder(forwarder.guid, orderAcceptTime)" class="btn-primary">
+            <button ng-click="setForwarderCtrl.forwarderSelectForm.$valid && setForwarderCtrl.setFrowarder(forwarder.guid, orderAcceptTime)" class="btn-primary">
               Отправить
             </button>
           </td>

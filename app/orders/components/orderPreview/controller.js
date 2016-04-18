@@ -1,17 +1,26 @@
 "use strict";
 
 export default function(OrdersService, $rootRouter, $element){
-  
-  $element.on('click', (e) => {
-    if(e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A'){
-      $rootRouter.navigate(['Orders', 'OrderDetail', {guid : this.order.guid}])
+
+  //Отмена всплытия при нажатии на button внутри $element
+  $element.children().on('click', (e) => {
+    if( e.target.tagName === 'BUTTON'){
+      console.log('fefe');
+      e.stopImmediatePropagation();
     }
   })
 
   
   //Обработка отказа ТК от заявки
-  this.refuseOrder = function(){
-    OrdersService.patchOrder(this.order.guid, {forwarderGuid : '', orderAcceptTime : ''}).then(
+  this.refuseOrder = function($event){
+    $event.preventDefault();
+    /*
+    $event.stopPropagation();
+    $event.stopImmediatePropagation();*/
+
+    console.log($event);
+
+    OrdersService.forwarderRefuseOrder(this.order.guid).then(
       (response) => {
         this.removeOrder({orderGuid : this.order.guid})
       },

@@ -1,5 +1,5 @@
 <!-- Start Request List-->
-<!--<a class="requests-list_row-cnt" ng-link="['OrderDetail', {guid : orderPreviewCtrl.order.guid}]">-->
+<a class="requests-list_row-cnt" ng-link="['OrderDetail', {guid : orderPreviewCtrl.order.guid}]">
   <div class="requests-list_cell">
     <div class="green">
       <b>{{orderPreviewCtrl.order.id}}</b>
@@ -57,7 +57,7 @@
 		<!--Когда у заказа статус сформирован-->
 		<div ng-if="orderPreviewCtrl.order.status === 1">
 		  <button ng-link="['/OrdersOperations', 'ConfirmOrder', {guid : orderPreviewCtrl.order.guid}]" class="btn-primary requests-list_send">Подтвердить</button>
-		  <button ng-click="orderPreviewCtrl.refuseOrder()" class="btn-danger requests-list_send">Отказаться</button>
+		  <button ng-click="orderPreviewCtrl.refuseOrder($event)" class="btn-danger requests-list_send">Отказаться</button>
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->
@@ -76,9 +76,6 @@
 			</div>
 		</div>
 	</div>
-<!--</a>-->
-
-
-
+</a>
 <!-- end Request List-->
 

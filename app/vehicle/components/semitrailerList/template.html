@@ -1,0 +1,28 @@
+<h1>Полуприцепы</h1>
+
+<div class="row">
+  <div class="col-sm-5">Модель</div>
+  <div class="col-sm-5">Номер</div>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-1"></div>
+</div>
+
+<div class="row" ng-repeat="semitrailer in semitrailerListCtrl.semitrailersList track by semitrailer.guid">
+  <div class="col-sm-11">
+    <semitrailer-detail
+      semitrailer="semitrailer">
+    </semitrailer-detail>
+  </div>
+
+  <div class="col-sm-1">
+    <div><a ng-click="semitrailerListCtrl.removeSemitrailer(semitrailer)">Delete</a></div>
+  </div>
+</div>
+
+
+<section>
+  <h2>Добавить полуприцеп</h2>
+  <semitrailer-from
+    add = 'semitrailerListCtrl.addSemitrailer(semitrailer)'>
+  </semitrailer-from>
+</section>

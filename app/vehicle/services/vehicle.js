@@ -39,4 +39,27 @@ export default function($http, $q, $timeout){
   }
 
 
+
+
+  this.getSemitrailerList = function () {
+    return $http.get('/logistics/semitrailer')
+  }
+
+  this.getSemitrailer = function (guid) {
+    return $http.get(`/logistics/semitrailer/${guid}`)
+  }
+
+  this.updateSemitrailer = function(semitrailer){
+    return $http.put(`/logistics/semitrailer/${semitrailer.guid}`, semitrailer)
+  }
+
+  this.addSemitrailer = function (semitrailer) {
+    return $http.post('/logistics/semitrailer', semitrailer);
+  }
+
+  this.removeSemitrailer = function (semitrailer) {
+    return $http.delete(`/logistics/semitrailer/${semitrailer.guid}`);
+  }
+
+
 }
