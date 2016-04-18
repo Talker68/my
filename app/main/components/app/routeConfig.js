@@ -6,5 +6,6 @@ export default [
   {path: '/orders-operations/...', name: 'OrdersOperations', component: 'ordersOperations'},
   {path: '/company/...', name: 'Сompany', component: 'company'},
   {path: '/vehicle/...', name: 'Vehicle', component: 'vehicle'},
+  {path: '/semitrailer/...', name: 'Semitrailer', component: 'semitrailer'},
   {path: '/drivers/...', name: 'Drivers', component: 'drivers'}
 ]
