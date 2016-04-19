@@ -8,6 +8,7 @@
 
 <form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
   <div class="b-wrap">
+  
     <div class="form-group">
       <div class="row">
         <div class="col-xs-12">
@@ -27,6 +28,7 @@
       </div>
     </div>
 
+    
     <div class="form-group">
       <div class="row">
         <div class="col-xs-12">
@@ -45,10 +47,32 @@
         </div>
       </div>
     </div>
+
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="semitrailer">Полуприцеп</label>
+        </div>
+        <div class="col-xs-9">
+          <select
+            name="vehicle" id="semitrailer" class="form-control"
+            ng-model="confirmOrderCtrl.semitrailer"
+            ng-options="(semitrailer.plate_number +' '+ semitrailer.model) for semitrailer in confirmOrderCtrl.semitrailersList">
+            <option value="">-- Полуприцеп --</option>
+          </select>
+        </div>
+
+        <div class="col-xs-3">
+          <a ng-link="['/Semitrailer']" class="btn-primary requests-list_send">Добавить полуприцеп</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div>
-    <button type="submit" class="btn-primary requests-list_send">Подтвердить</button>
-    <button class="btn-danger requests-list_send" ng-link="['/Orders', 'OrdersList', {status : 1}]">Отмена</button>
+    <button type="submit">Подтвердить</button>
+    <button class="btn-danger requests-list_send" ng-link="['/Orders', 'OrdersList', {status : 2}]">Отмена</button>
   </div>
 </form>
