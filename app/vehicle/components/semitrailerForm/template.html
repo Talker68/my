@@ -1,24 +1,16 @@
-<style>
-  #semitrailerForm.ng-submitted .form-control.ng-invalid,
-  #semitrailerForm .form-control.ng-touched.ng-invalid {
-    border-color: red;
-  }
-</style>
-
-<div class="form-group">
+<!--<div class="form-group">
   <div class="bg-danger">{{semitrailerFormCtrl.error}}</div>
-</div>
+</div>-->
 
-<form class="form-inline" id='semitrailerForm' name="semitrailerFormCtrl.semitrailerForm" novalidate ng-submit="semitrailerFormCtrl.semitrailerForm.$valid && semitrailerFormCtrl.submit()">
-  <div class="form-group">
-    <label for="model">Model</label>
+<form id='semitrailerForm' class="b-list_row row" name="semitrailerFormCtrl.semitrailerForm" novalidate ng-submit="semitrailerFormCtrl.semitrailerForm.$valid && semitrailerFormCtrl.submit()">
+  <div class="b-list_cell col-xs-5">
     <input type="text" class="form-control" id="model" name="model" ng-model="semitrailerFormCtrl.semitrailer.model" placeholder="Модель" required>
   </div>
-  <div class="form-group">
-    <label for="plate_number">Номер</label>
+  <div class="b-list_cell col-xs-4">
     <input type="text" class="form-control" id="plate_number" name="plate_number" ng-model="semitrailerFormCtrl.semitrailer.plate_number" placeholder="Номер" required>
   </div>
-
-  <button type="submit" class="btn btn-default">Submit</button>
-  <button ng-if="semitrailerFormCtrl.semitrailer.guid" ng-click="semitrailerFormCtrl.cancel()" class="btn btn-default">Отмена</button>
+  <div class="b-list_cell col-xs-3">
+    <button ng-if="semitrailerFormCtrl.semitrailer.guid" ng-click="semitrailerFormCtrl.cancel()" class="btn btn-danger">Отмена</button>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+  </div>
 </form>

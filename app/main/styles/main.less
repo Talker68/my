@@ -54,6 +54,7 @@ b{
   border-radius: 4px;
   display: inline-block;
   text-align: center;
+  cursor: pointer;
   &:hover, &:focus, &active{
     background: ( @green-color * .9 );
     border:none; outline: none;
@@ -81,6 +82,12 @@ b{
   display: inline-block;
   cursor: pointer;
   text-align: center;
+  text-decoration: none;
+  &:hover, &:focus, &active{
+    border:none; outline: none;
+    box-shadow: none;
+    text-decoration: none;
+  }
 }
 
 // ---- [  Form  ] ----
