@@ -2,14 +2,14 @@
 <div id="logist-menu" ng-if="navCtrl.userType === 'logist'">
   <ul class="sideber-nav">
     <li class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 1}]">
+      <a ng-link="['Orders','OrdersList', {status : 2}]">
         <i class="fa fa-clone"></i>
         <span>Сформированные</span>
 
       </a>
     </li>
     <li  class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 2}]">
+      <a ng-link="['Orders','OrdersList', {status : 3}]">
         <i class="fa fa-clone"></i>
         <span>ГП в исполнении</span>
       </a>
@@ -20,14 +20,14 @@
 <div id="forwarder-menu" ng-if="navCtrl.userType === 'forwarder'">
   <ul class="sideber-nav">
     <li class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 1}]">
+      <a ng-link="['Orders','OrdersList', {status : 2}]">
         <i class="fa fa-clone"></i>
         <span>Прямые ГП</span>
 
       </a>
     </li>
     <li  class="sideber-nav_item">
-      <a ng-link="['Orders','OrdersList', {status : 2}]">
+      <a ng-link="['Orders', 'OrdersList', {status : 3}]">
         <i class="fa fa-clone"></i>
         <span>ГП в исполнении</span>
       </a>

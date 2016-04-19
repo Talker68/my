@@ -1,11 +1,12 @@
 "use strict";
 
 export default function(OrdersService, $rootRouter, $element){
-
+  
+  
+  
   //Отмена всплытия при нажатии на button внутри $element
   $element.children().on('click', (e) => {
     if( e.target.tagName === 'BUTTON'){
-      console.log('fefe');
       e.stopImmediatePropagation();
     }
   })
@@ -17,8 +18,6 @@ export default function(OrdersService, $rootRouter, $element){
     /*
     $event.stopPropagation();
     $event.stopImmediatePropagation();*/
-
-    console.log($event);
 
     OrdersService.forwarderRefuseOrder(this.order.guid).then(
       (response) => {
