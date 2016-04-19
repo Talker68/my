@@ -22,5 +22,15 @@ export default function($http, $q){
     return $http.post(`/logistics/order/${orderGuid}`, {operation : 'refuseForwader'})
   }
 
+  this.forwaderConfirmOrder = function({orderGuid, driverGuid, vehicleGuid, semitrailerGuid}) {
+    return $http.post(`/logistics/order/${orderGuid}`,
+      {
+        operation : "confirmOrder",
+        driverGuid : driverGuid,
+        vehicleGuid : vehicleGuid,
+        semitrailerGuid : semitrailerGuid
+    })
+  }
+
 
 }

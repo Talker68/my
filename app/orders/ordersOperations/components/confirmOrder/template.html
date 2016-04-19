@@ -51,9 +51,30 @@
   </div>
 
 
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-9">
+          <label for="semitrailer">Машина</label>
+          <select
+            name="vehicle" id="semitrailer" class="form-control"
+            ng-model="confirmOrderCtrl.semitrailer"
+            ng-options="(semitrailer.plate_number +' '+ semitrailer.model) for semitrailer in confirmOrderCtrl.semitrailersList">
+            <option value="">-- Полуприцеп --</option>
+          </select>
+        </div>
+
+        <div class="col-xs-3">
+          <a ng-link="['/Semitrailer']">Добавить полуприцеп</a>
+        </div>
+      </div>
+
+    </div>
+
+
+
   <div>
     <button type="submit">Подтвердить</button>
-    <a ng-link="['/Orders', 'OrdersList', {status : 1}]">Отмена</a>
+    <button ng-link="['/Orders', 'OrdersList', {status : 1}]">Отмена</button>
 
   </div>
 </form>
