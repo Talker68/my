@@ -1,0 +1,30 @@
+.b-list{
+  font-size: 18px;
+}
+.b-list_head{
+  margin-bottom: 10px;
+}
+.b-list_cell{
+  padding: 14px 30px;
+  &:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 50%; right: 0;
+    width: 1px; height: 80%;
+    transform: translateY(-50%);
+    background: #ced8d8;
+  }
+}
+.b-list_middle{
+}
+.b-list_middle .b-list_row{
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.b-list_middle .b-list_cell{
+  .form-control{
+    height: 28px;
+  }
+}
+

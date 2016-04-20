@@ -5,14 +5,14 @@ export default function (VehicleService) {
 
   this.edit = function(){
     this.isEdit = true;
-    this.copyToEdit = angular.copy(this.semitrailer);
-  }
+    this.copyToEdit = angular.copy( this.semitrailer );
+  };
 
   this.cancelEdit = function(){
     this.isEdit = false;
-  }
+  };
 
-  //редактирование полуприцепа
+  // редактирование полуприцепа
   this.updateSemitrailer = function(semitrailer){
     return VehicleService.updateSemitrailer(semitrailer).then(
       (response) => {
@@ -20,9 +20,11 @@ export default function (VehicleService) {
         this.isEdit = false;
       }
     )
-  }
-  
-  this.remove = function () {
-    
-  }
+  };
+
+
+
+
+
+
 }

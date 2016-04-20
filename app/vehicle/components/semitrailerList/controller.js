@@ -5,8 +5,7 @@ export default function (VehicleService, ApiService) {
     (result) => {
       this.semitrailersList = result.data;
     }
-  )
-
+  );
 
   this.addSemitrailer = function (semitrailer) {
     return VehicleService.addSemitrailer(semitrailer).then(
@@ -14,15 +13,17 @@ export default function (VehicleService, ApiService) {
         this.semitrailersList.push(response.data);
       }
     )
-  }
+  };
 
-
-  this.removeSemitrailer = function (semitrailer) {
+  // удаление полуприцепа
+  this.removeSemitrailer = function(semitrailer) {
     return VehicleService.removeSemitrailer(semitrailer).then(
       (response) => {
-        let index = ApiService.getIndexById(this.semitrailersList, {fieldName : 'guid', value : semitrailer.guid});
+        let index = ApiService.getIndexById(this.semitrailersList, {fieldName : 'guid', value : semitrailer.guid });
         this.semitrailersList.splice(index,1);
       }
     )
-  }
+  };
+
+
 }

@@ -9,7 +9,7 @@ export default function () {
       }
     }
     return -1;
-  }
+  };
 
   //Для добавления транформации в $http
   this.appendTransform = function (defaults, transform) {
