@@ -15,6 +15,6 @@
   </div>
   <div class="b-list_cell col-xs-3">
     <a ng-click="semitrailerDetailCtrl.edit()" class="btn-primary">Ред</a>
-    <a ng-click="semitrailerDetailCtrl.removeSemitrailer(semitrailer)" class="btn-danger">Удалить</a>
+    <a ng-click="semitrailerDetailCtrl.removeSemitrailer({semitrailer: semitrailerDetailCtrl.semitrailer})" class="btn-danger">Удалить</a>
   </div>
 </div>

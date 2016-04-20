@@ -8,6 +8,7 @@ export default {
   controllerAs : 'semitrailerDetailCtrl',
   template : template,
   bindings : {
-    semitrailer : '<'
+    semitrailer : '<',
+    removeSemitrailer : '&'
   }
 }
