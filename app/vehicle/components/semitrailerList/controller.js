@@ -15,8 +15,15 @@ export default function (VehicleService, ApiService) {
     )
   };
 
-
-
+  // удаление полуприцепа
+  this.removeSemitrailer = function(semitrailer) {
+    return VehicleService.removeSemitrailer(semitrailer).then(
+      (response) => {
+        let index = ApiService.getIndexById(this.semitrailersList, {fieldName : 'guid', value : semitrailer.guid });
+        this.semitrailersList.splice(index,1);
+      }
+    )
+  };
 
 
 }

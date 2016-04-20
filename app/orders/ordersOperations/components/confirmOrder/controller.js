@@ -19,7 +19,11 @@ export default function ($rootRouter, OrdersService) {
     }
 
     OrdersService.forwaderConfirmOrder(options).then(
-      (response) => {console.log(response)}
+      (response) => {
+        console.log(response);
+        $rootRouter.navigate(['Orders', 'OrdersList', {status : 3}])
+      }
+
     )
   }
 

@@ -1,6 +1,6 @@
 "use strict";
  
-export default function (VehicleService, ApiService) {
+export default function (VehicleService) {
   this.isEdit = false;
 
   this.edit = function(){
@@ -22,17 +22,9 @@ export default function (VehicleService, ApiService) {
     )
   };
 
-  // удаление полуприцепа
-  this.removeSemitrailer = function () {
-      return VehicleService.removeSemitrailer( this.semitrailer ).then(
-          (response) => {
-              debugger;
-              let index = ApiService.getIndexById(this.semitrailersList, {fieldName : 'guid', value : this.semitrailer.guid });
-              this.semitrailersList.splice(index,1);
-          }
-      )
-  };
-  
-  this.remove = function () {
-  }
+
+
+
+
+
 }

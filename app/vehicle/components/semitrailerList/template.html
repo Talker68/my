@@ -24,18 +24,11 @@
     <div class="b-list_cell col-xs-3">
     </div>
   </div>
-  <semitrailer-detail class="b-list_middle" semitrailer="semitrailer"  ng-repeat="semitrailer in semitrailerListCtrl.semitrailersList track by semitrailer.guid">
-    <div class="b-list_row row">
-      <div class="b-list_cell col-xs-5">
-        11111
-      </div>
-      <div class="b-list_cell col-xs-5">
-        22222
-      </div>
-      <div class="b-list_cell col-xs-2">
-        33333
-      </div>
-    </div>
+  <semitrailer-detail
+    class="b-list_middle"
+    ng-repeat="semitrailer in semitrailerListCtrl.semitrailersList track by semitrailer.guid"
+    semitrailer = "semitrailer"
+    remove-semitrailer = "semitrailerListCtrl.removeSemitrailer(semitrailer)">
   </semitrailer-detail>
 </div>
 
