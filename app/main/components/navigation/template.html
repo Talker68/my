@@ -3,14 +3,17 @@
   <ul class="sideber-nav">
     <li class="sideber-nav_item">
       <a ng-link="['Orders','OrdersList', {status : 2}]">
-        <i class="fa fa-clone"></i>
+        <div class="fa">
+          <img src="./../../img/menu/Sformirovannie_GP.png" >
+        </div>
         <span>Сформированные</span>
-
       </a>
     </li>
     <li  class="sideber-nav_item">
       <a ng-link="['Orders','OrdersList', {status : 3}]">
-        <img src="./../../img/menu/GP_v_ispolnenii.png">
+        <div class="fa">
+          <img src="./../../img/menu/GP_v_ispolnenii.png" >
+        </div>
         <span>ГП в исполнении</span>
       </a>
     </li>
@@ -21,24 +24,30 @@
   <ul class="sideber-nav">
     <li class="sideber-nav_item">
       <a ng-link="['Orders','OrdersList', {status : 2}]">
-        <img src="./../../img/menu/Pryamie_GP.png">
+        <div class="fa">
+          <img src="./../../img/menu/Pryamie_GP.png">
+        </div>
         <span>Прямые ГП</span>
       </a>
     </li>
     <li  class="sideber-nav_item">
       <a ng-link="['Orders', 'OrdersList', {status : 3}]">
-        <img src="./../../img/menu/GP_v_ispolnenii.png">
+        <div class="fa">
+          <img src="./../../img/menu/GP_v_ispolnenii.png">
+        </div>
         <span>ГП в исполнении</span>
       </a>
     </li>
   </ul>
 
 
-  <ul class="sideber-nav" >
+  <ul class="sideber-nav" style='margin-top: 30px;'>
 
     <li class="sideber-nav_item">
       <a ng-link="['Сompany', 'CompanySettings']">
-        <i class="fa fa-clone"></i>
+        <div class="fa">
+          <img src="./../../img/menu/setting.png">
+        </div>
         <span>Настройки компании</span>
       </a>
     </li>

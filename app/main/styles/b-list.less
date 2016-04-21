@@ -10,7 +10,7 @@
     content: '';
     position: absolute;
     top: 50%; right: 0;
-    width: 1px; height: 80%;
+    width: 1px; height: 40px;
     transform: translateY(-50%);
     background: #ced8d8;
   }
@@ -21,8 +21,22 @@
   background: #fff;
   border-radius: 10px;
   margin-bottom: 10px;
+  font-size: 0;
+  display: block;
+  border: 1px solid #fff;
+}
+.b-list_middle a.b-list_row{
+  color:#000;
+  transition: border 0.2s ease;
+  &:hover{
+    border-color: @green-color;
+  }
 }
 .b-list_middle .b-list_cell{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  float: none;
   .form-control{
     height: 28px;
   }
