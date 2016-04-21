@@ -1,12 +1,19 @@
 "use strict";
 
-export default function(OrdersService, $rootRouter, $element){
-  
-  
-  
+export default function(OrdersService, $rootRouter, $element, $attrs){
+
+  this.$routerOnActivate = function(next, previous) {
+    this.order = next.routeData.order;
+  };
+
+
+  if(('preview' in $attrs) && this.orderPreview){
+    this.order = this.orderPreview;
+  }
+
   //Отмена всплытия при нажатии на button внутри $element
   $element.children().on('click', (e) => {
-    if( e.target.tagName === 'BUTTON'){
+    if(('preview' in $attrs) && e.target.tagName === 'BUTTON'){
       e.stopImmediatePropagation();
     }
   })
@@ -26,11 +33,17 @@ export default function(OrdersService, $rootRouter, $element){
       (error) => {console.log(error)}
     )
   }
+
+
+
 }
 
 
+
+
+
 // Планируется = 0
-// Формируется = 1 // отсюда начинается
-// КПогрузке = 2 // гп в исполении
-// Отправлено = 3
-// Закрыто = 4
+// Формируется = 2 // отсюда начинается
+// КПогрузке = 3 // гп в исполении
+// Отправлено = 4
+// Закрыто = 5

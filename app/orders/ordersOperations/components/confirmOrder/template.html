@@ -1,34 +1,15 @@
 
+<style>
+  #confirmOrderForm.ng-submitted .form-control.ng-invalid, #confirmOrderForm .form-control.ng-touched.ng-invalid{
+    border-color: red;
+  }
+</style>
 
 
 <div class="l-title">Подтверждение заявки</div>
 
-<div class="row">
-  <div class="col-xs-6">
-    <h2>Рекомендуемая квота</h2>
-    <p>Аукцион 50%</p>
-    <p>Прямая завявка 50%</p>
-  </div>
 
 
-  <div class="col-xs-6">
-    <h2>Текущее соотношение</h2>
-    <p>Аукцион 50%</p>
-    <p>Прямая завявка 50%</p>
-  </div>
-</div>
-
-
-
-
-<uib-tabset active="activeJustified">
-
-  <uib-tab index="1" heading="Напрямую">
-    <style>
-      #confirmOrderForm.ng-submitted .form-control.ng-invalid, #confirmOrderForm .form-control.ng-touched.ng-invalid{
-        border-color: red;
-      }
-    </style>
     <form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
       <div class="b-wrap">
 
@@ -99,10 +80,3 @@
         <button class="btn-danger requests-list_send" ng-link="['/Orders', 'OrdersList', {status : 2}]">Отмена</button>
       </div>
     </form>
-  </uib-tab>
-
-  <uib-tab index="2" heading="Аукцион">
-
-  </uib-tab>
-
-</uib-tabset>

@@ -4,47 +4,112 @@
   }
 </style>
 
+
 <div class="l-title">Подбор ТК для {{setForwarderCtrl.order.id}}</div>
 
-<div class="b-wrap">
-  <form name="setForwarderCtrl.forwarderSelectForm" id="forwarderSelectForm" novalidate>
-    <div class="error">
-      {{ForwarderSelectModalCtrl.error}}
-    </div>
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Рекомендуемая квота</h2>
+    <p>Аукцион 50%</p>
+    <p>Прямая завявка 50%</p>
+  </div>
 
-    <div class="select-time">
-      <h2 for="orderAcceptTimeHours">
-        Время на принятие заявки:
-      </h2>
-      <div class="select-time_item">
-        <label for="orderAcceptTime">Ответить до</label>
-        <input type="datetime-local" ng-model="orderAcceptTime" id="orderAcceptTime" name="orderAcceptTime" class="form-control" required>
+
+  <div class="col-xs-6">
+    <h2>Текущее соотношение</h2>
+    <p>Аукцион 50%</p>
+    <p>Прямая завявка 50%</p>
+  </div>
+</div>
+
+
+<uib-tabset active="activeJustified">
+
+  <uib-tab index="1" heading="Напрямую">
+
+    <div class="b-wrap">
+      <form name="setForwarderCtrl.forwarderSelectForm" id="forwarderSelectForm" novalidate>
+        <div class="error">
+          {{ForwarderSelectModalCtrl.error}}
+        </div>
+
+        <div class="select-time">
+          <h2 for="orderAcceptTimeHours">
+            Время на принятие заявки:
+          </h2>
+          <div class="select-time_item">
+            <label for="orderAcceptTime">Ответить до</label>
+            <input type="datetime-local" ng-model="orderAcceptTime" id="orderAcceptTime" name="orderAcceptTime" class="form-control" ng-min="setForwarderCtrl.now" required>
+          </div>
+
+        </div>
+
+        <table class="table table_leaky">
+          <thead>
+            <tr>
+              <th>
+                Транспортная компания
+              </th>
+              <th>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="forwarder in setForwarderCtrl.forwardersList">
+              <td>
+                {{forwarder.title}}
+              </td>
+              <td class="text-right">
+                <button ng-click="setForwarderCtrl.forwarderSelectForm.$valid && setForwarderCtrl.setFrowarder(forwarder.guid, orderAcceptTime)" class="btn-primary">
+                  Отправить
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </uib-tab>
+
+  <uib-tab index="2" heading="Аукцион">
+
+    <style>
+      #auctionForm.ng-submitted .form-control.ng-invalid, #auctionForm .form-control.ng-touched.ng-invalid{
+        border-color: red;
+      }
+    </style>
+
+
+    <form name="setForwarderCtrl.auctionForm" id="auctionForm" novalidate ng-submit="setForwarderCtrl.createAuction()">
+      <div class="form-group">
+        <label for="start">Начало аукциона</label>
+        <input type="datetime-local" name='start' ng-model="setForwarderCtrl.auction.start" class="form-control" id="start" ng-min="setForwarderCtrl.now" required/>
       </div>
 
-    </div>
+      <div class="form-group">
+        <label for="finish">Конец аукциона</label>
+        <input type="datetime-local" name='start' ng-model="setForwarderCtrl.auction.finish" class="form-control" id="finish" ng-min="setForwarderCtrl.auction.start" required/>
+      </div>
 
-    <table class="table table_leaky">
-      <thead>
-        <tr>
-          <th>
-            Транспортная компания
-          </th>
-          <th>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="forwarder in setForwarderCtrl.forwardersList">
-          <td>
-            {{forwarder.title}}
-          </td>
-          <td class="text-right">
-            <button ng-click="setForwarderCtrl.forwarderSelectForm.$valid && setForwarderCtrl.setFrowarder(forwarder.guid, orderAcceptTime)" class="btn-primary">
-              Отправить
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
-</div>
+      <div class="form-group">
+        <label for="startingBid">Начальная ставка</label>
+        <input type="number" name='startingBid' ng-model="setForwarderCtrl.auction.startingBid" class="form-control" id="startingBid" min="0" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="takeNowAmount">Выкупить сразу</label>
+        <input type="number" name='takeNowAmount' ng-model="setForwarderCtrl.auction.takeNowAmount" class="form-control" id="takeNowAmount" min="0" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="step">Шаг</label>
+        <input type="number" name='step' ng-model="setForwarderCtrl.auction.step" class="form-control" id="step" min="0" required/>
+      </div>
+
+      <button type="submit">Создать аукцион</button>
+    </form>
+
+    <pre>{{setForwarderCtrl.auction | json}} </pre>
+  </uib-tab>
+
+</uib-tabset>

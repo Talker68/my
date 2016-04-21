@@ -1,33 +1,35 @@
 "use strict";
 
-export default function (OrdersService, ForwardersService, $rootRouter) {
-  let orderGuid;
+export default function (OrdersService, $rootRouter) {
 
   //получаем guid заказа из параметра и сам заказ
   this.$routerOnActivate = function(next, previous) {
-    orderGuid = next.params.guid;
-    OrdersService.getOrderByGuid(next.params.guid).then(
-      (response) => {
-        this.order = response.data;
-      }
-    )
-  };
+    this.orderGuid = next.params.guid;
+    this.order = next.routeData.order;
+    this.forwardersList = next.routeData.forwarders;
+    this.now = new Date();
+  }
 
-  //получаем список транспортных компаний
-  ForwardersService.getForwarders().then(
-    (response) => {
-      this.forwardersList = response.data;
-    }
-  );
 
   //установка транспортной компании для заявки
   this.setFrowarder = function(forwarderGuid, orderAcceptTime){
-    return OrdersService.logistSetsForwarder(orderGuid, {forwarderGuid : forwarderGuid, orderAcceptTime : orderAcceptTime}).then(
+    return OrdersService.logistSetsForwarder(this.orderGuid, {forwarderGuid : forwarderGuid, orderAcceptTime : orderAcceptTime}).then(
       (response) => {
         $rootRouter.navigate(['Orders', 'OrdersList']);
       }
     )
   };
+
+
+  //создание аукциона
+  this.createAuction = function () {
+    let auction = this.auction;
+    auction.orderGuid = this.orderGuid;
+
+    OrdersService.createAuction(auction).then(
+      (response) => {response.data}
+    )
+  }
 
   
 }
