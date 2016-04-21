@@ -1,34 +1,34 @@
 <!-- Start Request List-->
-<a class="requests-list_row-cnt" ng-link="['OrderDetail', {guid : orderPreviewCtrl.order.guid}]">
+<a class="requests-list_row-cnt" ng-link="['OrderDetail', {guid : orderCtrl.order.guid}]">
   <div class="requests-list_cell">
     <div class="green">
-      <b>{{orderPreviewCtrl.order.id}}</b>
+      <b>{{orderCtrl.order.id}}</b>
     </div>
     <div>
-      <span ng-repeat="customer in orderPreviewCtrl.order.customers track by $index">{{customer}}</span>
+      <span ng-repeat="customer in orderCtrl.order.customers track by $index">{{customer}}</span>
     </div>
   </div>
 
   <div class="requests-list_cell">
     <div class="requests-list_address">
       <div>
-        {{orderPreviewCtrl.order.route.warehouse.address}}
+        {{orderCtrl.order.route.warehouse.address}}
       </div>
       <div class="green">
-        {{orderPreviewCtrl.order.route.warehouse.datetitme | date : "dd.MM.yyyy"}}
+        {{orderCtrl.order.route.warehouse.datetitme | date : "dd.MM.yyyy"}}
         <b>
-          {{orderPreviewCtrl.order.route.warehouse.datetitme | date : "HH:mm"}}
+          {{orderCtrl.order.route.warehouse.datetitme | date : "HH:mm"}}
         </b>
       </div>
     </div>
     <div class="requests-list_address">
       <div>
-        {{orderPreviewCtrl.order.route.to.address}}
+        {{orderCtrl.order.route.to.address}}
       </div>
       <div class="green">
-        {{orderPreviewCtrl.order.route.to.datetitme | date : "dd.MM.yyyy"}}
+        {{orderCtrl.order.route.to.datetitme | date : "dd.MM.yyyy"}}
         <b>
-          {{orderPreviewCtrl.order.route.to.datetitme | date : "HH:mm"}}
+          {{orderCtrl.order.route.to.datetitme | date : "HH:mm"}}
         </b>
       </div>
     </div>
@@ -42,7 +42,7 @@
 						Тип груза
 					</span>
 				<b class="requests-list_data-table-cell">
-						<span ng-repeat="cargo_type in orderPreviewCtrl.order.cargo.type track by $index">
+						<span ng-repeat="cargo_type in orderCtrl.order.cargo.type track by $index">
 							{{cargo_type}}{{$last ? '' : ', '}}
 						</span>
 				</b>
@@ -52,69 +52,69 @@
 						Вес груза
 					</span>
 				<b class="requests-list_data-table-cell">
-					{{orderPreviewCtrl.order.cargo.weight}}
+					{{orderCtrl.order.cargo.weight}}
 				</b>
 			</div>
 		</div>
 		<div>
-			<img src="../../img/icons/car_5_ico.svg" width="60">
+			<img src="../../../../img/icons/car_5_ico.svg" width="60">
 		</div>
 	</div>
 
 	<div class="requests-list_cell">
 		<div class="requests-list_dl">
 			Тип кузова
-			<b>{{orderPreviewCtrl.order.forwarder.vehicle.vehicle_type}}</b>
+			<b>{{orderCtrl.order.forwarder.vehicle.vehicle_type}}</b>
 		</div>
-		<div class="requests-list_dl" ng-if="orderPreviewCtrl.order.status === 3">
+		<div class="requests-list_dl" ng-if="orderCtrl.orderStaus === 'W'">
 			Номер машины
-			<b>{{orderPreviewCtrl.order.forwarder.vehicle.plate_number}}</b>
+			<b>{{orderCtrl.order.forwarder.vehicle.plate_number}}</b>
 		</div>
 	</div>
 
-	<div class="requests-list_cell" ng-if="orderPreviewCtrl.order.logist">
+	<div class="requests-list_cell" ng-if="orderCtrl.order.logist">
 		<div class="requests-list_dl">
 			Логист
-			<b>{{orderPreviewCtrl.order.logist}}</b>
+			<b>{{orderCtrl.order.logist}}</b>
 		</div>
 	</div>
 
 	<div class="requests-list_cell">
 		<div class="requests-list_rate">
 			Тариф
-			<b>{{orderPreviewCtrl.order.transportation_cost}}р.</b>
+			<b>{{orderCtrl.order.transportation_cost}}р.</b>
 		</div>
 	</div>
 
 	<div class="requests-list_cell">
 		<!--Когда у заказа статус сформирован-->
-		<div ng-if="orderPreviewCtrl.order.status === 2">
+		<div ng-if="orderCtrl.orderStaus === 'F'">
       <!--Если у заявки ТК уже подобрана-->
-			<div ng-if="orderPreviewCtrl.order.forwarder.title">
-				Отправлена напрямую в {{orderPreviewCtrl.order.forwarder.title}}
+			<div ng-if="orderCtrl.order.forwarder.title">
+				Отправлена напрямую в {{orderCtrl.order.forwarder.title}}
 			</div>
 
       <!-- Подобрать ТК -->
-			<div ng-if="!orderPreviewCtrl.order.forwarder.title">
+			<div ng-if="!orderCtrl.order.forwarder.title">
 				<div>
-					<button class="btn-primary requests-list_send" ng-link="['/OrdersOperations', 'SetForwarder', {guid : orderPreviewCtrl.order.guid}]">Подобрать ТК</button>
+					<button class="btn-primary requests-list_send" ng-link="['/OrdersOperations', 'SetForwarder', {guid : orderCtrl.order.guid}]">Подобрать ТК</button>
 				</div>
 			</div>
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->
-		<div ng-if="orderPreviewCtrl.order.status === 3">
+		<div ng-if="orderCtrl.orderStaus === 'W'">
 			<!--Название компании-->
 			<div>
-				{{orderPreviewCtrl.order.forwarder.title}}
+				{{orderCtrl.order.forwarder.title}}
 			</div>
 			<!--Водитель-->
 			<div>
-				{{orderPreviewCtrl.order.forwarder.driver.full_name}}
+				{{orderCtrl.order.forwarder.driver.full_name}}
 			</div>
 			<!--Права-->
 			<div>
-				{{orderPreviewCtrl.order.forwarder.driver.driver_license}}
+				{{orderCtrl.order.forwarder.driver.driver_license}}
 			</div>
 		</div>
 
