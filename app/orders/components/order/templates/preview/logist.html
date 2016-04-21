@@ -66,7 +66,7 @@
 			Тип кузова
 			<b>{{orderCtrl.order.forwarder.vehicle.vehicle_type}}</b>
 		</div>
-		<div class="requests-list_dl" ng-if="orderCtrl.order.status === 3">
+		<div class="requests-list_dl" ng-if="orderCtrl.orderStaus === 'W'">
 			Номер машины
 			<b>{{orderCtrl.order.forwarder.vehicle.plate_number}}</b>
 		</div>
@@ -88,7 +88,7 @@
 
 	<div class="requests-list_cell">
 		<!--Когда у заказа статус сформирован-->
-		<div ng-if="orderCtrl.order.status === 2">
+		<div ng-if="orderCtrl.orderStaus === 'F'">
       <!--Если у заявки ТК уже подобрана-->
 			<div ng-if="orderCtrl.order.forwarder.title">
 				Отправлена напрямую в {{orderCtrl.order.forwarder.title}}
@@ -103,7 +103,7 @@
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->
-		<div ng-if="orderCtrl.order.status === 3">
+		<div ng-if="orderCtrl.orderStaus === 'W'">
 			<!--Название компании-->
 			<div>
 				{{orderCtrl.order.forwarder.title}}

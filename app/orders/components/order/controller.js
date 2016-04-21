@@ -6,14 +6,26 @@ export default function(OrdersService, $rootRouter, $element, $attrs){
     this.order = next.routeData.order;
   };
 
+  let isPreview = 'preview' in $attrs;
 
-  if(('preview' in $attrs) && this.orderPreview){
+  if(isPreview && this.orderPreview){
     this.order = this.orderPreview;
   }
 
+
+  switch (this.order.status){
+    case 2 :
+      this.orderStaus = 'F'; //Формируется
+      break;
+    case 3 :
+      this.orderStaus = 'W';//В работе
+      break;
+  }
+
+
   //Отмена всплытия при нажатии на button внутри $element
   $element.children().on('click', (e) => {
-    if(('preview' in $attrs) && e.target.tagName === 'BUTTON'){
+    if(isPreview && e.target.tagName === 'BUTTON'){
       e.stopImmediatePropagation();
     }
   })
@@ -22,19 +34,13 @@ export default function(OrdersService, $rootRouter, $element, $attrs){
   //Обработка отказа ТК от заявки
   this.refuseOrder = function($event){
     $event.preventDefault();
-    /*
-    $event.stopPropagation();
-    $event.stopImmediatePropagation();*/
 
     OrdersService.forwarderRefuseOrder(this.order.guid).then(
-      (response) => {
-        this.removeOrder({orderGuid : this.order.guid})
-      },
+      (response) => {this.removeOrder({orderGuid : this.order.guid})},
       (error) => {console.log(error)}
     )
   }
-
-
+  
 
 }
 
