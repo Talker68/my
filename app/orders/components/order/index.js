@@ -24,10 +24,13 @@ export default {
       return tplDetail;
     }
   },
+
   bindings : {
     orderPreview : '<',
     removeOrder : '&',
     $router : '<'
   },
-  $canActivate: canActivate
+
+  $canActivate: canActivate,
+
 }

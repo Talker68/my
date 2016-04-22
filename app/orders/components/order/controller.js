@@ -1,26 +1,17 @@
 "use strict";
 
-export default function(OrdersService, $rootRouter, $element, $attrs){
+export default function(OrdersService, $rootRouter, $element, $attrs, $q){
 
-  this.$routerOnActivate = function(next, previous) {
+  this.$routerOnActivate = (next, previous) => {
     this.order = next.routeData.order;
-  };
+  }
 
   let isPreview = 'preview' in $attrs;
 
   if(isPreview && this.orderPreview){
     this.order = this.orderPreview;
   }
-
-
-  switch (this.order.status){
-    case 2 :
-      this.orderStaus = 'F'; //Формируется
-      break;
-    case 3 :
-      this.orderStaus = 'W';//В работе
-      break;
-  }
+  
 
 
   //Отмена всплытия при нажатии на button внутри $element
@@ -30,7 +21,8 @@ export default function(OrdersService, $rootRouter, $element, $attrs){
     }
   })
 
-  
+
+
   //Обработка отказа ТК от заявки
   this.refuseOrder = function($event){
     $event.preventDefault();

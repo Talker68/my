@@ -2,28 +2,28 @@
 
 export default function($http, $q, $timeout){
   this.getVehicleList = function () {
-    return $http.get('/logistics/vehicle')
+    return $http.get(`${REQUEST_PREFIX}/vehicle`);
   }
 
   this.getVehicle = function (guid) {
-    return $http.get(`/logistics/vehicle/${guid}`)
+    return $http.get(`${REQUEST_PREFIX}/vehicle/${guid}`)
   }
 
   this.updateVehicle = function(vehicle){
-    return $http.put(`/logistics/vehicle/${vehicle.guid}`, vehicle)
+    return $http.put(`${REQUEST_PREFIX}/vehicle/${vehicle.guid}`, vehicle)
   }
 
   this.addVehicle = function (vehicle) {
-    return $http.post('/logistics/vehicle', vehicle);
+    return $http.post(`${REQUEST_PREFIX}/vehicle`, vehicle);
   }
 
   this.removeVehicle = function (vehicle) {
-    return $http.delete(`/logistics/vehicle/${vehicle.guid}`);
+    return $http.delete(`${REQUEST_PREFIX}/vehicle/${vehicle.guid}`);
   }
 
   //Получение типов отгрузки
   this.getLoadingTypes = function(){
-    return $http.get('/logistics/loading_type').then(
+    return $http.get(`${REQUEST_PREFIX}/loading_type`).then(
       (response) => {
         let loadingTypes = Object.create(null);
         for(let type of response.data){
@@ -42,23 +42,23 @@ export default function($http, $q, $timeout){
 
 
   this.getSemitrailerList = function () {
-    return $http.get('/logistics/semitrailer')
+    return $http.get(`${REQUEST_PREFIX}/semitrailer`);
   }
 
   this.getSemitrailer = function (guid) {
-    return $http.get(`/logistics/semitrailer/${guid}`)
+    return $http.get(`${REQUEST_PREFIX}/semitrailer/${guid}`)
   }
 
   this.updateSemitrailer = function(semitrailer){
-    return $http.put(`/logistics/semitrailer/${semitrailer.guid}`, semitrailer)
+    return $http.put(`${REQUEST_PREFIX}/semitrailer/${semitrailer.guid}`, semitrailer)
   }
 
   this.addSemitrailer = function (semitrailer) {
-    return $http.post('/logistics/semitrailer', semitrailer);
+    return $http.post(`${REQUEST_PREFIX}/semitrailer`, semitrailer);
   }
 
   this.removeSemitrailer = function (semitrailer) {
-    return $http.delete(`/logistics/semitrailer/${semitrailer.guid}`);
+    return $http.delete(`${REQUEST_PREFIX}/semitrailer/${semitrailer.guid}`);
   }
 
 
