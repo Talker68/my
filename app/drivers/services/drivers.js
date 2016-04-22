@@ -2,25 +2,23 @@
 
 export default function($http, $q){
   this.getDriversList = function () {
-    return $http.get('/logistics/driver')
+    return $http.get(`${REQUEST_PREFIX}/driver`)
   }
 
   this.getDriver = function (guid) {
-    return $http.get(`/logistics/driver/${guid}`)
+    return $http.get(`${REQUEST_PREFIX}/driver/${guid}`)
   }
 
   this.updateDriver = function(driver){
-    return $http.put(`/logistics/driver/${driver.guid}`, driver)
+    return $http.put(`${REQUEST_PREFIX}/driver/${driver.guid}`, driver)
   }
 
   this.addDriver = function (driver) {
-    return $http.post('/logistics/driver', driver);
+    return $http.post(`${REQUEST_PREFIX}/driver`, driver);
   }
 
   this.removeDriver = function (driver) {
-    return $http.delete(`/logistics/driver/${driver.guid}`);
+    return $http.delete(`${REQUEST_PREFIX}/driver/${driver.guid}`);
   }
   
-
-
 }

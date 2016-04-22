@@ -5,7 +5,16 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
-console.log(NODE_ENV);
+
+
+let REQUEST_PREFIX;
+
+if(NODE_ENV === 'development'){
+  REQUEST_PREFIX = "/logistics";
+} else {
+  REQUEST_PREFIX = "/";
+}
+
 module.exports = {
   entry: path.resolve(__dirname, "app", "main", "index.js"),
   output: {
@@ -17,7 +26,12 @@ module.exports = {
   devtool : NODE_ENV == 'development' ? 'source-map' : null,
 
   plugins : [
-    new webpack.DefinePlugin({NODE_ENV : JSON.stringify(NODE_ENV)}),
+    new webpack.DefinePlugin(
+      {
+        NODE_ENV : JSON.stringify(NODE_ENV),
+        REQUEST_PREFIX : JSON.stringify(REQUEST_PREFIX),
+      }
+    ),
     new webpack.NoErrorsPlugin(),
   ],
 

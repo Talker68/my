@@ -2,10 +2,10 @@
 
 export default function($http){
   this.getForwarders = function(){
-    return $http.get('/logistics/forwarders');
+    return $http.get(`${REQUEST_PREFIX}/forwarders`);
   }
   
   this.getDriversList = function () {
-    return $http.get('/logistics/driver')
+    return $http.get(`${REQUEST_PREFIX}/driver`)
   }
 }
