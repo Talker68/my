@@ -1,34 +1,35 @@
 <div class="l-title">Водители</div>
 
-<div class="requests-list">
-  <div class="requests-list_row">
-    <div class="requests-list_row-cnt requests-list_row-cnt__head">
-      <div class="requests-list_cell">ФИО</div>
-      <div class="requests-list_cell">Телефон</div>
-      <div class="requests-list_cell">Права</div>
-      <div class="requests-list_cell">Выданы</div>
-      <div class="requests-list_cell">Действительны до</div>
-    </div>
-    <a ng-link="['DriverDetail', {guid : driver.guid}]" ng-repeat="driver in driversListCtrl.driversList track by driver.guid" class="requests-list_row-cnt">
-      <div class="requests-list_cell">
-        <span>{{driver.driver}}</span>
+
+<div class="b-list container-fluid">
+  <div class="b-list_head row">
+    <div class="b-list_cell col-xs-3">ФИО</div>
+    <div class="b-list_cell col-xs-2">Телефон</div>
+    <div class="b-list_cell col-xs-3">Права</div>
+    <div class="b-list_cell col-xs-2">Выданы</div>
+    <div class="b-list_cell col-xs-2">Действительны до</div>
+  </div>
+  <div class="b-list_middle">
+    <a class="b-list_row row" ng-link="['DriverDetail', {guid : driver.guid}]" ng-repeat="driver in driversListCtrl.driversList track by driver.guid">
+      <div class="b-list_cell col-xs-3">
+        {{driver.driver}}
       </div>
-      <div class="requests-list_cell">
+      <div class="b-list_cell col-xs-2">
         {{driver.driver_phone}}
       </div>
-      <div class="requests-list_cell">
+      <div class="b-list_cell col-xs-3">
         {{driver.license_series + driver.license_number}}
       </div>
-      <div class="requests-list_cell">
+      <div class="b-list_cell col-xs-2">
         {{driver.license_issue | date : "dd.MM.yyyy"}}
       </div>
-      <div class="requests-list_cell">
+      <div class="b-list_cell col-xs-2">
         {{driver.license_valid | date : "dd.MM.yyyy"}}
       </div>
     </a>
   </div>
 </div>
 
-<div>
-  <a ng-link="['DriverDetail', {guid: 'new'}]" class="btn-primary requests-list_send">Добавить</a>
-</div>
+<p>
+  <a ng-link="['DriverDetail', {guid: 'new'}]" class="btn btn-ok btn__l">Добавить</a>
+</p>

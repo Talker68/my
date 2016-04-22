@@ -7,14 +7,14 @@
 
 
 <div class="b-list_row row" ng-if="!semitrailerDetailCtrl.isEdit">
-  <div class="b-list_cell col-xs-5">
+  <div class="b-list_cell col-xs-3 col-md-4">
     {{semitrailerDetailCtrl.semitrailer.model}}
   </div>
-  <div class="b-list_cell col-xs-4">
+  <div class="b-list_cell col-xs-3 col-md-4">
     {{semitrailerDetailCtrl.semitrailer.plate_number}}
   </div>
-  <div class="b-list_cell col-xs-3">
-    <a ng-click="semitrailerDetailCtrl.edit()" class="btn-primary">Ред</a>
-    <a ng-click="semitrailerDetailCtrl.removeSemitrailer({semitrailer: semitrailerDetailCtrl.semitrailer})" class="btn-danger">Удалить</a>
+  <div class="b-list_cell col-xs-5 col-md-4 btn-group">
+    <a ng-click="semitrailerDetailCtrl.edit()" class="btn btn-ok">Ред</a>
+    <a ng-click="semitrailerDetailCtrl.removeSemitrailer({semitrailer: semitrailerDetailCtrl.semitrailer})" class="btn btn-error">Удалить</a>
   </div>
 </div>

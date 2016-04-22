@@ -54,9 +54,9 @@
 
 	<div class="requests-list_cell">
 		<!--Когда у заказа статус сформирован-->
-		<div ng-if="orderCtrl.order.status === 2">
-		  <button ng-link="['/OrdersOperations', 'ConfirmOrder', {guid : orderCtrl.order.guid}]" class="btn-primary requests-list_send">Подтвердить</button>
-		  <button ng-click="orderCtrl.refuseOrder($event)" class="btn-danger requests-list_send">Отказаться</button>
+		<div ng-if="orderCtrl.order.status === 2" class="btn-group-vertical">
+		  <button ng-link="['/OrdersOperations', 'ConfirmOrder', {guid : orderCtrl.order.guid}]" class="btn btn-ok btn__l">Подтвердить</button>
+		  <button ng-click="orderCtrl.refuseOrder($event)" class="btn btn-error btn__l">Отказаться</button>
 		</div>
 
 		<!--Когда у заказа статус "в исполнении"-->

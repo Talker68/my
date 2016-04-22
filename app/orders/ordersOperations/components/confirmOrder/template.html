@@ -8,8 +8,6 @@
 
 <div class="l-title">Подтверждение заявки</div>
 
-
-
     <form id='confirmOrderForm' name="confirmOrderCtrl.confirmOrderForm" ng-submit="confirmOrderCtrl.confirmOrderForm.$valid && confirmOrderCtrl.submit()" novalidate>
       <div class="b-wrap">
 
@@ -18,57 +16,60 @@
             <div class="col-xs-12">
               <label for="driver">Водитель</label>
             </div>
-            <div class="col-xs-9">
-              <select
-                name="driver" id="driver" class="form-control" required
-                ng-model="confirmOrderCtrl.driver"
-                ng-options="driver.driver for driver in confirmOrderCtrl.driversList">
-                <option value="">-- Водитель --</option>
-              </select>
-            </div>
-            <div class="col-xs-3">
-              <button ng-link="['/Drivers', 'DriverDetail', {guid : 'new'}]" class="btn-primary requests-list_send">Добавить водителя</button>
+            <div class="col-xs-10">
+              <div class="input-group">
+                <select
+                  name="driver" id="driver" class="form-control" required
+                  ng-model="confirmOrderCtrl.driver"
+                  ng-options="driver.driver for driver in confirmOrderCtrl.driversList">
+                  <option value="">-- Водитель --</option>
+                </select>
+                <span class="input-group-btn">
+                  <button ng-link="['/Drivers', 'DriverDetail', {guid : 'new'}]" class="btn btn-ok">Добавить водителя</button>
+                </span>
+              </div>
             </div>
           </div>
         </div>
-
 
         <div class="form-group">
           <div class="row">
             <div class="col-xs-12">
               <label for="vehicle">Машина</label>
             </div>
-            <div class="col-xs-9">
-              <select
-                name="vehicle" id="vehicle" class="form-control" required
-                ng-model="confirmOrderCtrl.vehicle"
-                ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in confirmOrderCtrl.vehicleList">
-                <option value="">-- Машина --</option>
-              </select>
-            </div>
-            <div class="col-xs-3">
-              <button ng-link="['/Vehicle', 'VehicleDetail', {guid : 'new'}]" class="btn-primary requests-list_send">Добавить машину</button>
+            <div class="col-xs-10">
+              <div class="input-group">
+                <select
+                  name="vehicle" id="vehicle" class="form-control" required
+                  ng-model="confirmOrderCtrl.vehicle"
+                  ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in confirmOrderCtrl.vehicleList">
+                  <option value="">-- Машина --</option>
+                </select>
+                <span class="input-group-btn">
+                  <button ng-link="['/Vehicle', 'VehicleDetail', {guid : 'new'}]" class="btn btn-ok ">Добавить машину</button>
+                </span>
+              </div>
             </div>
           </div>
         </div>
-
 
         <div class="form-group">
           <div class="row">
             <div class="col-xs-12">
               <label for="semitrailer">Полуприцеп</label>
             </div>
-            <div class="col-xs-9">
-              <select
-                name="vehicle" id="semitrailer" class="form-control"
-                ng-model="confirmOrderCtrl.semitrailer"
-                ng-options="(semitrailer.plate_number +' '+ semitrailer.model) for semitrailer in confirmOrderCtrl.semitrailersList">
-                <option value="">-- Полуприцеп --</option>
-              </select>
-            </div>
-
-            <div class="col-xs-3">
-              <a ng-link="['/Semitrailer']" class="btn-primary requests-list_send">Добавить полуприцеп</a>
+            <div class="col-xs-10">
+              <div class="input-group">
+                <select
+                  name="vehicle" id="semitrailer" class="form-control"
+                  ng-model="confirmOrderCtrl.semitrailer"
+                  ng-options="(semitrailer.plate_number +' '+ semitrailer.model) for semitrailer in confirmOrderCtrl.semitrailersList">
+                  <option value="">-- Полуприцеп --</option>
+                </select>
+                <span class="input-group-btn">
+                  <button ng-link="['/Semitrailer']" class="btn btn-ok">Добавить полуприцеп</button>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -76,7 +77,7 @@
       </div>
 
       <div>
-        <button type="submit">Подтвердить</button>
-        <button class="btn-danger requests-list_send" ng-link="['/Orders', 'OrdersList', {status : 2}]">Отмена</button>
+        <button type="submit" class="btn btn-ok btn__l">Подтвердить</button>
+        <button class="btn btn-error btn__l" ng-link="['/Orders', 'OrdersList', {status : 2}]">Отмена</button>
       </div>
     </form>

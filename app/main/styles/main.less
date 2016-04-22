@@ -45,49 +45,52 @@ b{
 }
 
 // ---- [  Buttons  ] ----
-.btn-primary{
-  font-size: 16px;
-  background: @green-color;
-  color: #fff;
-  border: none; outline: none;
+.btn{
+  font-size: 12px;
+  color: #333;
+  border: 1px solid #ccc; outline: none !important;
   padding: 6px 18px;
   border-radius: 4px;
   display: inline-block;
   text-align: center;
   cursor: pointer;
+  background-color: #fff;
+  box-sizing: border-box;
+  white-space: nowrap;
   &:hover, &:focus, &active{
-    background: ( @green-color * .9 );
-    border:none; outline: none;
-    box-shadow: none;
-    text-decoration: none;
+    background-color: #f4f4f4;
+  }
+  &__l{
+    font-size: 14px;
+    padding: 10px 20px;
+    min-width: 110px;
   }
 }
-.btn-primary.active.focus, .btn-primary.active:focus,
-.btn-primary.active:hover, .btn-primary:active.focus,
-.btn-primary:active:focus, .btn-primary:active:hover,
-.open>.dropdown-toggle.btn-primary.focus,
-.open>.dropdown-toggle.btn-primary:focus,
-.open>.dropdown-toggle.btn-primary:hover{
-  background: ( @green-color * .9 );
-  border:none; outline: none;
-  box-shadow: none;
-  text-decoration: none;
-}
-.btn-danger{
-  font-size: 16px;
-  color: #fff;
-  border: none; outline: none;
-  padding: 6px 18px;
-  border-radius: 4px;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
+.btn-ok{
+  color:#fff;
+  background-color: @green-color;
+  border-color: @green-color;
   &:hover, &:focus, &active{
-    border:none; outline: none;
-    box-shadow: none;
-    text-decoration: none;
+    color:#fff;
+    background-color: ( @green-color * .9 );
+    border-color: ( @green-color * .9 );
   }
+}
+.btn-error{
+  color:#fff;
+  background-color: #c9302c;
+  border-color: #c9302c;
+  &:hover, &:focus, &active{
+    color:#fff;
+    background-color: #ac2925;
+    border-color: #ac2925;
+  }
+}
+.input-group-btn > .btn{
+  width: 180px;
+  font-size: 14px;
+  height: 34px;
+  padding: 0 18px;
 }
 
 // ---- [  Form  ] ----
@@ -178,3 +181,17 @@ b{
 .tab-pane{
 }
 
+
+
+// media
+@media (min-width: 1600px){
+  .btn{
+    font-size: 14px;
+    padding: 8px 18px;
+    &__l{
+      font-size: 16px;
+      padding: 10px 20px;
+      min-width: 180px;
+    }
+  }
+}

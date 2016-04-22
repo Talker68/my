@@ -1,11 +1,17 @@
 .b-list{
-  font-size: 18px;
+  margin-bottom: 30px;
 }
 .b-list_head{
+  font-size: 0;
   margin-bottom: 10px;
 }
 .b-list_cell{
-  padding: 14px 30px;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+  padding: 8px 10px;
+  line-height: normal;
   &:not(:last-child):after {
     content: '';
     position: absolute;
@@ -42,3 +48,9 @@
   }
 }
 
+@media (min-width: 1600px){
+  .b-list_cell{
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+}
