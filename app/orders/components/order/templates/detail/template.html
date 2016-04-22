@@ -24,7 +24,7 @@
 							<!--Тип маршрута-->
 							<div class="form-fieldset_cell col-xs-4">
 								<div class="form-fieldset_icon-cnt">
-									<img src="../../../../img/icons/Tip_Marshruta_Tranzit.svg" width="60">
+									<img src="/images/icons/Tip_Marshruta_Tranzit.svg" width="60">
 								</div>
 								<span>Тип маршрута</span>
 								<label class="form-fieldset_field">
@@ -34,7 +34,7 @@
 							<!-- Тип кузова -->
 							<div class="form-fieldset_cell col-xs-4">
 								<div class="form-fieldset_icon-cnt">
-									<img src="../../../../img/icons/Transport_tipe_Auto_ico.svg" width="80">
+									<img src="/images/icons/Transport_tipe_Auto_ico.svg" width="80">
 								</div>
 								<span>Тип кузова</span>
 								<label class="form-fieldset_field">
@@ -44,7 +44,7 @@
 							<!-- Тип груза -->
 							<div class="form-fieldset_cell col-xs-4">
 								<div class="form-fieldset_icon-cnt">
-									<img src="../../../../img/icons/car_9_ico.svg" width="76">
+									<img src="/images/icons/car_9_ico.svg" width="76">
 								</div>
 								<span>Тип груза</span>
 								<label class="form-fieldset_field">
@@ -174,40 +174,78 @@
 
 		<!-- start Tab -->
 		<uib-tab index="2" heading="Транспорт" ng-if="orderCtrl.order.status === 3 && orderCtrl.order.forwarder">
-			<div>
-		<h2>Транспортная компания</h2>
-		<!--Название-->
-		<div>{{orderCtrl.order.forwarder.title}}</div>
 
-		<!--Cпособ подбора-->
-		<div>{{orderCtrl.order.forwarder.request_origin}}</div>
-		</div>
-			<div>
-				<h2>Транспортная информация</h2>
-				<!--Марка тягача-->
-				<div>{{orderCtrl.order.forwarder.vehicle.model}}</div>
+			<fieldset class="form-fieldset">
+				<legend class="form-fieldset_legend">
+					Транспортная компания
+				</legend>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Название</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.title}}</span>
+					</label>
+				</div>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Cпособ подбора</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.request_origin}}</span>
+					</label>
+				</div>
+			</fieldset>
 
-				<!--номер тягача-->
-				<div>{{orderCtrl.order.forwarder.vehicle.plate_number}}</div>
+			<fieldset class="form-fieldset">
+				<legend class="form-fieldset_legend">
+					Транспортная информация
+				</legend>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Марка тягача</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.vehicle.model}}</span>
+					</label>
+				</div>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Номер тягача</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.vehicle.plate_number}}</span>
+					</label>
+				</div>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Марка полуприцепа</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.vehicle.semitrailer}}</span>
+					</label>
+				</div>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Номер полуприцепа</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.vehicle.semitrailer_plate_number}}</span>
+					</label>
+				</div>
+			</fieldset>
 
-				<!--Марка полуприцепа-->
-				<div>{{orderCtrl.order.forwarder.vehicle.semitrailer}}</div>
-
-				<!--номер полуприцепа-->
-				<div>{{orderCtrl.order.forwarder.vehicle.semitrailer_plate_number}}</div>
-			</div>
-			<div>
-				<h2>Информация о водителе</h2>
-
-				<!--Имя-->
-				<div>{{orderCtrl.order.forwarder.driver.full_name}}</div>
-
-				<!--телефон-->
-				<div>{{orderCtrl.order.forwarder.driver.phone}}</div>
-
-				<!--номер прав-->
-				<div>{{orderCtrl.order.forwarder.driver.driver_license}}</div>
-			</div>
+			<fieldset class="form-fieldset">
+				<legend class="form-fieldset_legend">
+					Информация о водителе
+				</legend>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Имя</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.driver.full_name}}</span>
+					</label>
+				</div>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Телефон</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.driver.phone}}</span>
+					</label>
+				</div>
+				<div class="form-fieldset_cell col-xs-4">
+					<span>Номер прав</span>
+					<label class="form-fieldset_field">
+						<span>{{orderCtrl.order.forwarder.driver.driver_license}}</span>
+					</label>
+				</div>
+			</fieldset>
 		</uib-tab>
 		<!-- end Tab -->
 
