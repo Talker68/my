@@ -62,11 +62,12 @@ module.exports = {
     ],
     noParse : /angular\/angular.js/
   },
+  
 
   devServer : {
     host : 'localhost',
     port : '3001',
-    contentBase : path.resolve(__dirname , "build"),
+    contentBase : path.resolve(__dirname , "app"),
     //перенапрвляем запросы
     proxy : require('./proxy_dev'),
     historyApiFallback : true // Для singePage
