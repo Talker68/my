@@ -1,16 +1,37 @@
 "use strict";
 
 export default function (VehicleService, $q) {
-  this.isEdit = false;
-  this.vehicleToEdit = {};
+
 
   this.$routerOnActivate = function(next, previous) {
-    this.loadingTypes = next.routeData.loadingTypes;
-    this.vehicle = next.routeData.vehicle;
+
+    this.isEdit = false;
+    this.vehicleToEdit = {};
+    
 
     if(next.params.guid === 'new'){
       this.isEdit = true;
     }
+
+    let vehiclePromise;
+    if(next.params.guid !== 'new'){
+      vehiclePromise = VehicleService.getVehicle(next.params.guid)
+    } else {
+      vehiclePromise = $q.resolve({});
+    }
+
+    return $q.all(
+      {
+        loadingTypes : VehicleService.getLoadingTypes(),
+        vehicle : vehiclePromise
+      }
+    ).then(
+      (response) => {
+        this.loadingTypes = response.loadingTypes;
+        this.vehicle = response.vehicle.data ? response.vehicle.data : response.vehicle
+      }
+    )
+
   };
 
 

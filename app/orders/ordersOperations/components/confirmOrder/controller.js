@@ -1,13 +1,24 @@
 "use strict";
 
-export default function ($rootRouter, OrdersService) {
+export default function ($rootRouter, OrdersService, VehicleService , DriversService, $q) {
 
   //получаем guid заказа из параметра и сам заказ
   this.$routerOnActivate = function(next, previous) {
     this.orderGuid = next.params.guid;
-    this.driversList = next.routeData.drivers;
-    this.vehicleList = next.routeData.vehicle;
-    this.semitrailersList = next.routeData.semitrailersList;
+    
+    return $q.all(
+      {
+        drivers : DriversService.getDriversList(),
+        vehicle : VehicleService.getVehicleList(),
+        semitrailer: VehicleService.getSemitrailerList()
+      }
+    ).then(
+      (response) => {
+        this.driversList = response.drivers.data;
+        this.vehicleList = response.vehicle.data;
+        this.semitrailersList = response.semitrailer.data;
+      }
+    )
   };
   
   this.submit = function(){

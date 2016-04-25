@@ -3,7 +3,15 @@
 export default function(OrdersService, $rootRouter, $element, $attrs, $q){
 
   this.$routerOnActivate = (next, previous) => {
-    this.order = next.routeData.order;
+    return $q.all(
+      {
+        order : OrdersService.getOrderByGuid(next.params.guid)
+      }
+    ).then(
+      (response) => {
+        this.order = response.order.data;
+      }
+    )
   }
 
   let isPreview = 'preview' in $attrs;

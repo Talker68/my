@@ -7,7 +7,6 @@ import tplPreviewLogist from './templates/preview/logist.html';
 import tplPreviewForwarder from './templates/preview/forwarder.html';
 import tplDetail from './templates/detail/template.html';
 
-import canActivate from './canActivate';
 
 export default {
   controller : controller,
@@ -29,8 +28,7 @@ export default {
     orderPreview : '<',
     removeOrder : '&',
     $router : '<'
-  },
+  }
 
-  $canActivate: canActivate,
 
 }

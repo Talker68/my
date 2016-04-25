@@ -1,15 +1,35 @@
 "use strict";
 
 export default function (DriversService, $q) {
-  this.isEdit = false;
-  this.driverToEdit = {};
+
 
   this.$routerOnActivate = function(next, previous) {
-    this.driver = next.routeData.driver;
+
+    this.isEdit = false;
+    this.driverToEdit = {};
 
     if(next.params.guid === 'new'){
       this.isEdit = true;
     }
+
+    let driverPromise;
+    if(next.params.guid !== 'new'){
+      driverPromise = DriversService.getDriver(next.params.guid)
+    } else {
+      driverPromise = $q.resolve({});
+    }
+
+    return $q.all(
+      {
+        driver : driverPromise
+      }
+    ).then(
+      (response) => {
+        this.driver = response.driver.data ? response.driver.data : response.driver
+      }
+    )
+
+
   };
 
 
@@ -20,7 +40,6 @@ export default function (DriversService, $q) {
 
 
   this.cancelEdit = function(){
-    console.log('fefe');
     this.isEdit = false;
     //если отмена из создания авто то перекидывает на список
     if(!this.driverToEdit.guid){

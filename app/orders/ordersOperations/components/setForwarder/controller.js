@@ -1,13 +1,23 @@
 "use strict";
 
-export default function (OrdersService, $rootRouter) {
+export default function (OrdersService, ForwardersService, $rootRouter, $q) {
 
   //получаем guid заказа из параметра и сам заказ
   this.$routerOnActivate = function(next, previous) {
     this.orderGuid = next.params.guid;
-    this.order = next.routeData.order;
-    this.forwardersList = next.routeData.forwarders;
     this.now = new Date();
+
+    return $q.all(
+      {
+        order : OrdersService.getOrderByGuid(next.params.guid),
+        forwarders : ForwardersService.getForwarders()
+      }
+    ).then(
+      (response) => {
+        this.order  = response.order.data;
+        this.forwardersList = response.forwarders.data;
+      }
+    )
   }
 
 
@@ -27,7 +37,7 @@ export default function (OrdersService, $rootRouter) {
     auction.orderGuid = this.orderGuid;
 
     OrdersService.createAuction(auction).then(
-      (response) => {response.data}
+      (response) => {console.log(response.data)}
     )
   }
 
