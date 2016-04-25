@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
+console.log(NODE_ENV);
 
 let REQUEST_PREFIX;
 
@@ -49,15 +50,15 @@ module.exports = {
       },
       {
         test : /\.css$/,
-        loader : 'style!css',
+        loader : 'style!css!autoprefixer?browsers=last 2 versions',
       },
       {
         test : /\.less$/,
-        loader : 'style!css!less',
+        loader : 'style!css!autoprefixer?browsers=last 2 versions!less',
       },
       {
         test : /\.(jpg|png|svg|ttf|eot|woff|woff2|gif)$/,
-        loader : 'file?name=[path]/[name].[ext]?[hash]',
+        loader : 'file?name=files/[path]/[name].[ext]?[hash]',
       },
     ],
     noParse : /angular\/angular.js/
@@ -71,7 +72,6 @@ module.exports = {
     //перенапрвляем запросы
     proxy : require('./proxy_dev'),
     historyApiFallback : true // Для singePage
-
   }
 };
 

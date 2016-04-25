@@ -7,7 +7,7 @@
     "test": "node_modules/.bin/karma start",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot",
     "wp": "node_modules/.bin/webpack",
-    "wp:build" : "(rm -rf build/* && cp app/index.html build/. && cp -a app/images build/.) && npm run wp"
+    "wp:build": "(rm -rf build/* && cp app/index.html build/. && cp -a app/images build/.) && npm run wp"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,8 @@
     "angular-animate": "^1.5.1",
     "angular-cookies": "^1.5.0",
     "angular-ui-bootstrap": "^1.2.5",
+    "autoprefixer": "^6.3.6",
+    "autoprefixer-loader": "^3.2.0",
     "base-64": "^0.1.0",
     "bootstrap": "^3.3.6"
   },
