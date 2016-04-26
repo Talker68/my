@@ -13,15 +13,16 @@ let REQUEST_PREFIX;
 if(NODE_ENV === 'development'){
   REQUEST_PREFIX = "/logistics";
 } else {
-  REQUEST_PREFIX = "/";
+  REQUEST_PREFIX = "/ERPPPK_master-copy-local/hs/logistics";
 }
+
 
 module.exports = {
   entry: path.resolve(__dirname, "app", "main", "index.js"),
   output: {
     path: path.resolve(__dirname , "build"),
     filename: "app.js",
-    publicPath : '/'
+    publicPath : NODE_ENV === 'development' ? '/' : '/logistics/'
   },
 
   devtool : NODE_ENV == 'development' ? 'source-map' : null,
@@ -63,7 +64,15 @@ module.exports = {
     ],
     noParse : /angular\/angular.js/
   },
-  
+
+  resolve: {
+    root: [
+      path.resolve('./app'),
+    ],
+    alias : {
+      img : "/images"
+    }
+  },
 
   devServer : {
     host : 'localhost',
@@ -75,14 +84,14 @@ module.exports = {
   }
 };
 
-if (NODE_ENV == 'production') {
-  module.exports.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress : {
-        warnings : false,
-        drop_console : true,
-        unsafe : true
-      }
-    })
-  )
-}
+// if (NODE_ENV == 'production') {
+//   module.exports.plugins.push(
+//     new webpack.optimize.UglifyJsPlugin({
+//       compress : {
+//         warnings : false,
+//         drop_console : true,
+//         unsafe : true
+//       }
+//     })
+//   )
+// }

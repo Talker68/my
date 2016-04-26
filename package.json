@@ -7,7 +7,7 @@
     "test": "node_modules/.bin/karma start",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot",
     "wp": "node_modules/.bin/webpack",
-    "wp:build": "(rm -rf build/* && cp app/index.html build/. && cp -a app/images build/.) && npm run wp"
+    "wp:build": "(rm -rf build/* && cp app/index.html build/.) && npm run wp"
   },
   "author": "",
   "license": "ISC",
