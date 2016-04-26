@@ -7,6 +7,7 @@
     "test": "node_modules/.bin/karma start",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot",
     "wp": "node_modules/.bin/webpack",
+    "wp:watch" : "node_modules/.bin/webpack --watch",
     "wp:build": "(rm -rf build/* && cp app/index.html build/.) && npm run wp"
   },
   "author": "",
@@ -20,7 +21,8 @@
     "autoprefixer": "^6.3.6",
     "autoprefixer-loader": "^3.2.0",
     "base-64": "^0.1.0",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "config": "^1.20.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.2",

@@ -1,0 +1,9 @@
+{
+  "requestPrefix" : "/logistics",
+  "publicPath" : "/",
+  "devtool" : "source-map",
+  "proxy" : [{
+    "path" : "/logistics/*",
+    "target" : "http://pc1213.ppl.loc/LogTest/hs"
+  }]
+}
