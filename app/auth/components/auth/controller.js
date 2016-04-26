@@ -12,7 +12,7 @@ export default function(Base64Service, $rootScope, AuthService, $http){
   this.auth = function(){
     let authData = Base64Service.encode(`${this.login}:${this.pass}`);
     
-    $http.get(`${REQUEST_PREFIX}/auth`, {headers : {Authorization : 'Basic ' + authData}}).then(
+    $http.get(`${REQUEST_PREFIX}/auth`/*{headers : {Authorization : 'Basic ' + authData}}*/).then(
       (response) => {
         AuthService.SetCredentials(response.data, authData);
         this.$router.navigate(['Orders'])

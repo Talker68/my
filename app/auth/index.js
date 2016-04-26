@@ -26,7 +26,7 @@ export default angular.module('auth', [cookies])
     function ($rootScope, $cookies, $http) {
       $rootScope.globals = $cookies.getObject('globals') || {};
       if ($rootScope.globals.currentUser) {
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
+        //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
       }
     })
 

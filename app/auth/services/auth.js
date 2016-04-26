@@ -3,7 +3,7 @@
 export default function($http, $rootScope, $cookies){
   this.SetCredentials = function (user, authData){
     //установка заголовка
-    $http.defaults.headers.common.Authorization = `Basic ${authData}`;
+    //$http.defaults.headers.common.Authorization = `Basic ${authData}`;
     //установка текущего пользователя
     $rootScope.globals = {
       currentUser: {
