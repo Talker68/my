@@ -6,7 +6,6 @@ import uibootstrap from 'angular-ui-bootstrap';
 import '@angular/router/angular1/angular_1_router';
 import angularAnimate from 'angular-animate';
 
-import authModule from '../auth';
 import OrdersModule from '../orders';
 import ForwardersModule from '../forwarders';
 import VehicleModule from '../vehicle';
@@ -26,9 +25,10 @@ import navigationComponent from './components/navigation';
 //styles
 import './main.less';
 
+
 const app = angular.module('app',
   [
-    authModule,
+
     OrdersModule,
     ForwardersModule,
     VehicleModule,
@@ -36,13 +36,23 @@ const app = angular.module('app',
 
     uibootstrap,
     'ngComponentRouter',
-    angularAnimate
   ])
 
   .value('$routerRootComponent', 'app')
 
   .config(config)
 
+  .run(function($http, $rootScope){
+      //$http.get(`${REQUEST_PREFIX}/auth`).then(
+    $http.get(`${REQUEST_PREFIX}/auth`).then(
+        (response) => {
+          $rootScope.globals = {
+            currentUser: {
+              user: response.data,
+            }
+          };
+        })
+  })
   .service('ApiService', apiService)
 
   .component('app', appComponent)
