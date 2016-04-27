@@ -15,8 +15,7 @@ console.log(REQUEST_PREFIX);
 module.exports = {
   entry: path.resolve(__dirname, "app", "main", "index.js"),
   output: {
-    //path: path.resolve(__dirname , "build"),
-    path : "B:/",
+    path: path.resolve(__dirname , "scripts"),
     filename: "app.js",
     publicPath : config.get('publicPath')
   },

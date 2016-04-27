@@ -1,6 +1,6 @@
 {
-  "requestPrefix" : "/ERPPPK_master/hs/logistics",
-  "publicPath" : "/logistics/",
+  "requestPrefix" : "/api",
+  "publicPath" : "/scripts/",
   "devtool" : null,
   "proxy" : {}
 }

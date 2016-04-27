@@ -8,7 +8,7 @@
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot",
     "wp": "node_modules/.bin/webpack",
     "wp:watch" : "node_modules/.bin/webpack --watch",
-    "wp:build": "(rm -rf build/* && cp app/index.html build/.) && npm run wp"
+    "wp:build": "cp app/index.html scripts/. && npm run wp"
   },
   "author": "",
   "license": "ISC",

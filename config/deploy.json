@@ -1,9 +1,0 @@
-{
-  "requestPrefix" : "/ERPPPK_master-copy-local/hs/logistics",
-  "publicPath" : "/logistics/",
-  "devtool" : "source-map",
-  "proxy" : [{
-    "path" : "/ERPPPK_master-copy-local/hs/logistics/*",
-    "target" : "http://pc1474"
-  }]
-}
