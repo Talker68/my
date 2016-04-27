@@ -4,8 +4,8 @@ import 'angular';
 import 'bootstrap/dist/css/bootstrap.css';
 import uibootstrap from 'angular-ui-bootstrap';
 import '@angular/router/angular1/angular_1_router';
-import angularAnimate from 'angular-animate';
 
+import AuthModule from  '../auth';
 import OrdersModule from '../orders';
 import ForwardersModule from '../forwarders';
 import VehicleModule from '../vehicle';
@@ -28,7 +28,7 @@ import './main.less';
 
 const app = angular.module('app',
   [
-
+    AuthModule,
     OrdersModule,
     ForwardersModule,
     VehicleModule,
@@ -43,7 +43,6 @@ const app = angular.module('app',
   .config(config)
 
   .run(function($http, $rootScope){
-      //$http.get(`${REQUEST_PREFIX}/auth`).then(
     $http.get(`${REQUEST_PREFIX}/auth`).then(
         (response) => {
           $rootScope.globals = {

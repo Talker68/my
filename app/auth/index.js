@@ -11,23 +11,23 @@ import AuthService from './services/auth';
 
 
 export default angular.module('auth', [cookies])
-  .service('Base64Service', base64Service)
-  .service('authRejector', AuthRejector)
-  .service('AuthService', AuthService)
+  // .service('Base64Service', base64Service)
+  // .service('authRejector', AuthRejector)
+  // .service('AuthService', AuthService)
 
-  .component('auth', authComponent)
+  //.component('auth', authComponent)
   .component('user', userComponent)
   
-  .config(function($httpProvider) {
-    $httpProvider.interceptors.push('authRejector');
-  })
-
-  .run(
-    function ($rootScope, $cookies, $http) {
-      $rootScope.globals = $cookies.getObject('globals') || {};
-      if ($rootScope.globals.currentUser) {
-        //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
-      }
-    })
+  // .config(function($httpProvider) {
+  //   $httpProvider.interceptors.push('authRejector');
+  // })
+  //
+  // .run(
+  //   function ($rootScope, $cookies, $http) {
+  //     $rootScope.globals = $cookies.getObject('globals') || {};
+  //     if ($rootScope.globals.currentUser) {
+  //       //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
+  //     }
+  //   })
 
   .name;

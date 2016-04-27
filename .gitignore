@@ -1,5 +1,7 @@
 /.idea
 /node_modules
+/scripts
+/build
 /PSD
 /*.log
 /bash.exe*
