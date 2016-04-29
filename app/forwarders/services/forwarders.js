@@ -5,7 +5,4 @@ export default function($http){
     return $http.get(`${REQUEST_PREFIX}/forwarders`);
   }
   
-  this.getDriversList = function () {
-    return $http.get(`${REQUEST_PREFIX}/driver`)
-  }
 }
