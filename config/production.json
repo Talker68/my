@@ -1,6 +1,6 @@
 {
   "requestPrefix" : "/Portal1_deploy/api",
-  "publicPath" : "/Portal1_deploy/scripts/",
+  "publicPath" : "scripts/",
   "devtool" : null,
   "proxy" : {}
 }

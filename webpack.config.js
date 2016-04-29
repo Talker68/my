@@ -18,7 +18,7 @@ module.exports = {
     path: path.resolve(__dirname , "scripts"),
     filename: "app.js",
     publicPath : config.get('publicPath')
-  },
+   },
 
   devtool : config.get('devtool'),
 
