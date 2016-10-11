@@ -1,0 +1,39 @@
+<div class="l-title">Автомобили</div>
+
+<div class="b-list container-fluid">
+  <div class="b-list_head row">
+    <div class="b-list_cell col-xs-1">Номер</div>
+    <div class="b-list_cell col-xs-1">Марка</div>
+    <div class="b-list_cell col-xs-2">Грузоподъемность</div>
+    <div class="b-list_cell col-xs-1">Объем</div>
+    <div class="b-list_cell col-xs-2">Год выпуска</div>
+    <div class="b-list_cell col-xs-3">Тип отгрузки</div>
+  </div>
+  <div class="b-list_middle">
+    <a class="b-list_row row" ui-sref="vehicleDetail({guid: vehicle.guid})" ng-repeat="vehicle in vehicleListCtrl.vehicleList track by vehicle.guid" >
+      <div class="b-list_cell col-xs-1">
+        {{vehicle.plate_number}}
+      </div>
+      <div class="b-list_cell col-xs-1">
+        {{vehicle.model}}
+      </div>
+      <div class="b-list_cell col-xs-2">
+        {{vehicle.capacity}}
+      </div>
+      <div class="b-list_cell col-xs-1">
+        {{vehicle.volume}}
+      </div>
+      <div class="b-list_cell col-xs-2">
+        {{vehicle.year}}
+      </div>
+      <div class="b-list_cell col-xs-5">
+        {{vehicle.loading_type.name}} ({{vehicle.loading_type.title}})
+      </div>
+    </a>
+  </div>
+</div>
+
+
+<div>
+  <a class="btn btn-ok btn__l" ui-sref="vehicleDetail({edit: true})">Добавить</a>
+</div>

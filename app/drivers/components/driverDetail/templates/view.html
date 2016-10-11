@@ -1,0 +1,72 @@
+
+<div class="l-title">Водитель</div>
+
+<p>
+  <a ui-sref="drivers({})" ui-sref-opts="({reload : true})" class="clp-link">
+    <i class="fa fa-angle-left" aria-hidden="true"></i>
+    К списку
+  </a>
+</p>
+
+<div ng-if="!driverCtrl.isEdit">
+  <div class="b-wrap">
+    <div class="form-field row">
+      <div class="col-xs-6">
+        <!-- ФИО -->
+        <div class="form-fieldset_cell">
+          <span>ФИО</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.driver}}</span>
+          </label>
+        </div>
+        <!-- Телефон -->
+        <div class="form-fieldset_cell">
+          <span>Телефон</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.driver_phone}}</span>
+          </label>
+        </div>
+        <!-- Права серия -->
+        <div class="form-fieldset_cell">
+          <span>Права серия</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_series}}</span>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="col-xs-6">
+        <!-- Права номер -->
+        <div class="form-fieldset_cell">
+          <span>Права номер</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_number}}</span>
+          </label>
+        </div>
+        <!-- Права выданы -->
+        <div class="form-fieldset_cell">
+          <span>Права выданы</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_issue | date : "dd.MM.yyyy"}}</span>
+          </label>
+        </div>
+        <!-- Права действительны до -->
+        <div class="form-fieldset_cell">
+          <span>Права действительны до</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_valid | date : "dd.MM.yyyy"}}</span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div>
+    <button ui-sref="driverDetail({driver : driverCtrl.driver, edit : true})" class="btn btn-ok btn__l">Изменить</button>
+    <button ng-click="driverCtrl.removeDriver()" class="btn btn-error btn__l">Удалить</button>
+  </div>
+</div>
+
+
+

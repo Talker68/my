@@ -1,0 +1,127 @@
+<!--Редукцион-->
+<div ng-class="['col-xs-12', auctionCtrl.viewMode]">
+  <!--Стартовый тариф-->
+  <div class="row">
+    <div class="b-list_cell">
+      <div class="col-xs-2">
+        Стартовый тариф без НДС
+        <div>
+          <b class="green">{{auctionCtrl.auction.startingBid}}</b>
+        </div>
+      </div>
+      <!--Забрать сразу-->
+      <div class="col-xs-2">
+        Забрать сразу
+        <div>
+          <b class="green">{{auctionCtrl.auction.takeNowAmount}}</b>
+        </div>
+      </div>
+      <!--начало-->
+      <div class="col-xs-2">
+        Начало
+        <div>
+          <b class="green">{{auctionCtrl.auction.start | date : "dd.MM.yyyy HH:mm"}}</b>
+        </div>
+      </div>
+      <!--Конец-->
+      <div class="col-xs-2">
+        Конец1
+        <div>
+          <b ng-class="{green : !auctionCtrl.auction.prolonged, orange : auctionCtrl.auction.prolonged}">{{auctionCtrl.auction.finish | date : "dd.MM.yyyy HH:mm"}}</b>
+        </div>
+      </div>
+      <!--Шаг-->
+      <div class="col-xs-2">
+        Шаг
+        <div>
+          <b class="green">{{auctionCtrl.auction.step}}</b>
+        </div>
+      </div>
+
+      <!-- Очередь в редукционе -->
+      <div class="col-xs-2" ng-if="auctionCtrl.auctionStatus === 'ON_CONFIRM' && !auctionCtrl.auction.canConfirmOrder">
+        <p ng-if="auctionCtrl.auction.positionInQueue">
+          Позиция в очереди {{auctionCtrl.auction.positionInQueue}}
+        </p>
+        <button ng-if="!auctionCtrl.auction.isInQueue" ng-click="auctionCtrl.addToQueue()" class="btn btn-error">Встать в очередь</button>
+        <button ng-if="auctionCtrl.auction.isInQueue" ng-click="auctionCtrl.leaveQueue()" class="btn btn-error">Выйти из очереди</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <style>
+        #auctionForm.ng-submitted .ng-touched.form-control.ng-invalid,
+        #auctionForm .form-control.ng-touched.ng-invalid {
+          box-shadow: 0 0 5px 0px red inset;
+        }
+      </style>
+    </div>
+
+    <div class="row b-list_cell" ng-if="auctionCtrl.auctionStatus === 'ACTIVE'">
+      <div class="col-xs-4">
+        <form class="form-inline" id="auctionForm" name="auctionCtrl.auctionForm" novalidate ng-submit="auctionCtrl.newBet()">
+          <div class="input-group">
+            <input type="number" class="form-control" ng-model="auctionCtrl.bet" bet-validation auction="auctionCtrl.auction" step="{{::auctionCtrl.auction.step}}" />
+          </div>
+          <button type="submit" class="btn btn-ok">Сделать ставку</button>
+        </form>
+      </div>
+      <div class="col-xs-2" ng-if="auctionCtrl.auction.lastBid">
+        Последняя ставка <b class="green">{{auctionCtrl.auction.lastBid}}р.</b>
+        <br>
+        в {{auctionCtrl.auction.lastBidTime | date : "dd.MM.yyyy HH:mm"}}
+      </div>
+      <div class="col-xs-2" ng-if="auctionCtrl.auction.lastMyBid">
+        <b>Ваша ставка</b> <b class="green">{{auctionCtrl.auction.lastMyBid}}р.</b>
+        <br>
+        в {{auctionCtrl.auction.lastMyBidTime | date : "dd.MM.yyyy HH:mm"}}
+      </div>
+
+
+      <div class="b-list_cell col-xs-12" ng-messages="auctionCtrl.auctionForm.$error" ng-messages-multiple role="alert" ng-if="auctionCtrl.auctionForm.$pristine && auctionCtrl.auctionForm.$submitted">
+        <div ng-message="BVrequired">Не указана ставка</div>
+        <div ng-message="BVlessStartingBid">Ставка не должна быть больше стартовой</div>
+        <div ng-message="BVlessLastBid">Ставка должна быть меньше текущей</div>
+        <div ng-message="BVlmultiplicityToStep">Ставка должна быть кратна шагу</div>
+      </div>
+    </div>
+
+
+    <div ng-if="auctionCtrl.auctionStatus === 'ACTIVE' || auctionCtrl.auctionStatus === 'ON_CONFIRM'" class="b-list_cell">
+
+      <p ng-click="showBidHistory = !showBidHistory">
+        <span ng-if="showBidHistory">История ставок</span>
+        <span ng-if="!showBidHistory" ng-click="auctionCtrl.getBidHistory()">История ставок</span>
+        <span class="glyphicon glyphicon-chevron-up" ng-if="showBidHistory"></span>
+        <span class="glyphicon glyphicon-chevron-down" ng-if="!showBidHistory"></span>
+      </p>
+
+
+      <div ng-show="showBidHistory">
+        <p>
+          <b class="e-link">
+            <i class="glyphicon glyphicon-retweet"></i>
+            <span ng-click="auctionCtrl.getBidHistory()">Обновить историю</span>
+          </b>
+        </p>
+
+        <div ng-repeat="bid in auctionCtrl.bidHistory"  class="row">
+          <div class="col-xs-3 ">
+            <b ng-if="bid.forwarderTitle" class="green">Ваша ставка</b>
+            <span ng-if="!bid.forwarderTitle" class="red">Ставка другого участника</span>
+          </div>
+          <div class="col-xs-3">{{::bid.date | date : "dd.MM HH:mm"}}</div>
+          <div class="col-xs-3">{{::bid.bid}}</div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+<div class="clearfix"></div>

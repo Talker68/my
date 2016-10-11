@@ -1,0 +1,148 @@
+<!-- Основные данные -->
+<div class="row">
+  <div class="col-xs-6">
+    <!-- Информация о грузе и транспорте -->
+    <fieldset class="form-fieldset">
+      <legend class="form-fieldset_legend">
+        Информация о грузе и транспорте
+      </legend>
+      <div class="form-fieldset_row row">
+        <!--Тип маршрута-->
+        <div class="form-fieldset_cell col-xs-4">
+          <div class="form-fieldset_icon-cnt">
+            <img src="~images/icons/Tip_Marshruta_Tranzit.svg" width="60">
+          </div>
+          <span>Тип маршрута</span>
+          <label class="form-fieldset_field">
+            <span>{{orderMainDataCtrl.order.route.type}}</span>
+          </label>
+        </div>
+        <!-- Тип кузова -->
+        <div class="form-fieldset_cell col-xs-4">
+          <div class="form-fieldset_icon-cnt">
+            <img src="~images/icons/Transport_tipe_Auto_ico.svg" width="80">
+          </div>
+          <span>Тип кузова</span>
+          <label class="form-fieldset_field">
+            <span>{{orderMainDataCtrl.order.forwarder.vehicle.vehicle_type.title}}</span>
+          </label>
+        </div>
+        <!-- Тип груза -->
+        <div class="form-fieldset_cell col-xs-4">
+          <div class="form-fieldset_icon-cnt">
+            <img src="~images/icons/car_9_ico.svg" width="76">
+          </div>
+          <span>Тип груза</span>
+          <label class="form-fieldset_field">
+            <span ng-repeat="cargoType in orderMainDataCtrl.order.cargo.type track by $index">{{cargoType}}{{$last ? '' : ', '}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-fieldset_hr ng-hide">
+      </div>
+      <div class="form-fieldset_row row">
+        <!--Тип кузова(полное)-->
+        <div class="form-fieldset_cell col-xs-12">
+          <span>Тип кузова(полное) </span>
+          <label class="form-fieldset_field">
+            <span>{{orderMainDataCtrl.order.forwarder.vehicle.vehicle_type.vehicle_type_full}}</span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="col-xs-6">
+    <!-- Маршрутная информация -->
+    <fieldset class="form-fieldset">
+      <legend class="form-fieldset_legend">
+        Маршрутная информация
+      </legend>
+      <div class="form-fieldset_row">
+        <div class="requests-list_cell requests-list_cell__nowrap">
+          <div class="requests-list_address">
+            <div>
+              <b>Начальная точка</b>
+            </div>
+            <div>
+              {{orderMainDataCtrl.order.route.warehouse.address}}
+            </div>
+          </div>
+          <div class="requests-list_address">
+            <div>
+              <b>Конечная точка</b>
+            </div>
+            <div>
+              {{orderMainDataCtrl.order.route.route_points[orderMainDataCtrl.order.route.route_points.length-1].address}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <!-- Информация по тарифу -->
+    <fieldset class="form-fieldset">
+      <legend class="form-fieldset_legend">
+        Информация по тарифу без НДС
+      </legend>
+      <div class="rate-info">
+        <div class="row">
+          <!--Базовый тариф-->
+          <div class="rate-info_item col-xs-4">
+            <div>
+              Сумма по тарифу без НДС:
+            </div>
+            <div class="rate-info_val">
+              {{orderMainDataCtrl.order.transportation_cost}}р.
+            </div>
+          </div>
+          <!--Доп опплата -->
+          <div class="rate-info_item rate-info_item__plus col-xs-4">
+            <div>
+              Доп.оплата без НДС:
+            </div>
+            <div class="rate-info_val">
+              {{orderMainDataCtrl.order.additional_charges}}р.
+            </div>
+          </div>
+          <!--Тариф маршурта -->
+          <div class="rate-info_item rate-info_item__total col-xs-4">
+            <div>
+              Тариф маршрута:
+            </div>
+            <div class="rate-info_val">
+              <b>{{orderMainDataCtrl.order.transportation_cost + orderMainDataCtrl.order.additional_charges}}р</b>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--Время маршурта-->
+          <div class="rate-info_item col-xs-4">
+            <div>
+              Транзит
+            </div>
+            <div class="rate-info_val">
+              {{orderMainDataCtrl.order.route.duration}} дн.
+            </div>
+          </div>
+          <!-- Зона доставки -->
+          <div class="rate-info_item col-xs-4">
+            <div>
+              Зона доставки
+            </div>
+            <div class="rate-info_val">
+              № {{orderMainDataCtrl.order.route.zone}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="col-xs-12" ng-if="orderMainDataCtrl.order.comment">
+    <!-- Комментарий логиста -->
+    <div class="field-title">
+      Комментарий логиста
+    </div>
+    <div class="form-fieldset_field" >
+      <span>{{orderMainDataCtrl.order.comment}}</span>
+    </div>
+  </div>
+</div>

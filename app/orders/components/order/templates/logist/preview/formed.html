@@ -1,0 +1,160 @@
+<div ng-class="['b-list_row', 'row', {canceled : orderCtrl.order.canceled, deadline : orderCtrl.deadline}]">
+	<!-- start Deadline and Cancel Label-->
+	<div class="b-list_label" >
+		<div ng-if="orderCtrl.deadline" class="b-list_label-item">deadline</div>
+		<div ng-if="orderCtrl.order.canceled" class="b-list_label-item">canceled</div>
+	</div>
+	<!-- end Deadline and Cancel Label-->
+	<a class="col-xs-9" ui-sref="orderDetail({guid : orderCtrl.order.guid})">
+		<div class="b-list_cell col-xs-4 col-lg-2">
+
+      <!--Номер заказа-->
+			<div class="green">
+				<b>{{orderCtrl.order.id}}</b>
+			</div>
+
+      <!--Покупатели-->
+			<div>
+				<span ng-repeat="customer in orderCtrl.order.customers track by $index">{{customer}}</span>
+			</div>
+
+    </div>
+
+    <!--Адрес доставки откуда - куда -->
+		<div class="b-list_cell col-xs-8 col-wd-6">
+			<!--Откуда-->
+      <div class="requests-list_address">
+				<div>
+					{{orderCtrl.order.route.warehouse.address}}
+				</div>
+				<div class="green">
+					{{orderCtrl.order.route.warehouse.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+				</div>
+			</div>
+
+      <!--Куда-->
+			<div class="requests-list_address">
+				<div>
+					{{orderCtrl.order.route.to.address}}
+				</div>
+				<div class="green">
+					{{orderCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+				</div>
+				<div>Точек отгрузки : {{orderCtrl.order.route.shippingPoint}}</div>
+			</div>
+
+
+		</div>
+
+		<div class="b-list_cell col-xs-4">
+			<div class="b-list_table">
+				<!--Тип груза-->
+				<div class="b-list_table-row">
+					<span class="b-list_table-cell">
+						Тип груза
+					</span>
+					<b class="b-list_table-cell">
+						<span ng-repeat="cargo_type in orderCtrl.order.cargo.type track by $index">
+							{{cargo_type}}{{$last ? '' : ', '}}
+						</span>
+					</b>
+				</div>
+
+				<!--Вес груза-->
+				<div class="b-list_table-row">
+					<span class="b-list_table-cell">
+						Вес груза
+					</span>
+					<b class="b-list_table-cell">
+						{{orderCtrl.order.cargo.weight}}
+					</b>
+				</div>
+			</div>
+			<!--<div class="requests-list_data-table">
+				&lt;!&ndash;Тип груза&ndash;&gt;
+				<div class="requests-list_data-table-row">
+					<span class="requests-list_data-table-cell">
+						Тип груза
+					</span>
+					<b class="requests-list_data-table-cell">
+						<span ng-repeat="cargo_type in orderCtrl.order.cargo.type track by $index">
+							{{cargo_type}}{{$last ? '' : ', '}}
+						</span>
+					</b>
+				</div>
+
+				&lt;!&ndash;Вес груза&ndash;&gt;
+				<div class="requests-list_data-table-row">
+					<span class="requests-list_data-table-cell">
+						Вес груза
+					</span>
+					<b class="requests-list_data-table-cell">
+						{{orderCtrl.order.cargo.weight}}
+					</b>
+				</div>
+			</div>-->
+			<div>
+				<img src="~images/icons/car_5_ico.svg" width="60">
+			</div>
+		</div>
+
+		<div class="b-list_cell col-xs-3">
+			<!--Тип кузова-->
+      <div class="requests-list_dl">
+				Тип кузова
+				<b>{{orderCtrl.order.forwarder.vehicle.vehicle_type.title}}</b>
+			</div>
+
+
+      <!--Номер машины-->
+      <div class="requests-list_dl" ng-if="orderCtrl.order.forwarder.vehicle.plate_number">
+				Номер машины
+				<b>{{orderCtrl.order.forwarder.vehicle.plate_number}}</b>
+			</div>
+		</div>
+
+    <!--Номер машины-->
+		<div class="b-list_cell col-xs-2">
+			<div class="requests-list_rate">
+				Сумма по тарифу без НДС
+				<b>{{orderCtrl.order.transportation_cost}}р.</b>
+			</div>
+		</div>
+
+    <!--Логист-->
+		<div class="b-list_cell col-xs-2">
+			<div class="requests-list_dl">
+				Логист
+				<b>{{orderCtrl.order.logist}}</b>
+			</div>
+		</div>
+	</a>
+
+
+	<div class="requests-list_row-cnt col-xs-3" style="font-size: 14px;">
+		<div class="b-list_cell">
+
+
+				<!-- Оттрпвить заявку в работу-->
+				<div ng-if="!orderCtrl.auctionStatus && !orderCtrl.order.forwarder.title">
+					<button class="btn btn-ok btn__l" ui-sref="orderDetail({guid : orderCtrl.order.guid, activeTab : 'to_work'})">В работу</button>
+				</div>
+
+				<!--Если заявка отправленна напрямую-->
+				<div ng-if="!orderCtrl.auctionStatus && orderCtrl.order.forwarder.title">
+					<b>Отправлена напрямую в</b> </br>{{orderCtrl.order.forwarder.title}}
+				</div>
+
+        <!--Если заявка отправленна опреатору редукционов-->
+				<div ng-if="orderCtrl.auctionStatus === 'PENDING' && !orderCtrl.order.forwarder.title">
+					<p>У оператора редукционов</p>
+					<div>
+						<button class="btn btn-ok btn__l" ng-click="orderCtrl.cancelTransferOrderToOperator()">Отозвать</button>
+					</div>
+				</div>
+
+		</div>
+	</div>
+</div>
+
+

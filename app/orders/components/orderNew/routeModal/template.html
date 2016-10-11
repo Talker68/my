@@ -1,0 +1,85 @@
+
+<div class="modal-header">
+    <a href="javascript:void(0)" type="button" class="modal-close" ng-click="routeCtrl.close()">x</a>
+    <div class="s-title">
+        <b>Маршрут</b>
+    </div>
+</div>
+
+
+<div class="modal-body">
+    <section class="route-points">
+        <div style="margin-bottom: 30px">
+            <div>
+                <b>Тип транспорта</b>:
+            </div>
+            {{::routeCtrl.orderData.loadingType.title}}
+        </div>
+        <article class="route-point" ng-repeat="routePoint in routeCtrl.orderData.route.routePoints">
+            <div ng-click="showItems = !showItems" class="waypoint-line">
+                <div class="row">
+                    <!--Адресс-->
+                    <div class="col-xs-6">
+                        <img src="~images/icons/Tip_Otgruzka.svg" width="40px" class="waypoint-line_icon" ng-if="routePoint.type === 'shipment'">
+                        <img src="~images/icons/Tip_Zagruzka.svg" width="40px" class="waypoint-line_icon" ng-if="routePoint.type === 'loading'">
+
+                        <div class="waypoint-line_text">
+                            {{routePoint.address}}
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                    <!--Оганизация-->
+                    <div class="col-xs-2">
+                        {{routePoint.organization || routePoint.customer}}
+                    </div>
+                    <!--Контактоне лицо-->
+                    <div class="col-xs-2">
+                        <div>
+                            Контактное лицо:
+                        </div>
+                        {{routePoint.contactPerson}}
+                    </div>
+                    <!--Дата прибытия-->
+                    <div class="col-xs-2">
+                        <div>
+                            Дата прибытия<br>
+                            (планируемая):
+                        </div>
+                        <div class="green">
+                            {{routePoint.date | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="waypoint-details" ng-show="showItems">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Наименование</th>
+                                <th>Кол-во</th>
+                                <th>Вес(кг)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="row in routePoint.items track by $index">
+                                <td>{{row.id}}</td>
+                                <td>{{row.title}}</td>
+                                <td>{{row.quantity}}</td>
+                                <td>{{row.weight}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--Коментарий-->
+                        <div class="waypoint-details_comment">
+                            <div>{{routePoint.comment}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>
+

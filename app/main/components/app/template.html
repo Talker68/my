@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div class="sidebar" ng-class="{'sidebar__active': showSidebar}">
+    <div class="sidebar_visible" ng-click="showSidebar=!showSidebar">
+    </div>
+    <img src="~images/logo2.png" alt="" class="main-logo">
+    <server-time class="server-time"></server-time>
+    <hr>
+    <div>
+      <user></user>
+      <navigation></navigation>
+    </div>
+  </div>
+  <div class="middle">
+    <ui-view></ui-view>
+  </div>
+</div>
+
+
+

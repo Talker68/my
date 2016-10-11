@@ -1,0 +1,69 @@
+<div id="forwarder-menu">
+  <ul class="sideber-nav">
+
+    <li  class="sideber-nav_item">
+      <a ui-sref="ordersList({auction : [0,3], status : null, title : 'Редукционы', order : 'auction.start'})">
+        <div class="fa">
+          <img src="~images/menu/GP_v_ispolnenii.png">
+        </div>
+        <span>Редукционы</span>
+      </a>
+    </li>
+
+    <li  class="sideber-nav_item">
+      <a ui-sref="ordersList({auction : 1, status : 2, title : 'Ожидающие подтверждения'})">
+        <div class="fa">
+          <img src="~images/menu/GP_v_ispolnenii.png">
+        </div>
+        <span>Ожидающие подтверждения</span>
+      </a>
+    </li>
+
+    <li  class="sideber-nav_item">
+      <a ui-sref="ordersList({status : 3, auction : null, title : 'ГП в исполнении' })">
+        <div class="fa">
+          <img src="~images/menu/GP_v_ispolnenii.png">
+        </div>
+        <span>ГП в исполнении</span>
+      </a>
+    </li>
+
+  </ul>
+
+
+  <ul class="sideber-nav" style='margin-top: 30px;'>
+
+    <li class="sideber-nav_item">
+      <a ui-sref="companySettings">
+        <div class="fa">
+          <img src="~images/menu/setting.png">
+        </div>
+        <span>Настройки компании</span>
+      </a>
+    </li>
+
+    <li class="sideber-nav_item">
+      <a ui-sref="vehicleList">
+        <i class="fa fa-clone"></i>
+        <span>Автомобили</span>
+      </a>
+    </li>
+
+    <li class="sideber-nav_item">
+      <a ui-sref="semitrailers">
+        <i class="fa fa-clone"></i>
+        <span>Полуприцепы</span>
+      </a>
+    </li>
+
+    <li class="sideber-nav_item">
+      <a ui-sref="drivers">
+        <i class="fa fa-clone"></i>
+        <span>Водители</span>
+      </a>
+    </li>
+
+  </ul>
+</div>
+
+

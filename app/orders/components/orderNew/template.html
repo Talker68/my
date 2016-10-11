@@ -1,0 +1,266 @@
+<div class="row b-list_row">
+    <!-- start Основные данные-->
+    <div>
+        <!-- start Основная инфа -->
+        <div class="col-xs-10">
+            <div class="row b-list_section">
+                <div class="col-xs-2">
+                    <!-- start Номер заявки -->
+                    <div>
+                        <b class="green">{{::orderCtrl.orderData.id}}</b>
+                    </div>
+                    <!-- end Номер заявки -->
+                    <div ng-if="orderCtrl.orderData.loadingType.name">
+                        Тип кузова <b>{{::orderCtrl.orderData.loadingType.name}}</b>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div>
+                        Тип груза
+                        <div>
+                            <b ng-repeat="cargoType in orderCtrl.orderData.cargo.type track by $index">{{::cargoType}}{{$last ? '' : ', '}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div>
+                        Вес груза
+                        <div>
+                            <b>{{::orderCtrl.orderData.cargo.weight}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div>
+                        Обязательные условия
+                        <div>
+                            <b>{{::orderCtrl.orderData.requiredCondition}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div>Начальная точка</div>
+                            <div>
+                                <b>{{::orderCtrl.orderData.route.routePoints[0].address}}</b>
+                            </div>
+                            <div>
+                                <b class="green">{{::orderCtrl.orderData.route.routePoints[0].date | date : "dd.MM.yyyy HH:mm" : "UTC" }}</b>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div>Конечная  точка</div>
+                            <div>
+                                <b>{{::orderCtrl.orderData.route.routePoints[orderCtrl.orderData.route.routePoints.length - 1].address}}</b>
+                            </div>
+                            <div>
+                                <b class="green">{{::orderCtrl.orderData.route.routePoints[orderCtrl.orderData.route.routePoints.length - 1].date | date : "dd.MM.yyyy HH:mm" : "UTC" }}</b>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                        <div class="col-xs-12">
+                            <a ng-click="orderCtrl.showDetailRoute()" class="btn btn-ok btn__s" ng-if="orderCtrl.orderData.route.routePoints.length">Точки выгрузки ({{::orderCtrl.orderData.route.routePoints.length - 1}})</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div>
+                        Логист
+                        <div>
+                            <b>{{::orderCtrl.orderData.logist.name}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div>
+                        Телефон
+                        <div>
+                            <b>{{::orderCtrl.orderData.logist.phone}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div>
+                        Ставка без НДС
+                        <div>
+                            <b>{{::orderCtrl.orderData.transportationCost}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div>
+                        Транзит
+                        <div>
+                            <b>{{::orderCtrl.orderData.route.duration}}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end Основная заявки -->
+
+        <!-- start Кнопки -->
+        <div class="col-xs-2">
+            <!-- start Информация по состоянию заявки-->
+            <div>
+                <p>
+                    <b>Отправленна напрямую в Фирма</b>
+                </p>
+                <button class="btn btn-error">Отозвать</button>
+            </div>
+            <div>
+                <p>
+                    <b>Отправлена оператору аукционов</b>
+                </p>
+                <button class="btn btn-error">Отозвать</button>
+            </div>
+            <div>
+                <p>
+                    <b>Отправлена на доску объявлений</b>
+                </p>
+                <button class="btn btn-error">Отозвать</button>
+            </div>
+            <!-- end Информация по состоянию заявки-->
+        </div>
+        <!-- end Кнопки -->
+    </div>
+
+    <div class="clearfix">
+    </div>
+
+    <hr>
+
+    <!-- start Редукцион-->
+    <div>
+        <div class="col-xs-10">
+            <div class="row b-list_section">
+                <div class="col-xs-2">
+                    Стартовый тариф без НДС
+                    <div>
+                        <b class="green">{{::orderCtrl.orderData.auction.startingBid}}</b>
+                    </div>
+                </div>
+                <!--Забрать сразу-->
+                <div class="col-xs-2">
+                    Забрать сразу
+                    <div>
+                        <b class="green">{{::orderCtrl.orderData.auction.takeNowAmount}}</b>
+                    </div>
+                </div>
+                <!--начало-->
+                <div class="col-xs-2">
+                    Начало
+                    <div>
+                        <b class="green">{{::orderCtrl.orderData.auction.start | date : "dd.MM.yyyy HH:mm"}}</b>
+                    </div>
+                </div>
+                <!--Конец-->
+                <div class="col-xs-2">
+                    Конец
+                    <div>
+                        <b ng-class="{green : !orderCtrl.orderData.auction.prolonged, orange : orderCtrl.orderData.auction.prolonged}">{{::orderCtrl.orderData.auction.finish | date : "dd.MM.yyyy HH:mm"}}</b>
+                    </div>
+                </div>
+                <!--Шаг-->
+                <div class="col-xs-2">
+                    Шаг
+                    <div>
+                        <b class="green">{{::orderCtrl.orderData.auction.step}}</b>
+                    </div>
+                </div>
+            </div>
+            <!-- start Основные данные по редукциону -->
+            <div class="row b-list_section" ng-if="orderCtrl.orderData.auction">
+                <div class="col-xs-4">
+                    <form class="form-inline" id="auctionForm" name="orderCtrl.orderData.auctionForm" novalidate ng-submit="orderCtrl.orderData.newBet()">
+                        <div class="input-group">
+                            <input type="number" class="form-control" ng-model="orderCtrl.orderData.bet" bet-validation auction="orderCtrl.orderData.auction" step="{{orderCtrl.orderData.auction.step}}" />
+                        </div>
+                        <button type="submit" class="btn btn-ok">Сделать ставку</button>
+                    </form>
+                </div>
+                <div class="col-xs-2">
+                    Последняя ставка <b class="green">1000р.</b>
+                    <br>
+                    в 16.08.2016 09:23
+                </div>
+                <div class="col-xs-2">
+                    <b>Ваша ставка</b> <b class="green">5000р.</b>
+                    <br>
+                    в 16.08.2016 09:23
+                </div>
+                <div class="col-xs-12 text-danger" ng-messages="orderCtrl.orderData.auctionForm.$error" ng-messages-multiple role="alert" >
+                    <div ng-message="BVrequired">Не указана ставка</div>
+                    <div ng-message="BVlessStartingBid">Ставка не должна быть больше стартовой</div>
+                    <div ng-message="BVlessLastBid">Ставка должна быть меньше текущей</div>
+                    <div ng-message="BVlmultiplicityToStep">Ставка должна быть кратна шагу</div>
+                </div>
+            </div>
+            <!-- end  Основные данные по редукциону -->
+
+            <!-- start История ставок -->
+            <div class="row b-list_section">
+                <div class="col-xs-12">
+                    <div class="s-title">
+                        <b>История ставок</b>
+                    </div>
+
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td>16.08.2016</td>
+                            <td>09:23</td>
+                            <td>Фирма</td>
+                            <td>ставка</td>
+                        </tr>
+                        <tr>
+                            <td>16.08.2016</td>
+                            <td>09:23</td>
+                            <td>Фирма</td>
+                            <td>ставка</td>
+                        </tr>
+                        <tr class="success">
+                            <td>16.08.2016</td>
+                            <td>09:23</td>
+                            <td>Ваша ставка</td>
+                            <td>ставка</td>
+                        </tr>
+                        <tr>
+                            <td>16.08.2016</td>
+                            <td>09:23</td>
+                            <td>Фирма</td>
+                            <td>ставка</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- end История ставок -->
+        </div>
+
+        <!-- start Кнопки -->
+        <div class="col-xs-2">
+            <!-- start Очередь в редукционе -->
+            <p ng-if="orderCtrl.orderData.auction.positionInQueue">
+                <b>Позиция в очереди</b>
+                <b class="s-title green">{{::orderCtrl.orderData.auction.positionInQueue}}</b>
+            </p>
+            <button ng-if="!orderCtrl.orderData.auction.positionInQueue" ng-click="::orderCtrl.orderData.addToQueue()" class="btn btn-error">Встать в очередь</button>
+            <button ng-if="orderCtrl.orderData.auction.positionInQueue" ng-click="::orderCtrl.orderData.leaveQueue()" class="btn btn-error">Выйти из очереди</button>
+            <!-- end Очередь в редукционе -->
+        </div>
+        <!-- end Кнопки -->
+    </div>
+    <!-- end Редукцион -->
+
+    <!-- start Ярлыки -->
+    <div class="b-list_label">
+        <div class="b-list_label-item ng-scope">на завтра</div>
+        <div class="b-list_label-item ng-scope">отменен</div>
+    </div>
+    <!-- end Ярлыки -->
+
+    <div class="clearfix">
+    </div>
+
+</div>

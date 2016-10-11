@@ -1,0 +1,39 @@
+<div class="b-list_cell">
+  <div class="col-xs-2">
+    <div>Начальная ставка</div>
+    <p>
+      <b class="green">{{::auctionCtrl.auction.startingBid}}</b>
+    </p>
+  </div>
+
+  <div class="col-xs-2">
+    <div>Забрать сразу</div>
+    <p>
+      <b class="green">{{::auctionCtrl.auction.takeNowAmount}}</b>
+    </p>
+  </div>
+
+  <div class="col-xs-2">
+    <div>Шаг</div>
+    <p>
+      <b class="green">{{::auctionCtrl.auction.step}}</b>
+    </p>
+  </div>
+
+  <div class="col-xs-2">
+    <div> Редукцион запланирован на</div>
+    <p>
+      <b class="green">{{::auctionCtrl.auction.start | date : "dd.MM.yyyy HH:mm"}}</b>
+    </p>
+  </div>
+
+  <div class="col-xs-2">
+    <div>Окончание редукциона</div>
+    <p>
+      <b class="green">{{::auctionCtrl.auction.finish | date : "dd.MM.yyyy HH:mm"}}</b>
+    </p>
+  </div>
+</div>
+
+
+

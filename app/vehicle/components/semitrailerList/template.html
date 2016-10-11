@@ -1,0 +1,33 @@
+<div class="l-title">Полуприцепы</div>
+
+
+<div class="b-list container-fluid">
+  <div class="b-list_head row">
+    <div class="b-list_cell col-xs-3 col-md-4">
+      Модель
+    </div>
+    <div class="b-list_cell col-xs-3 col-md-4">
+      Номер
+    </div>
+    <div class="b-list_cell col-xs-5 col-md-4">
+    </div>
+  </div>
+  <semitrailer
+    class="b-list_middle"
+    ng-repeat="semitrailer in semitrailerListCtrl.semitrailersList track by semitrailer.guid"
+    semitrailer = "semitrailer"
+    remove = "semitrailerListCtrl.removeSemitrailer(semitrailer)"
+    update = "semitrailerListCtrl.updateSemitrailer(semitrailer)"
+    view-mode="view"
+  >
+  </semitrailer>
+</div>
+
+
+<section>
+  <div class="l-title">Добавить полуприцеп</div>
+
+  <div class="b-list container-fluid">
+    <semitrailer add='semitrailerListCtrl.addSemitrailer(semitrailer)' class="b-list_middle" view-mode="edit"></semitrailer>
+  </div>
+</section>

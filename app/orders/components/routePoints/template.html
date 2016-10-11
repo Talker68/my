@@ -1,0 +1,72 @@
+<section class="route-points">
+
+  <article class="route-point" ng-repeat="routePoint in routePointsCtrl.points">
+
+    <div ng-click="showItems = !showItems" class="waypoint-line">
+      <div>
+        <!--Адресс-->
+        <div class="waypoint-line_item">
+          <img src="~images/icons/Tip_Otgruzka.svg" width="40px" class="waypoint-line_icon">
+          <div class="waypoint-line_text">
+            {{routePoint.address}}
+          </div>
+          <div class="clearfix">
+          </div>
+        </div>
+        <!--Оганизация-->
+        <div class="waypoint-line_item">
+          {{routePoint.customer}}
+        </div>
+        <!--Контактоне лицо-->
+        <div class="waypoint-line_item">
+          <div>
+            Контактное лицо:
+          </div>
+          {{routePoint.contact_person}}
+        </div>
+        <!--Дата прибытия-->
+        <div class="waypoint-line_item">
+          <div>
+            Дата прибытия<br>
+            (планируемая):
+          </div>
+          <div class="green">
+            {{routePoint.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+          </div>
+        </div>
+      </div>
+
+      <div class="waypoint-details" ng-show="showItems">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>№</th>
+            <th>Наименование</th>
+            <th>Кол-во</th>
+            <th>Вес(кг)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="row in routePoint.items track by $index">
+            <td>{{row.id}}</td>
+            <td>{{row.title}}</td>
+            <td>{{row.quantity}}</td>
+            <td>{{row.weight}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <!--Коментарий-->
+        <div class="waypoint-details_comment">
+          <div>{{routePoint.comment}}</div>
+          <!--Отметка о зоврате накладных-->
+          <div>{{routePoint.mark}}</div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </article>
+</section>
+

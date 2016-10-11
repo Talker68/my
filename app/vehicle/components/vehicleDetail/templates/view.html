@@ -1,0 +1,86 @@
+
+<div class="l-title">ТС</div>
+
+<p>
+  <a ui-sref="vehicleList({})" ui-sref-opts="({reload : true})" class="clp-link">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    К списку
+  </a>
+</p>
+
+<div>
+  <div class="b-wrap">
+    <div class="form-field row">
+      <div class="col-xs-4">
+        <!-- Модель -->
+        <div class="form-fieldset_cell">
+          <span>Модель</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleCtrl.vehicle.model}}</span>
+          </label>
+        </div>
+        <!-- Номер -->
+        <div class="form-fieldset_cell">
+          <span>Номер</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleCtrl.vehicle.plate_number}}</span>
+          </label>
+        </div>
+
+        <!-- Год выпуска -->
+        <div class="form-fieldset_cell">
+          <span>Год выпуска</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleCtrl.vehicle.year}}</span>
+          </label>
+        </div>
+
+
+        <!-- Тип ТС -->
+        <div class="form-fieldset_cell" ng-hide="true">
+          <span>Тип ТС</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleCtrl.vehicle.vehicleType}}</span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="col-xs-4">
+
+        <!-- Тип отгрузки -->
+        <div class="form-fieldset_cell">
+          <span>Тип отгрузки</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleCtrl.vehicle.loading_type.name}} ({{vehicleCtrl.vehicle.loading_type.title}})</span>
+          </label>
+        </div>
+
+        <!-- Объем -->
+        <div class="form-fieldset_cell">
+          <span>Объем</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleCtrl.vehicle.volume}}</span>
+          </label>
+        </div>
+
+        <!-- Грузоподъемность -->
+        <div class="form-fieldset_cell">
+          <span>Грузоподъемность</span>
+          <label class="form-fieldset_field">
+            <span>{{vehicleCtrl.vehicle.capacity}}</span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div>
+    <button ui-sref="vehicleDetail({guid: vehicleCtrl.vehicle.guid, edit : true})" class="btn btn-ok btn__l">Изменить</button>
+    <button ng-click="vehicleCtrl.removeVehicle()" class="btn btn-error btn__l">Удалить</button>
+  </div>
+</div>
+
+
+
+

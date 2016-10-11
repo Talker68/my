@@ -1,0 +1,132 @@
+<div class="l-title">Необработанные</div>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Заявки на редукцион</h2>
+
+    <div id="filters" class="search-filter">
+
+      <div class="search-filter_item">
+        <div class="search-filter_name">
+          Номер задания
+        </div>
+        <input type="text" ng-model="packsCtrl.filters.id">
+      </div>
+
+      <div class="search-filter_item">
+        <div class="search-filter_name">
+          Начало рейса
+        </div>
+        <input type="date" ng-model="packsCtrl.filters.routeStartDate" ng-model-options="{'timezone' : 'UTC'}"/>
+      </div>
+
+      <div class="search-filter_item">
+        <div class="search-filter_name">
+          Адрес погрузки
+        </div>
+        <input type="text" ng-model="packsCtrl.filters.warehouseAddress">
+      </div>
+
+      <div class="search-filter_item">
+        <div class="search-filter_name">
+          Адрес разгрузки
+        </div>
+        <input type="text" ng-model="packsCtrl.filters.unloadingAddress">
+      </div>
+
+      <div class="search-filter_item">
+        <div class="search-filter_name">
+          Тип ТС
+        </div>
+        <select ng-options="loadingType.title for loadingType in packsCtrl.loadingTypes track by loadingType.guid" ng-model="packsCtrl.filters.loadingType">
+          <option value="">--выберите тип ТС--</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="requests-list">
+      <order
+        view-mode = 'preview'
+        ng-repeat="order in packsCtrl.list | filter : packsCtrl.auctionFilter | ordersFilter : packsCtrl.filters" order="order"
+        current-pack = "packsCtrl.currentPack"
+      >
+      </order>
+    </div>
+
+
+  </div>
+
+  <div class="col-xs-6">
+
+    <h2>Паки редукционов</h2>
+
+    <uib-tabset active="packsCtrl.activePackTab">
+
+      <!-- start Tab -->
+      <uib-tab index="0" heading="Новый" select="packsCtrl.currentPack = null">
+        <style>
+          #packForm.ng-submitted .form-control.ng-invalid, #packForm .form-control.ng-touched.ng-invalid{
+            border-color: red;
+          }
+        </style>
+
+        <form name="packsCtrl.packForm" id="packForm" ng-submit="packsCtrl.packForm.$valid && packsCtrl.createPack()" novalidate>
+          <div class="form-group">
+            <label for="start">Начало редукциона</label>
+            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.start" class="form-control" id="start" ng-min="packsCtrl.now" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="finish">Конец редукциона</label>
+            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.finish" class="form-control" id="finish" ng-min="packsCtrl.pack.start" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="step">Шаг</label>
+            <input type="number" name='step' ng-model="packsCtrl.pack.step" class="form-control" id="step" min="0" required/>
+          </div>
+
+          <button type="submit" class="btn btn-ok">Создать</button>
+        </form>
+      </uib-tab>
+
+      <!--Закладки с паками-->
+      <uib-tab
+        ng-repeat="pack in packsCtrl.packs track by pack.id"
+        index="pack.id"
+        heading="{{::pack.start | date : 'dd.MM  HH:mm'}}"
+        select="packsCtrl.currentPack = pack">
+
+        <div>Шаг {{pack.step}}</div>
+        <div>Окончание  {{pack.finish | date : 'dd.MM  HH:mm'}}</div>
+
+        <!-- start Удалить и расформировать пак-->
+        <p>
+          <button ng-click="packsCtrl.removePack()" class="btn btn-error">Удалить</button>
+          <button ng-click="packsCtrl.disbandPack()" class="btn btn-wrn" ng-show="pack.showButtons">Расформировать</button>
+        </p>
+        <!-- end Удалить и расформировать пак-->
+
+
+        <!--Форма для отправки пака в работу-->
+        <form ng-submit="packSendForm.$valid && packsCtrl.sendPackToWork()" name="packSendForm">
+          <!--ГП внутри пака-->
+          <div class="b-list">
+            <div class="b-list_middle">
+              <order
+                view-mode = 'preview'
+                ng-repeat="order in packsCtrl.list | filter : {packId : pack.id}" order="order">
+              </order>
+            </div>
+          </div>
+
+          <button type='submit' class="btn btn-ok" ng-show="pack.showButtons" ng-disabled="packsCtrl.buttonsDisabled">Отправить</button>
+        </form>
+
+      </uib-tab>
+
+    </uib-tabset>
+  </div>
+</div>
+
+

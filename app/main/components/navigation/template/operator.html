@@ -1,0 +1,51 @@
+<div id="operator-menu">
+  <ul class="sideber-nav">
+
+    <li class="sideber-nav_item">
+      <a ui-sref="ordersList({auction : 2, status : null})">
+        <div class="fa">
+          <img src="~images/menu/Pryamie_GP.png">
+        </div>
+        <span>Создание редукциона</span>
+      </a>
+    </li>
+
+    <li class="sideber-nav_item">
+      <a ui-sref="ordersList({auction : 3, status : null, title : 'Запланированые редукционы'})">
+        <div class="fa">
+          <img src="~images/menu/Pryamie_GP.png">
+        </div>
+        <span>Запланированые редукционы</span>
+      </a>
+    </li>
+
+    <li class="sideber-nav_item">
+      <a ui-sref="ordersList({auction : 0, status : null, title : 'Активные редукционы'})">
+        <div class="fa">
+          <img src="~images/menu/Pryamie_GP.png">
+        </div>
+        <span>Активные редукционы</span>
+      </a>
+    </li>
+
+    <li class="sideber-nav_item">
+      <a ui-sref="ordersList({auction : 1, status : null, title : 'Ожидающие подтвержения'})">
+        <div class="fa">
+          <img src="~images/menu/Pryamie_GP.png">
+        </div>
+        <span>Ожидающие подтвержения</span>
+      </a>
+    </li>
+
+    <li class="sideber-nav_item" ng-if="navCtrl.NODE_ENV !== 'master'">
+      <a ui-sref="orderListNew">
+        <div class="fa">
+          <img src="~images/menu/Pryamie_GP.png">
+        </div>
+        <span>Разработка</span>
+      </a>
+    </li>
+
+  </ul>
+</div>
+

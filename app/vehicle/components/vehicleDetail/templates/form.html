@@ -1,0 +1,92 @@
+<style>
+  #vehicle-form.ng-submitted .form-control.ng-invalid, #vehicle-form .form-control.ng-touched.ng-invalid{
+    border-color: red;
+  }
+</style>
+
+
+<form id='vehicle-form' name="vehicleCtrl.vehicleForm" ng-submit="vehicleCtrl.vehicleForm.$valid && vehicleCtrl.submit()" novalidate autocomplete="off">
+  <div class="row">
+    <div class="col-xs-4">
+
+      <!-- Модель -->
+      <div class="form-group">
+        <label for="model">Модель</label>
+        <input type="text" class="form-control" id="model" placeholder="Модель" name="model" ng-model="vehicleCtrl.vehicle.model" required autocomplete="on">
+      </div>
+
+
+      <!-- Номер  -->
+      <div class="form-group">
+        <label for="plate_number">Номер</label>
+        <input type="text" class="form-control" id="plate_number" placeholder="Номер" name="plate_number"
+               ng-model="vehicleCtrl.vehicle.plate_number"
+               ng-pattern="/^[а-яА-Я]\d{3}[а-яА-Я]{2}\d{2,3}$/"
+               uppercase
+               required>
+      </div>
+
+      <!-- Год выпуска -->
+      <div class="form-group">
+        <label for="year">Год выпуска</label>
+        <input type="number" class="form-control" id="year" placeholder="Год выпуска" name="year" ng-model="vehicleCtrl.vehicle.year" ng-max="vehicleCtrl.currentYear">
+      </div>
+
+      <!--Тип ТС-->
+      <div class="form-group" ng-hide="true">
+        <label>Тип ТС</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="vehicleType" ng-model="vehicleCtrl.vehicle.vehicleType" value="truck" checked>
+            Грузовик
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="vehicleType"  ng-model="vehicleCtrl.vehicle.vehicleType" ng-change="vehicleCtrl.setTractorVehicleType()" value="tractor">
+            Тягач
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="col-xs-4" ng-if="vehicleCtrl.vehicle.vehicleType === 'truck'">
+
+      <!-- Тип отгрузки -->
+      <div class="form-group">
+        <label for="loading_type">Тип отгрузки</label>
+        <select name="loading_type" id="loading_type" ng-model="vehicleCtrl.vehicle.loading_type" class="form-control" placeholder="Тип отгрузки"
+                required
+                ng-change="vehicleCtrl.loadingTypeOnChange()"
+                ng-options="loadingType.name for loadingType in vehicleCtrl.loadingTypes track by loadingType.guid">
+          <option value="">-- Тип отгрузки --</option>
+          <!--<option ng-repeat="vehicle in vehicleCtrl.loadingTypes" value="{{key}}">{{value}}</option>-->
+        </select>
+      </div>
+
+      <!-- Объем -->
+      <div class="form-group">
+        <label for="volume">Объем</label>
+        <input type="number" class="form-control" id="volume" placeholder="Объем" name="volume" ng-model="vehicleCtrl.vehicle.volume" max="999" min="0" required>
+      </div>
+
+      <!-- Грузоподъемность -->
+      <div class="form-group">
+        <label for="capacity">Грузоподъемность</label>
+        <input type="number" class="form-control" id="capacity" placeholder="Грузоподъемность" name="capacity" ng-model="vehicleCtrl.vehicle.capacity" max="999" min="0" required>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button type="submit" class="btn btn-ok btn__l">Сохранить</button>
+  <button ng-click="vehicleCtrl.cancelEdit()" class="btn btn-error btn__l">Отмена</button>
+
+
+</form>

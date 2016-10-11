@@ -1,0 +1,12 @@
+<div class="b-list_row row" >
+  <div class="b-list_cell col-xs-3 col-md-4">
+    {{semitrailerCtrl.semitrailer.model}}
+  </div>
+  <div class="b-list_cell col-xs-3 col-md-4">
+    {{semitrailerCtrl.semitrailer.plate_number}}
+  </div>
+  <div class="b-list_cell col-xs-5 col-md-4 btn-group">
+    <a ng-click="semitrailerCtrl.edit()" class="btn btn-ok">Ред</a>
+    <a ng-click="semitrailerCtrl.remove({semitrailer: semitrailerCtrl.semitrailer})" class="btn btn-error">Удалить</a>
+  </div>
+</div>

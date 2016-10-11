@@ -1,0 +1,8 @@
+{
+  "requestPrefix" : "/ERPPPK_master-copy-develop/hs/logistics",
+  "path" : "//pc1474/logistics/scripts",
+  "publicPath" : "scripts/",
+  "devtool" : "source-map",
+  "proxy" : {},
+  "updateTime" : 10000
+}
