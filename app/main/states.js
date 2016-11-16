@@ -8,7 +8,6 @@ export default function($stateProvider) {
   resolve.user = function(AuthService) {
     return AuthService.auth().then(response => {
       AuthService.user = response.data;
-      //return response.data;
     });
   }
 
@@ -16,17 +15,13 @@ export default function($stateProvider) {
   resolve.loadingTypes = function(VehicleService) {
     return VehicleService.getLoadingTypes().then(response => {
       VehicleService.loadingTypes = response.data;
-      return response.data;
     });
   };
-
-
 
   // список ТК
   resolve.forwarders = function(ForwardersService, ) {
     return ForwardersService.getForwarders().then(response => {
       ForwardersService.forwarders = response.data;
-      return response.data;
     });
   }
 

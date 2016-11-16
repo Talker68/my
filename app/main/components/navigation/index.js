@@ -8,7 +8,6 @@ import operatorTpl from './template/operator.html';
 
 export default {
   template : function (AuthService) {
-    console.log(AuthService);
     let userType = AuthService.getUserType();
 
     if (userType === 'logist'){
