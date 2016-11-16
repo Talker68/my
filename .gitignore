@@ -2,6 +2,6 @@
 /node_modules
 /build
 /scripts
-/PSD
-/*.log
-/*.log*
+/bash.exe*
+npm-debug.log.*
+
