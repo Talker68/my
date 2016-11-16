@@ -5,3 +5,4 @@
 /PSD
 /*.log
 /bash.exe*
+npm-debug.log.*
