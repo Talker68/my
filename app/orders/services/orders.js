@@ -1,6 +1,21 @@
 "use strict";
 
 export default function($http){
+
+  this.ORDER_STATUSES = {
+    FORMED: 2,
+    INWORK: 3
+  };
+
+  this.AUCTION_STATUSES = {
+    ACTIVE : 0,
+    ON_CONFIRM : 1,
+    PENDING : 2,
+    PLANNED : 3
+  };
+
+
+
   //Получить список заявок по статусу
   this.getOrdersByStatus = function (status) {
     return $http.get(`${REQUEST_PREFIX}/order?status=${status}`);
@@ -16,63 +31,6 @@ export default function($http){
     return $http.get(`${REQUEST_PREFIX}/auction?status=${status}`)
   }
 
-  //Получть символьный код статуса
-  this.getOrderStatus = function(status){
-
-    if(Array.isArray(status)){
-      let result = [];
-      for(let stat of status){
-        result.push(getStatus(stat))
-      }
-      return result;
-    } else {
-      return getStatus(status);
-    }
-
-    function getStatus(status){
-      status = parseInt(status);
-      let textStatus;
-      switch (status){
-        case 0 : textStatus = ''; break;
-        case 1 : textStatus = ''; break;
-        case 2 : textStatus = 'FORMED'; break;
-        case 3 : textStatus = 'INWORK'; break;
-        default : textStatus = '';
-      }
-      return textStatus;
-    }
-
-  }
-
-
-  //Получить символьный код редукциона
-  this.getAuctionStatus = function(status){
-
-    if(Array.isArray(status)){
-      let result = [];
-      for(let stat of status){
-        result.push(getStatus(stat))
-      }
-      return result;
-    } else {
-      return getStatus(status);
-    }
-
-    function getStatus(status){
-      status = parseInt(status);
-      let textStatus;
-      switch (status){
-        case 0 : textStatus = 'ACTIVE'; break;
-        case 1 : textStatus = 'ON_CONFIRM'; break;
-        case 2 : textStatus = 'PENDING'; break;
-        case 3 : textStatus = 'PLANNED'; break;
-        default : textStatus = '';
-      }
-
-      return textStatus;
-    }
-
-  }
 
 
   //Создание прямого заказа
@@ -86,16 +44,11 @@ export default function($http){
     return $http.post(`${REQUEST_PREFIX}/order/${orderGuid}`, {operation : 'refuseForwader'})
   }
 
+
   //тк подтвердила заказ присланный напрямую
-  this.forwaderConfirmOrder = function({orderGuid, driver, vehicle, semitrailer}) {
-    
-    return $http.post(`${REQUEST_PREFIX}/order/${orderGuid}`,
-      {
-        operation : "confirmOrder",
-        driverGuid : driver.guid,
-        vehicleGuid : vehicle.guid,
-        semitrailerGuid : semitrailer ? semitrailer.guid : ''
-    })
+  this.forwaderConfirmOrder = function(orderGuid, requestData){
+    requestData.operation = "confirmOrder";
+    return $http.post(`${REQUEST_PREFIX}/order/${orderGuid}`, requestData)
   }
 
   //передача заявки оператору
@@ -108,13 +61,7 @@ export default function($http){
     return $http.post(`${REQUEST_PREFIX}/order/${orderGuid}`, {operation : "cancelAuction"});
   }
 
-  /**
-   * Создание редукциона
-   *
-   * @param orders
-   * Массив заявок
-   * @returns {*}
-     */
+  // Создание редукциона
   this.createAuctionByOrdersPack = function (orders) {
     return $http.post(`${REQUEST_PREFIX}/auction`, orders);
   }

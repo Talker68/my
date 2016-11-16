@@ -1,61 +1,48 @@
 "use strict";
 
 
-export default function (VehicleService, $compile, $attrs, $element, $scope) {
+export default function (VehicleService) {
   this.$onInit = function(){
-    let template;
-
-    if ($attrs.viewMode === 'edit') {
-      this.edit();
-    } else if ($attrs.viewMode === 'view') {
-      _viewMode();
+    if (!this.semitrailer) {
+      this.semitrailer = {};
+      this.toEditState();
     }
-
-
   }
 
-  
+  // Сабмит формы
   this.submit = function () {
     if (!this.copyToEdit.guid) {
-      this.add({semitrailer : this.copyToEdit}).then(
-        (response) => {this.copyToEdit = {}},
-        (error) => {this.error = error;}
-      )
+      // добавление полуприцепа
+      VehicleService.addSemitrailer(this.copyToEdit).then(response => {
+        this.copyToEdit = {};
+        this.addSemitrailerToList({semitrailer : response.data})
+      })
     } else {
-      this.update({semitrailer : this.copyToEdit}).then(
-        (response) => {
-          _viewMode()
-        }
-      )
+      // обновление полуприцепа
+      VehicleService.updateSemitrailer(this.copyToEdit).then(response => {
+        this.toViewState();
+        this.updateSemitrailerInList({semitrailer : response.data})
+      })
     }
   }
 
 
-  this.edit = function(){
+
+  // Переход в состояние редактирования
+  this.toEditState = function() {
     this.copyToEdit = angular.copy(this.semitrailer);
-    _editMode()
-
-  };
-
-  this.cancelEdit = function(){
-    _viewMode()
-  };
-
-
-  function _editMode() {
-    let template = require('./templates/form.html');
-    let templateAng = angular.element(template);
-    let compileTemplate = $compile(templateAng)($scope);
-    $element.empty().append(compileTemplate);
+    this.isEditState = true;
   }
 
-
-  function _viewMode() {
-    let template = require('./templates/view.html');
-    let templateAng = angular.element(template);
-    let compileTemplate = $compile(templateAng)($scope);
-    $element.empty().append(compileTemplate);
+  // Переход в состояние просмотра
+  this.toViewState = function() {
+    this.copyToEdit = {};
+    this.isEditState = false;
   }
 
+  // Получение текущего состояния
+  this.isEdit = function() {
+    return this.isEditState;
+  }
 
 }

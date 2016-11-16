@@ -1,0 +1,64 @@
+<style>
+  #directOrderForm.ng-submitted .form-control.ng-invalid, #directOrderForm .form-control.ng-touched.ng-invalid{
+    border-color: red;
+  }
+</style>
+
+
+<div class="modal-header">
+  <a href="javascript:void(0)" type="button" class="modal-close" ng-click="directOrderCtrl.dismiss()">x</a>
+  <div class="s-title">
+    <b>Отправка заявки ТК</b>
+  </div>
+</div>
+
+
+<div class="modal-body">
+  <div class="b-wrap">
+    <form name="directOrderForm" id="directOrderForm" novalidate>
+      <div class="error">
+        {{directOrderCtrl.directOrderError}}
+      </div>
+
+      <div class="select-time">
+        <div class="select-time_item">
+          <label for="orderAcceptTime">Ответить до</label>
+          <input type="datetime-local" ng-model="orderAcceptTime" id="orderAcceptTime" name="orderAcceptTime" class="form-control"  ng-min="directOrderCtrl.now" required>
+        </div>
+
+      </div>
+
+      <table class="table table_leaky">
+        <thead>
+          <tr>
+            <th>Транспортная компания</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th colspan="2">Фильтр по имени <input ng-model="forwardersFilter.titleERP" ></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="forwarder in directOrderCtrl.forwarders | filter: forwardersFilter">
+            <td>{{forwarder.titleERP}}</td>
+
+            <td class="text-right">
+
+              <button  class="btn btn-ok" ng-click="directOrderForm.$valid && (showConfirm = true)" ng-show="!showConfirm">
+                Отправить
+              </button>
+              <!--Подтверждение-->
+              <div ng-show="showConfirm">
+                Подтверждаете отправку?
+                <button ng-click="directOrderCtrl.sendDirectOrder(forwarder.guid, orderAcceptTime)">Да</button>
+                <button ng-click="showConfirm = false">Нет</button>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+

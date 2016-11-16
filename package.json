@@ -7,7 +7,7 @@
     "test": "node_modules/.bin/karma start",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot",
     "wp": "node_modules/.bin/webpack",
-    "wp:watch": "node_modules/.bin/webpack --watch",
+    "wp:watch": "node_modules/.bin/webpack --watch --color",
     "wp:build": "(rm -rf build/* && cp app/index.html build/.) && npm run wp"
   },
   "author": "",
@@ -15,11 +15,12 @@
   "dependencies": {
     "angular": "^1.5.0",
     "angular-messages": "^1.5.5",
-    "angular-ui-bootstrap": "^1.2.5",
-    "angular-ui-router": "^0.3.1",
+    "angular-ui-bootstrap": "^2.2.0",
+    "angular-ui-router": "^1.0.0-beta.3",
     "bootstrap": "^3.3.6"
   },
   "devDependencies": {
+    "agentkeepalive": "^2.2.0",
     "autoprefixer": "^6.3.6",
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.7.2",
@@ -29,8 +30,11 @@
     "babel-runtime": "^6.11.6",
     "config": "^1.20.1",
     "css-loader": "^0.23.1",
-    "eslint": "^3.7.1",
+    "eslint": "^3.9.1",
     "eslint-config-google": "^0.6.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.3.1",
+    "eslint-plugin-standard": "^2.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-loader": "^0.4.3",

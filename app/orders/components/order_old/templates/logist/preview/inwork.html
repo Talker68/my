@@ -1,0 +1,126 @@
+<div class="b-list_row row">
+	<a class="col-xs-9" ui-sref="orderDetail({guid : orderCtrl.order.guid})">
+		<div class="b-list_cell col-xs-4 col-lg-2">
+
+      <!--Номер заказа-->
+			<div class="green">
+				<b>{{orderCtrl.order.id}}</b>
+			</div>
+
+      <!--Покупатели-->
+			<div>
+				<span ng-repeat="customer in orderCtrl.order.customers track by $index">{{customer}}</span>
+			</div>
+
+    </div>
+
+    <!--Адрес доставки откуда - куда -->
+		<div class="b-list_cell col-xs-8 col-wd-6">
+			<!--Откуда-->
+      <div class="requests-list_address">
+				<div>
+					{{orderCtrl.order.route.warehouse.address}}
+				</div>
+				<div class="green">
+					{{orderCtrl.order.route.warehouse.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+				</div>
+			</div>
+
+      <!--Куда-->
+			<div class="requests-list_address">
+				<div>
+					{{orderCtrl.order.route.to.address}}
+				</div>
+				<div class="green">
+					{{orderCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+				</div>
+
+        <div>Точек отгрузки : {{orderCtrl.order.route.shippingPoint}}</div>
+			</div>
+
+
+		</div>
+
+		<div class="b-list_cell col-xs-4">
+			<div class="requests-list_data-table">
+				<!--Тип груза-->
+        <div class="requests-list_data-table-row">
+					<span class="requests-list_data-table-cell">
+						Тип груза
+					</span>
+					<b class="requests-list_data-table-cell">
+						<span ng-repeat="cargo_type in orderCtrl.order.cargo.type track by $index">
+							{{cargo_type}}{{$last ? '' : ', '}}
+						</span>
+					</b>
+				</div>
+
+				<!--Вес груза-->
+        <div class="requests-list_data-table-row">
+					<span class="requests-list_data-table-cell">
+						Вес груза
+					</span>
+					<b class="requests-list_data-table-cell">
+						{{orderCtrl.order.cargo.weight}}
+					</b>
+				</div>
+
+			</div>
+			<div>
+				<img src="~images/icons/car_5_ico.svg" width="60">
+			</div>
+		</div>
+
+		<div class="b-list_cell col-xs-3">
+			<!--Тип кузова-->
+      <div class="requests-list_dl">
+				Тип кузова
+				<b>{{orderCtrl.order.forwarder.vehicle.vehicle_type.title}}</b>
+			</div>
+
+
+      <!--Номер машины-->
+      <div class="requests-list_dl" ng-if="orderCtrl.order.forwarder.vehicle.plate_number">
+				Номер машины
+				<b>{{orderCtrl.order.forwarder.vehicle.plate_number}}</b>
+			</div>
+		</div>
+
+    <!--Номер машины-->
+		<div class="b-list_cell col-xs-2">
+			<div class="requests-list_rate">
+				Сумма по тарифу без НДС
+				<b>{{orderCtrl.order.transportation_cost}}р.</b>
+			</div>
+		</div>
+
+    <!--Логист-->
+		<div class="b-list_cell col-xs-2">
+			<div class="requests-list_dl">
+				Логист
+				<b>{{orderCtrl.order.logist}}</b>
+			</div>
+		</div>
+	</a>
+
+
+	<div class="requests-list_row-cnt col-xs-3" style="font-size: 14px;">
+		<div class="b-list_cell">
+
+				<b>Название компании</b>
+				<div>
+					{{orderCtrl.order.forwarder.title}}
+				</div>
+				<b>Водитель</b>
+				<div>
+					{{orderCtrl.order.forwarder.driver.full_name}}
+				</div>
+				<b>Права</b>
+				<div>
+					{{orderCtrl.order.forwarder.driver.driver_license}}
+				</div>
+		</div>
+	</div>
+</div>
+
+

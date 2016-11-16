@@ -1,0 +1,109 @@
+<div class="l-title">{{::orderListCtrl.listTitle}}</div>
+
+<div id="filters" class="search-filter">
+
+  <div ng-if="orderListCtrl.hasFilter('id')" class="search-filter_item">
+    <div class="search-filter_name">Номер задания</div>
+    <input type="text" ng-model="orderListCtrl.filters.id">
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('routeStartDate')" class="search-filter_item">
+    <div class="search-filter_name">
+      Начало рейса
+    </div>
+    <input type="date" ng-model="orderListCtrl.filters.routeStartDate" ng-model-options="{'timezone' : 'UTC'}"/>
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('warehouseAddress')" class="search-filter_item">
+    <div class="search-filter_name">
+      Адрес погрузки
+    </div>
+    <input type="text" ng-model="orderListCtrl.filters.warehouseAddress">
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('unloadingAddress')" class="search-filter_item">
+    <div class="search-filter_name">
+      Адрес разгрузки
+    </div>
+    <input type="text" ng-model="orderListCtrl.filters.unloadingAddress">
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('forwarder')" class="search-filter_item">
+    <div class="search-filter_name">
+      Транспортная компания
+    </div>
+    <select ng-options="forwarder.title for forwarder in orderListCtrl.forwarders track by forwarder.guid" ng-model="orderListCtrl.filters.forwarder">
+      <option value="">--выберите ТК--</option>
+    </select>
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('loadingType')" class="search-filter_item">
+    <div class="search-filter_name">
+      Тип ТС
+    </div>
+    <select ng-options="loadingType.title for loadingType in orderListCtrl.loadingTypes track by loadingType.guid" ng-model="orderListCtrl.filters.loadingType">
+      <option value="">--выберите тип ТС--</option>
+    </select>
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('vehiclePlateNumber')" class="search-filter_item">
+    <div class="search-filter_name">
+      Номер ТС
+    </div>
+    <input type="text" ng-model="orderListCtrl.filters.vehiclePlateNumber">
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('vehicle')" class="search-filter_item">
+    <div class="search-filter_name">
+      Машина
+    </div>
+    <select ng-options="vehicle.plate_number for vehicle in orderListCtrl.vehicle track by vehicle.guid" ng-model="orderListCtrl.filters.vehicle">
+      <option value="">--выберите ТС--</option>
+    </select>
+  </div>
+
+
+  <div ng-if="orderListCtrl.hasFilter('semitrailerPlateNumber')" class="search-filter_item">
+    <div class="search-filter_name">
+      Номер полуприцепа
+    </div>
+    <input type="text" ng-model="orderListCtrl.filters.semitrailerPlateNumber">
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('semitrailer')" class="search-filter_item">
+    <div class="search-filter_name">
+      Полуприцеп
+    </div>
+    <select ng-options="semitrailer.title + '  ' + semitrailer.plate_number for semitrailer in orderListCtrl.semitrailers track by semitrailer.guid" ng-model="orderListCtrl.filters.semitrailer">
+      <option value="">--выберите полуприцеп--</option>
+    </select>
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('driverFullName')" class="search-filter_item">
+    <div class="search-filter_name">
+      ФИО водителя
+    </div>
+    <input type="text" ng-model="orderListCtrl.filters.driverFullName">
+  </div>
+
+  <div ng-if="orderListCtrl.hasFilter('driver')" class="search-filter_item">
+    <div class="search-filter_name">
+      Водитель
+    </div>
+    <select ng-options="driver.full_name for driver in orderListCtrl.drivers track by driver.guid" ng-model="orderListCtrl.filters.driver">
+      <option value="">--выберите водителя--</option>
+    </select>
+  </div>
+</div>
+
+
+
+<div class="b-list">
+  <order
+    ng-repeat="order in orderListCtrl.list | ordersFilter : orderListCtrl.filters | orderBy : orderListCtrl.orderProperty" order="order"
+    view-mode="preview"
+    remove="orderListCtrl.removeOrderFromList(orderGuid)"
+    class="b-list_middle">
+  </order>
+</div>
+

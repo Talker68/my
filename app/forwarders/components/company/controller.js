@@ -1,5 +1,8 @@
 "use strict";
 
-export default function($rootScope){
-  this.company = $rootScope.currentUser;
+export default function(AuthService){
+  this.$onInit = function() {
+    this.company = AuthService.user;
+  }
+
 }

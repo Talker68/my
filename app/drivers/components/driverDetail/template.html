@@ -1,0 +1,132 @@
+<div ng-if="!driverCtrl.isEdit()">
+  <div class="l-title">Водитель</div>
+
+  <p>
+    <a ui-sref="^" ui-sref-opts="({reload : '^'})" class="clp-link">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      К списку
+    </a>
+  </p>
+
+
+  <div class="b-wrap">
+    <div class="form-field row">
+      <div class="col-xs-6">
+        <!-- ФИО -->
+        <div class="form-fieldset_cell">
+          <span>ФИО</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.driver}}</span>
+          </label>
+        </div>
+        <!-- Телефон -->
+        <div class="form-fieldset_cell">
+          <span>Телефон</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.driver_phone}}</span>
+          </label>
+        </div>
+        <!-- Права серия -->
+        <div class="form-fieldset_cell">
+          <span>Права серия</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_series}}</span>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="col-xs-6">
+        <!-- Права номер -->
+        <div class="form-fieldset_cell">
+          <span>Права номер</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_number}}</span>
+          </label>
+        </div>
+        <!-- Права выданы -->
+        <div class="form-fieldset_cell">
+          <span>Права выданы</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_issue | date : "dd.MM.yyyy"}}</span>
+          </label>
+        </div>
+        <!-- Права действительны до -->
+        <div class="form-fieldset_cell">
+          <span>Права действительны до</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.license_valid | date : "dd.MM.yyyy"}}</span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div>
+    <button ng-click="driverCtrl.toEditState()" class="btn btn-ok btn__l">Изменить</button>
+    <button ng-click="driverCtrl.removeDriver()" class="btn btn-error btn__l">Удалить</button>
+  </div>
+</div>
+
+<div ng-if="driverCtrl.isEdit()">
+  <style>
+    #driver-form.ng-submitted .form-control.ng-invalid, #driver-form .form-control.ng-touched.ng-invalid {
+      border-color: red;
+    }
+  </style>
+
+  <form id='driver-form' name="driverCtrl.driverForm" ng-submit="driverCtrl.driverForm.$valid && driverCtrl.submit()"
+        novalidate autocomplete="off">
+
+    <div class="row">
+      <div class="col-xs-6">
+        <!-- ФИО -->
+        <div class="form-group">
+          <label for="driver">ФИО</label>
+          <input type="text" class="form-control" id="driver" placeholder="ФИО" name="driver"
+                 ng-model="driverCtrl.driverCopy.driver" required>
+        </div>
+        <!-- Номер телефона -->
+        <div class="form-group">
+          <label for="driver_phone">Номер телефона</label>
+          <input type="text" class="form-control" id="driver_phone" placeholder="Номер телефона" name="driver_phone"
+                 ng-model="driverCtrl.driverCopy.driver_phone" required>
+        </div>
+        <!-- Права серия -->
+        <div class="form-group">
+          <label for="license_series">Права серия</label>
+          <input type="text" class="form-control" id="license_series" placeholder="Права серия" name="license_series"
+                 ng-model="driverCtrl.driverCopy.license_series" required>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <!-- Права номер -->
+        <div class="form-group">
+          <label for="license_series">Права номер</label>
+          <input type="text" class="form-control" id="license_number" placeholder="Права номер" name="license_number"
+                 ng-model="driverCtrl.driverCopy.license_number" required>
+        </div>
+
+        <!-- Права выданы -->
+        <div class="form-group">
+          <label for="license_issue">Права выданы</label>
+          <input type="date" class="form-control" id="license_issue" placeholder="Права выданы" name="license_issue"
+                 ng-model="driverCtrl.driverCopy.license_issue" required>
+        </div>
+
+        <!-- Права действительны до -->
+        <div class="form-group">
+          <label for="license_valid">Права действительны до</label>
+          <input type="date" class="form-control" id="license_valid" placeholder="Права действительны до" name="license_valid"
+                 ng-model="driverCtrl.driverCopy.license_valid" required>
+        </div>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-ok btn__l">Сохранить</button>
+    <button ng-click="driverCtrl.toViewState()" class="btn btn-error btn__l">Отмена</button>
+  </form>
+
+
+</div>

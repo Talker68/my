@@ -2,7 +2,7 @@
   <ul class="sideber-nav">
 
     <li class="sideber-nav_item">
-      <a ui-sref="ordersList({status : 2, title : 'Сформированные'})">
+      <a ui-sref="ordersList({status : navCtrl.ORDER_STATUSES.FORMED, title : 'Сформированные'})">
         <div class="fa">
           <img src="~images/menu/Sformirovannie_GP.png" >
         </div>
@@ -11,7 +11,7 @@
     </li>
 
     <li  class="sideber-nav_item">
-      <a ui-sref="ordersList({status : 3, title : 'ГП в исполнении'})">
+      <a ui-sref="ordersList({status : navCtrl.ORDER_STATUSES.INWORK, title : 'ГП в исполнении'})">
         <div class="fa">
           <img src="~images/menu/GP_v_ispolnenii.png" >
         </div>

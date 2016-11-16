@@ -1,0 +1,62 @@
+<div class="row b-list_row">
+  <a ui-sref="orderDetail({guid : orderCtrl.order.guid})">
+    <div class="b-list_cell col-xs-2 green">
+      <b>{{orderCtrl.order.id}}</b>
+    </div>
+
+    <div class="b-list_cell col-xs-2">
+      <div>
+        {{orderCtrl.order.route.warehouse.address}}
+      </div>
+      <div class="green">
+        {{orderCtrl.order.route.warehouse.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+      </div>
+    </div>
+
+    <div class="b-list_cell col-xs-2">
+      <div>
+        {{orderCtrl.order.route.to.address}}
+      </div>
+      <div class="green">
+        {{orderCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
+      </div>
+    </div>
+
+    <div class="b-list_cell col-xs-2">
+      <div class="requests-list_rate">
+        <p>
+          Сумма по тарифу без НДС
+          <b>
+            {{orderCtrl.order.transportation_cost}}р.
+          </b>
+        </p>
+      </div>
+    </div>
+
+    <div class="b-list_cell col-xs-2">
+      <div class="requests-list_rate">
+        Транзит
+        <b>{{orderCtrl.order.route.duration}} д.</b>
+      </div>
+    </div>
+
+    <div class="b-list_cell col-xs-2">
+      <!--Когда у заказа статус "в исполнении"-->
+      <div style="font-size: 14px;" >
+        <div>
+          {{orderCtrl.order.forwarder.driver.full_name}}
+        </div>
+        <!--Права-->
+        <div>
+          <b>{{orderCtrl.order.forwarder.driver.driver_license}}</b>
+        </div>
+      </div>
+    </div>
+
+  </a>
+
+
+
+
+</div>
+

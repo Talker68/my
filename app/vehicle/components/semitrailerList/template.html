@@ -16,10 +16,8 @@
     class="b-list_middle"
     ng-repeat="semitrailer in semitrailerListCtrl.semitrailersList track by semitrailer.guid"
     semitrailer = "semitrailer"
-    remove = "semitrailerListCtrl.removeSemitrailer(semitrailer)"
-    update = "semitrailerListCtrl.updateSemitrailer(semitrailer)"
-    view-mode="view"
-  >
+    remove-semitrailer-from-list = "semitrailerListCtrl.removeSemitrailer(semitrailer)"
+    update-semitrailer-in-list = "semitrailerListCtrl.updateSemitrailer(semitrailer)">
   </semitrailer>
 </div>
 
@@ -28,6 +26,8 @@
   <div class="l-title">Добавить полуприцеп</div>
 
   <div class="b-list container-fluid">
-    <semitrailer add='semitrailerListCtrl.addSemitrailer(semitrailer)' class="b-list_middle" view-mode="edit"></semitrailer>
+    <semitrailer
+      add-semitrailer-to-list='semitrailerListCtrl.addSemitrailer(semitrailer)' class="b-list_middle">
+    </semitrailer>
   </div>
 </section>

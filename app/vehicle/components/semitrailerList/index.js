@@ -6,5 +6,8 @@ import template from  './template.html';
 export default {
   controller : controller,
   controllerAs : 'semitrailerListCtrl',
-  template : template
+  template : template,
+  bindings : {
+    semitrailersList : '<'
+  }
 }

@@ -1,38 +1,28 @@
 "use strict";
 
 export default function() {
-  this.getIndexById = function(collection, id) {
-    for (let i = 0; i < collection.length; i++){
-      if (collection[i][id.fieldName] === id.value) {
-        return i;
-      }
-    }
-    return -1;
-  };
 
+  // Проверка параметра на равенство new
+  this.isAddNewState = function(stateParam) {
+    return stateParam.trim().toLowerCase() === 'new';
+  }
 
-  this.getBackRoute = function(backroute) {
-    let result = {};
-
-    let params = backroute.split('&');
-
-    for (let param of params) {
-      let splitParam = param.split('=');
-      result[splitParam[0]] = splitParam[1];
-    }
-
-    return result;
-  };
-
+  // Получить элемент из массива по его guid
   this.getArrayElementByGuid = function(guid, array) {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].guid === guid) {
-        let result = Object.create(null);
-        result.index = i;
-        result.element = array[i];
-        return result;
+    guid = guid.toLowerCase();
+
+    for (let index = 0; index < array.length; index++) {
+      if (array[index].guid.toLowerCase() === guid) {
+        return {
+          index,
+          element : array[index]
+        }
       }
     }
     return undefined;
   };
+
+
+
+
 }

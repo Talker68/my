@@ -2,7 +2,7 @@
   <ul class="sideber-nav">
 
     <li class="sideber-nav_item">
-      <a ui-sref="ordersList({auction : 2, status : null})">
+      <a ui-sref="createAuction">
         <div class="fa">
           <img src="~images/menu/Pryamie_GP.png">
         </div>
@@ -11,7 +11,7 @@
     </li>
 
     <li class="sideber-nav_item">
-      <a ui-sref="ordersList({auction : 3, status : null, title : 'Запланированые редукционы'})">
+      <a ui-sref="ordersList({auction : navCtrl.AUCTION_STATUSES.PLANNED, status : null, title : 'Запланированые редукционы'})">
         <div class="fa">
           <img src="~images/menu/Pryamie_GP.png">
         </div>
@@ -20,7 +20,7 @@
     </li>
 
     <li class="sideber-nav_item">
-      <a ui-sref="ordersList({auction : 0, status : null, title : 'Активные редукционы'})">
+      <a ui-sref="ordersList({auction : navCtrl.AUCTION_STATUSES.ACTIVE, status : null, title : 'Активные редукционы'})">
         <div class="fa">
           <img src="~images/menu/Pryamie_GP.png">
         </div>
@@ -29,7 +29,7 @@
     </li>
 
     <li class="sideber-nav_item">
-      <a ui-sref="ordersList({auction : 1, status : null, title : 'Ожидающие подтвержения'})">
+      <a ui-sref="ordersList({auction : navCtrl.AUCTION_STATUSES.ON_CONFIRM, status : null, title : 'Ожидающие подтвержения'})">
         <div class="fa">
           <img src="~images/menu/Pryamie_GP.png">
         </div>
@@ -37,14 +37,6 @@
       </a>
     </li>
 
-    <li class="sideber-nav_item" ng-if="navCtrl.NODE_ENV !== 'master'">
-      <a ui-sref="orderListNew">
-        <div class="fa">
-          <img src="~images/menu/Pryamie_GP.png">
-        </div>
-        <span>Разработка</span>
-      </a>
-    </li>
 
   </ul>
 </div>

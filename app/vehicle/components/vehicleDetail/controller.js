@@ -1,131 +1,78 @@
-"use strict";
+'use strict';
 
 
-export default function (VehicleService, ApiService, $compile, $element, $scope, ModalService, $state, $stateParams) {
-  let backRoute;
+export default function (VehicleService, ApiService, $uibModal, $state) {
+  this.$onInit = function() {
 
-  this.$onInit = function(){
-    this.currentYear = new Date().getFullYear();
+    // Проверка значение параметра guid
+    if (!this.vehicle) {
+      this.vehicle = {};
+      this.toEditState();
+    }
+
+    // получение типов отгрузки
+    this.loadingTypes = VehicleService.loadingTypes;
+
+    //Текущая дата для валидации
     this.now = new Date;
 
-    if(!this.edit){
-      let compileTemplate = $compile(angular.element(require('./templates/view.html')))($scope);
-      $element.empty().append(compileTemplate);
+  }
+
+  // Переход в состояние редактирования
+  this.toEditState = function() {
+    this.vehicleCopy = angular.copy(this.vehicle);
+    this.editState = true;
+  }
+
+  // Переход в состояние просмотра
+  this.toViewState = function() {
+    this.editState = false;
+  }
+
+  //Получить текущее состояние
+  this.isEdit = function() {
+    return this.editState;
+  }
+
+  // При смене типа отгрузки устанавливаются связаные элементы формы
+  this.loadingTypeOnChange = function() {
+    if (this.vehicleCopy.loading_type) {
+      this.vehicleCopy.capacity = this.vehicleCopy.loading_type ? this.vehicleCopy.loading_type.capacity : 0;
+      this.vehicleCopy.volume = this.vehicleCopy.loading_type ? this.vehicleCopy.loading_type.volume : 0;
+    }
+  }
+
+  // Обработчик сабмита формы
+  this.submit = function() {
+    if (this.vehicleCopy.guid) {
+      this._updateVehicle(this.vehicleCopy)
     } else {
-
-      if(!this.vehicle){
-        this.vehicle = {};
-        this.vehicle.year = this.now.getFullYear();
-      }
-
-      let compileTemplate = $compile(angular.element(require('./templates/form.html')))($scope);
-      $element.empty().append(compileTemplate);
-    }
-
-
-    //Если есть обратный маршурут
-    if ($state.params.back){
-      backRoute = ApiService.getBackRoute($state.params.back);
-    }
-
-
-    this.vehicle.vehicleType = 'truck';
-  }
-
-
-
-  /**
-   * Отмена редактирования
-   */
-  this.cancelEdit = function(){
-    if(backRoute){
-      $state.transitionTo(backRoute.state, backRoute)
-    } else {
-      if($stateParams.guid){
-        $state.transitionTo('vehicleDetail', {guid : $stateParams.guid}, {reload : true})
-      } else {
-        $state.transitionTo('vehicleList', {}, {reload : true})
-      }
+      this._addVehicle(this.vehicleCopy)
     }
   }
 
-
-  this.setTractorVehicleType = function () {
-
-      delete this.vehicle.loading_type;
-      delete this.vehicle.capacity;
-      delete this.vehicle.volume;
-
-  }
-
-  /**
-   * При смене типа отгрузки
-   */
-  this.loadingTypeOnChange = function () {
-    if (this.vehicle.loading_type) {
-      this.vehicle.capacity = this.vehicle.loading_type.capacity ? this.vehicle.loading_type.capacity : 0;
-      this.vehicle.volume = this.vehicle.loading_type.volume ? this.vehicle.loading_type.volume : 0;
-    }
-  }
-
-
-  //Обработчик формы
-  this.submit = function () {
-    if(this.vehicle.guid){
-      this._updateVehicle(this.vehicle)
-    } else {
-      this._addVehicle(this.vehicle)
-    }
-  }
-
-
-
-  /**
-   * Удаление ТС
-   */
-  this.removeVehicle = function () {
-
-    let modalInstance = ModalService.showConfirm(`Удалить ТС ?`);
+  // Удаление ТС
+  this.removeVehicle = function() {
+    let modalInstance = $uibModal.open({
+      component: 'confirm',
+      resolve: {confirmText: () => 'Удалить ТС?'}
+    });
 
     modalInstance.result.then(
-      (response) => {
-        VehicleService.removeVehicle(this.vehicle).then(
-          (response) => {$state.transitionTo('vehicleList', {}, {reload : true})},
-          (error) => {alert('Ошибка!')}
-        )
-      },
-      (reject) => {}
+      response => VehicleService.removeVehicle(this.vehicle.guid).then(response => $state.go('^', {}, {reload: '^'}))
     )
-
   }
 
-  /**
-   * Добавление ТС
-   * @param vehicle
-   * @private
-   */
+  // Добавление ТС
   this._addVehicle = function(vehicle) {
-    VehicleService.addVehicle(vehicle).then((response) => {
-      if(backRoute){
-        $state.transitionTo(backRoute.state, backRoute);
-      } else {
-        $state.transitionTo('vehicleList', {}, {reload : true})
-      }
+    VehicleService.addVehicle(vehicle).then(response => $state.go('^', {}, {reload: '^'}))
+  }
+
+  // Обновление ТС
+  this._updateVehicle = function(vehicle) {
+    VehicleService.updateVehicle(vehicle).then(response => {
+      this.vehicle = response.data;
+      this.toViewState();
     })
   }
-
-
-  /**
-   * Обновление ТС
-   * @param vehicle
-   * @returns {*|Promise.<TResult>}
-   * @private
-   */
-  this._updateVehicle = function(vehicle){
-    return VehicleService.updateVehicle(vehicle).then((response) => {$state.transitionTo('vehicleDetail', {guid : response.data.guid}, {reload : true})})
-  }
-
-
-
-
 }

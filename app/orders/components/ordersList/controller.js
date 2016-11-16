@@ -1,138 +1,52 @@
 "use strict";
 
-export default function (ApiService, AuthService, OrdersService, VehicleService, ForwardersService, DriversService, $stateParams, $q) {
+export default function($stateParams, $q, OrdersService, VehicleService, ApiService, AuthService) {
 
-  this.$onInit = function () {
+  this.$onInit = function() {
+    // Заголовок списка
+    this.listTitle = $stateParams.title ? $stateParams.title : 'Заявки';
 
     //Тип пользователя
-    this._userType = AuthService.getCurrentUserType();
+    this._userType = AuthService.getUserType();
 
 
-    //Статус аукциона
-    if ($stateParams.auction) {
-      this._auctionStatus = OrdersService.getAuctionStatus($stateParams.auction);
-    }
-
-    //Статус заявки
-    if ($stateParams.status) {
-      this._ordersStatus = OrdersService.getOrderStatus($stateParams.status);
-    }
-
-
-    //порядок
-    this.orderProperty =  $stateParams.order ? $stateParams.order : 'datetime';
-
-    //установка заголовка
-    this._setListTitle();
-
-
-    this._getOrders().then((response) => {
-      this.list = [];
-
-      for(let orders in response){
-        this.list = this.list.concat(response[orders].data);
+    this._getOrders().then(response => {
+      this.orders = [];
+      for (let orders in response) {
+        this.orders = this.orders.concat(response[orders].data);
       }
 
-      this._setFiltersData();
+      //this._setFiltersData();
+    });
 
-    })
-
-    //Получение списка фильтров
-    this._setFiltersList();
-
-    //автообновление
-    this._refresh(UPDATE_TIME);
-  }
-
-  this.$onDestroy = function(){
-    clearTimeout(this._refreshTimer);
   }
 
 
-  this._refresh = function (refreshInterval) {
-    let repeatFunc;
-    this._refreshTimer = setTimeout(repeatFunc = () => {
-      this._getOrders().then((response) => {
-        //this.list = response.data;
-
-        let responseOrders = [];
-
-
-        for(let orders in response){
-          responseOrders = responseOrders.concat(response[orders].data);
-        }
-
-
-        //проверка тех заявок которые уже есть на наличие их в ответе на запрос, если нет то удаляется
-        this.list.forEach((item, index, arr) => {
-          let findIndex = ApiService.getIndexById(responseOrders , {fieldName: 'guid', value: item.guid});
-
-          if(findIndex === -1){
-            console.log('REMOVE');
-            this.list.splice(index, 1);
-          }
-        })
-
-        //теперь проверка ответа и поиск среди именющихся заявок, далее обновление или добавление в список
-        for(let order of responseOrders){
-          let index = ApiService.getIndexById(this.list , {fieldName: 'guid', value: order.guid});
-          if(index !== -1){
-
-            let copyToCheck = angular.copy(this.list[index]);
-            delete  copyToCheck.hidden;
-
-            if(!this.list[index].hidden && !angular.equals(order, copyToCheck)){
-              console.log('UPDATE')
-              this.list.splice(index, 1, order);
-            }
-          } else {
-            console.log('CREATE');
-            this.list.push(order);
-          }
-        }
-
-        this._setFiltersData();
-
-        this._refreshTimer = setTimeout(repeatFunc, refreshInterval)
-
-      })
-
-    }, refreshInterval)
-  }
-
-
-  /**
-   * Получить список заявок
-   * @private
-   */
-  this._getOrders = function(){
+  // получить список заявок
+  this._getOrders = function() {
 
     let requests = {};
 
     if ($stateParams.auction) {
-
-      if(Array.isArray($stateParams.auction)){
-        for(let status of $stateParams.auction){
-          requests['auctionOrders' + status] = OrdersService.getAuctionOrders(status);
-        }
-      } else {
-        requests.auctionOrders = OrdersService.getAuctionOrders($stateParams.auction);
+      let auctionStatuses = Array.isArray($stateParams.auction) ? $stateParams.auction : [$stateParams.auction];
+      for (let status of auctionStatuses) {
+        requests['auctionOrders' + status] = OrdersService.getAuctionOrders(status);
       }
-
     }
 
-    if($stateParams.status) {
-      requests.directOrders = OrdersService.getOrdersByStatus($stateParams.status);
+    if ($stateParams.status) {
+      let orderStatuses = Array.isArray($stateParams.status) ? $stateParams.status : [$stateParams.status];
+      for (let status of orderStatuses) {
+        requests['auctionOrders' + status] = OrdersService.getOrdersByStatus(status);
+      }
     }
 
     return $q.all(requests);
-
   }
 
-  /**
-   * Собирет данные для фильтров
-   * @private
-   */
+
+
+   // Собирет данные для фильтров
   this._setFiltersData = function () {
     // Формирование "умного" фильтра
     this.loadingTypes = [];
@@ -165,18 +79,7 @@ export default function (ApiService, AuthService, OrdersService, VehicleService,
     }
   }
 
-  /**
-   * Устанавливает заголовок списка
-   * @private
-   */
-  this._setListTitle = function () {
-    this.listTitle = $stateParams.title ? $stateParams.title : 'Заявки';
-  }
-
-  /**
-   * Устанавливает список фильтров для текущего интрефейса
-   * @private
-   */
+  // Устанавливает список фильтров для текущего интрефейса
   this._setFiltersList = function () {
     this.filtersList = ['id', 'routeStartDate', 'warehouseAddress', 'unloadingAddress', 'loadingType'];
 
@@ -187,6 +90,7 @@ export default function (ApiService, AuthService, OrdersService, VehicleService,
       } else if (this._ordersStatus === 'INWORK'){
         this.filtersList = this.filtersList.concat('vehiclePlateNumber', 'semitrailerPlateNumber', 'driverFullName');
       }
+
     } else if (this._userType === 'forwarder') {
 
       if(this._ordersStatus === 'INWORK'){
@@ -194,26 +98,21 @@ export default function (ApiService, AuthService, OrdersService, VehicleService,
       }
     }
 
-
     this.filters = {};
   }
 
-  /**
-   * Метод для проверки наличия фильтра в текущем интерфейсе
-   * @param filterName
-   * @returns {boolean}
-   */
-  this.hasFilter = function (filterName) {
-    return this.filtersList.indexOf(filterName) !== -1 ;
+
+
+  // Удаление из списка
+  this.removeOrder = function (orderGuid) {
+    let orderIndex = ApiService.getArrayElementByGuid(orderGuid, this.orders).index;
+    this.orders.splice(orderIndex, 1);
   }
 
-  /**
-   *  удаление из списка
-   */
-  this.removeOrderFromList = function (orderGuid) {
-    let orderIndex = ApiService.getIndexById(this.list, {fieldName: 'guid', value: orderGuid});
-    this.list.splice(orderIndex, 1);
+  // Обновить order в списке
+  this.updateOrder = function(order) {
+    let orderIndex = ApiService.getArrayElementByGuid(order.guid, this.orders).index;
+    this.orders.splice(orderIndex, 1, order);
   }
-
 
 }

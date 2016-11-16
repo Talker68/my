@@ -5,77 +5,33 @@ export default function($stateProvider){
     .state('vehicleList', {
       parent: "app",
       url : 'vehicle',
-      resolve : {
-        loadingTypes : function (VehicleService) {
-          //получаем варианты отгрузки
-          return VehicleService.getLoadingTypes().then((response) => {return response.data});
-        }
-      },
-      controllerAs : 'vehicleListStateCtrl',
-      controller : function(loadingTypes){
-        this.loadingTypes = loadingTypes;
-      },
-      template : '<ui-view><vehicle-list loading-types="vehicleListStateCtrl.loadingTypes"></vehicle-list></ui-view>'
+      component : 'vehicleList',
+      resolve: {
+        vehicleList : VehicleService => VehicleService.getVehicleList().then(response => response.data)
+      }
     })
 
     .state('vehicleDetail', {
       parent: "vehicleList",
-      url : '/:guid?edit&back',
-      resolve :  {
-        vehicle : function ($stateParams, VehicleService) {
-          if($stateParams.guid){
-            return VehicleService.getVehicle($stateParams.guid).then((response) => {return response.data} )
+      resolve : {
+        vehicle : ($stateParams, VehicleService, ApiService) => {
+          if (!ApiService.isAddNewState($stateParams.guid)) {
+            return VehicleService.getVehicle($stateParams.guid).then(response => response.data)
           }
+          return false;
         }
-
       },
-      controller : function($stateParams, vehicle, loadingTypes){
-        this.edit = !!$stateParams.edit;
-        this.vehicle  = vehicle;
-        this.loadingTypes = loadingTypes;
-      },
-      controllerAs : 'vehicleDetailStateCtrl',
-      template : "<vehicle-detail vehicle='vehicleDetailStateCtrl.vehicle' edit='vehicleDetailStateCtrl.edit' loading-types='vehicleDetailStateCtrl.loadingTypes'></vehicle-detail>"
+      url : '/:guid',
+      component: 'vehicleDetail'
     })
 
     .state('semitrailers', {
       parent : "app",
-      url : "semitrailers?back",
-      template : "<semitrailer-list></semitrailer-list>"
+      url : "semitrailers",
+      component : "semitrailerList",
+      resolve: {
+        semitrailersList : VehicleService =>  VehicleService.getSemitrailerList().then(response => response.data)
+      }
     })
 
-    .state('trailersList', {
-      parent : "app",
-      url : 'trailers',
-      resolve : {
-        loadingTypes : function (VehicleService) {
-          //получаем варианты отгрузки
-          return VehicleService.getLoadingTypes().then((response) => {return response.data});
-        }
-      },
-      controllerAs : 'trailersListStateCtrl',
-      controller : function(loadingTypes){
-        this.loadingTypes = loadingTypes;
-      },
-      template : '<ui-view><trailers-list loading-types="trailersListStateCtrl.loadingTypes"></trailers-list></ui-view>'
-    })
-
-    .state('trailerDetail', {
-      parent: "trailersList",
-      url : '/:guid?edit&back',
-      resolve :  {
-        trailer : function ($stateParams, VehicleService) {
-          if($stateParams.guid){
-            return VehicleService.getTrailer($stateParams.guid).then((response) => {return response.data})
-          }
-        }
-      },
-      controller : function($stateParams, trailer, loadingTypes){
-        this.edit = !!$stateParams.edit;
-        this.vehicle  = vehicle;
-        this.loadingTypes = loadingTypes;
-      },
-      controllerAs : 'trailerDetailStateCtrl',
-      template : "<trailer-detail trailer = 'trailerDetailStateCtrl.vehicle' edit = 'trailerDetailStateCtrl.edit' loading-types = 'trailerDetailStateCtrl.loadingTypes'></trailer-detail>"
-    })
 }

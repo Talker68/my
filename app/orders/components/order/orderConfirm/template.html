@@ -1,0 +1,79 @@
+<style>
+  #confirmOrderForm.ng-submitted .form-control.ng-invalid, #confirmOrderForm .form-control.ng-touched.ng-invalid{
+    border-color: red;
+  }
+</style>
+
+
+<div class="l-title">Подтверждение заявки </div>
+
+<a ng-click="confirmOrderCtrl.dismiss()">Закрыть</a>
+<form id='confirmOrderForm' name="confirmOrderForm"
+      ng-submit="confirmOrderForm.$valid && confirmOrderCtrl.confirmOrder()" novalidate>
+
+  <div class="b-wrap">
+
+    <!--Выбор водителя-->
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="driver">Водитель</label>
+        </div>
+        <div class="col-xs-10">
+          <div class="input-group">
+            <select
+              name="driver" id="driver" class="form-control" required
+              ng-model="confirmOrderCtrl.driver"
+              ng-options="driver.driver for driver in confirmOrderCtrl.resolve.drivers">
+              <option value="">--Водитель--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Выбор машины-->
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="vehicle">Машина</label>
+        </div>
+        <div class="col-xs-10">
+          <div class="input-group">
+            <select
+              name="vehicle" id="vehicle" class="form-control" required
+              ng-model="confirmOrderCtrl.vehicle"
+              ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in confirmOrderCtrl.resolve.vehilcelist">
+              <option value="">--Машина--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Выбор полуприцепа-->
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="semitrailer">Полуприцеп</label>
+        </div>
+        <div class="col-xs-10">
+          <div class="input-group">
+            <select
+              name="semitrailer" id="semitrailer" class="form-control"
+              ng-model="confirmOrderCtrl.semitrailer"
+              ng-options="(semitrailer.plate_number +' '+ semitrailer.model) for semitrailer in confirmOrderCtrl.resolve.semitrailers">
+              <option value="">--Полуприцеп--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <button type="submit" class="btn btn-ok btn__l">Подтвердить</button>
+  </div>
+</form>

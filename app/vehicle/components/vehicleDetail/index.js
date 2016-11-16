@@ -1,13 +1,13 @@
 "use strict";
 
 import controller from './controller';
+import template from './template.html';
 
 export default {
   controller : controller,
   controllerAs: 'vehicleCtrl',
-  bindings: {
-    vehicle : '<',
-    edit : '<',
-    loadingTypes : '<'
-  }
+  bindings : {
+    'vehicle' : '<'
+  },
+  template : template
 }

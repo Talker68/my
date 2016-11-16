@@ -3,26 +3,25 @@
 export default function($stateProvider){
   $stateProvider
     .state('drivers', {
-      parent: "company",
-      url : '/drivers',
-      template : '<ui-view><drivers-list></drivers-list></ui-view>'
+      parent: "app",
+      url : 'drivers',
+      resolve: {
+        drivers : DriversService => DriversService.getDriversList().then(response => response.data)
+      },
+      component : 'driversList'
     })
     .state('driverDetail', {
       parent: "drivers",
-      url : '/:guid?edit&back',
+      url : '/:guid',
       resolve :  {
-        driver : function ($stateParams, DriversService) {
-          if($stateParams.guid){
-            return DriversService.getDriver($stateParams.guid).then((response) => {return response.data} )
+        driver : ($stateParams, DriversService, ApiService) => {
+          if (!ApiService.isAddNewState($stateParams.guid)) {
+            return DriversService.getDriver($stateParams.guid).then(response => response.data);
           }
+          return false;
         }
       },
-      controller : function($stateParams, driver){
-        this.edit = !!$stateParams.edit;
-        this.driver = driver;
-      },
-      controllerAs : 'driverDetailStateCtrl',
-      template : "<driver-detail driver='driverDetailStateCtrl.driver' edit='driverDetailStateCtrl.edit'></driver-detail>"
+      component: 'driverDetail'
 
     })
 

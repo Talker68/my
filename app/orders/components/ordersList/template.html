@@ -1,5 +1,6 @@
 <div class="l-title">{{::orderListCtrl.listTitle}}</div>
 
+
 <div id="filters" class="search-filter">
 
   <div ng-if="orderListCtrl.hasFilter('id')" class="search-filter_item">
@@ -95,16 +96,15 @@
     </select>
   </div>
 
-
 </div>
-
 
 
 <div class="b-list">
   <order
-    ng-repeat="order in orderListCtrl.list | ordersFilter : orderListCtrl.filters | orderBy : orderListCtrl.orderProperty" order="order"
-    view-mode="preview"
-    remove="orderListCtrl.removeOrderFromList(orderGuid)"
+    ng-repeat="order in orderListCtrl.orders"
+    order-data="order"
+    remove-order-from-list="orderListCtrl.removeOrder(orderGuid)"
+    update-order-in-list="orderListCtrl.updateOrder(order)"
     class="b-list_middle">
   </order>
 </div>

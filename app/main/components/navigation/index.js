@@ -1,5 +1,6 @@
 "use strict";
 
+import controller from './controller';
 
 import logistTpl from './template/logist.html';
 import forwarderTpl from './template/forwarder.html';
@@ -7,18 +8,17 @@ import operatorTpl from './template/operator.html';
 
 export default {
   template : function (AuthService) {
-    let currentUserType = AuthService.getCurrentUserType();
+    console.log(AuthService);
+    let userType = AuthService.getUserType();
 
-    if (currentUserType === 'logist'){
+    if (userType === 'logist'){
       return logistTpl;
-    } else if (currentUserType === 'forwarder'){
+    } else if (userType === 'forwarder'){
       return forwarderTpl;
-    } else if (currentUserType === 'operator'){
+    } else if (userType === 'operator'){
       return operatorTpl;
     }
   },
-  controllerAs: 'navCtrl',
-  controller : function(){
-    this.NODE_ENV = NODE_ENV;
-  }
+  controller : controller,
+  controllerAs: 'navCtrl'
 }
