@@ -25,8 +25,6 @@ export default function(OrdersService, AuthService, ForwardersService, VehicleSe
     //до планового времени загрузки осталось менее  24 часов
     this.deadline = parseInt((Date.parse(this.order.route.warehouse.datetitme) - new Date().valueOf())/3600000) < 24 ? true : false;
 
-    this.onBoard = (this.order.auction && this.order.auction.startingBid === this.order.auction.takeNowAmount) ? true : false;
-
   }
 
 

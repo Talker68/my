@@ -6,6 +6,7 @@ export default function($attrs, OrdersService){
     this.auctionStatus = OrdersService.getAuctionStatus(this.auction.status);
     this.viewMode = $attrs.viewMode;
 
+    this.onBoard = (this.auction.startingBid === this.auction.takeNowAmount) ? true : false;
     //this.getBidHistory();
   }
 
