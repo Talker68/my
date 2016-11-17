@@ -15,6 +15,6 @@ export default function($http, $rootScope){
   }
 
   this.getCurrentUserType = function () {
-    return $rootScope.currentUser.type[0];
+    return $rootScope.currentUser.type;
   }
 }

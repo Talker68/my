@@ -1,4 +1,4 @@
-<div class="row b-list_row" ng-hide="orderCtrl.order.hidden">
+<div ng-class="['row b-list_row', {'on-board' : orderCtrl.onBoard}]" ng-hide="orderCtrl.order.hidden">
   <!-- start Кнопка скрывания строки -->
   <button ng-click="orderCtrl.hide()" class="btn btn-neutral btn-hide" ng-if="orderCtrl.auctionStatus === 'ACTIVE'">Скрыть</button>
   <!-- end  Кнопка скрывания строки -->

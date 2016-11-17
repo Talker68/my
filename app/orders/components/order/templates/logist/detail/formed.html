@@ -78,12 +78,12 @@
                     <th></th>
                   </tr>
                   <tr>
-                    <th colspan="2">Фильтр по имени <input ng-model="forwardersFilter.title_erm" ></th>
+                    <th colspan="2">Фильтр по имени <input ng-model="forwardersFilter.titleERP" ></th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr ng-repeat="forwarder in orderCtrl.forwardersList | filter: forwardersFilter">
-                    <td>{{forwarder.title_erm}}</td>
+                    <td>{{forwarder.titleERP}}</td>
 
                     <td class="text-right">
 

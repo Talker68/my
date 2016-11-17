@@ -7,7 +7,7 @@
     "test": "node_modules/.bin/karma start",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot",
     "wp": "node_modules/.bin/webpack",
-    "wp:watch": "node_modules/.bin/webpack --watch",
+    "wp:watch": "node_modules/.bin/webpack --watch --color",
     "wp:build": "(rm -rf build/* && cp app/index.html build/.) && npm run wp"
   },
   "author": "",
