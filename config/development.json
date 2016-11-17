@@ -1,6 +1,6 @@
 {
-  "requestPrefix" : "/ERPPPK_test/hs/logistics",
-  "path" : "//pc1474/logistics/scripts",
+  "requestPrefix" : "/ERPPPK_master-copy-local/hs/logistics",
+  "path" : "//pc1474/logistics_old/scripts",
   "publicPath" : "scripts/",
   "devtool" : "source-map",
   "proxy" : {},
