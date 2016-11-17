@@ -1,21 +1,23 @@
 <!--Редукцион-->
-<div ng-class="['col-xs-12', auctionCtrl.viewMode, {'on-board' : auctionCtrl.onBoard}]">
+<div ng-class="['col-xs-12', auctionCtrl.viewMode]">
   <!--Стартовый тариф-->
   <div class="row">
     <div class="b-list_cell">
-      <div class="col-xs-2">
-        Стартовый тариф без НДС
-        <div>
-          <b class="green">{{auctionCtrl.auction.startingBid}}</b>
+        <div class="col-xs-4" ng-class="{'on-board' : auctionCtrl.onBoard}">
+          <div class="col-xs-6" >
+            Стартовый тариф без НДС
+            <div>
+              <b class="green">{{auctionCtrl.auction.startingBid}}</b>
+            </div>
+          </div>
+          <!--Забрать сразу-->
+          <div class="col-xs-6" >
+            Забрать сразу
+            <div>
+              <b class="green">{{auctionCtrl.auction.takeNowAmount}}</b>
+            </div>
+          </div>
         </div>
-      </div>
-      <!--Забрать сразу-->
-      <div class="col-xs-2">
-        Забрать сразу
-        <div>
-          <b class="green">{{auctionCtrl.auction.takeNowAmount}}</b>
-        </div>
-      </div>
       <!--начало-->
       <div class="col-xs-2">
         Начало
