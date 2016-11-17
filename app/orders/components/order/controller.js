@@ -37,7 +37,6 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       component : 'orderDirectOrder',
       size: 'lg'
     });
-
     modalInstance.result.then(order => this.updateOrderInList({order : order}));
   }
 
