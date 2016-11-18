@@ -10,10 +10,8 @@ export default function($stateProvider) {
     if (AuthService.getUserType() !== AuthService.USER_TYPES.FORWARDER) {
       return ForwardersService.getForwarders().then(response => ForwardersService.forwarders = response.data);
     }
-
     return null;
   }
-
 
 
   $stateProvider

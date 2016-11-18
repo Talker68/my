@@ -1,6 +1,7 @@
 export default function(OrdersService, ApiService, VehicleService, DriversService, ForwardersService, AuthService, $uibModal) {
-
+  console.log('fefefe');
   this.$onInit = function() {
+
     this.ORDER_STATUSES = OrdersService.ORDER_STATUSES;
 
     //Тип пользователя
@@ -8,14 +9,12 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
 
 
     //Получение грузопревозчика
-    if (this.orderData.forwarder && !(typeof(this.orderData.forwarder).toLowerCase() === 'object')) {
+    if (this.orderData.forwarder && !this.orderData.forwarder.guid) {
       this.orderData.forwarder = ApiService.getArrayElementByGuid(this.orderData.forwarder, ForwardersService.forwarders).element;
     }
 
     //до планового времени загрузки осталось менее  24 часов
     this.deadline = parseInt((Date.parse(this.orderData.route.routePoints[0].date) - new Date().valueOf())/3600000) < 24 ? true : false;
-
-
   };
 
   //Показать маршрут
