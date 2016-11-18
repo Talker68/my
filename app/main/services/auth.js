@@ -2,6 +2,12 @@
 
 export default function($http) {
 
+  this.USER_TYPES = {
+    LOGIST: 'logist',
+    OPERATOR: 'operator',
+    FORWARDER: 'forwarder',
+  }
+
   // Запрос на сревер , получающий данные пользователя
   this.auth = function () {
     return $http.get(`${REQUEST_PREFIX}/auth`)
