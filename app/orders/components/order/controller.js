@@ -82,16 +82,9 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     })
 
     modalInstance.result.then(
-      response => {
-        OrdersService.transferOrderToOperator(this.orderData.guid).then(
-          response => {
-            // TODO после изменения запроса, отправлять ответ запроса вместо получения заявки отельным запросом
-            OrdersService.getOrderByGuid(this.orderData.guid).then(
-              response => {this.updateOrderInList({order : response.data[0]})}
-            )
-          }
-        )
-      }
+      response => OrdersService.transferOrderToOperator(this.orderData.guid).then(
+          response => this.updateOrderInList({order : response.data})
+      )
     )
   }
 
