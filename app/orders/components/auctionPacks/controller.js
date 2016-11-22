@@ -1,26 +1,51 @@
 "use strict";
 
-export default function (OrdersService, ApiService, $scope) {
+export default function (OrdersService, ApiService) {
   this.$onInit = function(){
-
 
     this.now = new Date();
     this.packs = [];
     this.filters = {};
 
     //Получение списка заявок
-    OrdersService.getAuctionOrders(2).then(response => {
-      this.list = response.data;
-      this._setFiltersData();
-    })
+    this._getAuctionOrders();
 
-    this._refresh(30000)
   }
 
   this.$onDestroy = function(){
     clearTimeout(this._refreshTimer);
   }
 
+
+
+  this._getAuctionOrders = function() {
+    let refreshTime = 5000;
+    OrdersService.getAuctionOrders(OrdersService.AUCTION_STATUSES.PENDING).then(response => {
+
+      if (this.list && this.list.length) {
+
+        for (let order of response.data) {
+
+          let auctionOrderIndex = this.list.findIndex(elem => elem.order.guid === order.guid);
+
+          if (auctionOrderIndex === -1) {
+            console.log('NEW');
+            this.list.push({order: order, packId: null})
+          } else if (this.list[auctionOrderIndex].order.modified !== order.modified) {
+            console.log('MODIFIED');
+          }
+
+        }
+
+      } else {
+        this.list = response.data.map(item => {return {order: item, packId: null}})
+      }
+
+      this._refreshTimer = setTimeout(this._getAuctionOrders.bind(this), refreshTime);
+
+      //this._setFiltersData();
+    })
+  }
 
   this._refresh = function (refreshInterval) {
     let repeatFunc;
@@ -57,65 +82,38 @@ export default function (OrdersService, ApiService, $scope) {
   }
 
 
-  //следит за списком, отображает кнопки в паках в зависимости от packId в заявках
-  $scope.$watch('packsCtrl.list', (newValue, oldValue) => {
-
-    if(newValue){
-
-      for (let pack of this.packs){
-        pack.showButtons = false;
-
-        for(let order of newValue){
-         if(pack.id === order.packId){
-           pack.showButtons = true;
-           break;
-         }
-        }
-
-      }
-    }
-
-  }, true)
-
-  //Фильтр для списка заявок, отбрасывает заявки с указанным packId
-  this.auctionFilter = function(value, index, array) {
-    return value.packId === undefined
-  }
 
   //Создание пака
-  this.createPack = function () {
+  this.createPack = function() {
+    console.log(this);
 
     this.pack.id = this.packs.length ? (this.packs[this.packs.length - 1].id + 1) : 1;
     this.packs.push(this.pack);
 
     this.pack = {};
+
     this.packForm.$setPristine();
     this.packForm.$setUntouched();
   }
 
-  //Удаление пака
-  this.removePack = function () {
-    for (let order of this.list) {
-      if (order.packId === this.currentPack.id) {
-        delete order.packId;
-      }
-    }
-    
-    this.packs.splice(this.packs.indexOf(this.currentPack), 1);
-    this.activePackTab = this.packs.length ? this.packs[this.packs.length - 1].id : 0;
-  }
-
   //Расформировать пак
   this.disbandPack = function () {
-    for (let order of this.list) {
-      if (order.packId === this.currentPack.id) {
-        delete order.packId;
+    for (let auctionOrder of this.list) {
+      if (auctionOrder.packId === this.currentPack.id) {
+        auctionOrder.packId = null;
       }
     }
   }
 
+  //Удаление пака
+  this.removePack = function () {
+    this.disbandPack();
+    
+    this.packs.splice(this.packs.indexOf(this.currentPack), 1);
+    this.activePackTab = 0;
+  }
 
-  
+
   //Запусить пак в работу
   this.sendPackToWork = function () {
 

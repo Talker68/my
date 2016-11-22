@@ -1,5 +1,4 @@
 export default function(OrdersService, ApiService, VehicleService, DriversService, ForwardersService, AuthService, $uibModal) {
-  console.log('fefefe');
   this.$onInit = function() {
 
     this.ORDER_STATUSES = OrdersService.ORDER_STATUSES;

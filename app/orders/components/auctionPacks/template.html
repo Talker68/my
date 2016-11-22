@@ -1,56 +1,53 @@
-<div class="l-title">Необработанные</div>
-
 <div class="row">
   <div class="col-xs-6">
-    <h2>Заявки на редукцион</h2>
 
-    <div id="filters" class="search-filter">
+    <!--<div id="filters" class="search-filter">-->
 
-      <div class="search-filter_item">
-        <div class="search-filter_name">
-          Номер задания
-        </div>
-        <input type="text" ng-model="packsCtrl.filters.id">
-      </div>
+      <!--<div class="search-filter_item">-->
+        <!--<div class="search-filter_name">-->
+          <!--Номер задания-->
+        <!--</div>-->
+        <!--<input type="text" ng-model="packsCtrl.filters.id">-->
+      <!--</div>-->
 
-      <div class="search-filter_item">
-        <div class="search-filter_name">
-          Начало рейса
-        </div>
-        <input type="date" ng-model="packsCtrl.filters.routeStartDate" ng-model-options="{'timezone' : 'UTC'}"/>
-      </div>
+      <!--<div class="search-filter_item">-->
+        <!--<div class="search-filter_name">-->
+          <!--Начало рейса-->
+        <!--</div>-->
+        <!--<input type="date" ng-model="packsCtrl.filters.routeStartDate" ng-model-options="{'timezone' : 'UTC'}"/>-->
+      <!--</div>-->
 
-      <div class="search-filter_item">
-        <div class="search-filter_name">
-          Адрес погрузки
-        </div>
-        <input type="text" ng-model="packsCtrl.filters.warehouseAddress">
-      </div>
+      <!--<div class="search-filter_item">-->
+        <!--<div class="search-filter_name">-->
+          <!--Адрес погрузки-->
+        <!--</div>-->
+        <!--<input type="text" ng-model="packsCtrl.filters.warehouseAddress">-->
+      <!--</div>-->
 
-      <div class="search-filter_item">
-        <div class="search-filter_name">
-          Адрес разгрузки
-        </div>
-        <input type="text" ng-model="packsCtrl.filters.unloadingAddress">
-      </div>
+      <!--<div class="search-filter_item">-->
+        <!--<div class="search-filter_name">-->
+          <!--Адрес разгрузки-->
+        <!--</div>-->
+        <!--<input type="text" ng-model="packsCtrl.filters.unloadingAddress">-->
+      <!--</div>-->
 
-      <div class="search-filter_item">
-        <div class="search-filter_name">
-          Тип ТС
-        </div>
-        <select ng-options="loadingType.title for loadingType in packsCtrl.loadingTypes track by loadingType.guid" ng-model="packsCtrl.filters.loadingType">
-          <option value="">--выберите тип ТС--</option>
-        </select>
-      </div>
-    </div>
+      <!--<div class="search-filter_item">-->
+        <!--<div class="search-filter_name">-->
+          <!--Тип ТС-->
+        <!--</div>-->
+        <!--<select ng-options="loadingType.title for loadingType in packsCtrl.loadingTypes track by loadingType.guid" ng-model="packsCtrl.filters.loadingType">-->
+          <!--<option value="">&#45;&#45;выберите тип ТС&#45;&#45;</option>-->
+        <!--</select>-->
+      <!--</div>-->
+    <!--</div>-->
 
     <div class="requests-list">
-      <order
-        view-mode = 'preview'
-        ng-repeat="order in packsCtrl.list | filter : packsCtrl.auctionFilter | ordersFilter : packsCtrl.filters" order="order"
-        current-pack = "packsCtrl.currentPack"
-      >
-      </order>
+      <div ng-repeat="auctionOrder in packsCtrl.list | filter : {packId: null}" >
+        <order order-data="auctionOrder.order"></order>
+        <div>
+          <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack">В пак</button>
+        </div>
+      </div>
     </div>
 
 
@@ -62,15 +59,17 @@
 
     <uib-tabset active="packsCtrl.activePackTab">
 
-      <!-- start Tab -->
       <uib-tab index="0" heading="Новый" select="packsCtrl.currentPack = null">
+
         <style>
           #packForm.ng-submitted .form-control.ng-invalid, #packForm .form-control.ng-touched.ng-invalid{
             border-color: red;
           }
         </style>
 
+        <!--Форма создания паков-->
         <form name="packsCtrl.packForm" id="packForm" ng-submit="packsCtrl.packForm.$valid && packsCtrl.createPack()" novalidate>
+
           <div class="form-group">
             <label for="start">Начало редукциона</label>
             <input type="datetime-local" name='start' ng-model="packsCtrl.pack.start" class="form-control" id="start" ng-min="packsCtrl.now" required/>
@@ -78,7 +77,7 @@
 
           <div class="form-group">
             <label for="finish">Конец редукциона</label>
-            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.finish" class="form-control" id="finish" ng-min="packsCtrl.pack.start" required/>
+            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.finish" class="form-control" id="finish" ng-min="pack.start" required/>
           </div>
 
           <div class="form-group">
@@ -87,14 +86,16 @@
           </div>
 
           <button type="submit" class="btn btn-ok">Создать</button>
+
         </form>
+
       </uib-tab>
 
       <!--Закладки с паками-->
       <uib-tab
         ng-repeat="pack in packsCtrl.packs track by pack.id"
         index="pack.id"
-        heading="{{::pack.start | date : 'dd.MM  HH:mm'}}"
+        heading="{{pack.start | date : 'dd.MM  HH:mm'}}"
         select="packsCtrl.currentPack = pack">
 
         <div>Шаг {{pack.step}}</div>
@@ -103,7 +104,7 @@
         <!-- start Удалить и расформировать пак-->
         <p>
           <button ng-click="packsCtrl.removePack()" class="btn btn-error">Удалить</button>
-          <button ng-click="packsCtrl.disbandPack()" class="btn btn-wrn" ng-show="pack.showButtons">Расформировать</button>
+          <button ng-click="packsCtrl.disbandPack()" class="btn btn-wrn" ng-if="filteredAuctionOrders.length">Расформировать</button>
         </p>
         <!-- end Удалить и расформировать пак-->
 
@@ -113,10 +114,15 @@
           <!--ГП внутри пака-->
           <div class="b-list">
             <div class="b-list_middle">
-              <order
-                view-mode = 'preview'
-                ng-repeat="order in packsCtrl.list | filter : {packId : pack.id}" order="order">
-              </order>
+
+              <div ng-repeat="auctionOrder in filteredAuctionOrders  = (packsCtrl.list | filter : {packId: pack.id})" >
+                <order order-data="auctionOrder.order"></order>
+
+                <div>
+                  <button ng-click="auctionOrder.packId = null">Убрать из пака</button>
+                </div>
+              </div>
+
             </div>
           </div>
 
