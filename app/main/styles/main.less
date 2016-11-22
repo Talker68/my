@@ -175,6 +175,20 @@ b{
     text-decoration: none;
   }
 }
+.btn.btn-ref{
+  font-size: 2em;
+  background: transparent;
+  border: transparent;
+  color: #000;
+  &:hover{
+    text-decoration: none;
+  }
+  &:active{
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
 
 // ---- [  Form  ] ----
 .form-field{
@@ -264,7 +278,21 @@ b{
 .tab-pane{
 }
 
-
+// --- [ Popover ] ---
+.popover-content{
+  font-size: 0.9em;
+  line-height: 1.3em;
+  .s-title{
+    margin-bottom: 10px;
+    margin-top: 16px;
+    &:first-child{
+      margin-top: 8px;
+    }
+  }
+  ul > li {
+    margin-bottom: 8px;
+  }
+}
 
 // media
 @media (min-width: 1600px){
