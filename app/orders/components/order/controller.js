@@ -14,14 +14,14 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     }
 
     //до планового времени загрузки осталось менее  24 часов
-    this.deadline = parseInt((Date.parse(this.orderData.route.routePoints[0].date) - new Date().valueOf())/3600000) < 24 ? true : false;
+    this.deadline = parseInt((Date.parse(this.orderData.route.routePoints[0].date) - new Date().valueOf()) / 3600000) < 24 ? true : false;
   };
 
   //Показать маршрут
   this.showDetailRoute = function() {
     $uibModal.open({
       resolve: {
-        order : () => this.orderData
+        order: () => this.orderData
       },
       component: 'orderRoute',
       size: 'lg'
@@ -32,89 +32,82 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
   // Передача заявки ТК
   this.directOrder = function() {
     let modalInstance = $uibModal.open({
-      resolve : {orderGuid : () => this.orderData.guid},
-      component : 'orderDirectOrder',
+      resolve: {orderGuid: () => this.orderData.guid},
+      component: 'orderDirectOrder',
       size: 'lg'
     });
-    modalInstance.result.then(order => this.updateOrderInList({order : order}));
+    modalInstance.result.then(order => this.updateOrderInList({order: order}));
   }
 
   // ТК отказывается от заявки
-  this.forwarderRefuseOrder = function () {
+  this.forwarderRefuseOrder = function() {
     let modalInstance = $uibModal.open({
-      component : 'confirm',
-      resolve : {confirmText : () => 'Отказаться от заявки ?'}
+      component: 'confirm',
+      resolve: {confirmText: () => 'Отказаться от заявки ?'}
     })
 
     modalInstance.result.then(
       response => {
         OrdersService.forwarderRefuseOrder(this.orderData.guid).then(
-          response => this.removeOrderFromList({orderGuid : this.orderData.guid})
+          response => this.removeOrderFromList({orderGuid: this.orderData.guid})
         )
       }
     )
   }
 
   //ТК подтверждает заявку
-  this.confirmOrder = function () {
+  this.confirmOrder = function() {
 
     let modalInstance = $uibModal.open({
-      component : 'orderConfirm',
-      resolve : {
-        orderGuid : () => this.orderData.guid,
-        drivers :  () => DriversService.getDriversList().then(response => response.data),
-        vehilcelist :  () => VehicleService.getVehicleList().then(response => response.data),
+      component: 'orderConfirm',
+      resolve: {
+        orderGuid: () => this.orderData.guid,
+        drivers: () => DriversService.getDriversList().then(response => response.data),
+        vehilcelist: () => VehicleService.getVehicleList().then(response => response.data),
         semitrailers: () => VehicleService.getSemitrailerList().then(response => response.data)
       },
     })
 
     modalInstance.result.then(
-      modalInstance.result.then(response => this.removeOrderFromList({orderGuid : this.orderData.guid}))
+      modalInstance.result.then(response => this.removeOrderFromList({orderGuid: this.orderData.guid}))
     )
   }
 
 
   //Передача заявки опаератору
-  this.transferOrderToOperator = function () {
+  this.transferOrderToOperator = function() {
     let modalInstance = $uibModal.open({
-      component : 'confirm',
-      resolve : {confirmText : () => 'Передать заявку оператору редукционов ?'}
+      component: 'confirm',
+      resolve: {confirmText: () => 'Передать заявку оператору редукционов ?'}
     })
 
     modalInstance.result.then(
       response => OrdersService.transferOrderToOperator(this.orderData.guid).then(
-          response => this.updateOrderInList({order : response.data})
+        response => this.updateOrderInList({order: response.data})
       )
     )
   }
 
   // Отмена передачи заявки оператору
-  this.cancelTransferOrderToOperator = function () {
+  this.cancelTransferOrderToOperator = function() {
     let modalInstance = $uibModal.open({
-      component : 'confirm',
-      resolve : {confirmText : ()=> 'Отменить передачу заявки оператору редукционов ?'}
+      component: 'confirm',
+      resolve: {confirmText: () => 'Отменить передачу заявки оператору редукционов ?'}
     })
 
     modalInstance.result.then(
-      response => {
-        OrdersService.cancelTransferOrderToOperator(this.orderData.guid).then(
-          response => {
-            // TODO после изменения запроса, отправлять ответ запроса вместо получения заявки отельным запросом
-            OrdersService.getOrderByGuid(this.orderData.guid).then(
-              response => {this.updateOrderInList({order : response.data[0]})}
-            )
-          }
-        )
-      }
+      response => OrdersService.cancelTransferOrderToOperator(this.orderData.guid).then(
+        response => this.updateOrderInList({order: response.data})
+      )
     )
   }
 
 
-  this.userIs = function(userType){
+  this.userIs = function(userType) {
     return this.userType === userType.toLowerCase();
   }
 
-  this.getOrderStatus = function(){
+  this.getOrderStatus = function() {
     let order = this.orderData;
     if (this.userIs('logist')) {
       if (order.forwarder) return `Отправлена ${order.forwarder.title}`;
