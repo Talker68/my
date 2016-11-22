@@ -21,4 +21,9 @@ export default function($stateProvider) {
       component : "ordersList",
       resolve: resolve
     })
+    .state('createAuction', {
+      url: "create-auction",
+      parent: "app",
+      component : "auctionPacks",
+    })
 }

@@ -18,7 +18,7 @@ import ordersFilter from './filters/ordersFilter';
 // components
 import orderListComponent from './components/ordersList';
 
-import packsComponent from './components/packs';
+import auctionPacksComponent from './components/auctionPacks';
 
 import orderComponent from './components/order';
 import orderRouteComponent from './components/order/route';
@@ -34,7 +34,7 @@ export default angular.module('orders', [ngMessages, uiRouter])
 
   .component('ordersList', orderListComponent)
 
-  .component('packs', packsComponent)
+  .component('auctionPacks', auctionPacksComponent)
 
   .component('order', orderComponent)
   .component('orderRoute', orderRouteComponent)
