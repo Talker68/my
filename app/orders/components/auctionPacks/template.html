@@ -3,46 +3,46 @@
 
     <!--<div id="filters" class="search-filter">-->
 
-      <!--<div class="search-filter_item">-->
-        <!--<div class="search-filter_name">-->
-          <!--Номер задания-->
-        <!--</div>-->
-        <!--<input type="text" ng-model="packsCtrl.filters.id">-->
-      <!--</div>-->
+    <!--<div class="search-filter_item">-->
+    <!--<div class="search-filter_name">-->
+    <!--Номер задания-->
+    <!--</div>-->
+    <!--<input type="text" ng-model="packsCtrl.filters.id">-->
+    <!--</div>-->
 
-      <!--<div class="search-filter_item">-->
-        <!--<div class="search-filter_name">-->
-          <!--Начало рейса-->
-        <!--</div>-->
-        <!--<input type="date" ng-model="packsCtrl.filters.routeStartDate" ng-model-options="{'timezone' : 'UTC'}"/>-->
-      <!--</div>-->
+    <!--<div class="search-filter_item">-->
+    <!--<div class="search-filter_name">-->
+    <!--Начало рейса-->
+    <!--</div>-->
+    <!--<input type="date" ng-model="packsCtrl.filters.routeStartDate" ng-model-options="{'timezone' : 'UTC'}"/>-->
+    <!--</div>-->
 
-      <!--<div class="search-filter_item">-->
-        <!--<div class="search-filter_name">-->
-          <!--Адрес погрузки-->
-        <!--</div>-->
-        <!--<input type="text" ng-model="packsCtrl.filters.warehouseAddress">-->
-      <!--</div>-->
+    <!--<div class="search-filter_item">-->
+    <!--<div class="search-filter_name">-->
+    <!--Адрес погрузки-->
+    <!--</div>-->
+    <!--<input type="text" ng-model="packsCtrl.filters.warehouseAddress">-->
+    <!--</div>-->
 
-      <!--<div class="search-filter_item">-->
-        <!--<div class="search-filter_name">-->
-          <!--Адрес разгрузки-->
-        <!--</div>-->
-        <!--<input type="text" ng-model="packsCtrl.filters.unloadingAddress">-->
-      <!--</div>-->
+    <!--<div class="search-filter_item">-->
+    <!--<div class="search-filter_name">-->
+    <!--Адрес разгрузки-->
+    <!--</div>-->
+    <!--<input type="text" ng-model="packsCtrl.filters.unloadingAddress">-->
+    <!--</div>-->
 
-      <!--<div class="search-filter_item">-->
-        <!--<div class="search-filter_name">-->
-          <!--Тип ТС-->
-        <!--</div>-->
-        <!--<select ng-options="loadingType.title for loadingType in packsCtrl.loadingTypes track by loadingType.guid" ng-model="packsCtrl.filters.loadingType">-->
-          <!--<option value="">&#45;&#45;выберите тип ТС&#45;&#45;</option>-->
-        <!--</select>-->
-      <!--</div>-->
+    <!--<div class="search-filter_item">-->
+    <!--<div class="search-filter_name">-->
+    <!--Тип ТС-->
+    <!--</div>-->
+    <!--<select ng-options="loadingType.title for loadingType in packsCtrl.loadingTypes track by loadingType.guid" ng-model="packsCtrl.filters.loadingType">-->
+    <!--<option value="">&#45;&#45;выберите тип ТС&#45;&#45;</option>-->
+    <!--</select>-->
+    <!--</div>-->
     <!--</div>-->
 
     <div class="requests-list">
-      <div ng-repeat="auctionOrder in packsCtrl.list | filter : {packId: null}" >
+      <div ng-repeat="auctionOrder in packsCtrl.list | filter : {packId: null} | orderBy: '-order.modified' ">
         <order order-data="auctionOrder.order"></order>
         <div>
           <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack">В пак</button>
@@ -62,27 +62,31 @@
       <uib-tab index="0" heading="Новый" select="packsCtrl.currentPack = null">
 
         <style>
-          #packForm.ng-submitted .form-control.ng-invalid, #packForm .form-control.ng-touched.ng-invalid{
+          #packForm.ng-submitted .form-control.ng-invalid, #packForm .form-control.ng-touched.ng-invalid {
             border-color: red;
           }
         </style>
 
         <!--Форма создания паков-->
-        <form name="packsCtrl.packForm" id="packForm" ng-submit="packsCtrl.packForm.$valid && packsCtrl.createPack()" novalidate>
+        <form name="packsCtrl.packForm" id="packForm" ng-submit="packsCtrl.packForm.$valid && packsCtrl.createPack()"
+              novalidate>
 
           <div class="form-group">
             <label for="start">Начало редукциона</label>
-            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.start" class="form-control" id="start" ng-min="packsCtrl.now" required/>
+            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.start" class="form-control" id="start"
+                   ng-min="packsCtrl.now" required/>
           </div>
 
           <div class="form-group">
             <label for="finish">Конец редукциона</label>
-            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.finish" class="form-control" id="finish" ng-min="pack.start" required/>
+            <input type="datetime-local" name='start' ng-model="packsCtrl.pack.finish" class="form-control" id="finish"
+                   ng-min="pack.start" required/>
           </div>
 
           <div class="form-group">
             <label for="step">Шаг</label>
-            <input type="number" name='step' ng-model="packsCtrl.pack.step" class="form-control" id="step" min="0" required/>
+            <input type="number" name='step' ng-model="packsCtrl.pack.step" class="form-control" id="step" min="0"
+                   required/>
           </div>
 
           <button type="submit" class="btn btn-ok">Создать</button>
@@ -98,13 +102,16 @@
         heading="{{pack.start | date : 'dd.MM  HH:mm'}}"
         select="packsCtrl.currentPack = pack">
 
+        <div>Начало {{pack.start | date : 'dd.MM HH:mm'}}</div>
+        <div>Окончание {{pack.finish | date : 'dd.MM HH:mm'}}</div>
         <div>Шаг {{pack.step}}</div>
-        <div>Окончание  {{pack.finish | date : 'dd.MM  HH:mm'}}</div>
 
         <!-- start Удалить и расформировать пак-->
         <p>
           <button ng-click="packsCtrl.removePack()" class="btn btn-error">Удалить</button>
-          <button ng-click="packsCtrl.disbandPack()" class="btn btn-wrn" ng-if="filteredAuctionOrders.length">Расформировать</button>
+          <button ng-click="packsCtrl.disbandPack()" class="btn btn-wrn" ng-if="filteredAuctionOrders.length">
+            Расформировать
+          </button>
         </p>
         <!-- end Удалить и расформировать пак-->
 
@@ -115,18 +122,47 @@
           <div class="b-list">
             <div class="b-list_middle">
 
-              <div ng-repeat="auctionOrder in filteredAuctionOrders  = (packsCtrl.list | filter : {packId: pack.id})" >
+              <div ng-repeat="auctionOrder in filteredAuctionOrders  = (packsCtrl.list | filter : {packId: pack.id})">
                 <order order-data="auctionOrder.order"></order>
 
+                <!--Кнопка убрать из пака-->
                 <div>
                   <button ng-click="auctionOrder.packId = null">Убрать из пака</button>
                 </div>
+
+
+                <!--Форма-->
+                <style>
+                  .auction-values .ng-invalid {
+                    box-shadow: 0 0 5px 0px red inset;
+                  }
+                </style>
+
+                <div class="auction-values">
+                  <div class="form-group">
+                    <p>Начальная ставка</p>
+                    <input class="form-control" ng-model="auctionOrder.order.auction.startingBid" type="number" min="0" required>
+                  </div>
+
+                  <div class="form-group">
+                    <p>Забрать сразу</p>
+                    <input class="form-control" ng-model="auctionOrder.order.auction.takeNowAmount" type="number"
+                           ng-max="auctionOrder.order.auction.startingBid" min="0" required>
+                  </div>
+
+
+                </div>
+
               </div>
-
             </div>
-          </div>
 
-          <button type='submit' class="btn btn-ok" ng-show="pack.showButtons" ng-disabled="packsCtrl.buttonsDisabled">Отправить</button>
+            <button type='submit' class="btn btn-ok"
+                    ng-if="filteredAuctionOrders.length"
+                    ng-disabled="packsCtrl.buttonsDisabled || !packSendForm.$valid">
+              Отправить
+            </button>
+
+          </div>
         </form>
 
       </uib-tab>

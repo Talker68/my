@@ -19,11 +19,24 @@ export default function (OrdersService, ApiService) {
 
 
   this._getAuctionOrders = function() {
-    let refreshTime = 5000;
+    let refreshTime = 15000;
     OrdersService.getAuctionOrders(OrdersService.AUCTION_STATUSES.PENDING).then(response => {
 
+
+      let responseList = response.data;
+
+      // Если в списке уже есть задания
       if (this.list && this.list.length) {
 
+        // Сначала проверка на то что все задачи в списке еще актуальны
+        for (let i = 0; i < this.list.length; i++) {
+          if (!ApiService.getArrayElementByGuid(this.list[i].order.guid, responseList)) {
+            console.log('DELETE');
+            this.list.splice(i, 1);
+          }
+        }
+
+        // Проверка на необходимость обновления существующих и добаление новых
         for (let order of response.data) {
 
           let auctionOrderIndex = this.list.findIndex(elem => elem.order.guid === order.guid);
@@ -33,6 +46,7 @@ export default function (OrdersService, ApiService) {
             this.list.push({order: order, packId: null})
           } else if (this.list[auctionOrderIndex].order.modified !== order.modified) {
             console.log('MODIFIED');
+            this.list.splice(auctionOrderIndex, 1, {order: order, packId: this.list[auctionOrderIndex].packId});
           }
 
         }
@@ -47,28 +61,6 @@ export default function (OrdersService, ApiService) {
     })
   }
 
-  this._refresh = function (refreshInterval) {
-    let repeatFunc;
-    this._refreshTimer = setTimeout(repeatFunc = () => {
-      OrdersService.getAuctionOrders(2).then(response => {
-
-        for(let order of response.data){
-          let index = ApiService.getIndexById(this.list , {fieldName: 'guid', value: order.guid});
-          if(index !== -1){
-            Object.assign(this.list[index].auction, order.auction);
-          } else {
-            console.log('new');
-            this.list.push(order);
-          }
-
-        }
-
-        this._setFiltersData();
-        this._refreshTimer = setTimeout(repeatFunc, refreshInterval);
-      })
-
-    }, refreshInterval)
-  }
 
 
   this._setFiltersData = function(){
@@ -85,8 +77,6 @@ export default function (OrdersService, ApiService) {
 
   //Создание пака
   this.createPack = function() {
-    console.log(this);
-
     this.pack.id = this.packs.length ? (this.packs[this.packs.length - 1].id + 1) : 1;
     this.packs.push(this.pack);
 
@@ -119,28 +109,26 @@ export default function (OrdersService, ApiService) {
 
     this.buttonsDisabled = true;
 
-    let currentPackOrders = this.list.filter((item) => {
-      return item.packId === this.currentPack.id
-    })
+    let requestData =
+      this.list
+        .filter(auctionOrder => auctionOrder.packId === this.currentPack.id)
+        .map(auctionOrder => {
+          return {
+            start: this.currentPack.start,
+            finish: this.currentPack.finish,
+            step: this.currentPack.step,
+            orderGuid: auctionOrder.order.guid,
+            startingBid: auctionOrder.order.auction.startingBid,
+            takeNowAmount: auctionOrder.order.auction.takeNowAmount,
+          }
+        });
 
-    let requestData = currentPackOrders.map((item) => {
-      return {
-        start: this.currentPack.start,
-        finish: this.currentPack.finish,
-        step: this.currentPack.step,
-        orderGuid: item.guid,
-        startingBid: item.auction.startingBid,
-        takeNowAmount: item.auction.takeNowAmount,
-      }
-    });
 
-    OrdersService.createAuctionByOrdersPack(requestData).then((response) => {
-      this.list = this.list.filter((item) => {
-        return item.packId !== this.currentPack.id
-      })
+    OrdersService.createAuctionByOrdersPack(requestData).then(response => {
+      this.list = this.list.filter(auctionOrder => auctionOrder.packId !== this.currentPack.id);
 
       this.packs.splice(this.packs.indexOf(this.currentPack), 1);
-      this.activePackTab = this.packs.length ? this.packs[this.packs.length - 1].id : 0;
+      this.activePackTab = 0;
 
       this.buttonsDisabled = false;
     })
