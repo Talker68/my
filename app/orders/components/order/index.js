@@ -11,7 +11,6 @@ export default {
   bindings: {
     orderData: '<',
     removeOrderFromList: '&',
-    updateOrderInList: '&',
-    currentPack: '<'
+    updateOrderInList: '&'
   }
 };
