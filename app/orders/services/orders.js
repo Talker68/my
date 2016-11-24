@@ -44,12 +44,13 @@ export default function($http){
     return $http.post(`${REQUEST_PREFIX}/order/${orderGuid}`, {operation : 'refuseForwader'})
   }
 
-
   //тк подтвердила заказ присланный напрямую
   this.forwaderConfirmOrder = function(orderGuid, requestData){
     requestData.operation = "confirmOrder";
     return $http.post(`${REQUEST_PREFIX}/order/${orderGuid}`, requestData)
   }
+
+
 
   //передача заявки оператору
   this.transferOrderToOperator = function (orderGuid) {
@@ -61,25 +62,31 @@ export default function($http){
     return $http.post(`${REQUEST_PREFIX}/order/${orderGuid}`, {operation : "cancelAuction"});
   }
 
+
+
   // Создание редукциона
   this.createAuctionByOrdersPack = function (orders) {
     return $http.post(`${REQUEST_PREFIX}/auction`, orders);
   }
 
-  //отмена заплпнированного редукциона
+  // Отмена заплпнированного редукциона
   this.cancelPlannedAuction = function (auctionGuid) {
     return $http.put(`${REQUEST_PREFIX}/auction/${auctionGuid}`, {operation : "cancelAuction"});
   }
 
-  //Сделать ставку
+
+
+  // Сделать ставку
   this.newBet = function (auctionGuid, bid) {
     return $http.post(`${REQUEST_PREFIX}/auction/${auctionGuid}/bid`, {bid : bid});
   }
 
-  //Получить испорию ставок
+  // Получить историю ставок
   this.showBidHistory = function(auctionGuid){
     return $http.get(`${REQUEST_PREFIX}/auction/${auctionGuid}/bid`);
   }
+
+
 
   //Встать в очередь
   this.addToQueue = function(auctionGuid){

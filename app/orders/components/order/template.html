@@ -115,38 +115,58 @@
       <!--Передача заявки ТК, Подтверждение ТК, Отказ ТК-->
       <button class="btn btn-error"
               ng-click="orderCtrl.directOrder()"
-              ng-if="orderCtrl.userIs('logist') && !orderCtrl.orderData.forwarder && !orderCtrl.orderData.auction">
+              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.LOGIST && !orderCtrl.orderData.forwarder && !orderCtrl.orderData.auction">
         Отправить ТК
       </button>
 
       <button class="btn btn-error"
-              ng-if="orderCtrl.userIs('forwarder') && orderCtrl.orderData.forwarder && orderCtrl.orderData.status === orderCtrl.ORDER_STATUSES.FORMED"
+              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.FORWARDER && orderCtrl.orderData.forwarder && orderCtrl.orderData.status === orderCtrl.ORDER_STATUSES.FORMED"
               ng-click="orderCtrl.confirmOrder()">
         Подтвердить
       </button>
 
       <button class="btn btn-error"
-              ng-if="orderCtrl.userIs('forwarder') && orderCtrl.orderData.forwarder && orderCtrl.orderData.status === orderCtrl.ORDER_STATUSES.FORMED"
+              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.FORWARDER && orderCtrl.orderData.forwarder && orderCtrl.orderData.status === orderCtrl.ORDER_STATUSES.FORMED"
               ng-click="orderCtrl.forwarderRefuseOrder()">
-        Отказаться</button>
+        Отказаться
+      </button>
       <!--/Передача заявки ТК, Подтверждение ТК, Отказ ТК-->
 
       <!--Передача опертору, отмена передачи оператору-->
       <button class="btn btn-error"
               ng-click="orderCtrl.transferOrderToOperator()"
-              ng-if="orderCtrl.userIs('logist') && !orderCtrl.orderData.forwarder && !orderCtrl.orderData.auction">
+              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.LOGIST && !orderCtrl.orderData.forwarder && !orderCtrl.orderData.auction">
         На аукцион
       </button>
       <button class="btn btn-error"
-              ng-if="orderCtrl.userIs('logist') && orderCtrl.orderData.auction"
+              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.LOGIST && orderCtrl.orderData.auction"
               ng-click="orderCtrl.cancelTransferOrderToOperator()">
         Отозвать
       </button>
       <!--/Передача заявки ТК, Подтверждение ТК, Отказ ТК-->
 
+      <!--Отмена запланированного аукциона оператором-->
+      <button class="btn btn-error"
+              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.OPERATOR && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.PLANNED"
+              ng-click="orderCtrl.cancelPlannedAuction()">
+        Отменить
+      </button>
+      <!--/Отмена запланированного аукциона оператором-->
 
-      <!--<button class="btn btn-error" ng-if="orderCtrl.userIs('logist') && !orderCtrl.orderData.forwarder">На табло</button>-->
-      <!--<button class="btn btn-error" ng-if="orderCtrl.userIs('logist') && orderCtrl.orderData.auction">Отозвать</button>-->
+        <!--<p ng-if="orderCtrl.orderData.auction.positionInQueue">-->
+          <!--<b>Позиция в очереди</b>-->
+          <!--<b class="s-title green">{{::orderCtrl.orderData.auction.positionInQueue}}</b>-->
+        <!--</p>-->
+      <!---->
+        <!--<button ng-if="!orderCtrl.orderData.auction.positionInQueue" ng-click="::orderCtrl.orderData.addToQueue()"-->
+                <!--class="btn btn-error">Встать в очередь-->
+        <!--</button>-->
+      <!---->
+        <!--<button ng-if="orderCtrl.orderData.auction.positionInQueue" ng-click="::orderCtrl.orderData.leaveQueue()"-->
+                <!--class="btn btn-error">Выйти из очереди-->
+        <!--</button>-->
+
+
     </div>
     <!-- end Кнопки -->
   </div>
@@ -156,7 +176,7 @@
   <hr>
 
   <!-- start Редукцион-->
-  <div ng-if="orderCtrl.orderData.auction.fff">
+  <div ng-if="orderCtrl.orderData.auction && orderCtrl.orderData.auction.status !== orderCtrl.AUCTION_STATUSES.PENDING">
     <div class="col-xs-10">
       <div class="row b-list_section">
         <div class="col-xs-2">
@@ -196,14 +216,21 @@
           </div>
         </div>
       </div>
-      <!-- start Основные данные по редукциону -->
-      <div class="row b-list_section" ng-if="orderCtrl.orderData.auction">
+
+      <div class="row b-list_section" ng-if="orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.ACTIVE">
+        <!-- start Основные данные по редукциону -->
         <div class="col-xs-4">
-          <form class="form-inline" id="auctionForm" name="orderCtrl.orderData.auctionForm" novalidate
+          <form class="form-inline" id="auctionForm"
+                novalidate autocomplete="off"
+                name="orderCtrl.orderData.auctionForm"
                 ng-submit="orderCtrl.orderData.newBet()">
+
             <div class="input-group">
-              <input type="number" class="form-control" ng-model="orderCtrl.orderData.bet" bet-validation
-                     auction="orderCtrl.orderData.auction" step="{{orderCtrl.orderData.auction.step}}"/>
+              <input type="number" class="form-control"
+                     ng-model="orderCtrl.orderData.bet"
+                     bet-validation
+                     auction="orderCtrl.orderData.auction"
+                     step="{{orderCtrl.orderData.auction.step}}"/>
             </div>
             <button type="submit" class="btn btn-ok">Сделать ставку</button>
           </form>
@@ -213,75 +240,60 @@
           <br>
           в 16.08.2016 09:23
         </div>
+
         <div class="col-xs-2">
           <b>Ваша ставка</b> <b class="green">5000р.</b>
           <br>
           в 16.08.2016 09:23
         </div>
-        <div class="col-xs-12 text-danger" ng-messages="orderCtrl.orderData.auctionForm.$error" ng-messages-multiple
-             role="alert">
+
+        <div class="col-xs-12 text-danger" ng-messages="orderCtrl.orderData.auctionForm.$error" ng-messages-multiple role="alert">
           <div ng-message="BVrequired">Не указана ставка</div>
           <div ng-message="BVlessStartingBid">Ставка не должна быть больше стартовой</div>
           <div ng-message="BVlessLastBid">Ставка должна быть меньше текущей</div>
           <div ng-message="BVlmultiplicityToStep">Ставка должна быть кратна шагу</div>
         </div>
-      </div>
-      <!-- end  Основные данные по редукциону -->
+        <!-- end  Основные данные по редукциону -->
 
-      <!-- start История ставок -->
-      <div class="row b-list_section">
-        <div class="col-xs-12">
-          <div class="s-title">
-            <b>История ставок</b>
+        <!-- start История ставок -->
+        <div class="row b-list_section" ng-if="orderCtrl.orderData.auction.status = orderCtrl.AUCTION_STATUSES.ACTIVE">
+          <div class="col-xs-12">
+            <div class="s-title">
+              <b>История ставок</b>
+            </div>
+
+            <table class="table table-bordered table-striped">
+              <tr>
+                <td>16.08.2016</td>
+                <td>09:23</td>
+                <td>Фирма</td>
+                <td>ставка</td>
+              </tr>
+              <tr>
+                <td>16.08.2016</td>
+                <td>09:23</td>
+                <td>Фирма</td>
+                <td>ставка</td>
+              </tr>
+              <tr class="success">
+                <td>16.08.2016</td>
+                <td>09:23</td>
+                <td>Ваша ставка</td>
+                <td>ставка</td>
+              </tr>
+              <tr>
+                <td>16.08.2016</td>
+                <td>09:23</td>
+                <td>Фирма</td>
+                <td>ставка</td>
+              </tr>
+            </table>
           </div>
-
-          <table class="table table-bordered table-striped">
-            <tr>
-              <td>16.08.2016</td>
-              <td>09:23</td>
-              <td>Фирма</td>
-              <td>ставка</td>
-            </tr>
-            <tr>
-              <td>16.08.2016</td>
-              <td>09:23</td>
-              <td>Фирма</td>
-              <td>ставка</td>
-            </tr>
-            <tr class="success">
-              <td>16.08.2016</td>
-              <td>09:23</td>
-              <td>Ваша ставка</td>
-              <td>ставка</td>
-            </tr>
-            <tr>
-              <td>16.08.2016</td>
-              <td>09:23</td>
-              <td>Фирма</td>
-              <td>ставка</td>
-            </tr>
-          </table>
         </div>
+        <!-- end История ставок -->
       </div>
-      <!-- end История ставок -->
     </div>
 
-    <!-- start Кнопки -->
-    <div class="col-xs-2">
-      <!-- start Очередь в редукционе -->
-      <p ng-if="orderCtrl.orderData.auction.positionInQueue">
-        <b>Позиция в очереди</b>
-        <b class="s-title green">{{::orderCtrl.orderData.auction.positionInQueue}}</b>
-      </p>
-      <button ng-if="!orderCtrl.orderData.auction.positionInQueue" ng-click="::orderCtrl.orderData.addToQueue()"
-              class="btn btn-error">Встать в очередь
-      </button>
-      <button ng-if="orderCtrl.orderData.auction.positionInQueue" ng-click="::orderCtrl.orderData.leaveQueue()"
-              class="btn btn-error">Выйти из очереди
-      </button>
-      <!-- end Очередь в редукционе -->
-    </div>
-    <!-- end Кнопки -->
   </div>
   <!-- end Редукцион -->
 

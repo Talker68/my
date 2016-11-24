@@ -2,6 +2,8 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
   this.$onInit = function() {
 
     this.ORDER_STATUSES = OrdersService.ORDER_STATUSES;
+    this.AUCTION_STATUSES = OrdersService.AUCTION_STATUSES;
+    this.USER_TYPES = AuthService.USER_TYPES;
 
     //Тип пользователя
     this.userType = AuthService.getUserType();
@@ -102,13 +104,24 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
   }
 
 
-  this.userIs = function(userType) {
-    return this.userType === userType.toLowerCase();
+  //Отмена запланированного редукциона (оператор отменят заплпнированный редукцион)
+  this.cancelPlannedAuction = function() {
+    let modalInstance = $uibModal.open({
+      component: 'confirm',
+      resolve: {confirmText: () => 'Отменить заплпнированный редукцион ?'}
+    })
+
+    modalInstance.result.then(
+      response => OrdersService.cancelPlannedAuction(this.orderData.auction.guid).then(
+        response => this.removeOrderFromList({orderGuid: this.orderData.guid}))
+    )
+
   }
+
 
   this.getOrderStatus = function() {
     let order = this.orderData;
-    if (this.userIs('logist')) {
+    if (this.userType === this.USER_TYPES.LOGIST) {
       if (order.forwarder) return `Отправлена ${order.forwarder.title}`;
       if (order.auction) return `Передана оператору`;
     }
