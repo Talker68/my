@@ -7,11 +7,14 @@ export default function() {
       auction : '<'
     },
     link: function(scope, elm, attrs, ctrl) {
+
       let auction = scope.auction;
 
       ctrl.$validators.BVrequired = function(modelValue, viewValue) {
-        //проверка на заполнение
+
+        // /проверка на заполнение
         if (ctrl.$isEmpty(modelValue) || modelValue <= 0) {
+
           return false;
         }
         return true;

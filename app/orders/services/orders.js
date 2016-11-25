@@ -82,7 +82,7 @@ export default function($http){
   }
 
   // Получить историю ставок
-  this.showBidHistory = function(auctionGuid){
+  this.getBidHistory = function(auctionGuid){
     return $http.get(`${REQUEST_PREFIX}/auction/${auctionGuid}/bid`);
   }
 
@@ -99,7 +99,7 @@ export default function($http){
   }
 
   //Получить очередь
-  this.showQueue = function (auctionGuid) {
+  this.getQueue = function (auctionGuid) {
     return $http.get(`${REQUEST_PREFIX}/auction/${auctionGuid}/queue`);
   }
 }
