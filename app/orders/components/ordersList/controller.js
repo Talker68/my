@@ -1,26 +1,40 @@
 "use strict";
 
+console.log(UPDATE_TIME);
+
+
 export default function($stateParams, $q, OrdersService, VehicleService, ApiService, AuthService) {
 
   this.$onInit = function() {
     // Заголовок списка
     this.listTitle = $stateParams.title ? $stateParams.title : 'Заявки';
 
-    //Тип пользователя
+    // Тип пользователя
     this._userType = AuthService.getUserType();
 
+    // Получение заявок и запуск автообновления
+    this.updateList();
 
+  }
+
+
+  this.$onDestroy = function(){
+    // Отключкение таймера
+    clearTimeout(this._refreshTimer);
+  }
+
+
+  this.updateList = function() {
     this._getOrders().then(response => {
       this.orders = [];
       for (let orders in response) {
         this.orders = this.orders.concat(response[orders].data);
       }
-
       //this._setFiltersData();
+      this._refreshTimer = setTimeout(this.updateList.bind(this), UPDATE_TIME)
+
     });
-
   }
-
 
   // получить список заявок
   this._getOrders = function() {
@@ -75,7 +89,6 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
       if(order.forwarder.driver.guid && ApiService.getIndexById(this.drivers, {fieldName : 'guid', value : order.forwarder.driver.guid}) === -1){
         this.drivers.push({guid : order.forwarder.driver.guid, full_name : order.forwarder.driver.full_name})
       }
-
     }
   }
 

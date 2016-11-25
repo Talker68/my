@@ -2,7 +2,6 @@
 
 export default function (OrdersService, ApiService) {
   this.$onInit = function(){
-
     this.now = new Date();
     this.packs = [];
     this.filters = {};
@@ -19,9 +18,7 @@ export default function (OrdersService, ApiService) {
 
 
   this._getAuctionOrders = function() {
-    let refreshTime = 15000;
     OrdersService.getAuctionOrders(OrdersService.AUCTION_STATUSES.PENDING).then(response => {
-
 
       let responseList = response.data;
 
@@ -31,31 +28,25 @@ export default function (OrdersService, ApiService) {
         // Сначала проверка на то что все задачи в списке еще актуальны
         for (let i = 0; i < this.list.length; i++) {
           if (!ApiService.getArrayElementByGuid(this.list[i].order.guid, responseList)) {
-            console.log('DELETE');
             this.list.splice(i, 1);
           }
         }
 
         // Проверка на необходимость обновления существующих и добаление новых
         for (let order of response.data) {
-
           let auctionOrderIndex = this.list.findIndex(elem => elem.order.guid === order.guid);
-
           if (auctionOrderIndex === -1) {
-            console.log('NEW');
             this.list.push({order: order, packId: null})
           } else if (this.list[auctionOrderIndex].order.modified !== order.modified) {
-            console.log('MODIFIED');
             this.list.splice(auctionOrderIndex, 1, {order: order, packId: this.list[auctionOrderIndex].packId});
           }
-
         }
 
       } else {
         this.list = response.data.map(item => {return {order: item, packId: null}})
       }
 
-      this._refreshTimer = setTimeout(this._getAuctionOrders.bind(this), refreshTime);
+      this._refreshTimer = setTimeout(this._getAuctionOrders.bind(this), UPDATE_TIME);
 
       //this._setFiltersData();
     })
