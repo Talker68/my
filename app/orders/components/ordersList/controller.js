@@ -22,37 +22,42 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
 
   this.updateList = function() {
     this._getOrders().then(response => {
-      let responseList = response.data;
+
+      let responseOrdersList = [];
+      for (let orders in response) {
+        responseOrdersList = responseOrdersList.concat(response[orders].data);
+      }
+
 
       if (this.orders && this.orders.length) {
         // Сначала проверка на то что все задачи в списке еще актуальны
         for (let i = 0; i < this.orders.length; i++) {
-          if (!ApiService.getArrayElementByGuid(this.orders[i].order.guid, responseList)) {
-            this.list.splice(i, 1);
+          if (!ApiService.getArrayElementByGuid(this.orders[i].guid, responseOrdersList)) {
+            console.log('DELETE');
+            this.orders.splice(i, 1);
           }
         }
-        //
-        // // Проверка на необходимость обновления существующих и добаление новых
-        // for (let order of response.data) {
-        //   let auctionOrderIndex = this.list.findIndex(elem => elem.order.guid === order.guid);
-        //   if (auctionOrderIndex === -1) {
-        //     this.list.push({order: order, packId: null})
-        //   } else if (this.list[auctionOrderIndex].order.modified !== order.modified) {
-        //     this.list.splice(auctionOrderIndex, 1, {order: order, packId: this.list[auctionOrderIndex].packId});
-        //   }
-        // }
+
+        // Проверка на необходимость обновления существующих и добаление новых
+        for (let order of responseOrdersList) {
+          let orderIndex = this.orders.findIndex(item => item.guid === order.guid);
+          if (orderIndex === -1) {
+            console.log("NEW")
+            this.orders.push(order);
+          } else if (this.orders[orderIndex].modified !== order.modified) {
+            console.log("UPDATE");
+            this.orders.splice(orderIndex, 1, order);
+          }
+        }
 
       } else {
-        console.log('NEW LIST');
-        this.orders = [];
-        for (let orders in response) {
-          this.orders = this.orders.concat(response[orders].data);
-        }
+        this.orders = responseOrdersList;
       }
 
 
       //this._setFiltersData();
-      this._updateTimer = setTimeout(this.updateList.bind(this), UPDATE_TIME)
+      console.log('UPDATE_TIMER');
+      this._updateTimer = setTimeout( () => {this.updateList()}, UPDATE_TIME)
 
     });
   }
@@ -72,7 +77,7 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
     if ($stateParams.status) {
       let orderStatuses = Array.isArray($stateParams.status) ? $stateParams.status : [$stateParams.status];
       for (let status of orderStatuses) {
-        requests['auctionOrders' + status] = OrdersService.getOrdersByStatus(status);
+        requests['directOrders' + status] = OrdersService.getOrdersByStatus(status);
       }
     }
 
