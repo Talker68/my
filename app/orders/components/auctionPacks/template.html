@@ -43,7 +43,7 @@
 
     <div class="requests-list">
       <div ng-repeat="auctionOrder in packsCtrl.list | filter : {packId: null} | orderBy: '-order.modified' ">
-        <order order-data="auctionOrder.order"></order>
+        <order order-data="auctionOrder.order" template="mini"></order>
         <div>
           <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack">В пак</button>
         </div>
@@ -123,7 +123,7 @@
             <div class="b-list_middle">
 
               <div ng-repeat="auctionOrder in filteredAuctionOrders  = (packsCtrl.list | filter : {packId: pack.id})">
-                <order order-data="auctionOrder.order"></order>
+                <order order-data="auctionOrder.order" template="mini"></order>
 
                 <!--Кнопка убрать из пака-->
                 <div>
