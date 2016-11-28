@@ -41,11 +41,11 @@
     <!--</div>-->
     <!--</div>-->
 
-    <div class="requests-list">
+    <div> <!--class="requests-list"-->
       <div ng-repeat="auctionOrder in packsCtrl.list | filter : {packId: null} | orderBy: '-order.modified' ">
         <order order-data="auctionOrder.order"></order>
         <div>
-          <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack">В пак</button>
+          <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack" class="btn btn-error">В пак</button>
         </div>
       </div>
     </div>
