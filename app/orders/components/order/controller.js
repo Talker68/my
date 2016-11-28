@@ -208,7 +208,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     }
 
     if (buttonAction === 'toQueue') {
-      if (this.userType === this.USER_TYPES.FORWARDER && this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
+      if (this.userType === this.USER_TYPES.FORWARDER && this.orderData.auction && this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
         if (!this.orderData.auction.isInQueue && !this.orderData.auction.canConfirmOrder) {
           return true;
         }
@@ -216,7 +216,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     }
 
     if (buttonAction === 'leaveQueue') {
-      if (this.userType === this.USER_TYPES.FORWARDER && this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
+      if (this.userType === this.USER_TYPES.FORWARDER && this.orderData.auction && this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
         if (this.orderData.auction.isInQueue && !this.orderData.auction.canConfirmOrder) {
           return true;
         }
