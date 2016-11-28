@@ -30,7 +30,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     this.orderData.auction.lastBid = sortedBids[0];
 
     //Поиск своей последней ставки
-    let lastMyBid = sortedBids.find(bid => bid.myBet = 1);
+    let lastMyBid = sortedBids.find(bid => bid.myBet === 1);
     if (lastMyBid) {
       this.orderData.auction.lastMyBid = lastMyBid;
     }

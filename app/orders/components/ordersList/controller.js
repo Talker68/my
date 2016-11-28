@@ -1,8 +1,5 @@
 "use strict";
 
-console.log(UPDATE_TIME);
-
-
 export default function($stateParams, $q, OrdersService, VehicleService, ApiService, AuthService) {
 
   this.$onInit = function() {
@@ -14,24 +11,48 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
 
     // Получение заявок и запуск автообновления
     this.updateList();
-
   }
 
 
   this.$onDestroy = function(){
     // Отключкение таймера
-    clearTimeout(this._refreshTimer);
+    clearTimeout(this._updateTimer);
   }
 
 
   this.updateList = function() {
     this._getOrders().then(response => {
-      this.orders = [];
-      for (let orders in response) {
-        this.orders = this.orders.concat(response[orders].data);
+      let responseList = response.data;
+
+      if (this.orders && this.orders.length) {
+        // Сначала проверка на то что все задачи в списке еще актуальны
+        for (let i = 0; i < this.orders.length; i++) {
+          if (!ApiService.getArrayElementByGuid(this.orders[i].order.guid, responseList)) {
+            this.list.splice(i, 1);
+          }
+        }
+        //
+        // // Проверка на необходимость обновления существующих и добаление новых
+        // for (let order of response.data) {
+        //   let auctionOrderIndex = this.list.findIndex(elem => elem.order.guid === order.guid);
+        //   if (auctionOrderIndex === -1) {
+        //     this.list.push({order: order, packId: null})
+        //   } else if (this.list[auctionOrderIndex].order.modified !== order.modified) {
+        //     this.list.splice(auctionOrderIndex, 1, {order: order, packId: this.list[auctionOrderIndex].packId});
+        //   }
+        // }
+
+      } else {
+        console.log('NEW LIST');
+        this.orders = [];
+        for (let orders in response) {
+          this.orders = this.orders.concat(response[orders].data);
+        }
       }
+
+
       //this._setFiltersData();
-      this._refreshTimer = setTimeout(this.updateList.bind(this), UPDATE_TIME)
+      this._updateTimer = setTimeout(this.updateList.bind(this), UPDATE_TIME)
 
     });
   }
