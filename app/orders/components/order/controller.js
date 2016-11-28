@@ -148,7 +148,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       } else {
         // TODO: Заменить запрос на историю ставок
         OrdersService.getOrderByGuid(this.orderData.guid).then(respnose => {
-          this.orderData.auction.auctionBids = respnose.data.auction.auctionBids
+          this.orderData.auction.auctionBids = respnose.data.auction.auctionBids;
           this.setBids();
 
           this.bid = '';

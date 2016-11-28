@@ -41,11 +41,11 @@
     <!--</div>-->
     <!--</div>-->
 
-    <div class="requests-list">
+    <div> <!--class="requests-list"-->
       <div ng-repeat="auctionOrder in packsCtrl.list | filter : {packId: null} | orderBy: '-order.modified' ">
-        <order order-data="auctionOrder.order"></order>
+        <order order-data="auctionOrder.order" template="mini"></order>
         <div>
-          <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack">В пак</button>
+          <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack" class="btn btn-error">В пак</button>
         </div>
       </div>
     </div>
@@ -102,9 +102,26 @@
         heading="{{pack.start | date : 'dd.MM  HH:mm'}}"
         select="packsCtrl.currentPack = pack">
 
-        <div>Начало {{pack.start | date : 'dd.MM HH:mm'}}</div>
-        <div>Окончание {{pack.finish | date : 'dd.MM HH:mm'}}</div>
-        <div>Шаг {{pack.step}}</div>
+        <div class="row b-list_section">
+          <div class="col-xs-4">
+            Начало
+            <div>
+              <b class="green">{{pack.start | date : 'dd.MM HH:mm'}}</b></div>
+            </div>
+          <div class="col-xs-4">
+            Окончание
+            <div>
+              <b class="green">{{pack.finish | date : 'dd.MM HH:mm'}}</b>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            Шаг
+            <div>
+              <b class="green">{{pack.step}}</b>
+            </div>
+          </div>
+        </div>
+
 
         <!-- start Удалить и расформировать пак-->
         <p>
@@ -122,40 +139,37 @@
           <div class="b-list">
             <div class="b-list_middle">
 
-              <div ng-repeat="auctionOrder in filteredAuctionOrders  = (packsCtrl.list | filter : {packId: pack.id})">
-                <order order-data="auctionOrder.order"></order>
+              <div ng-repeat="auctionOrder in filteredAuctionOrders  = (packsCtrl.list | filter : {packId: pack.id})" class="b-list_in-pack">
 
-                <!--Кнопка убрать из пака-->
-                <div>
-                  <button ng-click="auctionOrder.packId = null">Убрать из пака</button>
-                </div>
+                <!-- Шаблон полуразмерных заявок -->
+                <order order-data="auctionOrder.order" template="mini" ></order>
 
-
-                <!--Форма-->
-                <style>
-                  .auction-values .ng-invalid {
-                    box-shadow: 0 0 5px 0px red inset;
-                  }
-                </style>
-
+                <!-- Начальная ставка/забрать сразу -->
                 <div class="auction-values">
                   <div class="form-group">
-                    <p>Начальная ставка</p>
+                    <div>
+                      <b>Начальная ставка</b>
+                    </div>
                     <input class="form-control" ng-model="auctionOrder.order.auction.startingBid" type="number" min="0" required>
                   </div>
 
                   <div class="form-group">
-                    <p>Забрать сразу</p>
+                    <div>
+                      <b>Забрать сразу</b>
+                    </div>
                     <input class="form-control" ng-model="auctionOrder.order.auction.takeNowAmount" type="number"
                            ng-max="auctionOrder.order.auction.startingBid" min="0" required>
                   </div>
-
-
                 </div>
 
+                <!--Кнопка убрать из пака-->
+                <div class="b-list_section">
+                  <button ng-click="auctionOrder.packId = null" class="btn btn-error">Убрать из пака</button>
+                </div>
               </div>
             </div>
 
+            <!-- Отправка формы -->
             <button type='submit' class="btn btn-ok"
                     ng-if="filteredAuctionOrders.length"
                     ng-disabled="packsCtrl.buttonsDisabled || !packSendForm.$valid">

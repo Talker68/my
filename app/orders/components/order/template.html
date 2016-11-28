@@ -1,5 +1,7 @@
 <div class="row b-list_row">
   <!-- start Основные данные-->
+
+  <!-- start В СТАНДАРТНОМ СПИСКЕ -->
   <div>
     <!-- start Основная инфа -->
     <div class="col-xs-10">
@@ -170,13 +172,13 @@
     </div>
     <!-- end Кнопки -->
   </div>
+  <!-- start В СТАНДАРТНОМ СПИСКЕ -->
 
   <div class="clearfix"></div>
 
-  <hr>
-
   <!-- start Редукцион-->
   <div ng-if="orderCtrl.orderData.auction && orderCtrl.orderData.auction.status !== orderCtrl.AUCTION_STATUSES.PENDING">
+    <hr>
     <div class="col-xs-10">
       <div class="row b-list_section">
         <div class="col-xs-2">
@@ -276,7 +278,6 @@
         <!-- end История ставок -->
       </div>
     </div>
-
   </div>
   <!-- end Редукцион -->
 
