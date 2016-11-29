@@ -266,7 +266,8 @@
             </div>
 
             <table class="table table-bordered table-striped" ng-if="showHistory">
-              <tr  ng-class="{success : orderCtrl.userType !== orderCtrl.USER_TYPES.OPERATOR && bid.myBet}" ng-repeat="bid in orderCtrl.orderData.auction.auctionBids">
+
+              <tr  ng-class="{success : (orderCtrl.userType !== orderCtrl.USER_TYPES.OPERATOR) && bid.myBet}" ng-repeat="bid in orderCtrl.orderData.auction.auctionBids">
                 <td>{{bid.date | date: "dd.MM.yyyy HH:mm"}}</td>
                 <td>{{bid.forwarder ? 'Ваша ставка' : 'Другой участник торгов'}}</td>
                 <td>{{bid.bid}}</td>

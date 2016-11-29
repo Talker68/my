@@ -1,8 +1,5 @@
 "use strict";
 
-console.log(UPDATE_TIME);
-
-
 export default function($stateParams, $q, OrdersService, VehicleService, ApiService, AuthService) {
 
   this.$onInit = function() {
@@ -14,24 +11,53 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
 
     // Получение заявок и запуск автообновления
     this.updateList();
-
   }
 
 
   this.$onDestroy = function(){
     // Отключкение таймера
-    clearTimeout(this._refreshTimer);
+    clearTimeout(this._updateTimer);
   }
 
 
   this.updateList = function() {
     this._getOrders().then(response => {
-      this.orders = [];
+
+      let responseOrdersList = [];
       for (let orders in response) {
-        this.orders = this.orders.concat(response[orders].data);
+        responseOrdersList = responseOrdersList.concat(response[orders].data);
       }
+
+
+      if (this.orders && this.orders.length) {
+        // Сначала проверка на то что все задачи в списке еще актуальны
+        for (let i = 0; i < this.orders.length; i++) {
+          if (!ApiService.getArrayElementByGuid(this.orders[i].guid, responseOrdersList)) {
+            console.log('DELETE');
+            this.orders.splice(i, 1);
+          }
+        }
+
+        // Проверка на необходимость обновления существующих и добаление новых
+        for (let order of responseOrdersList) {
+          let orderIndex = this.orders.findIndex(item => item.guid === order.guid);
+          if (orderIndex === -1) {
+            console.log("NEW")
+            this.orders.push(order);
+          } else if (this.orders[orderIndex].modified !== order.modified) {
+            console.log("UPDATE");
+            this.orders.splice(orderIndex, 1, order);
+          }
+        }
+
+      } else {
+        this.orders = responseOrdersList;
+      }
+
+
       //this._setFiltersData();
-      this._refreshTimer = setTimeout(this.updateList.bind(this), UPDATE_TIME)
+      console.log('UPDATE_TIMER');
+      this._updateTimer = setTimeout( () => {this.updateList()}, UPDATE_TIME)
 
     });
   }
@@ -51,7 +77,7 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
     if ($stateParams.status) {
       let orderStatuses = Array.isArray($stateParams.status) ? $stateParams.status : [$stateParams.status];
       for (let status of orderStatuses) {
-        requests['auctionOrders' + status] = OrdersService.getOrdersByStatus(status);
+        requests['directOrders' + status] = OrdersService.getOrdersByStatus(status);
       }
     }
 
