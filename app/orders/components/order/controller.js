@@ -246,5 +246,4 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     this.orderStatusString = value ? value : getStatus.bind(this)();
   }
 
-
 }

@@ -43,9 +43,13 @@
 
     <div> <!--class="requests-list"-->
       <div ng-repeat="auctionOrder in packsCtrl.list | filter : {packId: null} | orderBy: '-order.modified' ">
-        <order order-data="auctionOrder.order" template="mini"></order>
-        <div>
-          <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" ng-if="packsCtrl.currentPack" class="btn btn-error">В пак</button>
+        <order order-data="auctionOrder.order" template="mini" ng-class="{ 'b-list_row-in-pack' : packsCtrl.currentPack}"></order>
+        <div class="b-list_btn-in-pack" ng-if="packsCtrl.currentPack">
+          <div class="row b-list_row">
+            <div class="col-xs-12">
+              <button ng-click="auctionOrder.packId = packsCtrl.currentPack.id" class="btn btn-error">В пак</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -58,14 +62,7 @@
     <h2>Паки редукционов</h2>
 
     <uib-tabset active="packsCtrl.activePackTab">
-
       <uib-tab index="0" heading="Новый" select="packsCtrl.currentPack = null">
-
-        <style>
-          #packForm.ng-submitted .form-control.ng-invalid, #packForm .form-control.ng-touched.ng-invalid {
-            border-color: red;
-          }
-        </style>
 
         <!--Форма создания паков-->
         <form name="packsCtrl.packForm" id="packForm" ng-submit="packsCtrl.packForm.$valid && packsCtrl.createPack()"
@@ -90,7 +87,6 @@
           </div>
 
           <button type="submit" class="btn btn-ok">Создать</button>
-
         </form>
 
       </uib-tab>
@@ -145,15 +141,15 @@
                 <order order-data="auctionOrder.order" template="mini" ></order>
 
                 <!-- Начальная ставка/забрать сразу -->
-                <div class="auction-values">
-                  <div class="form-group">
+                <div class="auction-values row">
+                  <div class="form-group col-xs-6">
                     <div>
                       <b>Начальная ставка</b>
                     </div>
                     <input class="form-control" ng-model="auctionOrder.order.auction.startingBid" type="number" min="0" required>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group col-xs-6">
                     <div>
                       <b>Забрать сразу</b>
                     </div>
