@@ -11,6 +11,8 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
 
     // Получение заявок и запуск автообновления
     this.updateList();
+
+    console.log($stateParams);
   }
 
 
@@ -152,6 +154,26 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
   this.updateOrder = function(order) {
     let orderIndex = ApiService.getArrayElementByGuid(order.guid, this.orders).index;
     this.orders.splice(orderIndex, 1, order);
+  }
+
+
+  this.orderFunc = function(order) {
+    let orderBy;
+    if (!$stateParams.orderBy) {
+      orderBy = OrdersService.LIST_ORDER_TYPES.SHIPMENT_DATE;
+    } else {
+      orderBy = parseInt($stateParams.orderBy);
+    }
+
+    if (orderBy === OrdersService.LIST_ORDER_TYPES.SHIPMENT_DATE) {
+      console.log('SD')
+      return new Date(order.route.routePoints[order.route.routePoints.length-1].date);
+    }
+
+    if (orderBy === OrdersService.LIST_ORDER_TYPES.AUCTION_START) {
+      return new Date(order.auction.start)
+    }
+
   }
 
 }

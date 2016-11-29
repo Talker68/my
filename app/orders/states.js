@@ -16,7 +16,7 @@ export default function($stateProvider) {
 
   $stateProvider
     .state('ordersList', {
-      url: "orders?status&auction&title&order",
+      url: "orders?status&auction&title&orderBy",
       parent: "app",
       component : "ordersList",
       resolve: resolve

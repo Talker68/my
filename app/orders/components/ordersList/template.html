@@ -101,7 +101,7 @@
 
 <div class="b-list">
   <order
-    ng-repeat="order in orderListCtrl.orders"
+    ng-repeat="order in orderListCtrl.orders | orderBy: orderListCtrl.orderFunc"
     order-data="order"
     remove-order-from-list="orderListCtrl.removeOrder(orderGuid)"
     update-order-in-list="orderListCtrl.updateOrder(order)"

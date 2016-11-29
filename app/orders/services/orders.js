@@ -14,6 +14,10 @@ export default function($http){
     PLANNED : 3
   };
 
+  this.LIST_ORDER_TYPES = {
+    SHIPMENT_DATE : 0,
+    AUCTION_START : 1
+  }
 
 
   //Получить список заявок по статусу
