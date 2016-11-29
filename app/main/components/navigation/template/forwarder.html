@@ -2,7 +2,12 @@
   <ul class="sideber-nav">
 
     <li  class="sideber-nav_item">
-      <a ui-sref="ordersList({auction : [navCtrl.AUCTION_STATUSES.ACTIVE, navCtrl.AUCTION_STATUSES.PLANNED], status : null, title : 'Редукционы', order : 'auction.start'})">
+      <a ui-sref="ordersList({
+      auction : [navCtrl.AUCTION_STATUSES.ACTIVE, navCtrl.AUCTION_STATUSES.PLANNED],
+      status : null,
+      title : 'Редукционы',
+      orderBy : navCtrl.LIST_ORDER_TYPES.AUCTION_START
+      })">
         <div class="fa">
           <img src="~images/menu/GP_v_ispolnenii.png">
         </div>
@@ -11,7 +16,12 @@
     </li>
 
     <li  class="sideber-nav_item">
-      <a ui-sref="ordersList({auction : navCtrl.AUCTION_STATUSES.ON_CONFIRM, status : navCtrl.ORDER_STATUSES.FORMED, title : 'Ожидающие подтверждения'})">
+      <a ui-sref="ordersList({
+      auction : navCtrl.AUCTION_STATUSES.ON_CONFIRM,
+      status : navCtrl.ORDER_STATUSES.FORMED,
+      title : 'Ожидающие подтверждения',
+      orderBy : navCtrl.LIST_ORDER_TYPES.SHIPMENT_DATE
+      })">
         <div class="fa">
           <img src="~images/menu/GP_v_ispolnenii.png">
         </div>
@@ -20,7 +30,12 @@
     </li>
 
     <li  class="sideber-nav_item">
-      <a ui-sref="ordersList({status : navCtrl.ORDER_STATUSES.INWORK, auction : null, title : 'ГП в исполнении' })">
+      <a ui-sref="ordersList({
+        status : navCtrl.ORDER_STATUSES.INWORK,
+        auction : null,
+        title : 'ГП в исполнении',
+        orderBy : navCtrl.LIST_ORDER_TYPES.SHIPMENT_DATE
+      })">
         <div class="fa">
           <img src="~images/menu/GP_v_ispolnenii.png">
         </div>
