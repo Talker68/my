@@ -11,8 +11,6 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
 
     // Получение заявок и запуск автообновления
     this.updateList();
-
-    console.log($stateParams);
   }
 
 
@@ -48,6 +46,8 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
             this.orders.push(order);
           } else if (this.orders[orderIndex].modified !== order.modified) {
             console.log("UPDATE");
+            // Если заявка, была спрятана, то при обновлении данных она останется скрытой
+            order.hidden = this.orders[orderIndex].hidden;
             this.orders.splice(orderIndex, 1, order);
           }
         }

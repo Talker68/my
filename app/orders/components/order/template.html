@@ -1,4 +1,4 @@
-<div class="row b-list_row">
+<div class="row b-list_row" ng-if="!orderCtrl.orderData.hidden">
   <!-- start Основные данные-->
 
   <!-- start В СТАНДАРТНОМ СПИСКЕ -->
@@ -12,8 +12,8 @@
             <b class="green">{{::orderCtrl.orderData.id}}</b>
           </div>
           <!-- end Номер заявки -->
-          <div ng-if="orderCtrl.orderData.loadingType.name">
-            Тип кузова <b>{{::orderCtrl.orderData.loadingType.name}}</b>
+          <div>
+            Тип кузова <b>{{::orderCtrl.orderData.loadingTypeObj.name}}</b>
           </div>
         </div>
         <div class="col-xs-2">
@@ -162,6 +162,10 @@
         ng-click="orderCtrl.leaveQueue()"
         class="btn btn-error">Выйти из очереди
       </button>
+
+      <!--Спрятать заявку-->
+      <a ng-click="orderCtrl.hide()">Спрятать</a>
+
 
       <!--<button-->
         <!--ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.OPERATOR && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.ON_CONFIRM"-->

@@ -18,6 +18,9 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
 
     // До планового времени загрузки осталось менее  24 часов
     this.deadline = parseInt((Date.parse(this.orderData.route.routePoints[0].date) - new Date().valueOf()) / 3600000) < 24 ? true : false;
+
+    // TODO: убрать
+    VehicleService.getLoadingType(this.orderData.loadingType).then(response => this.orderData.loadingTypeObj = response.data)
   };
 
   // Установка значений ставок для шаблона
@@ -163,6 +166,10 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     })
   }
 
+  // Спрятать заявку
+  this.hide = function() {
+    this.orderData.hidden = true;
+  }
 
   // Встать в очередь
   this.addToQueue = function () {

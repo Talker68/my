@@ -46,6 +46,11 @@ export default function($http) {
     return $http.get(`${REQUEST_PREFIX}/loading_type`);
   }
 
+  // Получение типа отгрузки
+  this.getLoadingType = function(guid) {
+    return $http.get(`${REQUEST_PREFIX}/loadingTypes/${guid.trim()}`);
+  }
+
 
   // Получение списка полуприцепов
   this.getSemitrailerList = function () {
