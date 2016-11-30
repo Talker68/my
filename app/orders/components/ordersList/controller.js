@@ -166,7 +166,6 @@ export default function($stateParams, $q, OrdersService, VehicleService, ApiServ
     }
 
     if (orderBy === OrdersService.LIST_ORDER_TYPES.SHIPMENT_DATE) {
-      console.log('SD')
       return new Date(order.route.routePoints[order.route.routePoints.length-1].date);
     }
 
