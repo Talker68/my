@@ -101,11 +101,13 @@
 
 <div class="b-list">
   <order
-    ng-repeat="order in orderListCtrl.orders | orderBy: orderListCtrl.orderFunc"
-    order-data="order"
+    ng-repeat="orderObj in orderListCtrl.ordersList | orderBy: orderListCtrl.orderFunc "
+    order-data="orderObj.order"
+    is-hidden="orderObj.isHidden"
     remove-order-from-list="orderListCtrl.removeOrder(orderGuid)"
     update-order-in-list="orderListCtrl.updateOrder(order)"
     class="b-list_middle">
   </order>
 </div>
+
 

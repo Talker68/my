@@ -12,6 +12,7 @@ export default {
   bindings: {
     orderData: '<',
     removeOrderFromList: '&',
-    updateOrderInList: '&'
+    updateOrderInList: '&',
+    isHidden: '='
   }
 };

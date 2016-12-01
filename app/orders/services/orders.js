@@ -106,4 +106,19 @@ export default function($http){
   this.getQueue = function (auctionGuid) {
     return $http.get(`${REQUEST_PREFIX}/auction/${auctionGuid}/queue`);
   }
+
+  // Получить элемент из списка по его guid
+  this.getOrderByGuid = function(guid, orderList) {
+    guid = guid.toLowerCase();
+
+    for (let index = 0; index < orderList.length; index++) {
+      if (orderList[index].order.guid.toLowerCase() === guid) {
+        return {
+          index,
+          element : orderList[index]
+        }
+      }
+    }
+    return undefined;
+  };
 }

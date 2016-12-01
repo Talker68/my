@@ -1,6 +1,5 @@
 export default function(OrdersService, ApiService, VehicleService, DriversService, ForwardersService, AuthService, $uibModal, $filter) {
   this.$onInit = function() {
-
     this.ORDER_STATUSES = OrdersService.ORDER_STATUSES;
     this.AUCTION_STATUSES = OrdersService.AUCTION_STATUSES;
     this.USER_TYPES = AuthService.USER_TYPES;
@@ -19,8 +18,6 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     // До планового времени загрузки осталось менее  24 часов
     this.deadline = parseInt((Date.parse(this.orderData.route.routePoints[0].date) - new Date().valueOf()) / 3600000) < 24 ? true : false;
 
-    // TODO: убрать
-    VehicleService.getLoadingType(this.orderData.loadingType).then(response => this.orderData.loadingTypeObj = response.data)
   };
 
   // Установка значений ставок для шаблона
@@ -168,7 +165,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
 
   // Спрятать заявку
   this.hide = function() {
-    this.orderData.hidden = true;
+    this.isHidden = true;
   }
 
   // Встать в очередь
@@ -238,7 +235,8 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     function getStatus() {
       let order = this.orderData;
       if (this.userType === this.USER_TYPES.LOGIST) {
-        if (order.forwarder) return `Отправлена ${order.forwarder.title}`;
+        // TODO : изменить на forwarder.title
+        if (order.forwarder) return `Отправлена ${order.forwarder}`;
         if (order.auction) return `Передана оператору`;
       } else if (this.userType === this.USER_TYPES.FORWARDER) {
         if (order.confirmOrderExpirationTime) return `Подтвердить до ${$filter('date')(order.confirmOrderExpirationTime, "dd.MM.yyyy HH:mm")}`;
