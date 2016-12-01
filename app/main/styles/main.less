@@ -146,10 +146,15 @@ b{
     border-color: #db974f;
   }
 }
-.btn-hide{
+.btn.btn-hide{
+  padding: 5px 10px;
+  font-size: 0.9em;
   position: absolute;
-  bottom:-10px; right: 0;
+  bottom: 0; right: 0;
   z-index: 2;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.24) inset;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .input-group{
   .form-control{
@@ -164,6 +169,11 @@ b{
   }
   & > .btn:not(.bet-switch_btn){
     width: 180px;
+  }
+}
+.vertical-btns-cnt{
+  .btn{
+    margin-bottom: 10px;
   }
 }
 

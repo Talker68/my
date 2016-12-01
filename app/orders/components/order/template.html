@@ -110,7 +110,7 @@
     <!-- end Основная заявки -->
 
     <!-- start Кнопки -->
-    <div class="col-xs-2">
+    <div class="col-xs-2 vertical-btns-cnt">
       <!--Статус заявки-->
       <div>{{orderCtrl.orderStatusString}}</div>
 
@@ -163,10 +163,6 @@
         class="btn btn-error">Выйти из очереди
       </button>
 
-      <!--Спрятать заявку-->
-      <a ng-click="orderCtrl.hide()">Спрятать</a>
-
-
       <!--<button-->
         <!--ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.OPERATOR && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.ON_CONFIRM"-->
         <!--ng-click="orderCtrl.getQueue()"-->
@@ -174,6 +170,9 @@
       <!--</button>-->
 
     </div>
+
+    <!--Спрятать заявку-->
+    <a ng-click="orderCtrl.hide()" class="btn btn-neutral btn-hide">Спрятать</a>
     <!-- end Кнопки -->
   </div>
   <!-- start В СТАНДАРТНОМ СПИСКЕ -->
