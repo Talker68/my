@@ -14,7 +14,7 @@
   </div>
   <semitrailer
     class="b-list_middle"
-    ng-repeat="semitrailer in semitrailerListCtrl.semitrailersList track by semitrailer.guid"
+    ng-repeat="semitrailer in semitrailerListCtrl.semitrailersList | orderBy: 'plate_number' track by semitrailer.guid"
     semitrailer = "semitrailer"
     remove = "semitrailerListCtrl.removeSemitrailer(semitrailer)"
     update = "semitrailerListCtrl.updateSemitrailer(semitrailer)"
