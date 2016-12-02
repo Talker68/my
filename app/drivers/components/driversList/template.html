@@ -12,7 +12,7 @@
       <div class="b-list_cell col-xs-2">Действительны до</div>
     </div>
     <div class="b-list_middle">
-      <a class="b-list_row row" ui-sref="driverDetail({guid : driver.guid})" ng-repeat="driver in driversListCtrl.driversList track by driver.guid">
+      <a class="b-list_row row" ui-sref="driverDetail({guid : driver.guid})" ng-repeat="driver in driversListCtrl.driversList | orderBy: 'driver' track by driver.guid">
         <div class="b-list_cell col-xs-3">
           {{driver.driver}}
         </div>
