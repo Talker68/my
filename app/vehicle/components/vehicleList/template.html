@@ -10,7 +10,7 @@
     <div class="b-list_cell col-xs-3">Тип отгрузки</div>
   </div>
   <div class="b-list_middle">
-    <a class="b-list_row row" ui-sref="vehicleDetail({guid: vehicle.guid})" ng-repeat="vehicle in vehicleListCtrl.vehicleList track by vehicle.guid" >
+    <a class="b-list_row row" ui-sref="vehicleDetail({guid: vehicle.guid})" ng-repeat="vehicle in vehicleListCtrl.vehicleList | orderBy: 'plate_number' track by vehicle.guid" >
       <div class="b-list_cell col-xs-1">
         {{vehicle.plate_number}}
       </div>
