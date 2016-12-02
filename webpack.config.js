@@ -11,7 +11,8 @@ console.log(NODE_ENV);
 let  REQUEST_PREFIX = config.get('requestPrefix');
 let UPDATE_TIME = config.get('updateTime');
 
-console.log(REQUEST_PREFIX);
+console.log('REQUSET', REQUEST_PREFIX);
+console.log('PATH', config.get('path'));
 
 module.exports = {
   entry: path.resolve(__dirname, "app", "main", "index.js"),
@@ -82,7 +83,6 @@ module.exports = {
   }
 };
 
-console.log(config.get('proxy'));
 // if (NODE_ENV == 'production') {
 //   module.exports.plugins.push(
 //     new webpack.optimize.UglifyJsPlugin({
