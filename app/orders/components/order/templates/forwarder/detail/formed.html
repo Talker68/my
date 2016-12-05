@@ -49,7 +49,7 @@
                       <select
                         name="driver" id="driver" class="form-control" required
                         ng-model="orderCtrl.driver"
-                        ng-options="driver.driver for driver in orderCtrl.driversList">
+                        ng-options="driver.driver for driver in orderCtrl.driversList | orderBy : 'driver'">
                         <option value="">-- Водитель --</option>
                       </select>
                 <span class="input-group-btn">
