@@ -34,8 +34,8 @@
         {{orderCtrl.order.route.to.datetitme | date : "dd.MM.yyyy HH:mm" : "UTC"}}
       </div>
     </div>
-    <div class="b-list_cell col-xs-1">
-      <div class="requests-list_rate">
+    <div class="b-list_cell col-xs-1" >
+      <div class="requests-list_rate" ng-if="!orderCtrl.auctionStatus">
         <p>
           Сумма по тарифу без НДС
           <b>

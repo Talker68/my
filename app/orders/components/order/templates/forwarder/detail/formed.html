@@ -70,7 +70,7 @@
                       <select
                         name="vehicle" id="vehicle" class="form-control" required
                         ng-model="orderCtrl.vehicle"
-                        ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in orderCtrl.vehicleList">
+                        ng-options="(vehicle.plate_number +' '+ vehicle.model) for vehicle in orderCtrl.vehicleList | orderBy : 'plate_number'">
                         <option value="">-- Машина --</option>
                       </select>
                 <span class="input-group-btn">
@@ -91,7 +91,7 @@
                       <select
                         name="vehicle" id="semitrailer" class="form-control"
                         ng-model="orderCtrl.semitrailer"
-                        ng-options="(semitrailer.plate_number +' '+ semitrailer.model) for semitrailer in orderCtrl.semitrailersList">
+                        ng-options="(semitrailer.plate_number +' '+ semitrailer.model) for semitrailer in orderCtrl.semitrailersList | orderBy : 'plate_number'">
                         <option value=""> --Полуприцеп-- </option>
                       </select>
                 <span class="input-group-btn">
