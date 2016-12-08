@@ -235,15 +235,13 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     function getStatus() {
       let order = this.orderData;
       if (this.userType === this.USER_TYPES.LOGIST) {
-        // TODO : изменить на forwarder.title
-        if (order.forwarder) return `Отправлена ${order.forwarder}`;
+        if (order.forwarder) return `Отправлена ${order.forwarder.title}`;
         if (order.auction) return `Передана оператору`;
       } else if (this.userType === this.USER_TYPES.FORWARDER) {
         if (order.confirmOrderExpirationTime) return `Подтвердить до ${$filter('date')(order.confirmOrderExpirationTime, "dd.MM.yyyy HH:mm")}`;
         if (order.auction.isInQueue) return `Позиция в очереди ${order.auction.positionInQueue}`;
       } else if (this.userType === this.USER_TYPES.OPERATOR) {
-        // TODO : Заменить на название, после перераотки формата
-        if (order.forwarder) return `На подтверждении у ${order.forwarder}`;
+        if (order.forwarder) return `На подтверждении у ${order.forwarder.title}`;
       }
       return '';
     }
