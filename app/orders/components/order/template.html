@@ -1,4 +1,4 @@
-<div class="row b-list_row" ng-if="!orderCtrl.isHidden">
+<div class="row b-list_row" ng-show="!orderCtrl.isHidden">
   <!-- start Основные данные-->
 
   <!-- start В СТАНДАРТНОМ СПИСКЕ -->
@@ -109,67 +109,17 @@
     </div>
     <!-- end Основная заявки -->
 
-    <!-- start Кнопки -->
+    <!-- start статус и кнопки -->
     <div class="col-xs-2 vertical-btns-cnt">
+
       <!--Статус заявки-->
       <div>{{orderCtrl.orderStatusString}}</div>
 
-      <!--Передача заявки ТК--> <!--Подтверждение ТК, Отказ ТК-->
-      <button class="btn btn-error"
-              ng-click="orderCtrl.directOrder()"
-              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.LOGIST && !orderCtrl.orderData.forwarder && !orderCtrl.orderData.auction">
-        Отправить ТК
-      </button>
-      <!--/Передача заявки ТК-->
-
-      <!--Подтверждение ТК-->
-      <button class="btn btn-error" ng-if="orderCtrl.showButton('confirmOrder')" ng-click="orderCtrl.confirmOrder()">Подтвердить</button>
-      <!--/Подтверждение ТК-->
-
-      <!-- Отказ ТК-->
-      <button class="btn btn-error" ng-if="orderCtrl.showButton('refuseOrder')" ng-click="orderCtrl.forwarderRefuseOrder()">Отказаться</button>
-      <!--/Отказ ТК-->
-
-      <!--Передача опертору, отмена передачи оператору-->
-      <button class="btn btn-error"
-              ng-click="orderCtrl.transferOrderToOperator()"
-              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.LOGIST && !orderCtrl.orderData.forwarder && !orderCtrl.orderData.auction">
-        На аукцион
-      </button>
-      <button class="btn btn-error"
-              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.LOGIST && orderCtrl.orderData.auction"
-              ng-click="orderCtrl.cancelTransferOrderToOperator()">
-        Отозвать
-      </button>
-      <!--/Передача заявки ТК, Подтверждение ТК, Отказ ТК-->
-
-      <!--Отмена запланированного аукциона оператором-->
-      <button class="btn btn-error"
-              ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.OPERATOR && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.PLANNED"
-              ng-click="orderCtrl.cancelPlannedAuction()">
-        Отменить
-      </button>
-      <!--/Отмена запланированного аукциона оператором-->
-
-      <button
-        ng-if="orderCtrl.showButton('toQueue')"
-        ng-click="orderCtrl.addToQueue()"
-        class="btn btn-error">Встать в очередь
-      </button>
-
-      <button
-        ng-if="orderCtrl.showButton('leaveQueue')"
-        ng-click="orderCtrl.leaveQueue()"
-        class="btn btn-error">Выйти из очереди
-      </button>
-
-      <!--<button-->
-        <!--ng-if="orderCtrl.userType === orderCtrl.USER_TYPES.OPERATOR && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.ON_CONFIRM"-->
-        <!--ng-click="orderCtrl.getQueue()"-->
-        <!--class="btn btn-error">Показать очередь-->
-      <!--</button>-->
+      <!--Тут генерятся кнопки !НЕ ТРОГАТЬ!-->
+      <div data-element="order-controls"></div>
 
     </div>
+    <!-- end статус и кнопки -->
 
     <!--Спрятать заявку-->
     <a ng-click="orderCtrl.hide()" class="btn btn-neutral btn-hide">Спрятать</a>

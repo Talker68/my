@@ -1,4 +1,4 @@
-export default function(OrdersService, ApiService, VehicleService, DriversService, ForwardersService, AuthService, $uibModal, $filter) {
+export default function(OrdersService, ApiService, VehicleService, DriversService, ForwardersService, AuthService, $uibModal, $filter, $element, $compile, $scope) {
   this.$onInit = function() {
     this.ORDER_STATUSES = OrdersService.ORDER_STATUSES;
     this.AUCTION_STATUSES = OrdersService.AUCTION_STATUSES;
@@ -12,6 +12,9 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       this.setBids();
     }
 
+    // Уставовка кнопок
+    this.setControls();
+
     // Установка строки статуса документа
     this.setOrderStringStatus();
 
@@ -20,6 +23,54 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
 
   };
 
+  // Генерит кнопки по условиям
+  this.setControls = function() {
+    let orderControls = angular.element($element[0].querySelector('[data-element]'));
+    let controls = '';
+
+    if (this.userType === this.USER_TYPES.LOGIST){
+      if (this.orderData.status = this.ORDER_STATUSES.FORMED) {
+        controls += addButton('orderCtrl.directOrder', 'Отправить ТК');
+        controls += addButton('orderCtrl.transferOrderToOperator', 'На аукцион');
+      }
+
+      if (this.orderData.auction) {
+        controls += addButton('orderCtrl.cancelTransferOrderToOperator', 'Отозвать');
+      }
+    } else if (this.userType === this.USER_TYPES.FORWARDER) {
+      if (this.orderData.status = this.ORDER_STATUSES.FORMED) {
+        if (!this.orderData.auction || this.orderData.auction.canConfirmOrder) {
+          controls += addButton('orderCtrl.confirmOrder', 'Подтвердить');
+          controls += addButton('orderCtrl.refuseOrder', 'Отказаться');
+        }
+      }
+
+      if(this.orderData.auction && this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
+        if (!this.orderData.auction.isInQueue && !this.orderData.auction.canConfirmOrder) {
+          controls += addButton('orderCtrl.addToQueue', 'Встать в очередь');
+        }
+
+        if (this.orderData.auction.isInQueue && !this.orderData.auction.canConfirmOrder) {
+          controls += addButton('orderCtrl.leaveQueue', 'Выйти из очереди');
+        }
+      }
+    } else if (this.userType === this.USER_TYPES.OPERATOR) {
+      if (this.orderData.auction.status === this.AUCTION_STATUSES.PLANNED) {
+        controls += addButton('orderCtrl.cancelPlannedAuction', 'Отменить');
+      }
+
+      if (this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
+        controls += addButton('orderCtrl.getQueue', 'Показать очередь');
+      }
+    }
+
+    orderControls.append($compile(controls)($scope));
+
+    function addButton(action, title, htmlClass='btn btn-error') {
+      return `<button class="${htmlClass}" ng-click="${action}()">${title}</button>`;
+    }
+  }
+  
   // Установка значений ставок для шаблона
   this.setBids = function() {
 
@@ -197,38 +248,6 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     });
   }
 
-  // Проверка доступности кнопки
-  this.showButton = function(buttonAction) {
-    // Кнопки подтвердить и отказаться от заказа для ТК
-    if (buttonAction === 'confirmOrder' || buttonAction === 'refuseOrder') {
-      if (this.userType === this.USER_TYPES.FORWARDER) {
-        if (
-          (this.orderData.forwarder && (this.orderData.status === this.ORDER_STATUSES.FORMED) && !this.orderData.auction) ||
-          ((this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) && (this.orderData.auction.canConfirmOrder === 1))
-        ) {
-          return true
-        }
-      }
-    }
-
-    if (buttonAction === 'toQueue') {
-      if (this.userType === this.USER_TYPES.FORWARDER && this.orderData.auction && this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
-        if (!this.orderData.auction.isInQueue && !this.orderData.auction.canConfirmOrder) {
-          return true;
-        }
-      }
-    }
-
-    if (buttonAction === 'leaveQueue') {
-      if (this.userType === this.USER_TYPES.FORWARDER && this.orderData.auction && this.orderData.auction.status === this.AUCTION_STATUSES.ON_CONFIRM) {
-        if (this.orderData.auction.isInQueue && !this.orderData.auction.canConfirmOrder) {
-          return true;
-        }
-      }
-    }
-
-    return false;
-  }
 
   // Установка строки статуса документа
   this.setOrderStringStatus = function(value) {
