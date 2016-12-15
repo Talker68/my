@@ -1,0 +1,8 @@
+{
+  "requestPrefix" : "/ERPPPK_sborka/hs/logistics",
+  "path" : "//pc1474/logistics_old/scripts",
+  "publicPath" : "scripts/",
+  "devtool" : "source-map",
+  "proxy" : {},
+  "updateTime" : 10000
+}
