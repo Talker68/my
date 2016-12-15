@@ -3,35 +3,27 @@
 export default function($http) {
   // Получение списка водителей текущей ТК
   this.getDriversList = function () {
-    return $http.get(`${REQUEST_PREFIX}/driver`)
+    return $http.get(`${REQUEST_PREFIX}/drivers`)
   }
 
   // Получить водителя по guid
   this.getDriver = function (guid) {
-    return $http.get(`${REQUEST_PREFIX}/driver/${guid}`)
+    return $http.get(`${REQUEST_PREFIX}/drivers/${guid}`)
   }
 
-  /**
-   * Обновление водителя
-   * @param driver - объект с данными водителя
-   * @returns {*}
-   */
+  // Обновление водителя
   this.updateDriver = function(driver){
-    return $http.put(`${REQUEST_PREFIX}/driver/${driver.guid}`, driver)
+    return $http.put(`${REQUEST_PREFIX}/drivers/${driver.guid}`, driver)
   }
 
-  /**
-   * Добавление водителя
-   * @param driver - объект с данными водителя
-   * @returns {*}
-   */
+  // Добавление водителя
   this.addDriver = function (driver) {
-    return $http.post(`${REQUEST_PREFIX}/driver`, driver);
+    return $http.post(`${REQUEST_PREFIX}/drivers`, driver);
   }
 
   // Удаление водителя
   this.removeDriver = function (guid) {
-    return $http.delete(`${REQUEST_PREFIX}/driver/${guid}`);
+    return $http.delete(`${REQUEST_PREFIX}/drivers/${guid}`);
   }
   
 }

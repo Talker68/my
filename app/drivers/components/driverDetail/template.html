@@ -12,52 +12,59 @@
   <div class="b-wrap">
     <div class="form-field row">
       <div class="col-xs-6">
+
         <!-- ФИО -->
         <div class="form-fieldset_cell">
           <span>ФИО</span>
           <label class="form-fieldset_field">
-            <span>{{driverCtrl.driver.driver}}</span>
+            <span>{{driverCtrl.driver.name}}</span>
           </label>
         </div>
+
         <!-- Телефон -->
         <div class="form-fieldset_cell">
           <span>Телефон</span>
           <label class="form-fieldset_field">
-            <span>{{driverCtrl.driver.driver_phone}}</span>
+            <span>{{driverCtrl.driver.phone}}</span>
           </label>
         </div>
-        <!-- Права серия -->
+
+        <!-- Права-->
         <div class="form-fieldset_cell">
-          <span>Права серия</span>
+          <span>Права</span>
           <label class="form-fieldset_field">
-            <span>{{driverCtrl.driver.license_series}}</span>
+            <span>{{driverCtrl.driver.license.series}} {{driverCtrl.driver.license.number}}</span>
           </label>
         </div>
-      </div>
 
 
-      <div class="col-xs-6">
-        <!-- Права номер -->
-        <div class="form-fieldset_cell">
-          <span>Права номер</span>
-          <label class="form-fieldset_field">
-            <span>{{driverCtrl.driver.license_number}}</span>
-          </label>
-        </div>
         <!-- Права выданы -->
         <div class="form-fieldset_cell">
           <span>Права выданы</span>
           <label class="form-fieldset_field">
-            <span>{{driverCtrl.driver.license_issue | date : "dd.MM.yyyy"}}</span>
+            <span>{{driverCtrl.driver.license.issueDate | date : "dd.MM.yyyy" : "UTC"}}</span>
           </label>
         </div>
-        <!-- Права действительны до -->
+
+      </div>
+
+
+      <div class="col-xs-6">
+
         <div class="form-fieldset_cell">
-          <span>Права действительны до</span>
+          <span>Паспорт </span>
           <label class="form-fieldset_field">
-            <span>{{driverCtrl.driver.license_valid | date : "dd.MM.yyyy"}}</span>
+            <span>{{driverCtrl.driver.passport.series}} {{driverCtrl.driver.passport.number}}</span>
           </label>
         </div>
+
+        <div class="form-fieldset_cell">
+          <span>Выданы</span>
+          <label class="form-fieldset_field">
+            <span>{{driverCtrl.driver.passport.issueDate | date : "dd.MM.yyyy" : "UTC"}} {{driverCtrl.driver.passport.issuedBy}}</span>
+          </label>
+        </div>
+
       </div>
 
     </div>
@@ -83,42 +90,63 @@
         <!-- ФИО -->
         <div class="form-group">
           <label for="driver">ФИО</label>
-          <input type="text" class="form-control" id="driver" placeholder="ФИО" name="driver"
-                 ng-model="driverCtrl.driverCopy.driver" required>
+          <input type="text" class="form-control" id="driver"  name="driver"
+                 ng-model="driverCtrl.driverCopy.name" required>
         </div>
         <!-- Номер телефона -->
         <div class="form-group">
           <label for="driver_phone">Номер телефона</label>
-          <input type="text" class="form-control" id="driver_phone" placeholder="Номер телефона" name="driver_phone"
-                 ng-model="driverCtrl.driverCopy.driver_phone" required>
+          <input type="text" class="form-control" id="driver_phone"  name="driver_phone"
+                 ng-model="driverCtrl.driverCopy.phone" required>
         </div>
         <!-- Права серия -->
         <div class="form-group">
           <label for="license_series">Права серия</label>
-          <input type="text" class="form-control" id="license_series" placeholder="Права серия" name="license_series"
-                 ng-model="driverCtrl.driverCopy.license_series" required>
+          <input type="text" class="form-control" id="license_series"  name="license_series"
+                 ng-model="driverCtrl.driverCopy.license.series" required>
         </div>
-      </div>
-      <div class="col-xs-6">
+
         <!-- Права номер -->
         <div class="form-group">
           <label for="license_series">Права номер</label>
-          <input type="text" class="form-control" id="license_number" placeholder="Права номер" name="license_number"
-                 ng-model="driverCtrl.driverCopy.license_number" required>
+          <input type="text" class="form-control" id="license_number"  name="license_number"
+                 ng-model="driverCtrl.driverCopy.license.number" required>
         </div>
 
         <!-- Права выданы -->
         <div class="form-group">
           <label for="license_issue">Права выданы</label>
-          <input type="date" class="form-control" id="license_issue" placeholder="Права выданы" name="license_issue"
-                 ng-model="driverCtrl.driverCopy.license_issue" required>
+          <input type="date" class="form-control" id="license_issue"  name="license_issue"
+                 ng-model="driverCtrl.driverCopy.license.issueDate" required>
+        </div>
+      </div>
+      <div class="col-xs-6">
+
+
+
+        <div class="form-group">
+          <label for="passport-series">Паспорт серия</label>
+          <input type="text" class="form-control" id="passport-series"  name="passport-series"
+                 ng-model="driverCtrl.driverCopy.passport.series" required>
         </div>
 
-        <!-- Права действительны до -->
         <div class="form-group">
-          <label for="license_valid">Права действительны до</label>
-          <input type="date" class="form-control" id="license_valid" placeholder="Права действительны до" name="license_valid"
-                 ng-model="driverCtrl.driverCopy.license_valid" required>
+          <label for="passport-number">Паспорт номер</label>
+          <input type="text" class="form-control" id="passport-number"  name="passport-number"
+                 ng-model="driverCtrl.driverCopy.passport.number" required>
+        </div>
+
+        <div class="form-group">
+          <label for="passport-number">Дата выдачи</label>
+          <input type="date" class="form-control" id="passport-issue-date"  name="passport-issue-date"
+                 ng-model="driverCtrl.driverCopy.passport.issueDate" required>
+        </div>
+
+
+        <div class="form-group">
+          <label for="passport-number">Кем выдан</label>
+          <input type="text" class="form-control" id="passport-issued-by"  name="passport-issued-by"
+                 ng-model="driverCtrl.driverCopy.passport.issuedBy" required>
         </div>
       </div>
     </div>

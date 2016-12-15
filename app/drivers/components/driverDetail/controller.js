@@ -14,8 +14,14 @@ export default function (DriversService, ApiService, $state, $stateParams, $uibM
   // Переход в состояние редактирования
   this.toEditState = function() {
     this.driverCopy = angular.copy(this.driver);
-    this.driverCopy.license_issue =  this.driverCopy.license_issue ? new Date(this.driverCopy.license_issue) : new Date();
-    this.driverCopy.license_valid = this.driverCopy.license_valid ? new Date(this.driverCopy.license_valid) : new Date();
+
+    if (this.driverCopy.license && this.driverCopy.license.issueDate) {
+      this.driverCopy.license.issueDate = new Date(this.driverCopy.license.issueDate);
+    }
+
+    if (this.driverCopy.passport && this.driverCopy.passport.issueDate) {
+      this.driverCopy.passport.issueDate = new Date(this.driverCopy.passport.issueDate);
+    }
 
     this.editState = true;
   }

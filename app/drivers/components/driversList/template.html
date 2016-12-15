@@ -8,26 +8,18 @@
       <div class="b-list_cell col-xs-3">ФИО</div>
       <div class="b-list_cell col-xs-2">Телефон</div>
       <div class="b-list_cell col-xs-3">Права</div>
-      <div class="b-list_cell col-xs-2">Выданы</div>
-      <div class="b-list_cell col-xs-2">Действительны до</div>
     </div>
     <div class="b-list_middle">
       <a class="b-list_row row" ui-sref="driverDetail({guid : driver.guid})"
          ng-repeat="driver in driversListCtrl.drivers track by driver.guid">
         <div class="b-list_cell col-xs-3">
-          {{driver.driver}}
+          {{driver.name}}
         </div>
         <div class="b-list_cell col-xs-2">
-          {{driver.driver_phone}}
+          {{driver.phone}}
         </div>
         <div class="b-list_cell col-xs-3">
-          {{driver.license_series + driver.license_number}}
-        </div>
-        <div class="b-list_cell col-xs-2">
-          {{driver.license_issue | date : "dd.MM.yyyy"}}
-        </div>
-        <div class="b-list_cell col-xs-2">
-          {{driver.license_valid | date : "dd.MM.yyyy"}}
+          {{driver.license.series + driver.license.number}}
         </div>
       </a>
     </div>
