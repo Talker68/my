@@ -1,0 +1,8 @@
+{
+  "requestPrefix" : "/ERPPPK_test/hs/logistics",
+  "path" : "//pc1474/logistics_old_test/scripts",
+  "publicPath" : "scripts/",
+  "devtool" : "source-map",
+  "proxy" : {},
+  "updateTime" : 10000
+}
