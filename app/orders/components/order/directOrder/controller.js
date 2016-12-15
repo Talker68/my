@@ -1,7 +1,6 @@
 export default function(ForwardersService, OrdersService){
   this.$onInit = function(){
     this.now = new Date;
-    this.forwarders = ForwardersService.forwarders;
   }
 
   // Отправка заявки напрямую

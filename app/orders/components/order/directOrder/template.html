@@ -39,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="forwarder in directOrderCtrl.forwarders | filter: forwardersFilter">
+          <tr ng-repeat="forwarder in directOrderCtrl.resolve.forwarders | filter: forwardersFilter">
             <td>{{forwarder.titleERP}}</td>
 
             <td class="text-right">

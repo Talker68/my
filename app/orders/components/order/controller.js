@@ -105,9 +105,12 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     let modalInstance = $uibModal.open({
       resolve: {orderGuid: () => this.orderData.guid},
       component: 'orderDirectOrder',
-      size: 'lg'
+      size: 'lg',
+      resolve : {
+        forwarders: ForwardersService.getForwarders().then(response => response.data)
+      }
     });
-    modalInstance.result.then(order => this.updateOrderInList({order: order}));
+    modalInstance.result.then(order => this.updateOrderInList({order: order}), dissmiss => {});
   }
 
   // ТК отказывается от заявки
