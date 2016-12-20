@@ -1,7 +1,7 @@
 <div class="modal-header">
   <a href="javascript:void(0)" type="button" class="modal-close" ng-click="routeCtrl.close()">x</a>
   <div class="s-title">
-    <b>Маршрут</b>
+    <b>Маршрут № {{routeCtrl.order.id | str: true}}</b>
   </div>
 </div>
 
@@ -10,9 +10,9 @@
   <section class="route-points">
     <div style="margin-bottom: 30px">
       <div>
-        <b>Тип транспорта</b>:
+        <b>Требования к транспорту</b>:
       </div>
-      {{::routeCtrl.order.loadingType.title}}
+      {{::routeCtrl.order.loadingType.name}}; {{::routeCtrl.order.loadingType.title}}; {{::routeCtrl.order.requiredCondition}}
     </div>
 
     <div ng-if="routeCtrl.order.status === routeCtrl.ORDER_STATUSES.INWORK">

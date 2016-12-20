@@ -107,7 +107,8 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       component: 'orderDirectOrder',
       size: 'lg',
       resolve : {
-        forwarders: ForwardersService.getForwarders().then(response => response.data)
+        forwarders: ForwardersService.getForwarders().then(response => response.data),
+        orderId: () => this.orderData.id
       }
     });
     modalInstance.result.then(order => this.updateOrderInList({order: order}), dissmiss => {});
