@@ -30,6 +30,10 @@ import confirmComponent from './components/confirm';
 //directives
 import uppercaseDirective from './directives/uppercase';
 
+// filters
+import numFilter from './filters/num';
+import strFilter from './filters/str';
+
 //styles
 import './main.less';
 
@@ -71,9 +75,6 @@ const app = angular.module('app',
       }, 1000)
     })
 
-
-
-
   })
 
   .service('ApiService', apiService)
@@ -90,5 +91,7 @@ const app = angular.module('app',
 
   .directive('uppercase', uppercaseDirective)
 
+  .filter('num', numFilter)
+  .filter('str', strFilter)
 
 export default app;

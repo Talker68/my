@@ -89,8 +89,8 @@
               <tr ng-repeat="row in routePoint.items track by $index">
                 <td>{{row.id}}</td>
                 <td>{{row.title}}</td>
-                <td>{{row.quantity}}</td>
-                <td>{{row.weight}}</td>
+                <td>{{row.quantity | num: true}}</td>
+                <td>{{row.weight | num: true: 'ceil'}}</td>
               </tr>
               </tbody>
             </table>
