@@ -117,7 +117,7 @@
         <div class="form-group">
           <label for="license_issue">Права выданы</label>
           <input type="date" class="form-control" id="license_issue"  name="license_issue"
-                 ng-model="driverCtrl.driverCopy.license.issueDate" required>
+                 ng-model="driverCtrl.driverCopy.license.issueDate" ng-model-options="{timezone: 'UTC'}" required>
         </div>
       </div>
       <div class="col-xs-6">
@@ -139,7 +139,7 @@
         <div class="form-group">
           <label for="passport-number">Дата выдачи</label>
           <input type="date" class="form-control" id="passport-issue-date"  name="passport-issue-date"
-                 ng-model="driverCtrl.driverCopy.passport.issueDate" required>
+                 ng-model="driverCtrl.driverCopy.passport.issueDate" ng-model-options="{timezone: 'UTC'}" required>
         </div>
 
 
