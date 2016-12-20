@@ -9,7 +9,7 @@
         <div class="col-xs-2">
           <!-- start Номер заявки -->
           <div>
-            <b class="green">{{::orderCtrl.orderData.id | str: true}}</b>
+            <b class="green"><a ng-click="orderCtrl.showDetailRoute()" class="btn btn-ok btn__s">{{::orderCtrl.orderData.id | str: true}}</a></b>
           </div>
           <!-- end Номер заявки -->
           <div>
@@ -67,9 +67,7 @@
             <div class="clearfix">
             </div>
             <div class="col-xs-12">
-              <a ng-click="orderCtrl.showDetailRoute()" class="btn btn-ok btn__s"
-                 ng-if="orderCtrl.orderData.route.routePoints.length">Точки выгрузки
-                ({{::orderCtrl.orderData.route.routePoints.length - 1}})</a>
+              <div ng-class="{orange: orderCtrl.orderData.route.routePoints.length > 2}">Точки выгрузки {{::orderCtrl.orderData.route.routePoints.length - 1}}</div>
             </div>
           </div>
         </div>
