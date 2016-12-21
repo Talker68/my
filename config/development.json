@@ -4,5 +4,5 @@
   "publicPath" : "scripts/",
   "devtool" : "source-map",
   "proxy" : {},
-  "updateTime" : 10000
+  "updateTime" : 30000
 }

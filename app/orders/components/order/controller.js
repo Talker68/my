@@ -25,7 +25,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
 
   // Генерит кнопки по условиям
   this.setControls = function() {
-    let orderControls = angular.element($element[0].querySelector('[data-element]'));
+    let orderControls = angular.element($element[0].querySelector('[data-element="order-controls"]'));
     let controls = '';
 
     if (this.userType === this.USER_TYPES.LOGIST){
@@ -64,7 +64,9 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       }
     }
 
-    orderControls.append($compile(controls)($scope));
+    if (controls) {
+      orderControls.append($compile(controls)($scope));
+    }
 
     function addButton(action, title, htmlClass='btn btn-error') {
       return `<button class="${htmlClass}" ng-click="${action}()">${title}</button>`;
@@ -201,21 +203,26 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       if (this.bid <= this.orderData.auction.takeNowAmount) {
         this.removeOrderFromList({orderGuid: this.orderData.guid});
       } else {
-        // TODO: Заменить запрос на историю ставок
-        OrdersService.getOrderByGuid(this.orderData.guid).then(respnose => {
-          this.orderData.auction.auctionBids = respnose.data.auction.auctionBids;
+        this.orderData.auction.auctionBids = respnose.data;
+        this.setBids();
+
+        this.bid = '';
+        this.auctionForm.$setPristine();
+        this.auctionForm.$setUntouched();
+
+        this.buttonsDisabled = false;
+      }
+    },
+      reject => {
+        if (reject.status === 409) {
+          this.orderData.auction.auctionBids = reject.data;
           this.setBids();
-
-          this.bid = '';
-          this.auctionForm.$setPristine();
-          this.auctionForm.$setUntouched();
-
           this.buttonsDisabled = false;
-        })
-
+          this.auctionForm.bid.$setValidity('BVlessLastBid', false);
+        }
 
       }
-    })
+    )
   }
 
   // Спрятать заявку

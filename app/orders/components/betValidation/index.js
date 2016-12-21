@@ -31,8 +31,9 @@ export default function() {
 
       //ставка не должна быть больше или равна последней
       ctrl.$validators.BVlessLastBid = function(modelValue, viewValue){
+        let sortedBids = auction.auctionBids.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        if (auction.lastBid !== 0 && modelValue >= auction.lastBid) {
+        if (auction.lastBid !== 0 && modelValue >= sortedBids[0].bid) {
           return false;
         }
         return true;

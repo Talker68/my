@@ -14,6 +14,7 @@ import OrdersService from './services/orders';
 
 // filters
 import ordersFilter from './filters/ordersFilter';
+import orderIdFilter from  './filters/orderId';
 
 // components
 import orderListComponent from './components/ordersList';
@@ -41,13 +42,10 @@ export default angular.module('orders', [ngMessages, uiRouter])
   .component('orderDirectOrder', orderDirectOrder)
   .component('orderConfirm', orderConfirm)
 
-
-
-
-
-
   .directive('betValidation', betValidationDirective)
 
   .filter('ordersFilter', ordersFilter)
+  .filter('orderId', orderIdFilter)
+
 
   .name;

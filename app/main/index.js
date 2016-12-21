@@ -31,8 +31,7 @@ import confirmComponent from './components/confirm';
 import uppercaseDirective from './directives/uppercase';
 
 // filters
-import numFilter from './filters/num';
-import strFilter from './filters/str';
+import numFilter from './filters/num'
 
 //styles
 import './main.less';
@@ -92,6 +91,5 @@ const app = angular.module('app',
   .directive('uppercase', uppercaseDirective)
 
   .filter('num', numFilter)
-  .filter('str', strFilter)
 
 export default app;
