@@ -7,7 +7,8 @@ export default {
   controller : controller,
   controllerAs: 'vehicleCtrl',
   bindings : {
-    'vehicle' : '<'
+    'vehicle' : '<',
+    'loadingTypes': '<'
   },
   template : template
 }

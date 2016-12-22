@@ -3,15 +3,12 @@
 
 export default function (VehicleService, ApiService, $uibModal, $state) {
   this.$onInit = function() {
-
+    console.log(this);
     // Проверка значение параметра guid
     if (!this.vehicle) {
       this.vehicle = {};
       this.toEditState();
     }
-
-    // получение типов отгрузки
-    this.loadingTypes = VehicleService.loadingTypes;
 
     //Текущая дата для валидации
     this.now = new Date;
@@ -36,14 +33,15 @@ export default function (VehicleService, ApiService, $uibModal, $state) {
 
   // При смене типа отгрузки устанавливаются связаные элементы формы
   this.loadingTypeOnChange = function() {
-    if (this.vehicleCopy.loading_type) {
-      this.vehicleCopy.capacity = this.vehicleCopy.loading_type ? this.vehicleCopy.loading_type.capacity : 0;
-      this.vehicleCopy.volume = this.vehicleCopy.loading_type ? this.vehicleCopy.loading_type.volume : 0;
+    if (this.vehicleCopy.loadingType) {
+      this.vehicleCopy.capacity = this.vehicleCopy.loadingType.capacity;
+      this.vehicleCopy.volume = this.vehicleCopy.loadingType.volume;
     }
   }
 
   // Обработчик сабмита формы
   this.submit = function() {
+    this.vehicleCopy.loadingType = this.vehicleCopy.loadingType.guid;
     if (this.vehicleCopy.guid) {
       this._updateVehicle(this.vehicleCopy)
     } else {
@@ -70,6 +68,7 @@ export default function (VehicleService, ApiService, $uibModal, $state) {
 
   // Обновление ТС
   this._updateVehicle = function(vehicle) {
+    console.log(vehicle);
     VehicleService.updateVehicle(vehicle).then(response => {
       this.vehicle = response.data;
       this.toViewState();

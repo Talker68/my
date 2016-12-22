@@ -19,7 +19,8 @@ export default function($stateProvider){
             return VehicleService.getVehicle($stateParams.guid).then(response => response.data)
           }
           return false;
-        }
+        },
+        loadingTypes: (VehicleService) => VehicleService.getLoadingTypes().then(response => response.data)
       },
       url : '/:guid',
       component: 'vehicleDetail'

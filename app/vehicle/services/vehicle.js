@@ -4,46 +4,32 @@ export default function($http) {
 
   // Получить список машин
   this.getVehicleList = function() {
-    return $http.get(`${REQUEST_PREFIX}/vehicle`);
+    return $http.get(`${REQUEST_PREFIX}/vehicleList`);
   }
 
   // Получить машину по ее guid
   this.getVehicle = function(guid) {
-    return $http.get(`${REQUEST_PREFIX}/vehicle/${guid}`);
+    return $http.get(`${REQUEST_PREFIX}/vehicleList/${guid}`);
   }
 
-  /**
-   * Обновить машину
-   * @param vehicle объект c данными машины
-   * @returns {*}
-   */
+  // Обновить машину
   this.updateVehicle = function(vehicle){
-    vehicle.loading_type = vehicle.loading_type.guid;
-    return $http.put(`${REQUEST_PREFIX}/vehicle/${vehicle.guid}`, vehicle)
+    return $http.put(`${REQUEST_PREFIX}/vehicleList/${vehicle.guid}`, vehicle)
   }
 
-  /**
-   * Добавить машину
-   * @param vehicle Объект c данными машины
-   * @returns {*}
-   */
+  // Добавить машину
   this.addVehicle = function (vehicle) {
-    vehicle.loading_type = vehicle.loading_type.guid;
-    return $http.post(`${REQUEST_PREFIX}/vehicle`, vehicle);
+    return $http.post(`${REQUEST_PREFIX}/vehicleList`, vehicle);
   }
 
-  /**
-   * Удаление машины
-   * @param guid - guid машины
-   * @returns {boolean}
-   */
+  // Удаление машины
   this.removeVehicle = function (guid) {
-    return $http.delete(`${REQUEST_PREFIX}/vehicle/${guid}`);
+    return $http.delete(`${REQUEST_PREFIX}/vehicleList/${guid}`);
   }
 
   // Получение типов отгрузки
   this.getLoadingTypes = function() {
-    return $http.get(`${REQUEST_PREFIX}/loading_type`);
+    return $http.get(`${REQUEST_PREFIX}/loadingTypes`);
   }
 
   // Получение типа отгрузки
@@ -62,20 +48,12 @@ export default function($http) {
     return $http.get(`${REQUEST_PREFIX}/semitrailer/${guid}`)
   }
 
-  /**
-   * Обновление полуприцепа
-   * @param semitrailer - объект с данными полуприцепа
-   * @returns {*}
-   */
+  // Обновление полуприцепа
   this.updateSemitrailer = function(semitrailer){
     return $http.put(`${REQUEST_PREFIX}/semitrailer/${semitrailer.guid}`, semitrailer)
   }
 
-  /**
-   * Добавить полуприцеп
-   * @param semitrailer - объект с данными полуприцепа
-   * @returns {*}
-   */
+  // Добавить полуприцеп
   this.addSemitrailer = function (semitrailer) {
     return $http.post(`${REQUEST_PREFIX}/semitrailer`, semitrailer);
   }

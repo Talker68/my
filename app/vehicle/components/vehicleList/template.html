@@ -13,7 +13,7 @@
     <div class="b-list_middle">
       <a class="b-list_row row" ui-sref="vehicleDetail({guid: vehicle.guid})" ng-repeat="vehicle in vehicleListCtrl.vehicleList track by vehicle.guid" >
         <div class="b-list_cell col-xs-1">
-          {{vehicle.plate_number}}
+          {{vehicle.plateNumber}}
         </div>
         <div class="b-list_cell col-xs-1">
           {{vehicle.model}}
@@ -28,7 +28,7 @@
           {{vehicle.year}}
         </div>
         <div class="b-list_cell col-xs-5">
-          {{vehicle.loading_type.name}} ({{vehicle.loading_type.title}})
+          {{vehicle.loadingType.name}} ({{vehicle.loadingType.title}})
         </div>
       </a>
     </div>

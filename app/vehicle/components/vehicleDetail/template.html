@@ -15,15 +15,15 @@
         <div class="form-group">
           <label for="model">Модель</label>
           <input type="text" class="form-control" id="model" placeholder="Модель" name="model"
-                 ng-model="vehicleCtrl.vehicleCopy.model" required autocomplete="on">
+                 ng-model="vehicleCtrl.vehicleCopy.model" required>
         </div>
 
 
         <!-- Номер  -->
         <div class="form-group">
-          <label for="plate_number">Номер</label>
-          <input type="text" class="form-control" id="plate_number" placeholder="Номер" name="plate_number"
-                 ng-model="vehicleCtrl.vehicleCopy.plate_number"
+          <label for="plateNumber">Номер</label>
+          <input type="text" class="form-control" id="plateNumber" placeholder="Номер" name="plateNumber"
+                 ng-model="vehicleCtrl.vehicleCopy.plateNumber"
                  ng-pattern="/^[а-яА-Я]\d{3}[а-яА-Я]{2}\d{2,3}$/"
                  uppercase
                  required>
@@ -43,8 +43,8 @@
 
         <!-- Тип отгрузки -->
         <div class="form-group">
-          <label for="loading_type">Тип отгрузки</label>
-          <select name="loading_type" id="loading_type" ng-model="vehicleCtrl.vehicleCopy.loading_type" class="form-control"
+          <label for="loadingType">Тип отгрузки</label>
+          <select name="loadingType" id="loadingType" ng-model="vehicleCtrl.vehicleCopy.loadingType" class="form-control"
                   placeholder="Тип отгрузки"
                   required
                   ng-change="vehicleCtrl.loadingTypeOnChange()"
@@ -105,7 +105,7 @@
           <div class="form-fieldset_cell">
             <span>Номер</span>
             <label class="form-fieldset_field">
-              <span>{{vehicleCtrl.vehicle.plate_number}}</span>
+              <span>{{vehicleCtrl.vehicle.plateNumber}}</span>
             </label>
           </div>
 
@@ -125,7 +125,7 @@
           <div class="form-fieldset_cell">
             <span>Тип отгрузки</span>
             <label class="form-fieldset_field">
-              <span>{{vehicleCtrl.vehicle.loading_type.name}} ({{vehicleCtrl.vehicle.loading_type.title}})</span>
+              <span>{{vehicleCtrl.vehicle.loadingType.name}} ({{vehicleCtrl.vehicle.loadingType.title}})</span>
             </label>
           </div>
 
