@@ -10,7 +10,7 @@ export default function(ForwardersService, OrdersService){
       orderAcceptTime
     };
 
-    OrdersService.directOrder(this.resolve.orderGuid, requestData).then(
+    OrdersService.directOrder(this.resolve.orderData.guid, requestData).then(
       response => this.close({$value: response.data})
     )
   }

@@ -30,13 +30,19 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
 
     if (this.userType === this.USER_TYPES.LOGIST){
       if (this.orderData.status = this.ORDER_STATUSES.FORMED) {
-        controls += addButton('orderCtrl.directOrder', 'Отправить ТК');
-        controls += addButton('orderCtrl.transferOrderToOperator', 'На аукцион');
+
+        if (!this.orderData.auction) {
+          controls += addButton('orderCtrl.directOrder', 'Отправить ТК');
+          controls += addButton('orderCtrl.transferOrderToOperator', 'На аукцион');
+        }
+
+        if (this.orderData.auction) {
+          controls += addButton('orderCtrl.cancelTransferOrderToOperator', 'Отозвать');
+        }
       }
 
-      if (this.orderData.auction) {
-        controls += addButton('orderCtrl.cancelTransferOrderToOperator', 'Отозвать');
-      }
+
+
     } else if (this.userType === this.USER_TYPES.FORWARDER) {
       if (this.orderData.status = this.ORDER_STATUSES.FORMED) {
         if (!this.orderData.auction || this.orderData.auction.canConfirmOrder) {
@@ -110,7 +116,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       size: 'lg',
       resolve : {
         forwarders: ForwardersService.getForwarders().then(response => response.data),
-        orderId: () => this.orderData.id
+        orderData: () => this.orderData
       }
     });
     modalInstance.result.then(order => this.updateOrderInList({order: order}), dissmiss => {});
@@ -208,19 +214,24 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
 
         this.bid = '';
         this.auctionForm.$setPristine();
-        this.auctionForm.$setUntouched();
 
+        this.auctionForm.showBidStatus = true;
+        this.bidSucess = true;
         this.buttonsDisabled = false;
+
       }
     },
       reject => {
         if (reject.status === 409) {
           this.orderData.auction.auctionBids = reject.data;
           this.setBids();
-          this.buttonsDisabled = false;
-          this.auctionForm.bid.$setValidity('BVlessLastBid', false);
-        }
 
+          this.auctionForm.bid.$setValidity('BVlessLastBid', false);
+
+          this.auctionForm.showBidStatus = true;
+          this.bidSucess = false;
+          this.buttonsDisabled = false;
+        }
       }
     )
   }
