@@ -12,16 +12,38 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       this.setBids();
     }
 
-    // Уставовка кнопок
-    this.setControls();
 
     // Установка строки статуса документа
     this.setOrderStringStatus();
+    // Уставовка кнопок
+    this.setControls();
+
+
 
     // До планового времени загрузки осталось менее  24 часов
     this.deadline = parseInt((Date.parse(this.orderData.route.routePoints[0].date) - new Date().valueOf()) / 3600000) < 24 ? true : false;
 
   };
+
+
+  // Установка строки статуса документа
+  this.setOrderStringStatus = function(value) {
+    function getStatus() {
+      let order = this.orderData;
+      if (this.userType === this.USER_TYPES.LOGIST) {
+        if (order.forwarder) return `Отправлена ${order.forwarder.title}`;
+        if (order.auction) return `Передана оператору`;
+      } else if (this.userType === this.USER_TYPES.FORWARDER) {
+        if (order.confirmOrderExpirationTime) return `Подтвердить до ${$filter('date')(order.confirmOrderExpirationTime, "dd.MM.yyyy HH:mm")}`;
+        if (order.auction.isInQueue) return `Позиция в очереди ${order.auction.positionInQueue}`;
+      } else if (this.userType === this.USER_TYPES.OPERATOR) {
+        if (order.forwarder) return `На подтверждении у ${order.forwarder.title}`;
+      }
+      return '';
+    }
+
+    this.orderStatusString = value ? value : getStatus.bind(this)();
+  }
 
   // Генерит кнопки по условиям
   this.setControls = function() {
@@ -47,7 +69,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
       if (this.orderData.status = this.ORDER_STATUSES.FORMED) {
         if (!this.orderData.auction || this.orderData.auction.canConfirmOrder) {
           controls += addButton('orderCtrl.confirmOrder', 'Подтвердить');
-          controls += addButton('orderCtrl.refuseOrder', 'Отказаться');
+          controls += addButton('orderCtrl.forwarderRefuseOrder', 'Отказаться');
         }
       }
 
@@ -71,7 +93,7 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     }
 
     if (controls) {
-      orderControls.append($compile(controls)($scope));
+      orderControls.empty().append($compile(controls)($scope));
     }
 
     function addButton(action, title, htmlClass='btn btn-error') {
@@ -134,7 +156,8 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
         OrdersService.forwarderRefuseOrder(this.orderData.guid).then(
           response => this.removeOrderFromList({orderGuid: this.orderData.guid})
         )
-      }
+      },
+      err => {}
     )
   }
 
@@ -244,12 +267,12 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
   // Встать в очередь
   this.addToQueue = function () {
     OrdersService.addToQueue(this.orderData.auction.guid).then(response => {
-      // TODO: Заменить на this.orderData.auction.positionInQueue=response.data.positionInQueue без доп запроса
-      OrdersService.getOrderByGuid(this.orderData.guid).then(respnose => {
-        this.orderData.auction.isInQueue = 1;
-        this.orderData.auction.positionInQueue = respnose.data.auction.positionInQueue;
-        this.setOrderStringStatus();
-      })
+      this.orderData.auction.isInQueue = 1;
+      this.orderData.auction.positionInQueue=response.data.positionInQueue;
+      // Установка строки статуса документа
+      this.setOrderStringStatus();
+      // Уставовка кнопок
+      this.setControls();
     })
   }
 
@@ -258,7 +281,10 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
   this.leaveQueue = function () {
     OrdersService.leaveQueue(this.orderData.auction.guid).then(response => {
       this.orderData.auction.isInQueue = 0;
+      // Установка строки статуса документа
       this.setOrderStringStatus();
+      // Уставовка кнопок
+      this.setControls();
     })
   }
 
@@ -271,23 +297,6 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
   }
 
 
-  // Установка строки статуса документа
-  this.setOrderStringStatus = function(value) {
-    function getStatus() {
-      let order = this.orderData;
-      if (this.userType === this.USER_TYPES.LOGIST) {
-        if (order.forwarder) return `Отправлена ${order.forwarder.title}`;
-        if (order.auction) return `Передана оператору`;
-      } else if (this.userType === this.USER_TYPES.FORWARDER) {
-        if (order.confirmOrderExpirationTime) return `Подтвердить до ${$filter('date')(order.confirmOrderExpirationTime, "dd.MM.yyyy HH:mm")}`;
-        if (order.auction.isInQueue) return `Позиция в очереди ${order.auction.positionInQueue}`;
-      } else if (this.userType === this.USER_TYPES.OPERATOR) {
-        if (order.forwarder) return `На подтверждении у ${order.forwarder.title}`;
-      }
-      return '';
-    }
 
-    this.orderStatusString = value ? value : getStatus.bind(this)();
-  }
 
 }
