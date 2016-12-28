@@ -18,7 +18,8 @@ export default function(OrdersService, ApiService, VehicleService, DriversServic
     // Уставовка кнопок
     this.setControls();
 
-
+    // Для паков аукциона свой шаблон, добавляем переменную для опреденения
+    this.auctionPending = (this.userType === this.USER_TYPES.OPERATOR) && (this.orderData.auction && (this.orderData.auction.status === this.AUCTION_STATUSES.PENDING));
 
     // До планового времени загрузки осталось менее  24 часов
     this.deadline = parseInt((Date.parse(this.orderData.route.routePoints[0].date) - new Date().valueOf()) / 3600000) < 24 ? true : false;

@@ -6,10 +6,9 @@
     <!-- start Основная инфа -->
     <div class="col-xs-10">
       <div class="row b-list_section">
-        <div ng-class="(orderCtrl.orderData.auction && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.PENDING) ? 'col-xs-1' : 'col-xs-12' ">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-1' : 'col-xs-12' ">
           <!-- start Номер заявки -->
           <div>
-            <div ng-if="orderCtrl.orderData.auction && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.PENDING"> ФФФФФФФФФФФФФФ</div>
             <b class="green"><a ng-click="orderCtrl.showDetailRoute()" class="btn btn-ok btn__s">{{::orderCtrl.orderData.id | orderId: 'УП-'}}</a></b>
           </div>
           <!-- end Номер заявки -->
