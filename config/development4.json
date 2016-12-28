@@ -1,8 +1,0 @@
-{
-  "requestPrefix" : "/ERPPK_Vissarov/hs/logistics",
-  "path" : "//pc1474/logistics_copy/scripts",
-  "publicPath" : "scripts/",
-  "devtool" : "source-map",
-  "proxy" : {},
-  "updateTime" : 10000
-}
