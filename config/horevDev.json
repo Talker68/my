@@ -1,5 +1,5 @@
 {
-  "requestPrefix" : "/npm ",
+  "requestPrefix" : "/ERPPPK_test/hs/logistics",
   "path" : "//pc1474/logistics/scripts",
   "publicPath" : "scripts/",
   "devtool" : "source-map",
