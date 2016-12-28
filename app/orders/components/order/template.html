@@ -2,11 +2,11 @@
   <!-- start Основные данные-->
 
   <!-- start В СТАНДАРТНОМ СПИСКЕ -->
-  <div>
+  <div class="mini">
     <!-- start Основная инфа -->
     <div class="col-xs-10">
       <div class="row b-list_section">
-        <div class="col-xs-2">
+        <div ng-class="(orderCtrl.orderData.auction && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.PENDING) ? 'col-xs-1' : 'col-xs-12' ">
           <!-- start Номер заявки -->
           <div>
             <div ng-if="orderCtrl.orderData.auction && orderCtrl.orderData.auction.status === orderCtrl.AUCTION_STATUSES.PENDING"> ФФФФФФФФФФФФФФ</div>
@@ -21,8 +21,7 @@
           <div>
             Тип груза
             <div>
-              <b ng-repeat="cargoType in orderCtrl.orderData.cargo.type track by $index">{{::cargoType}}{{$last ? '' :
-                ', '}}</b>
+              <b ng-repeat="cargoType in orderCtrl.orderData.cargo.type track by $index">{{::cargoType}}{{$last ? '' : ', '}}</b>
             </div>
           </div>
         </div>

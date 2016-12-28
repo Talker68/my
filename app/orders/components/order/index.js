@@ -7,7 +7,7 @@ import templateMini from './template_mini.html';
 export default {
   controller: controller,
   controllerAs: 'orderCtrl',
-  template: $attrs => $attrs.template === 'mini' ? templateMini : template,
+  template: template,
 
   bindings: {
     orderData: '<',
