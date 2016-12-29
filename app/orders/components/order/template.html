@@ -4,9 +4,9 @@
   <!-- start В СТАНДАРТНОМ СПИСКЕ -->
   <div class="mini">
     <!-- start Основная инфа -->
-    <div class="col-xs-10">
+    <div ng-class="orderCtrl.auctionPending ? 'col-xs-12' : 'col-xs-10'">
       <div class="row b-list_section">
-        <div ng-class="orderCtrl.auctionPending ? 'col-xs-1' : 'col-xs-12' ">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <!-- start Номер заявки -->
           <div>
             <b class="green"><a ng-click="orderCtrl.showDetailRoute()" class="btn btn-ok btn__s">{{::orderCtrl.orderData.id | orderId: 'УП-'}}</a></b>
@@ -16,7 +16,7 @@
             Тип кузова <b>{{::orderCtrl.orderData.loadingType.name}}</b>
           </div>
         </div>
-        <div class="col-xs-2">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
             Тип груза
             <div>
@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-2">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
             Вес груза, кг
             <div>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-2">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
             Обязательные условия
             <div>
@@ -40,7 +40,8 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-4">
+        <p class="clearfix" ng-if="orderCtrl.auctionPending"></p>
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-12' : 'col-xs-4' ">
           <div class="row">
             <div class="col-xs-6">
               <div>Начальная точка</div>
@@ -70,7 +71,8 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-2">
+        <p class="clearfix" ng-if="orderCtrl.auctionPending"></p>
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
             Логист
             <div>
@@ -78,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-2">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
             Телефон
             <div>
@@ -86,7 +88,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-2">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
             Ставка без НДС
             <div>
@@ -94,7 +96,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-2">
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
             Транзит
             <div>
@@ -107,7 +109,7 @@
     <!-- end Основная заявки -->
 
     <!-- start статус и кнопки -->
-    <div class="col-xs-2 vertical-btns-cnt">
+    <div class="col-xs-2 vertical-btns-cnt" ng-hide="orderCtrl.auctionPending">
 
       <!--Статус заявки-->
       <div>{{orderCtrl.orderStatusString}}</div>
@@ -119,7 +121,7 @@
     <!-- end статус и кнопки -->
 
     <!--Спрятать заявку-->
-    <a ng-click="orderCtrl.hide()" class="btn btn-neutral btn-hide">Спрятать</a>
+    <a ng-click="orderCtrl.hide()" class="btn btn-neutral btn-hide" ng-if="!orderCtrl.auctionPending">Спрятать</a>
     <!-- end Кнопки -->
   </div>
   <!-- start В СТАНДАРТНОМ СПИСКЕ -->
