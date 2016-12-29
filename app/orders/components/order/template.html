@@ -18,9 +18,17 @@
         </div>
         <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
-            Тип груза
+            Обязательные условия
             <div>
-              <b ng-repeat="cargoType in orderCtrl.orderData.cargo.type track by $index">{{::cargoType}}{{$last ? '' : ', '}}</b>
+              <b>{{::orderCtrl.orderData.requiredCondition}}</b>
+            </div>
+          </div>
+        </div>
+        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
+          <div>
+            <b>Тип груза</b>
+            <div>
+              <span ng-repeat="cargoType in orderCtrl.orderData.cargo.type track by $index">{{::cargoType}}{{$last ? '' : ', '}}</span>
             </div>
           </div>
         </div>
@@ -32,21 +40,15 @@
             </div>
           </div>
         </div>
-        <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
-          <div>
-            Обязательные условия
-            <div>
-              <b>{{::orderCtrl.orderData.requiredCondition}}</b>
-            </div>
-          </div>
-        </div>
         <p class="clearfix" ng-if="orderCtrl.auctionPending"></p>
         <div ng-class="orderCtrl.auctionPending ? 'col-xs-12' : 'col-xs-4' ">
           <div class="row">
             <div class="col-xs-6">
-              <div>Начальная точка</div>
               <div>
-                <b>{{::orderCtrl.orderData.route.routePoints[0].address}}</b>
+                <b>Начальная точка</b>
+              </div>
+              <div>
+                <span>{{::orderCtrl.orderData.route.routePoints[0].address}}</span>
               </div>
               <div>
                 <b class="green">{{::orderCtrl.orderData.route.routePoints[0].date | date : "dd.MM.yyyy HH:mm" : "UTC"
@@ -54,10 +56,10 @@
               </div>
             </div>
             <div class="col-xs-6">
-              <div>Конечная точка</div>
+              <div><b>Конечная точка</b></div>
               <div>
-                <b>{{::orderCtrl.orderData.route.routePoints[orderCtrl.orderData.route.routePoints.length -
-                  1].address}}</b>
+                <span>{{::orderCtrl.orderData.route.routePoints[orderCtrl.orderData.route.routePoints.length -
+                  1].address}}</span>
               </div>
               <div>
                 <b class="green">{{::orderCtrl.orderData.route.routePoints[orderCtrl.orderData.route.routePoints.length
@@ -67,7 +69,7 @@
             <div class="clearfix">
             </div>
             <div class="col-xs-12">
-              <div ng-class="{orange: orderCtrl.orderData.route.routePoints.length > 2}">Точки выгрузки {{::orderCtrl.orderData.route.routePoints.length - 1}}</div>
+              <div ng-class="{orange: orderCtrl.orderData.route.routePoints.length > 2}"><b>Точки выгрузки {{::orderCtrl.orderData.route.routePoints.length - 1}}</b></div>
             </div>
           </div>
         </div>
@@ -90,9 +92,9 @@
         </div>
         <div ng-class="orderCtrl.auctionPending ? 'col-xs-3' : 'col-xs-2' ">
           <div>
-            Ставка без НДС
+            <b>Ставка без НДС</b>
             <div>
-              <b>{{::orderCtrl.orderData.transportationCost | num: true}}</b>
+              <b class="green">{{::orderCtrl.orderData.transportationCost | num: true}}</b>
             </div>
           </div>
         </div>
