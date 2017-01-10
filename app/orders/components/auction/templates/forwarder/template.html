@@ -22,14 +22,14 @@
       <div class="col-xs-2">
         Начало
         <div>
-          <b class="green">{{auctionCtrl.auction.start | date : "dd.MM.yyyy HH:mm"}}</b>
+          <b class="green">{{auctionCtrl.auction.start | date : "dd.MM.yyyy HH:mm": "+0300"}}</b>
         </div>
       </div>
       <!--Конец-->
       <div class="col-xs-2">
         Конец
         <div>
-          <b ng-class="{green : !auctionCtrl.auction.prolonged, orange : auctionCtrl.auction.prolonged}">{{auctionCtrl.auction.finish | date : "dd.MM.yyyy HH:mm"}}</b>
+          <b ng-class="{green : !auctionCtrl.auction.prolonged, orange : auctionCtrl.auction.prolonged}">{{auctionCtrl.auction.finish | date : "dd.MM.yyyy HH:mm": "+0300"}}</b>
         </div>
       </div>
       <!--Шаг-->

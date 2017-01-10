@@ -51,13 +51,11 @@ const app = angular.module('app',
 
   .run(function ($rootScope, $interval, $http) {
 
-    //Получение серверного времени
-    let begin = new Date;
+
 
     $http.get(`${REQUEST_PREFIX}/time`).then(response => {
 
       let serverTime = new Date(response.data.time);
-      serverTime.setMilliseconds(serverTime.getMilliseconds() + (new Date - begin));
       $rootScope.serverTime = serverTime;
 
       //Каждую секнду время будет меняться
